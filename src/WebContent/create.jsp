@@ -21,7 +21,9 @@
 				<tbody>
 					<tr>
 						
-						<td><td><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3></td>
+						<td align="left"><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3>
+						<a href="HelpInformation.pdf">Need Help?</a>
+						</td>
 					</tr>
 				</tbody>
 				</table>
@@ -41,15 +43,6 @@
 			<br>
 			
 			<div id="container">
-				
-				
-				<h:form>
-				<div style="border:2px groove; text-align:center; height:60; width:400">
-					<p><b>Search:</b>&nbsp;&nbsp;First Name <h:inputText id="firstname" value="#{encounterService.searchPatientFirstName }" />&nbsp;&nbsp;<h:commandButton id="searchFirst" value="Search" action="#{encounterService.searchPatientsF }"></h:commandButton>
-									 &nbsp;&nbsp;Last Name <h:inputText id="lastname" value="#{encounterService.searchPatientLastName }" />&nbsp;&nbsp;<h:commandButton id="searchLast" value="Search" action="#{encounterService.searchPatients }"></h:commandButton>
-									&nbsp;&nbsp;Patient ID<h:inputText id="patientID" value="#{encounterService.searchPatientId }" />&nbsp;&nbsp;<h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton></p>
-				</div>
-				</h:form>
 				<BR>
 				<h:form>
 				<div style="text-align:center" >
@@ -85,8 +78,33 @@
 						<tr>
 							<td><h3>Birth Date</h3></td>
 							<td><h:inputText value = "#{encounterService.patient.birthDate }"></h:inputText></td>
+							
 						</tr>
-		
+						
+						<tr>
+							<td><h3>Month</h3></td>
+							<td>
+		   						<select>
+  									<option value="january">January</option>
+  									<option value="february">February</option>
+  									<option value="march">March</option>
+  									<option value="april">April</option>
+  									<option value="may">May</option>
+  									<option value="june">June</option>
+  									<option value="july">July</option>
+  									<option value="august">August</option>
+  									<option value="september">September</option>
+  									<option value="october">October</option>
+  									<option value="november">November</option>
+  									<option value="december">December</option>
+								</select>
+								</td>
+								<td><h3>Day</h3></td>
+								<td><input type="number" name="day" min="1" max="31"></td>
+								<td><h3>Year</h3></td>
+								<td><input type="number" name="day" min="1900" max="2013"></td>
+						</tr>
+						
 						<tr>
 							<td><h3>Gender</h3></td>
 							<td><h:selectOneMenu id ="gender" value="#{encounterService.patient.gender }">
@@ -273,7 +291,7 @@
 				</h:form>
 			</div>
 			<center>
-				<p><a href="HelpInformation.pdf">Need Help?</a></p>
+				<p></p>
 			</center>
 		
 	</f:view>
