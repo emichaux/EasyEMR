@@ -20,10 +20,9 @@
 				<table>
 				<tbody>
 					<tr>
-						
 						<td align="left"><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3>
-						<a href="HelpInformation.pdf">Need Help?</a>
 						</td>
+						<td align="left"> <h3 style="color:white" align"left"> <a href="HelpInformation.pdf">Need Help?</a></h3></td>
 					</tr>
 				</tbody>
 				</table>
@@ -46,17 +45,22 @@
 				<BR>
 				<h:form>
 				<div style="text-align:center" >
-					<h:commandButton id="newPatient" style="width:150px;height:50px" value="RESET" action="#{encounterService.resetRecord }" immediate="true"/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<h:commandButton id="submit" style="width:150px;height:50px" value="Submit" action="#{encounterService.saveOrUpdateEncounter }" rendered="#{ not encounterService.newEncounter }"></h:commandButton>
-					<h:commandButton id="startNew" style="width:150px;height:50px" value="Start New Encounter" action="#{encounterService.startEncounter}" rendered="#{encounterService.newEncounter }"></h:commandButton>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<h:commandButton id="newPatient" style="width:150px;height:50px" value="RESET" action="#{encounterService.resetRecord }" immediate="true"/>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<h:commandButton id="startNew" style="width:150px;height:50px" value="Start New Encounter" action="#{encounterService.startEncounter}" rendered="#{encounterService.newEncounter}"></h:commandButton>
 				</div>
 		
 				<div id = "module" style="float:left">
 					<h1>General Information</h1>
 					<table>
 						<tr>
-							<td><h1 style="color:red">* Visit ID </h1></td>
+							<td><h1 style="color:red">* Card ID </h1></td>
 							<td><h:inputText id="visitID" value="#{encounterService.encounter.encounterID }" required="true"></h:inputText></td>
 							<h:message for="visitID" style="color:red"> </h:message>
 						</tr>
@@ -102,7 +106,7 @@
 								<td><h3>Day</h3></td>
 								<td><input type="number" name="day" min="1" max="31"></td>
 								<td><h3>Year</h3></td>
-								<td><input type="number" name="day" min="1900" max="2013"></td>
+								<td><input type="number" name="day" min="1900" max="2014"></td>
 						</tr>
 						
 						<tr>
