@@ -7,56 +7,52 @@
 
 
 <head>
-	<link rel="stylesheet" href="main.css" type="text/css" />
+	<link href="./css/bootstrap.css" rel="stylesheet">  
 	<title>Easy EMR</title>
 </head>
 
 <body>
+
 <f:view>
-		<div id="navigation">
-			<div style="float: left">
-			&nbsp;<img src="img\logo_xl.png" height="60" width="180">&nbsp;&nbsp;
-			</div>
-			<div style="float: left">
-				<table>
-				<tbody>
-					<tr>
-						
-						<td><td><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3></td>
-					</tr>
-				</tbody>
-				</table>
-				
-				
-			</div>
+	<div class="navbar navbar-fixed-top center">
+	  		<div style="float: left">
+  			<p><img src="./img/easyEmr_LOGO.png" height="80" width="110"></p>
+  			</div>
+	  <div class="navbar-inner"> 
 
-			<div style="float: right">
-			<h:form>
-						<p><h:commandLink tabindex="-1" action="#{loginBean.logout}">Log out</h:commandLink></p>
-						<p><h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}">Change My Password</h:commandLink></p>
-
+  			   <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
+  			
+  		
+        <div class="container-fluid">
+                 <h:form>
+						<h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></h:commandLink>
+						<h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></h:commandLink>
 				</h:form>
-			</div>
-			
-		</div>
-		<div id= "content">
-	
-		<div id = "form">
+				</div>
+			</div>			
+	    </div>  				
+
+<br><br>
+<br><br>
+<br><br>
+				
+<div class= "container">	
+		<div class= "well span6 center">
 		<h:form>
 			<h1><font color="red">
 			<h:outputText value="#{pharmacyEncounterService.encounterIDText }"></h:outputText></font></h1>
-			<h3><font color="red"><h:outputText value="#{pharmacyEncounterService.recordIDInstruction }"></h:outputText>
-			</font></h3>
+			<h5><font color="red"><h:outputText value="#{pharmacyEncounterService.recordIDInstruction }"></h:outputText>
+			</font></h5>
 			<h:message for="firstName" style="color:red"> </h:message>
 			<h:message for="lastName" style="color:red"> </h:message>
 			
-			<h1>Create RX Record</h1><br>
+			<center><h4 style="">Create RX Record</h4></center><br>
 			<center>
 			<table>
 			
 			<tr>
-				<td><h3>First Name</h3></td>
-				<td><h3>Last Name</h3></td>
+				<td><h5>First Name</h5></td>
+				<td><h5>Last Name</h5></td>
 			</tr>
 			
 			<tr>
@@ -65,8 +61,8 @@
 			</tr>
 	
 			<tr>
-				<td><h3>Medication Given</h3></td>
-				<td><h3>Same as Prescribed?</h3></td>
+				<td><h5>Medication Given</h5></td>
+				<td><h5>Same as Prescribed?</h5></td>
 			</tr>
 			
 			<tr>

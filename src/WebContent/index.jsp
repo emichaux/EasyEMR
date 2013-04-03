@@ -7,35 +7,43 @@
 
 <html>
 <head>
-<link rel="stylesheet" href="main.css" type="text/css" />
+<link href="./css/bootstrap.css" rel="stylesheet">  
+
 <title>Easy EMR</title>
 </head>
 
 <body>
 
 	<f:view>
-	<div id= "navigation">
-	<div style="float:left">
-		&nbsp;<img src="img\logo_xl.png" height="60" width="180">
-	</div>
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner"> 
+  		<div style="float: left">
+  			<img src="./img/easyEmr_LOGO.png" height="80" width="110"> 
+  		</div> 
+	    <div class="container">  			
+			<ul class="nav">
+			</ul>
+	    </div>  
+	  </div>  
+	</div> 
 	
 	<div style="float:right">
 
 	</div>
 	</div>
-
-		<div id="content">
-			<div id="form" >
-				<h1>Welcome!</h1>
-				<h4>Please log in.</h4>
-
+<br><br>
+<br><br>
+<br><br>
+<div class="container">
+		<div class="well form span6 center">
+			<div class="form">
+			
 				<h:form>
 
 				<center>
 				<table>
 				<tr>
-					<td><center>Username</center></td>
-					<td><center>Password</center></td>
+				<b> Welcome to</b><img src="./img/easyEmr_LOGO.png" height="80" width="110"><br>Please Login Below <br> 
 				</tr>
 				<tr>
 					<td><h:inputText style="width:150px" id="username" value="#{loginBean.systemUser.username}" /></td>
@@ -43,18 +51,13 @@
 				</tr>
 				</table>
 				</center>
-				
-				
+				<div class="center">
 					<h:commandButton id="submit" value="Login" action="#{loginBean.authenticate }" style="width:130px;height:40px"></h:commandButton><BR><BR>
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
+					</div>
 				</h:form>
-
 			</div>
-
-			<center>
-				<p><a href="HelpInformation.pdf">Need Help?</a></p>
-			</center>
-
+		</div>
 		</div>
 	</f:view>
 </body>

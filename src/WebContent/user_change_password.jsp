@@ -7,28 +7,37 @@
 <html lang="en-US">
 
 <head>
-<link rel="stylesheet" href="main.css" type="text/css" />
+<link href="./css/bootstrap.css" rel="stylesheet">  
 <title>Easy EMR - Update My Info</title>
 </head>
 
 <body>
 	<f:view>
-		<div id="navigation">
-			<div style="float: left">
-			&nbsp;<img src="img\logo_xl.png" height="60" width="180">&nbsp;&nbsp;
+	<div class="navbar navbar-fixed-top center">
+	  		<div style="float: left">
+  			<p><img src="./img/easyEmr_LOGO.png" height="80" width="110"></p>
+  			</div>
+	  <div class="navbar-inner"> 
+
+  			   <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
+  			
+  		
+        <div class="container-fluid">
+                 <h:form>
+						<h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></h:commandLink>
+						<h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></h:commandLink>
+				</h:form>
+				</div>
+			</div>			
+	    </div> 
+			<div style="float: right">
+			<h:form>
+						<p><h:commandLink tabindex="-1" action="#{loginBean.logout}">Log out</h:commandLink></p>
+						<p><h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}">Change My Password</h:commandLink></p>
+
+				</h:form>
 			</div>
-			<div style="float: left">
-				<table>
-				<tbody>
-					<tr>
-						
-						<td><td><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3></td>
-					</tr>
-				</tbody>
-				</table>
-				
-				
-			</div>
+			
 
 			<div style="float: right">
 			<h:form>
@@ -40,19 +49,22 @@
 			
 		</div>
 
-		<div id="content">
+<br><br><br>
+<br><br><br>
 
-			<div class="adminPanel">
+
+		<div id="content">
+			<div class="well container span5 center">
 
 				<fieldset class="admin">
 					
-						<h2>Update My Password</h2>
+						<h4>Change My Password</h4>
 						<h:form>
 						<center>
 							<table>
 								<tr>
-									<td><h3>New Password:</h3></td>
-									<td><h:inputSecret id="password"
+									<td><h5>New Password:</h5></td>
+									<td><h:inputSecret id="password" style="width 150px"
 											value="#{userService.myPassword}"></h:inputSecret></td>
 								</tr>
 								<tr>
@@ -62,9 +74,7 @@
 											value="Cancel" action="#{userService.cancel }"></h:commandButton></td>
 								</tr>
 							</table>
-
-							<BR>
-							<BR>
+							<br>
 							<h:commandButton value="Back" action="#{userService.cancel }"></h:commandButton>
 					</center>
 					</h:form>

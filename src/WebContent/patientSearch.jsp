@@ -6,41 +6,36 @@
 <html lang="en-US">
 
 <head>
-	<link rel="stylesheet" href="main.css" type="text/css" />
+<link href="./css/bootstrap.css" rel="stylesheet">  
 	<title>Easy EMR</title>
 </head>
 
 <body>
 	<f:view>
 	
-		<div id="navigation">
-			<div style="float: left">
-			&nbsp;<img src="img\logo_xl.png" height="60" width="180">&nbsp;&nbsp;
-			</div>
-			<div style="float: left">
-				<table>
-				<tbody>
-					<tr>
-						
-						<td><td><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3></td>
-					</tr>
-				</tbody>
-				</table>
-				
-				
-			</div>
+	<div class="navbar navbar-fixed-top center">
+	  		<div style="float: left">
+  			<p><img src="./img/easyEmr_LOGO.png" height="80" width="110"></p>
+  			</div>
+	  <div class="navbar-inner"> 
 
-			<div style="float: right">
-			<h:form>
-						<p><h:commandLink tabindex="-1" action="#{loginBean.logout}">Log out</h:commandLink></p>
-						<p><h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}">Change My Password</h:commandLink></p>
-
+  			   <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
+  			
+  		
+        <div class="container-fluid">
+                 <h:form>
+						<h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></h:commandLink>
+						<h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></h:commandLink>
 				</h:form>
-			</div>
-			
-		</div>
-	
-		<div id="container">
+				</div>
+			</div>			
+	    </div>  				
+<br><br>
+<br><br>
+<br><br>				
+				
+<div class="container">
+		<div class="well form">
 				<br />
 				<h:form>
 				<div style="border: 2px groove; text-align:center; height:60; width:400">
@@ -95,6 +90,7 @@
 					</h:column>
 				</h:dataTable>
 			</h:form>
+		</div>
 		</div>
 
 
