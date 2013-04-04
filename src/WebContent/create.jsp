@@ -6,6 +6,52 @@
 <html lang="en-US">
 
 <head>
+<script type="text/javascript">
+<!--
+function bmi(weight, height) {
+
+    bmindx=weight/eval(height*height);
+    return bmindx;
+}
+
+function checkform(form) {
+
+ if (form.weight.value==null||form.weight.value.length==0 || form.height.value==null||form.height.value.length==0){
+      alert("\nPlease complete the form first");
+      return false;
+ }
+ return true;
+
+}
+
+function computeform(form) {
+
+ if (checkform(form)) {
+
+ yourbmi=Math.round(bmi(form.weight.value *703, form.height.value));
+ form.bmi.value=yourbmi;
+ }
+ return;
+ 
+}
+
+
+
+
+function calculateAge(a,b) {
+	var today = new Date();
+	var yyyy = today.getFullYear();
+	document.getElementById(b).value = yyyy - document.getElementById(a).value;
+}
+
+function calculateYear(a,b) {
+	var today = new Date();
+	var yyyy = today.getFullYear();
+	document.getElementById(a).value = yyyy - document.getElementById(b).value;
+}
+//-->
+</script> 
+
 	<link href="./css/bootstrap.css" rel="stylesheet">  
 	<title>Easy EMR</title>
 </head>
@@ -23,6 +69,9 @@
   		
         <div class="container-fluid">
                  <h:form>
+                 		<h:outputLink tabindex="-3" id="link1" value="hipaaprivacy.pdf">
+						    <h:outputText value="Hipaa Privacy Policy" />
+						</h:outputLink>
 						<h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></h:commandLink>
 						<h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></h:commandLink>
 				</h:form>
@@ -34,7 +83,7 @@
 <br><br>
 <br><br>
 <br><br>
-			<h:form>
+			
 				<div style="text-align:center" >
 					<h:commandButton id="submit" style="width:120px;height:50px" value="Submit Record" action="#{encounterService.saveOrUpdateEncounter }" rendered="#{ not encounterService.newEncounter }"></h:commandButton>
 					
@@ -68,10 +117,13 @@
 						</tr>
 						<tr>
 							<td><strong>Location</strong></td>
-							<td><h:inputText value="#{encounterService.patient.residence }"></h:inputText></td>
+							<td><h:selectOneMenu style="width:125px" value="#{encounterService.patient.residence }">
+							</h:selectOneMenu>
+
 						</tr>
-		
+						<tr> <td><strong>Birthdate</strong></td></tr>
 						<tr>
+							
 							<td><strong>Month</strong></td>
 							<td>
 		   						<select style="width:125px">
@@ -93,32 +145,52 @@
 								<tr>
 								<tr><td><strong>Day</strong></td><td><strong>Year</strong></td></tr>
 								<tr>
-								<td><input style="width:75px" type="number" name="day" min="1" max="31"></td>
-								<td><input style="width:75px" type="number" name="day" min="1900" max="2014"></td>
-						</tr>
-						<tr>
-							<td><strong>Age</strong></td>
-							<td><h:inputText style="width:75px" value = "#{encounterService.patient.birthDate }"></h:inputText></td>
-							
-						</tr>
+								<td><h:inputText style = "width:30px" size="2" id="day"></h:inputText></td>
+								<td><input style = "width:30px"  size="4" name="year" id="year" onblur="calculateAge('year','age')"></td>
+							</tr>
+							<tr>
+								<td><strong>Age</strong></td>
+								<td><input style = "width:30px" size="4" name="age" id="age" onblur="calculateYear('year', 'age')"></td>
+								
+							</tr>
+
 						<tr>
 							<td><strong>Gender</strong></td>
-							<td><h:selectOneMenu id ="gender" value="#{encounterService.patient.gender }">
+							<td><h:selectOneMenu style = "width:100px" id ="gender" value="#{encounterService.patient.gender }">
 		   						<f:selectItem itemValue="Select" itemLabel="- Select -" />
 		   						<f:selectItem itemValue="Male" itemLabel="Male" />
 		   						<f:selectItem itemValue="Female" itemLabel="Female" />
 								</h:selectOneMenu></td>
 						</tr>
-		
+						<h:form>
 						<tr>
 							<td><strong>Height</strong></td>
-							<td><h:inputText id="hin" value="#{encounterService.vitals.height }"></h:inputText> in</td>
+							<td><h:inputText style = "width:30px" id="hin"  value="#{encounterService.vitals.height }"></h:inputText>in</td>
 						</tr>
 		
 						<tr>
 							<td><strong>Weight</strong></td>
-							<td><h:inputText id="wlbs" value="#{encounterService.vitals.weight }"></h:inputText> lbs</td>
+							<td><h:inputText style = "width:30px" id="wlbs"  value="#{encounterService.vitals.weight }"></h:inputText>lbs</td>
 						</tr>
+						<tr>
+						 
+					<FORM NAME="BMI" method=POST>
+					<TABLE  >
+					<TR>
+					<TD><DIV ALIGN=CENTER> Weight (lbs)</DIV></TD>
+					<TD><DIV ALIGN=CENTER> Height (in)</DIV></TD>
+					<TD><DIV ALIGN=CENTER> BMI</DIV></TD>
+					</TR>
+					<TR>
+					<TD><INPUT TYPE=TEXT NAME=weight  SIZE=7 onFocus="this.form.weight.value=''"  ></TD>
+					<TD><INPUT TYPE=TEXT NAME=height  SIZE=7 onFocus="this.form.height.value=''"></TD>
+					<TD><INPUT TYPE=TEXT NAME=bmi     SIZE=7 ></TD>
+					</TABLE>
+					<INPUT TYPE="button" VALUE="Calculate" onClick="computeform(this.form)">
+					
+					</FORM>
+
+						
 					</table>
 				</div>
 				<div class="form span6">
@@ -144,16 +216,6 @@
 							<td><h:inputText style = "width:60px" id="respirations"  value="#{encounterService.vitals.respRate }" /><br></td>
 						</tr>
 		
-						<tr>
-							<td><strong>Oxygen (%)</strong></td>
-							<td><h:inputText style = "width:60px" id="oxygen"  value="#{encounterService.vitals.oximetry }" /><br></td>
-						</tr>
-		
-						<tr>
-							<td><strong>Blood Sample #</strong></td>
-							<td><h:inputText  style="width:60px" value = "#{encounterService.vitals.bloodSampleID }"></h:inputText></td>
-						</tr>
-								
 					</table>
 					</div>
 					</div>
@@ -179,8 +241,8 @@
 		
 						<tr>
 							<td><strong>Severity</strong></td>
-							<td><h:selectOneMenu style= "width:50px" value="#{encounterService.encounter.severity }">
-								<f:selectItem itemValue="0" itemLabel=" - "/>
+							<td><h:selectOneMenu style= "width:70px" value="#{encounterService.encounter.severity }">
+								<f:selectItem itemValue="NA" itemLabel="NA"/>
 								<f:selectItem itemValue="1" itemLabel="1"/>
 								<f:selectItem itemValue="2" itemLabel="2"/>
 								<f:selectItem itemValue="3" itemLabel="3"/>
@@ -191,8 +253,6 @@
 								<f:selectItem itemValue="8" itemLabel="8"/>
 								<f:selectItem itemValue="9" itemLabel="9"/>
 								<f:selectItem itemValue="10" itemLabel="10"/>
-								<f:selectItem itemValue="NA" itemLabel="NA"/>
-								
 							</h:selectOneMenu></td>
 						</tr>
 		
@@ -207,10 +267,13 @@
 						</tr>
 		
 						<tr>
-							<td><strong>Provokes / Palliates</strong></td>
+							<td><strong>Provokes</strong></td>
 							<td><h:inputText value="#{encounterService.encounter.provokes }"/></td>
 						</tr>
-		
+						<tr>
+							<td><strong>Palliates</strong></td>
+							<td><h:inputText value="#{encounterService.encounter.palliates }"/></td>
+						</tr>
 						<tr>
 							<td><strong>Time of Day</strong></td>
 							<td><h:inputText value="#{encounterService.encounter.timeOfDay }"/></td>
@@ -222,7 +285,7 @@
 						</tr>
 					</table>
 				</div>
-<div class="form span6">
+				<div class="form span6">
 					
 					<h2>Complaints / Treatment</h2>
 					<table>
