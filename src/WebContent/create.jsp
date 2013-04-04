@@ -102,28 +102,40 @@ function calculateYear(a,b) {
 					<table>
 						<tr>
 							<td><h5 style="color:red">* Card ID </h5></td>
-							<td><h:inputText id="visitID" style="width:50px" value="#{encounterService.encounter.encounterID}" required="true"></h:inputText></td>
+							<td><h:inputText id="visitID" style="width:50px" value="#{encounterService.encounter.encounterID}" required="true">
+							<f:validateLength minimum="4" maximum="4"/>
+							</h:inputText></td>
 							<h:message for="visitID" style="color:red"> </h:message>							
 						</tr>
 						<tr>
 							<td><strong>* First Name</strong></td>
-							<td><h:inputText id="patientFirstName" style="width:130px" value="#{encounterService.patient.firstName }" required="true"></h:inputText></td>
+							<td><h:inputText id="patientFirstName" style="width:130px" value="#{encounterService.patient.firstName }" required="true">
+							<f:validateLength minimum="1" maximum="20"/>
+							</h:inputText></td>
 							<h:message for="patientFirstName" style="color:red"> </h:message>
 						</tr>
 						<tr>
 							<td><strong>* Last Name</strong></td>
-							<td><h:inputText id="patientLastName" style="width:130px" value="#{encounterService.patient.lastName }" required="true"></h:inputText></td>
+							<td><h:inputText id="patientLastName" style="width:130px" value="#{encounterService.patient.lastName }" required="true">
+							<f:validateLength minimum="1" maximum="20"/>
+							</h:inputText></td>
 							<h:message for="patientLastName" style="color:red"> </h:message>
 						</tr>
 						<tr>
 							<td><strong>Location</strong></td>
-							<td><h:selectOneMenu style="width:125px" value="#{encounterService.patient.residence }">
-							</h:selectOneMenu>
-
+							<td><h:selectOneMenu id="location" value="#{encounterService.patient.residence }">
+								<f:selectItem itemValue="Port-au-Prince" itemLabel="Port-au-Prince" />
+		   						<f:selectItem itemValue="Borel" itemLabel="Borel" />
+		   						<f:selectItem itemValue="Morne de l' Hôpital" itemLabel="Morne de l' Hôpital" />
+		   						<f:selectItem itemValue="Opac" itemLabel="Opac" />
+		   						<f:selectItem itemValue="Pointe-à-Raquette" itemLabel="Pointe-à-Raquette" />
+		   						<f:selectItem itemValue="Jacmel" itemLabel="Jacmel" />
+		   						<f:selectItem itemValue="Leogane" itemLabel="Leogane" />
+		   						<f:selectItem itemValue="Miragoane" itemLabel="Miragoane" />
+							</h:selectOneMenu></td>
 						</tr>
-						<tr> <td><strong>Birthdate</strong></td></tr>
+		
 						<tr>
-							
 							<td><strong>Month</strong></td>
 							<td>
 		   						<select style="width:125px">
@@ -145,34 +157,37 @@ function calculateYear(a,b) {
 								<tr>
 								<tr><td><strong>Day</strong></td><td><strong>Year</strong></td></tr>
 								<tr>
-								<td><h:inputText style = "width:30px" size="2" id="day"></h:inputText></td>
-								<td><input style = "width:30px"  size="4" name="year" id="year" onblur="calculateAge('year','age')"></td>
-							</tr>
-							<tr>
-								<td><strong>Age</strong></td>
-								<td><input style = "width:30px" size="4" name="age" id="age" onblur="calculateYear('year', 'age')"></td>
-								
-							</tr>
-
+								<td><input style="width:75px" type="number" name="day" min="1" max="31"></td>
+								<td><input style="width:75px" type="number" name="day" min="1900" max="2014"></td>
+						</tr>
+						<tr>
+							<td><strong>Age</strong></td>
+							<td><h:inputText style="width:75px" value = "#{encounterService.patient.birthDate }">
+							<f:validateLongRange minimum="1" maximum="120"/></h:inputText></td>
+							
+						</tr>
 						<tr>
 							<td><strong>Gender</strong></td>
-							<td><h:selectOneMenu style = "width:100px" id ="gender" value="#{encounterService.patient.gender }">
+							<td><h:selectOneMenu id ="gender" value="#{encounterService.patient.gender }">
 		   						<f:selectItem itemValue="Select" itemLabel="- Select -" />
 		   						<f:selectItem itemValue="Male" itemLabel="Male" />
 		   						<f:selectItem itemValue="Female" itemLabel="Female" />
 								</h:selectOneMenu></td>
 						</tr>
-						<h:form>
+		
 						<tr>
 							<td><strong>Height</strong></td>
-							<td><h:inputText style = "width:30px" id="hin"  value="#{encounterService.vitals.height }"></h:inputText>in</td>
+							<td><h:inputText id="hin" value="#{encounterService.vitals.height }" onchange="calcBMI()">
+							<f:validateLongRange minimum="5" maximum="84"/></h:inputText> in</td>
 						</tr>
 		
 						<tr>
 							<td><strong>Weight</strong></td>
-							<td><h:inputText style = "width:30px" id="wlbs"  value="#{encounterService.vitals.weight }"></h:inputText>lbs</td>
+							<td><h:inputText id="wlbs" value="#{encounterService.vitals.weight }" onchange="calcBMI()">
+							<f:validateLongRange minimum="5" maximum="1000"/></h:inputText> lbs</td>
 						</tr>
-						<tr>
+					
+					</table>
 						 
 					<FORM NAME="BMI" method=POST>
 					<TABLE  >
@@ -198,22 +213,24 @@ function calculateYear(a,b) {
 					<table>
 						<tr>
 							<td><strong>Blood Pressure (mmHg)</strong></td>
-							<td><h:inputText style = "width:60px" id="bpTop"  value="#{encounterService.vitals.systolicBP }" /> / <h:inputText style = "width:60px" id="bpBottom"  value="#{encounterService.vitals.diastolicBP }" /> <BR></td>
+							<td><h:inputText style = "width:60px" id="bpTop"  value="#{encounterService.vitals.systolicBP }"> </h:inputText>/ <h:inputText style = "width:60px" id="bpBottom"  value="#{encounterService.vitals.diastolicBP }" ></h:inputText> <BR></td>
 						</tr>
 		
 						<tr>
 							<td><strong>Heart Rate (bpm)</strong></td>
-							<td><h:inputText style = "width:60px" id="heartrate"  value="#{encounterService.vitals.heartRate }" /><br></td>
+							<td><h:inputText style = "width:60px" id="heartrate"  value="#{encounterService.vitals.heartRate }" ></h:inputText><br></td>
 						</tr>
 		
 						<tr> 
 							<td><strong>Temperature (F)</strong></td>
-							<td><h:inputText style = "width:60px" id="temperature"  value="#{encounterService.vitals.temperatureF }" /><br></td>
+							<td><h:inputText style = "width:60px" id="temperature"  value="#{encounterService.vitals.temperatureF }" >
+							<f:validateLongRange minimum="80" maximum="120"/></h:inputText> in</td>
+							</h:inputText><br></td>
 						</tr>
 		
 						<tr>
 							<td><strong>Respirations (Breaths per Minute)</strong></td>
-							<td><h:inputText style = "width:60px" id="respirations"  value="#{encounterService.vitals.respRate }" /><br></td>
+							<td><h:inputText style = "width:60px" id="respirations"  value="#{encounterService.vitals.respRate }" ></h:inputText><br></td>
 						</tr>
 		
 					</table>
