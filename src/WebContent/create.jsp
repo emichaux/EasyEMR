@@ -83,7 +83,7 @@ function calculateYear(a,b) {
 <br><br>
 <br><br>
 <br><br>
-			
+			<h:form>
 				<div style="text-align:center" >
 					<h:commandButton id="submit" style="width:120px;height:50px" value="Submit Record" action="#{encounterService.saveOrUpdateEncounter }" rendered="#{ not encounterService.newEncounter }"></h:commandButton>
 					
@@ -187,9 +187,9 @@ function calculateYear(a,b) {
 							<f:validateLongRange minimum="5" maximum="1000"/></h:inputText> lbs</td>
 						</tr>
 					
-					</table>
+						<!--</table>
 						 
-					<FORM NAME="BMI" method=POST>
+				 <FORM NAME="BMI" method=POST>
 					<TABLE  >
 					<TR>
 					<TD><DIV ALIGN=CENTER> Weight (lbs)</DIV></TD>
@@ -204,33 +204,48 @@ function calculateYear(a,b) {
 					<INPUT TYPE="button" VALUE="Calculate" onClick="computeform(this.form)">
 					
 					</FORM>
-
+					
 						
-					</table>
+					</table>-->
 				</div>
 				<div class="form span6">
 					<h2>Vitals</h2>
 					<table>
 						<tr>
 							<td><strong>Blood Pressure (mmHg)</strong></td>
-							<td><h:inputText style = "width:60px" id="bpTop"  value="#{encounterService.vitals.systolicBP }"> </h:inputText>/ <h:inputText style = "width:60px" id="bpBottom"  value="#{encounterService.vitals.diastolicBP }" ></h:inputText> <BR></td>
+							<td><h:inputText style = "width:60px" id="bpTop"  value="#{encounterService.vitals.systolicBP }">
+								<f:validateLongRange minimum="50" maximum="200"/>
+								</h:inputText>
+								/ 
+							 	<h:inputText style = "width:60px" id="bpBottom"  value="#{encounterService.vitals.diastolicBP }" >
+								<f:validateLongRange minimum="10" maximum="170"/>
+								</h:inputText> <BR>
+							</td>
 						</tr>
 		
 						<tr>
 							<td><strong>Heart Rate (bpm)</strong></td>
-							<td><h:inputText style = "width:60px" id="heartrate"  value="#{encounterService.vitals.heartRate }" ></h:inputText><br></td>
+							<td><h:inputText style = "width:60px" id="heartrate"  value="#{encounterService.vitals.heartRate }" >
+							<f:validateLongRange minimum="30" maximum="220"/></h:inputText><br></td>
 						</tr>
 		
 						<tr> 
 							<td><strong>Temperature (F)</strong></td>
 							<td><h:inputText style = "width:60px" id="temperature"  value="#{encounterService.vitals.temperatureF }" >
-							<f:validateLongRange minimum="80" maximum="120"/></h:inputText> in</td>
-							</h:inputText><br></td>
+							<f:validateLongRange minimum="90" maximum="120"/></h:inputText> in</td>
+							<br></td>
 						</tr>
 		
 						<tr>
 							<td><strong>Respirations (Breaths per Minute)</strong></td>
-							<td><h:inputText style = "width:60px" id="respirations"  value="#{encounterService.vitals.respRate }" ></h:inputText><br></td>
+							<td><h:inputText style = "width:60px" id="respirations"  value="#{encounterService.vitals.respRate }" >
+							<f:validateLongRange minimum="4" maximum="50"/></h:inputText><br></td>
+						</tr>
+						
+						<tr>
+							<td><strong>Oxygen %</strong></td>
+							<td><h:inputText style = "width:60px" id="oxygen"  value="#{encounterService.vitals.oximetry }" >
+							<f:validateLongRange minimum="70" maximum="100"/></h:inputText>
 						</tr>
 		
 					</table>
@@ -254,8 +269,23 @@ function calculateYear(a,b) {
 									<f:selectItem itemValue="years" itemLabel="years"/>
 									
 								</h:selectOneMenu> ago</td>
+						</tr>	
+						<tr>
+							<td><strong>Palliates</strong></td>
+							<td><h:inputText value="#{encounterService.encounter.palliates }"/></td>
 						</tr>
-		
+						<tr>
+							<td><strong>Provokes</strong></td>
+							<td><h:inputText value="#{encounterService.encounter.provokes }"/></td>
+						</tr>
+						<tr>
+							<td><strong>Quality</strong></td>
+							<td><h:inputText value="#{encounterService.encounter.quality }"/></td>
+						</tr>							
+						<tr>
+							<td><strong>Radiation</strong></td>
+							<td><h:inputText value="#{encounterService.encounter.radiation }"/></td>
+						</tr>											
 						<tr>
 							<td><strong>Severity</strong></td>
 							<td><h:selectOneMenu style= "width:70px" value="#{encounterService.encounter.severity }">
@@ -271,25 +301,6 @@ function calculateYear(a,b) {
 								<f:selectItem itemValue="9" itemLabel="9"/>
 								<f:selectItem itemValue="10" itemLabel="10"/>
 							</h:selectOneMenu></td>
-						</tr>
-		
-						<tr>
-							<td><strong>Radiation</strong></td>
-							<td><h:inputText value="#{encounterService.encounter.radiation }"/></td>
-						</tr>
-		
-						<tr>
-							<td><strong>Quality</strong></td>
-							<td><h:inputText value="#{encounterService.encounter.quality }"/></td>
-						</tr>
-		
-						<tr>
-							<td><strong>Provokes</strong></td>
-							<td><h:inputText value="#{encounterService.encounter.provokes }"/></td>
-						</tr>
-						<tr>
-							<td><strong>Palliates</strong></td>
-							<td><h:inputText value="#{encounterService.encounter.palliates }"/></td>
 						</tr>
 						<tr>
 							<td><strong>Time of Day</strong></td>
@@ -314,39 +325,48 @@ function calculateYear(a,b) {
 					<strong style="text-align:center">Assessment</strong><br>
 					<h:inputTextarea style="width:300px" id="assessment" value="#{encounterService.encounter.assessment }" /><br>
 					</tr>
+					<tr>
+					<strong>Family/Social History</strong><br>
+					<h:inputTextarea style="width:300px" id="socialHistory" value="#{encounterService.patient.socialHistory }" />
+					</tr>	
 							<tr>
 								<td><strong>Problem List</strong></td>
-								<td><strong>Prescription / Treatment</strong></td>
+								<td><strong>Prescription</strong></td>
+								<td><strong>Medication Received</strong></td>
 							</tr>
 		
 							<tr>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.condition1 }"></h:inputText></td>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationPrescribed1 }"></h:inputText></td>
+								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationReceived1 }"></h:inputText></td>
 							</tr>
 		
 							<tr>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.condition2 }"></h:inputText></td>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationPrescribed2 }"></h:inputText></td>
+								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationReceived2 }"></h:inputText></td>
 							</tr>
 		
 							<tr>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.condition3 }"></h:inputText></td>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationPrescribed3 }"></h:inputText></td>
+								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationReceived3 }"></h:inputText></td>
 							</tr>
 		
 							<tr>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.condition4 }"></h:inputText></td>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationPrescribed4 }"></h:inputText></td>
+								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationReceived4 }"></h:inputText></td>
 							</tr>
 		
 							<tr>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.condition5 }"></h:inputText></td>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationPrescribed5 }"></h:inputText></td>
+								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationReceived5 }"></h:inputText></td>
 							</tr>	
 						<strong style="text-align:center">Treatment Given</strong><br>
 						<h:inputTextarea style="width:300px" id="treatmentGiven" value="#{encounterService.encounter.medicalProcedures }" /><br>
-						<strong>Family/Social History</strong><br>
-						<h:inputTextarea style="width:300px" id="socialHistory" value="#{encounterService.patient.socialHistory }" />
+						
 					</table>
 					</div>
 					</div>

@@ -33,6 +33,7 @@ public class Encounter {
 	private String radiation;
 	private String quality;
 	private String provokes;
+	private String palliates;
 	private String timeOfDay;
 	private String other;	
 	/** End HPI **/
@@ -43,6 +44,14 @@ public class Encounter {
 	private String medicationPrescribed3;
 	private String medicationPrescribed4;
 	private String medicationPrescribed5;
+	
+	/** Medications Received **/
+	private String medicationReceived1;
+	private String medicationReceived2;
+	private String medicationReceived3;
+	private String medicationReceived4;
+	private String medicationReceived5;
+	
 	
 	
 	/** A chronic/other illnesses discovered in the encounter 
@@ -257,6 +266,14 @@ public class Encounter {
 	public void setProvokes(String provokes) {
 		this.provokes = provokes;
 	}
+	
+	public String getPalliates() {
+		return palliates;
+	}
+
+	public void setPalliates(String palliates) {
+		this.palliates = palliates;
+	}
 
 	public String getTimeOfDay() {
 		return timeOfDay;
@@ -312,6 +329,46 @@ public class Encounter {
 
 	public void setMedicationPrescribed5(String medicationPrescribed5) {
 		this.medicationPrescribed5 = medicationPrescribed5;
+	}
+	
+	public String getMedicationReceived1() {
+		return medicationPrescribed1;
+	}
+
+	public void setMedicationReceived1(String medicationReceived1) {
+		this.medicationReceived1 = medicationReceived1;
+	}
+
+	public String getMedicationReceived2() {
+		return medicationReceived2;
+	}
+
+	public void setMedicationReceived2(String medicationReceived2) {
+		this.medicationReceived2 = medicationReceived2;
+	}
+
+	public String getMedicationReceived3() {
+		return medicationReceived3;
+	}
+
+	public void setMedicationReceived3(String medicationReceived3) {
+		this.medicationReceived3 = medicationReceived3;
+	}
+
+	public String getMedicationReceived4() {
+		return medicationReceived4;
+	}
+
+	public void setMedicationReceived4(String medicationReceived4) {
+		this.medicationReceived4 = medicationReceived4;
+	}
+
+	public String getMedicationReceived5() {
+		return medicationReceived5;
+	}
+
+	public void setMedicationReceived5(String medicationReceived5) {
+		this.medicationReceived5 = medicationReceived5;
 	}
 
 	public String getOverallImpression() {
