@@ -364,9 +364,9 @@ function calculateYear(a,b) {
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationPrescribed5 }"></h:inputText></td>
 								<td><h:inputText style="width:125px" value="#{encounterService.encounter.medicationReceived5 }"></h:inputText></td>
 							</tr>	
-						<strong style="text-align:center">Treatment Given</strong><br>
+						<!--<strong style="text-align:center">Treatment Given</strong><br>
 						<h:inputTextarea style="width:300px" id="treatmentGiven" value="#{encounterService.encounter.medicalProcedures }" /><br>
-						
+						-->
 					</table>
 					</div>
 					</div>
