@@ -291,7 +291,7 @@ public class UserService implements IUserService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Database error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Database error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		List<User> result = userSession.createQuery("from User where user.userID='" + _userID + "'").list();
@@ -304,7 +304,7 @@ public class UserService implements IUserService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Database error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Database error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		//should be only one result here since userID is a unique PK in the DB

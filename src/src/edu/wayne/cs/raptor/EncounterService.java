@@ -11,7 +11,7 @@ import org.hibernate.Session;
 /**
  * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for 
  * patient, vitals, encounter, and pharmacy encounters.  like a boss. 
- * @author Jackson Turner, Ramez Habib
+ * @author Jackson Turner, Ramez Habib, Ryan Doubleday
  *
  */
 
@@ -27,15 +27,17 @@ public class EncounterService implements IEncounterService {
 	
 	private Patient patient;
 	private int patientID;
+	private String cardID;
 	private Encounter encounter;
 	private Vitals vitals;
-	//nobody cares about VitalsID but vitals.  *tiny violin*
 	
 	private boolean errorPreventedInsert = false;
+	
 	
 	private String searchPatientId;
 	private String searchPatientLastName;
 	private String searchPatientFirstName;
+	private String searchPatientCardID;
 	private List<Encounter> searchList;
 	private List<Patient> patientList;
 	private boolean newEncounter;
@@ -52,8 +54,8 @@ public class EncounterService implements IEncounterService {
 	
 	public String saveOrUpdateEncounter()
 	{
-		if(patient.getPatientID()!=0)
-			return updateEncounter();
+		//if(patient.getCardID()!= null)
+			//return updateEncounter();
 		return saveNewEncounter();
 		
 	}
@@ -74,8 +76,7 @@ public class EncounterService implements IEncounterService {
 		encounter.setModifyingUser(login.getSystemUser().getUsername());
 		encounter.setLastModifiedDate(calendar.getTime());
 		  
-		//get it right the first time.  no cheating. 
-		//end housekeeping
+
 		
 		try
 		{
@@ -84,7 +85,7 @@ public class EncounterService implements IEncounterService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}
 		
@@ -92,6 +93,7 @@ public class EncounterService implements IEncounterService {
 		{
 			//TODO:there is a bug after a failed insert (dupe blood sample) where the user id remains and leads to an attempted update of the patient which does not yet exist in db --> leads to timeout.  
 			userSession.update(patient);
+			encounter.setCardID(this.patient.getCardID());// Added @RD
 			encounter.setPatientID(this.patient.getPatientID());
 			vitals.setVitalsID(encounter.getEncounterID());
 			userSession.save(encounter);
@@ -100,7 +102,7 @@ public class EncounterService implements IEncounterService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}	
 		
@@ -111,13 +113,13 @@ public class EncounterService implements IEncounterService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}
 		
 		if(errorPreventedInsert == false)
 		{
-			JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
 			patient = new Patient();
 			vitals = new Vitals();
@@ -149,7 +151,7 @@ public class EncounterService implements IEncounterService {
 		encounter.setLastModifiedDate(calendar.getTime());
 		//end housekeeping
 		
-		determinePatientID();
+		//determinePatientID();
 		
 		try
 		{
@@ -158,7 +160,7 @@ public class EncounterService implements IEncounterService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}
 		
@@ -166,8 +168,11 @@ public class EncounterService implements IEncounterService {
 		{
 			
 			//get the patientID once its saved and use it for encounter
+			patient.setCardID(encounter.getCardID());
+
 			patientID = (Integer)userSession.save(patient);
 			encounter.setPatientID(patientID);
+			//encounter.setCardID(cardID);
 			//Really? there's a vitalsID too? Really?
 			vitals.setVitalsID(encounter.getEncounterID());
 			//Yeah really, and now it's set to be the same as encounterID
@@ -182,7 +187,7 @@ public class EncounterService implements IEncounterService {
 		
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}	
 		
@@ -193,13 +198,13 @@ public class EncounterService implements IEncounterService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}
 		
 		if(errorPreventedInsert == false)
 		{
-			JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
 			patient = new Patient();
 			vitals = new Vitals();
@@ -310,6 +315,9 @@ public class EncounterService implements IEncounterService {
 		this.searchPatientId = "";
 		this.searchPatientFirstName = "";
 		this.searchPatientLastName = "";
+		this.searchPatientCardID ="";
+
+
 		
 		return "searchPage";
 	}
@@ -330,6 +338,8 @@ public class EncounterService implements IEncounterService {
 		this.searchPatientId = "";
 		this.searchPatientFirstName = "";
 		this.searchPatientLastName = "";
+		this.searchPatientCardID ="";
+
 		
 		return "patientSearch";
 	}
@@ -350,9 +360,34 @@ public class EncounterService implements IEncounterService {
 		this.searchPatientId = "";
 		this.searchPatientFirstName = "";
 		this.searchPatientLastName = "";
+		this.searchPatientCardID ="";
+
 		
 		return "patientSearch";
 	}
+	
+	
+	public String searchCardID()
+	{
+		String tempCardID ="";
+		if(!this.searchPatientCardID.isEmpty())
+		{
+			tempCardID = this.searchPatientCardID;
+		}
+		
+		if(tempCardID != "")
+		{
+			this.patientList = getAllPatientsByCardID(tempCardID);
+		}
+		
+		this.searchPatientId = "";
+		this.searchPatientFirstName = "";
+		this.searchPatientLastName = "";
+		this.searchPatientCardID ="";
+
+		
+		return "patientSearch";
+	}	
 	
 	/** Select an encounter from the list of Ecnounters retrieved by searching for the patient  */
 	public String selectEncounter(){
@@ -388,7 +423,8 @@ public class EncounterService implements IEncounterService {
 		vitals = new Vitals();
 		encounter = new Encounter();
 		setNewEncounter(false);
-		return "create";
+		return "create"; // This will determine which page is returned to following executing of the method ~ RD
+
 		
 	}
 	
@@ -397,7 +433,7 @@ public class EncounterService implements IEncounterService {
 		patient = new Patient();
 		encounter = new Encounter();
 		vitals = new Vitals();
-		return "create";
+		return "patientSearch"; // This will determine which page is returned to following executing of the method ~ RD
 	}
 	
 	/***********************************/
@@ -496,6 +532,21 @@ public class EncounterService implements IEncounterService {
 			return result;
 		return null;
 	}
+	
+	public List<Patient> getAllPatientsByCardID(String cardID)
+	{
+		userSession = HibernateUtil.getSessionFactory().openSession();
+		userSession.beginTransaction();
+		@SuppressWarnings("unchecked")
+		List<Patient> result = userSession.createQuery("from Patient where cardID='" + cardID + "'").list();
+		userSession.getTransaction().commit();
+		userSession.close();
+		
+		if(!result.isEmpty())
+			return result;
+		return null;
+	}
+	
 	
 	/***********************************/
 	/****** Encounter Operations ******/
@@ -651,6 +702,23 @@ public class EncounterService implements IEncounterService {
 
 	public void setComputerID(int computerID) {
 		this.computerID = computerID;
+	}
+
+	public String getCardID() {
+		return cardID;
+	}
+
+	public void setCardID(String cardID) {
+		this.cardID = cardID;
+	}
+
+
+	public String getSearchPatientCardID() {
+		return searchPatientCardID;
+	}
+
+	public void setSearchPatientCardID(String searchPatientCardID) {
+		this.searchPatientCardID = searchPatientCardID;
 	}
 
 

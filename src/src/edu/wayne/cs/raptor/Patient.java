@@ -17,6 +17,9 @@ public class Patient {
 		/** A unique Patient identification number */
 		private int patientID;
 		
+		/** Card ID to create a better use case for a given patient */
+		private String cardID;
+		
 		/** Patient's first name */
 		private String firstName;
 		
@@ -166,6 +169,16 @@ public class Patient {
 		
 		public void setLastModifiedDate(Date lastModifiedDate) {
 			this.lastModifiedDate = lastModifiedDate;
+		}
+
+
+		public String getCardID() {
+			return cardID;
+		}
+
+
+		public void setCardID(String cardID) {
+			this.cardID = cardID;
 		}
 		
 //		public Bitmap getPersonPhoto()

@@ -17,6 +17,7 @@ public class PharmacyEncounterService {
 	//private int computerIDMaxValue;
 
 	protected int encounterID;
+	protected String cardID;
 	private String firstName;
 	private String lastName;
 	protected String medDispensed1;
@@ -68,7 +69,13 @@ public class PharmacyEncounterService {
 	public void setEncounterID(int encounterID) {
 		this.encounterID = encounterID;
 	}
+	public String getCardID() {
+		return cardID;
+	}
 
+	public void setCardID(String cardID) {
+		this.cardID = cardID;
+	}
 	public String getMedDispensed1() {
 		return medDispensed1;
 	}
@@ -211,7 +218,7 @@ public class PharmacyEncounterService {
 
 		//creationResult = "Visit ID "+Integer.toString(encounterID)+" created.";
 		
-		JOptionPane.showMessageDialog(null, String.format("%09d", encounterID)+" created.");
+		//JOptionPane.showMessageDialog(null, String.format("%09d", encounterID)+" created.");
 
 		resetFields();
 
@@ -219,7 +226,7 @@ public class PharmacyEncounterService {
 	}
 
 	public void passToPharmEncounter(){
-		pharmEncounter = new PharmacyEncounter(encounterID, firstName, lastName, medDispensed1, medDispensed2, 
+		pharmEncounter = new PharmacyEncounter(encounterID, cardID,firstName, lastName, medDispensed1, medDispensed2, 
 				medDispensed3, medDispensed4, medDispensed5, equalPrescribed1, equalPrescribed2, equalPrescribed3, 
 				equalPrescribed4, equalPrescribed5);
 
@@ -228,6 +235,7 @@ public class PharmacyEncounterService {
 	}
 
 	public void resetFields(){
+		setCardID(cardID);
 		setEncounterID(encounterID + 1);
 		
 		setEncounterIDText("Visit ID: "+String.format("%09d", encounterID));

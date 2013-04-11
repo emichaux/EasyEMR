@@ -25,6 +25,9 @@ public class Vitals {
 	/** a set of vitals is identified by its encounter id number */
 	private int encounterID;
 	
+	/** Card ID to create a better use case for a given patient */
+	private String cardID;
+	
 	/** Patient's systolic blood pressure */
 	private int systolicBP;
 	
@@ -254,6 +257,20 @@ public class Vitals {
 //		{
 //			bmi = (float)( measuredWeight / Math.pow(measuredHeight, 2));
 //		}
+	}
+
+	/**
+	 * @return the cardID
+	 */
+	public String getCardID() {
+		return cardID;
+	}
+
+	/**
+	 * @param cardID the cardID to set
+	 */
+	public void setCardID(String cardID) {
+		this.cardID = cardID;
 	}
 
 

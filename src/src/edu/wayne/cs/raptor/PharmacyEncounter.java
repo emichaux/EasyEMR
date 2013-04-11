@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 public class PharmacyEncounter {
 	protected int encounterID;
+	protected String cardID;
 	protected String firstName;
 	protected String lastName;
 	protected String medDispensed1;
@@ -31,11 +32,12 @@ public class PharmacyEncounter {
 	public PharmacyEncounter() {
 	}
 	
-	public PharmacyEncounter(int encounterID, String firstName, String lastName, String medDispensed1, 
+	public PharmacyEncounter(int encounterID,String cardID ,String firstName, String lastName, String medDispensed1, 
 			String medDispensed2, String medDispensed3, String medDispensed4, String medDispensed5, 
 			boolean equalPrescribed1, boolean equalPrescribed2, boolean equalPrescribed3, 
 			boolean equalPrescribed4, boolean equalPrescribed5){
 		setEncounterID(encounterID);
+		setCardID(cardID);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setMedDispensed1(medDispensed1);
@@ -169,6 +171,14 @@ public class PharmacyEncounter {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getCardID() {
+		return cardID;
+	}
+
+	public void setCardID(String cardID) {
+		this.cardID = cardID;
 	}
 
 }

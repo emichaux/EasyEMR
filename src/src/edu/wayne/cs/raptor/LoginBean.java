@@ -119,7 +119,7 @@ public String authenticate() {
 			{
 				setAuthenticated(true);
 				setSystemUser(dbUsername.get(0));
-				JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
 				return handleRoleToPage(dbUsername.get(0));
 			}
 			//  If password incorrect
@@ -177,6 +177,8 @@ public String authenticate() {
 	 *  or it will set default value 100 as a prefix for all of your encounter and patient IDs. ;)
 	 * @throws IOException
 	 */
+	
+	// Needs to be re-implemented to add a computerID for connected machine not server
 	public void generateComputerID() throws IOException {
 		try {
 			String usr = System.getProperty("user.home");
@@ -198,7 +200,6 @@ public String authenticate() {
 	
 		catch(FileNotFoundException fr) {
 			this.setComputerID(100);
-			JOptionPane.showMessageDialog(null, "Error in opening configuration file. Default value of 1000 set. " + fr.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 			
