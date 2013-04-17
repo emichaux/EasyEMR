@@ -5,6 +5,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+
+
 <html>
 <head>
 <link href="./css/bootstrap.css" rel="stylesheet">  
@@ -52,7 +54,7 @@
 				</table>
 				</center>
 				<div class="center">
-					<h:commandButton id="submit" value="Login" action="#{loginBean.authenticate }" style="width:130px;height:40px"></h:commandButton><BR><BR>
+					<h:commandButton id="submit" value="Login" onclick="alert('Welcome to easyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:130px;height:40px"></h:commandButton><BR><BR>
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
 					</div>
 				</h:form>
@@ -61,5 +63,4 @@
 		</div>
 	</f:view>
 </body>
-
 </html>

@@ -6,49 +6,53 @@
 <html lang="en-US">
 
 <head>
-	<link rel="stylesheet" href="main.css" type="text/css" />
+	<link href="./css/bootstrap.css" rel="stylesheet">  
 	<title>Easy EMR</title>
 </head>
 
 <body>
 	<f:view>
-		
-			<div id="navigation">
-			<div style="float: left">
-			&nbsp;<img src="img\logo_xl.png" height="60" width="180">&nbsp;&nbsp;
-			</div>
-			<div style="float: left">
-				<table>
-				<tbody>
-					<tr>
-						
-						<td><td><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3></td>
-					</tr>
-				</tbody>
-				</table>
-				
-				
-			</div>
+	<div class="navbar navbar-fixed-top center">
+	  		<div style="float: left">
+  			<p><img src="./img/easyEmr_LOGO.png" height="80" width="110"></p>
+  			</div>
+	  <div class="navbar-inner"> 
 
-			<div style="float: right">
-			<h:form>
-						<p><h:commandLink tabindex="-1" action="#{loginBean.logout}">Log out</h:commandLink></p>
-						<p><h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}">Change My Password</h:commandLink></p>
-
+  			   <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
+  			
+  		
+        <div class="container-fluid">
+                 <h:form>
+						<h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></h:commandLink>
+						<h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></h:commandLink>
 				</h:form>
-			</div>
-			
-		</div>
-			<BR>
-			<h:form>
-			<div id="container">
-	
-				<div  style="border:2px groove; text-align:center; width:400; height:60">
-					<p><b>Search:</b>&nbsp;&nbsp;First Name <h:inputText id="firstname" value="#{encounterService.searchPatientFirstName }" />&nbsp;&nbsp;<h:commandButton id="searchFirst" value="Search" action="#{encounterService.searchPatientsF }"></h:commandButton>
-									 &nbsp;&nbsp;Last Name<h:inputText id="lastname" value="#{encounterService.searchPatientLastName }" />&nbsp;&nbsp;<h:commandButton id="searchLast" value="Search" action="#{encounterService.searchPatients }"></h:commandButton>
-									 &nbsp;&nbsp;Patient ID<h:inputText id="patientID" value="#{encounterService.searchPatientId }" />&nbsp;&nbsp;<h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton></p>
 				</div>
-				
+			</div>			
+	    </div>  				
+
+<br><br>
+<br><br>
+<br><br>
+
+
+
+			<h:form>
+			<div class="container-fluid">
+			<div class="span5 well form center">
+			<div class="form">
+					<h3>Search:</h3>
+					<table>
+									 <tr><td>First Name <h:inputText id="firstname" value="#{encounterService.searchPatientFirstName }" /><h:commandButton id="searchFirst" value="Search" action="#{encounterService.searchPatientsF }"></h:commandButton></td></tr>
+									<tr><td>Last Name <h:inputText id="lastname" value="#{encounterService.searchPatientLastName }" /><h:commandButton id="searchLast" value="Search" action="#{encounterService.searchPatients }"></h:commandButton></td></tr>
+									 <tr><td>Patient ID <h:inputText id="patientID" value="#{encounterService.searchPatientId }" /><h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton></td></tr>
+									<tr><td>Card ID <h:inputText id="cardID" value="#{encounterService.searchPatientCardID }" /><h:commandButton id="searchCard" value="Search" action="#{encounterService.searchCardID }"></h:commandButton></td></tr>
+									
+				</table>
+				</div>
+				</div>
+				<br><br><br>
+				<br><br><br>
+				<div class="span6 well">
 				<h:commandButton action="#{encounterService.resetRecord }" style="width:150px;height:50px" value="RESET"/>
 				<h:dataTable value="#{encounterService.searchList}" var="encounter">
 					<h:column>
@@ -93,7 +97,7 @@
 					</h:column>
 				</h:dataTable>
 
-				<div id = "module" style="float:left">
+				<div class="span">
 					<h1>General Information</h1>
 				
 					<h3>Patient ID</h3>
@@ -111,6 +115,7 @@
 				   		<f:selectItem itemValue="Male" itemLabel="Male" />
 				   		<f:selectItem itemValue="Female" itemLabel="Female" />
 					</h:selectOneMenu>
+				</div>
 				</div>
 			</div>	
 		</h:form>

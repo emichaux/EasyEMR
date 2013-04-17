@@ -34,19 +34,22 @@
 <br><br>
 <br><br>				
 				
-<div class="container">
-		<div class="well form">
+<div class="container well">
+		<div class="form center">
 				<br />
 				<h:form>
-				<div style="border: 2px groove; text-align:center; height:60; width:400">
-					<p><b>Search:</b>&nbsp;&nbsp;First Name<h:inputText id="firstname" value="#{encounterService.searchPatientFirstName }" />&nbsp;&nbsp;<h:commandButton id="searchFirst" value="Search" action="#{encounterService.searchPatientsF }"></h:commandButton>
-									 &nbsp;&nbsp;Last Name<h:inputText id="lastname" value="#{encounterService.searchPatientLastName }" />&nbsp;&nbsp;<h:commandButton id="searchLast" value="Search" action="#{encounterService.searchPatients }"></h:commandButton>
-									 &nbsp;&nbsp;Patient ID<h:inputText id="patientID" value="#{encounterService.searchPatientId }" />&nbsp;&nbsp;<h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton></p>
+				<div style="span6">
+					<h4>Search:</h4><br>
+									First Name <h:inputText id="firstname" style="width:85px" value="#{encounterService.searchPatientFirstName }" />&nbsp;&nbsp;<h:commandButton id="searchFirst" value="Search" action="#{encounterService.searchPatientsF }"></h:commandButton>
+									Last Name <h:inputText id="lastname" style="width:85px" value="#{encounterService.searchPatientLastName }" />&nbsp;&nbsp;<h:commandButton id="searchLast" value="Search" action="#{encounterService.searchPatients }"></h:commandButton><br>
+									Patient ID <h:inputText id="patientID" style="width:85px" value="#{encounterService.searchPatientId }" />&nbsp;&nbsp;<h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton>
+									Card ID <h:inputText id="cardID" style="width:85px" value="#{encounterService.searchPatientCardID }" /><h:commandButton id="searchCard" value="Search" action="#{encounterService.searchCardID }"></h:commandButton>
+									
 				</div>
 				</h:form>
-
+			<div class="form">
 			<h:form>
-				<h:commandButton action="#{encounterService.resetRecord}" style="width:150px;height:50px" value="RESET" />
+				<h:commandButton action="#{encounterService.resetRecord}" style="width:75px;height:50px" value="RESET" />
 				<h:dataTable value="#{encounterService.patientList}" var="patient">
 					<h:column>
 						<f:facet name="header">
@@ -92,7 +95,7 @@
 			</h:form>
 		</div>
 		</div>
-
+		</div>
 
 	</f:view>
 </body>
