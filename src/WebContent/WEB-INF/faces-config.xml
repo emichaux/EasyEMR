@@ -3,8 +3,8 @@
 <faces-config
     xmlns="http://java.sun.com/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
-    version="1.2">
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+    version="2.1">
     
     <managed-bean>
 		<managed-bean-name>loginBean</managed-bean-name>
@@ -92,22 +92,18 @@
 			<value>#{loginBean}</value>
 		</managed-property>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>computer</managed-bean-name>
-		<managed-bean-class>edu.wayne.cs.raptor.Computer</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
+	
 	<navigation-rule>
-	<from-view-id>/index.jsp</from-view-id>
+	<from-view-id>/index.jsf</from-view-id>
 		<navigation-case>
 			<from-action>#{loginBean.authenticate}</from-action>
 			<from-outcome>invalid</from-outcome>
-			<to-view-id>/index.jsp</to-view-id>
+			<to-view-id>/index.jsf</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-action>#{loginBean.authenticate}</from-action>
 			<from-outcome>noexist</from-outcome>
-			<to-view-id>/index.jsp</to-view-id>
+			<to-view-id>/index.jsf</to-view-id>
 		</navigation-case>
 	</navigation-rule>
  
