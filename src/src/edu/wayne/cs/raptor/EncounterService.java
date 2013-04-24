@@ -1,5 +1,6 @@
 package edu.wayne.cs.raptor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -17,8 +18,10 @@ import org.hibernate.Session;
 
 
 //TODO: catch errors on insert (at least for duplicate primary keys) and report to msg box
-public class EncounterService implements IEncounterService {
-
+public class EncounterService implements IEncounterService, Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private Session userSession;
 	private LoginBean login;
 	private Calendar calendar;
@@ -387,8 +390,28 @@ public class EncounterService implements IEncounterService {
 		
 		return "patientSearch";
 	}	
-	
-	/** Select an encounter from the list of Ecnounters retrieved by searching for the patient  */
+	public String searchCardID2()
+	{
+		String tempCardID ="";
+		if(!this.searchPatientCardID.isEmpty())
+		{
+			tempCardID = this.searchPatientCardID;
+		}
+		
+		if(tempCardID != "")
+		{
+			this.patientList = getAllPatientsByCardID(tempCardID);
+		}
+		
+		this.searchPatientId = "";
+		this.searchPatientFirstName = "";
+		this.searchPatientLastName = "";
+		this.searchPatientCardID ="";
+
+		
+		return "pharm";
+	}
+	/** Select an encounter from the list of Encounters retrieved by searching for the patient  */
 	public String selectEncounter(){
 		
 		// Populate the fields of vitals that belong to that encounter 
@@ -396,12 +419,24 @@ public class EncounterService implements IEncounterService {
 		setNewEncounter(true);
 		return "create";
 	}
-	
+	public String selectEncounter2(){
+		
+		// Populate the fields of vitals that belong to that encounter 
+		vitals = getVitalsByEncounter(encounter.getEncounterID());
+		setNewEncounter(true);
+		return "pharm";
+	}
 	public String selectPatient(){
 		
 		//populate fields of patient...or something. 
 		this.searchList = getAllEncounters(patient.getPatientID());
 		return "searchPage";
+	}
+	public String selectPatient2(){
+		
+		//populate fields of patient...or something. 
+		this.searchList = getAllEncounters(patient.getPatientID());
+		return "pharm";
 	}
 	
 	private Vitals getVitalsByEncounter(int encounterID2) {
