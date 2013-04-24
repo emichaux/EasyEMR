@@ -623,7 +623,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession = HibernateUtil.getSessionFactory().openSession();
 		userSession.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Encounter> result = userSession.createQuery("from Encounter where patientID='" + patientId + "'").list();
+		List<Encounter> result = userSession.createQuery("from Encounter where patientID='" + patientID + "'").list();
 		userSession.getTransaction().commit();
 		userSession.close();
 		if (!result.isEmpty() )
