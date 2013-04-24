@@ -36,8 +36,11 @@ public class Encounter {
 	private String radiation;
 	private String quality;
 	private String provokes;
+	private String palliates;
 	private String timeOfDay;
 	private String other;	
+	private String ros;
+
 	/** End HPI **/
 	
 	/** Medications Prescribed **/
@@ -47,7 +50,9 @@ public class Encounter {
 	private String medicationPrescribed4;
 	private String medicationPrescribed5;
 	
-	
+	/** Treatment **/
+	private String treatmentGiven;
+
 	/** A chronic/other illnesses discovered in the encounter 
 	 * TODO:  The names of previously discovered chronic illnesses should be automatically displayed,
 	 *  Method to access/edit if desired. if it's resolved should not be displayed during future encounters 
@@ -345,5 +350,29 @@ public class Encounter {
 	 */
 	public void setCardID(String cardID) {
 		this.cardID = cardID;
+	}
+
+	public String getPalliates() {
+		return palliates;
+	}
+
+	public void setPalliates(String palliates) {
+		this.palliates = palliates;
+	}
+
+	public String getTreatmentGiven() {
+		return treatmentGiven;
+	}
+
+	public void setTreatmentGiven(String treatmentGiven) {
+		this.treatmentGiven = treatmentGiven;
+	}
+
+	public String getRos() {
+		return ros;
+	}
+
+	public void setRos(String ros) {
+		this.ros = ros;
 	}
 }

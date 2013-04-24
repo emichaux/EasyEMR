@@ -144,6 +144,8 @@ public String authenticate() {
 			return "create";
 		if (user.getRoles().equals(Role.PHARMACIST))
 			return "pharm";
+		if (user.getRoles().equals(Role.TRIAGE))
+			return "triage";
 		return "research";
 	}
 	

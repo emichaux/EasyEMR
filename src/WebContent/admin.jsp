@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
@@ -107,6 +106,7 @@
 									<f:selectItem itemValue="Pharmacist" itemLabel="Pharmacist" />
 									<f:selectItem itemValue="Researcher" itemLabel="Researcher" />
 									<f:selectItem itemValue="System Administrator" itemLabel="Admin" />
+									<f:selectItem itemValue="Triage" itemLabel="Triage" />
 								</h:selectOneMenu>						
 								<br>
 								

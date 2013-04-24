@@ -37,6 +37,80 @@
   });
   </script>  
   
+  <script>
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+    $( "#patientFirstName" )
+    // don't navigate away from the field on tab when selecting an item
+    .bind( "keydown", function( event ) {
+      if ( event.keyCode === $.ui.keyCode.TAB &&
+          $( this ).data( "ui-autocomplete" ).menu.active ) {
+        event.preventDefault();
+      }
+    })
+    .autocomplete({
+      minLength: 0,
+      source: function( request, response ) {
+        // delegate back to autocomplete, but extract the last term
+        response( $.ui.autocomplete.filter(
+          availableTags, extractLast( request.term ) ) );
+      },
+      focus: function() {
+        // prevent value inserted on focus
+        return false;
+      },
+      select: function( event, ui ) {
+        var terms = split( this.value );
+        // remove the current input
+        terms.pop();
+        // add the selected item
+        terms.push( ui.item.value );
+        // add placeholder to get the comma-and-space at the end
+        terms.push( "" );
+        this.value = terms.join( ", " );
+        return false;
+      }
+    });
+});
+</script>    
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 	<title>Easy EMR</title>
 </head>
@@ -69,15 +143,25 @@
 <br><br>
 
 
+
+
+					Patient ID <h:inputText id="patientID" value="#{encounterService.searchPatientId }" /><h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton>
+					<h:outputLabel value = "#{encounterService.patient.patientID }"></h:outputLabel>
+
+
+
  <div id="tabs" class="span8 center">
   <ul>
     <li><a href="#tabs-1"><b>General Information</b></a></li>
-    <li><a href="#tabs-2">Proin dolor</a></li>
+    <li><a href="#tabs-2"><b>Patient List</b></a></li>
     <li><a href="#tabs-3">Aenean lacinia</a></li>
   </ul>
   <div id="tabs-1">
 <h2>General Information</h2>
 					<table>
+
+					
+					
 						<tr>
 							<td><h5 style="color:red">* Card ID </h5></td>
 							<td><h:inputText id="visitID" style="width:50px"  value="#{encounterService.encounter.cardID}" title="Please type in the cardID, this is a required field." required="true"></h:inputText></td>
@@ -132,18 +216,83 @@
 							<td><strong>Weight</strong></td>
 							<td><h:inputText id="wlbs" value="#{encounterService.vitals.weight }"></h:inputText> lbs</td>
 						</tr>
-					</table>  </div>
+					</table>  
+					</div>
   <div id="tabs-2">
-    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
-  </div>
+<h:form>
+<h:commandButton value="Display All Patients" 
+							action="#{patientService.displayAllPatients }" />
+							<table>
+								<tr>
+									<td><h:outputLabel value="Username: "></h:outputLabel></td>
+									<td><h:inputText value="#{userService.searchUsername}">
+										</h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel value="First Name: "></h:outputLabel></td>
+									<td><h:inputText value="#{userService.searchFirst}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel value="Last Name: "></h:outputLabel></td>
+									<td><h:inputText value="#{userService.searchLast}"></h:inputText></td>
+								</tr>
+																
+							</table>
+									<h:commandButton value="Search" action="#{userService.searchUser}"></h:commandButton>
+							
+			<div class="container span6 well center">
+			<div class="table table-striped">
+			<center>
+				<h4>Patient List</h4>
+				<h:dataTable value="#{patientService.patientList}" var="patient">
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="CardID" />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{patient.cardID }" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="First Name" />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{patient.firstName}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="Last Name" />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{patient.lastName}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="DOB" />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{patient.birthDate}" />
+
+					</h:column>
+				</h:dataTable>
+				<a href="admin.jsp"><h5> Back to Admin Page</h5></a>
+				</center>
+			</div>
+			</div>
+		</h:form>  </div>
   <div id="tabs-3">
     <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
     <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
   </div>
 </div>
 		
-
-
 
 
 

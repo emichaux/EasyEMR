@@ -19,7 +19,7 @@ public interface IPatientService {
 
 	public Patient getPatientByLast(String lastName);
 
-	public Patient getAllPatients();
+	public List<Patient> getAllPatients();
 
 	/** Could be split into last name and first name or use just last name */
 	public List<Patient> getPatientsByName(String name);
@@ -35,5 +35,7 @@ public interface IPatientService {
 	public List<Patient> getPatientsByIdentifier();
 
 	public void mergePatients();
+
+	Patient getPatientsByFirstName(String firstname);
 
 }

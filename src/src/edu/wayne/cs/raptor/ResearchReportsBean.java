@@ -87,7 +87,9 @@ public class ResearchReportsBean {
 			writer.append(',');
 			writer.append("Quality");
 			writer.append(',');
-			writer.append("Provokes/Palliates");
+			writer.append("Provokes");
+			writer.append(',');
+			writer.append("Palliates");
 			writer.append(',');
 			writer.append("Time of Day"); 
 			writer.append(',');
@@ -168,6 +170,8 @@ public class ResearchReportsBean {
 				writer.append(dbencounter.get(i).getQuality());
 				writer.append(',');
 				writer.append(dbencounter.get(i).getProvokes());
+				writer.append(',');
+				writer.append(dbencounter.get(i).getPalliates());
 				writer.append(',');
 				writer.append(dbencounter.get(i).getTimeOfDay());
 				writer.append(',');

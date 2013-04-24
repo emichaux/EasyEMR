@@ -18,7 +18,7 @@ import org.hibernate.Session;
  *  TODO: Are we going to delete any users or void/retire users.
  *  TODO: Change user/patient/encounter/vitals scope to none instead of session
  *  
- * @author Muhammed, Ramez, Jackson, Tom
+ * @author Muhammed, Ramez, Jackson, Tom, Ryan
  *
  */
 
@@ -123,7 +123,7 @@ public class UserService implements IUserService {
 
 		saveUser(this.login.getSystemUser());
 		
-		JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
 		return "user_change_password";
 		
 	} 
@@ -146,6 +146,9 @@ public class UserService implements IUserService {
 		
 		if(this.login.getSystemUser().getRoles().equals(Role.PHARMACIST)){
 			return "pharm";
+		}
+		if(this.login.getSystemUser().getRoles().equals(Role.TRIAGE)){
+			return "triage";
 		}
 		
 		return "research";
@@ -268,13 +271,13 @@ public class UserService implements IUserService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in saving user. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Error in saving user. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			errorPreventedInsert = true;
 		}
 		
 		if(errorPreventedInsert == false)
 		{
-			JOptionPane.showMessageDialog(null, "User saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "User saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		errorPreventedInsert = false;
 	}

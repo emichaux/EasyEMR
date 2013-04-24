@@ -19,4 +19,7 @@ public class Role {
 	
 	public static final String RESEARCHER = "Researcher";
 	
+	public static final String TRIAGE = "Triage";
+
+	
 }

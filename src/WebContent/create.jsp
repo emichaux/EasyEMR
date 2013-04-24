@@ -147,11 +147,9 @@ jQuery(function($){
 						<tr>
 							<td><strong>Blood Pressure (mmHg)</strong></td>
 							<td><h:inputText style = "width:60px" id="bpTop"  value="#{encounterService.vitals.systolicBP }" >
-								<f:validateLongRange minimum="50" maximum="200"/>
 								</h:inputText>
 								/ 
 								<h:inputText style = "width:60px" id="bpBottom"  value="#{encounterService.vitals.diastolicBP }">
-								<f:validateLongRange minimum="10" maximum="170"/>
 								</h:inputText> 
 								<BR></td>
 						</tr>
@@ -231,8 +229,12 @@ jQuery(function($){
 						</tr>
 		
 						<tr>
-							<td><strong>Provokes / Palliates</strong></td>
+							<td><strong>Provokes</strong></td>
 							<td><h:inputText value="#{encounterService.encounter.provokes }"/></td>
+						</tr>
+						<tr>
+							<td><strong>Palliates</strong></td>
+							<td><h:inputText value="#{encounterService.encounter.palliates }"/></td>
 						</tr>
 		
 						<tr>
@@ -246,7 +248,7 @@ jQuery(function($){
 						</tr>
 						<tr>
 							<td><strong>ROS</strong></td>
-							<td><h:inputTextarea value="#{encounterService.encounter.other }"/></td>
+							<td><h:inputTextarea value="#{encounterService.encounter.ros }"/></td>
 						</tr>
 					</table>
 				</div>
