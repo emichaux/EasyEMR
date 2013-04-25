@@ -55,30 +55,27 @@
 					</h:commandButton>
 			</h:form>
 			<h:form>
-			<h:dataTable value="#{encounterService.patientList}" var="patient">
+			<h:dataTable value="#{encounterService.patientList}" var="patient" 
+				styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
 					<h:column>
 						<f:facet name="header">
-							<h:column>
 								<h:outputText value="Patient ID" />
-							</h:column>
 						</f:facet>
 						<h:outputText value="#{patient.patientID }" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">
-							<h:column>
 								<h:outputText value="First Name" />
-							</h:column>
 						</f:facet>
 						<h:outputText value="#{patient.firstName}" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">
-							<h:column>
 								<h:outputText value="Last Name" />
-							</h:column>
 						</f:facet>
 						<h:outputText value="#{patient.lastName}" />
 					</h:column>
@@ -98,7 +95,10 @@
 					</h:column>
 				</h:dataTable>
 			</h:form>
-			<h:form><h:dataTable value="#{encounterService.searchList}" var="encounter">
+			<h:form><h:dataTable value="#{encounterService.searchList}" var="encounter"
+				styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
 					<h:column>
 						<f:facet name="header">
 							<h:column>

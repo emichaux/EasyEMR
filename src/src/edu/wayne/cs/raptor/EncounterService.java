@@ -683,8 +683,8 @@ public class EncounterService implements IEncounterService, Serializable {
 		
 		setComputerID(this.login.getComputerID());
 		
-		computerIDInitialValue = computerID * 1000000;
-		computerIDMaxValue = (computerID + 1) * 1000000;
+		computerIDInitialValue = computerID;
+		computerIDMaxValue = 100000;
 		
 		
 		ArrayList<Integer> patientIDList = new ArrayList<Integer>();
