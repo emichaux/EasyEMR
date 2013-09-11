@@ -1,2 +1,2 @@
-EasyEMR
+EasyEMR System
 =======
