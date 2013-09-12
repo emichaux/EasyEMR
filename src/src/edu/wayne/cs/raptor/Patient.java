@@ -10,6 +10,7 @@ import javax.persistence.*;
  * @author Ramez
  *
  */
+
 @Entity
 @Table( name = "PATIENTS")
 public class Patient {
