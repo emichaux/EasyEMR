@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+    
+    <managed-bean>
+		<managed-bean-name>loginBean</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userData</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.User</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>patientData</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.Patient</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>patient vitals</description>
+		<managed-bean-name>vitals</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.Vitals</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>encounter data</description>
+		<managed-bean-name>encounter</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.Encounter</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>for coverting between metric and US customary units, and calculating BMI</description>
+		<managed-bean-name>unitConverter</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.UnitConverter</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>researchReportsBean</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.ResearchReportsBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pharmacyEncounter</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.PharmacyEncounter</managed-bean-class>
+		<managed-bean-scope>none</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pharmacyEncounterService</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.PharmacyEncounterService</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>login</property-name>
+			<property-class>edu.wayne.cs.raptor.LoginBean</property-class>
+			<value>#{loginBean}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userService</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.UserService</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>login</property-name>
+			<property-class>edu.wayne.cs.raptor.LoginBean</property-class>
+			<value>#{loginBean}</value>
+		</managed-property>
+		
+
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>patientService</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.PatientService</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>login</property-name>
+			<property-class>edu.wayne.cs.raptor.LoginBean</property-class>
+			<value>#{loginBean}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<description>saves and retrieves records from patient, vitals, encounter, and pharmacyEncounter tables.</description>
+		<managed-bean-name>encounterService</managed-bean-name>
+		<managed-bean-class>edu.wayne.cs.raptor.EncounterService</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>login</property-name>
+			<property-class>edu.wayne.cs.raptor.LoginBean</property-class>
+			<value>#{loginBean}</value>
+		</managed-property>
+	</managed-bean>
+	<navigation-rule>
+	<from-view-id>/index.jsp</from-view-id>
+		<navigation-case>
+			<from-action>#{loginBean.authenticate}</from-action>
+			<from-outcome>invalid</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{loginBean.authenticate}</from-action>
+			<from-outcome>noexist</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+ 
+
+</faces-config>
