@@ -4,10 +4,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
 import javax.faces.context.FacesContext;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 
@@ -16,7 +13,8 @@ import java.util.List;
  * @author Ramez
  *
  */
-public class LoginBean {
+public class LoginBean{
+
 	
 	private User systemUser;
 	private String tempUserName;
