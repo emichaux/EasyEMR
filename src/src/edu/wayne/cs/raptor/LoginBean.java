@@ -81,7 +81,7 @@ public String authenticate() {
 		String u = this.systemUser.getUsername();
 		
 		@SuppressWarnings("unchecked")
-		List<User> dbUsername = userSession.createQuery( "from User where username='"+u+"'").list();
+		List<User> dbUsername = userSession.createQuery( "from User where username='"+u+"'").list(); //from User where username
 		userSession.getTransaction().commit(); 
 		userSession.close();
 		
