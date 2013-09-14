@@ -1,8 +1,6 @@
 package edu.wayne.cs.raptorTest;
 
-import static org.junit.Assert.*;
-import edu.wayne.cs.raptor.*;
-
+import edu.wayne.cs.raptor.Patient;
 import org.junit.Test;
 
 public class PatientTest {

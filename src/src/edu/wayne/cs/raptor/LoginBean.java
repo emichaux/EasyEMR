@@ -3,6 +3,7 @@ package edu.wayne.cs.raptor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
+import javax.faces.context.FacesContext;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -151,7 +152,9 @@ public String authenticate() {
 		setAuthenticated(false);
 		setTempUserName("");
 		setTempPassword("");
-		//FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+        // HttpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
+
 		return "index";
 	}
 	
