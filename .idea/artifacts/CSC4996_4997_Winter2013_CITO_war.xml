@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CSC4996-4997-Winter2013-CITO:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/CSC4996_4997_Winter2013_CITO_war</output-path>
+    <root id="archive" name="CSC4996-4997-Winter2013-CITO_war.war">
+      <element id="artifact" artifact-name="CSC4996-4997-Winter2013-CITO:war exploded" />
+    </root>
+  </artifact>
+</component>

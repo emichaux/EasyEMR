@@ -1,16 +1,13 @@
-drop database raptor;
+drop database test;
 
-create database raptor;  
+create database test;
 
-use raptor;
+use test;
 
  CREATE TABLE `PHARMACY`(
        `encounterID` int(9) unsigned zerofill NOT NULL,
-       `cardID` varchar(10) , 
        `firstName` varchar(55),
        `lastName` varchar(55),
-	   `givenHappyMeal` bit,
-   	   `happyMeal` varchar(255),
        `medDispensed1` varchar(55),
        `medDispensed2` varchar(55),
        `medDispensed3` varchar(55),
@@ -30,7 +27,6 @@ use raptor;
  CREATE TABLE `ENCOUNTERS` (
        `encounterID` int(9) unsigned zerofill NOT NULL AUTO_INCREMENT,
        `patientID` int(9) unsigned zerofill NOT NULL,
-   	   `cardID` varchar(10) , 
        `chiefComplaint` varchar(255),
        `onsetNumber` int(10),
        `onsetUnit` varchar(55),
@@ -38,6 +34,7 @@ use raptor;
        `radiation` varchar(55),
        `quality` varchar(55),
        `provokes` varchar(55),
+       `palliates` varchar(55),
        `timeofday` varchar(55),
        `other` varchar(55),
        `medicationPrescribed1` varchar(55),
@@ -45,6 +42,11 @@ use raptor;
        `medicationPrescribed3` varchar(55),
        `medicationPrescribed4` varchar(55),
        `medicationPrescribed5` varchar(55),
+       `medicationReceived1` varchar(55),
+       `medicationReceived2` varchar(55),
+       `medicationReceived3` varchar(55),
+       `medicationReceived4` varchar(55),
+       `medicationReceived5` varchar(55),
        `condition1` varchar(55),
        `condition2` varchar(55),
        `condition3` varchar(55),
@@ -58,16 +60,15 @@ use raptor;
        `createdDate` datetime,
        `modifyingUser` varchar(55),
        `lastModifiedDate` datetime,
-       PRIMARY KEY (`encounterID`)
+       PRIMARY KEY (`encounterID`),
+       UNIQUE KEY `encounterID_UNIQUE` (`encounterID`)
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
  CREATE TABLE `PATIENTS` (
        `patientID` int(9) unsigned zerofill NOT NULL AUTO_INCREMENT,
-   	   `cardID` varchar(10) , 
        `firstName` varchar(55) NOT NULL,
        `lastName` varchar(55),  
        `birthDate` varchar(55),
-   	   `age` varchar(5),
        `gender` varchar(15),
        `keywords` varchar(55),
        `residence` varchar(55),
@@ -106,7 +107,6 @@ CREATE TABLE `USERS` (
        `heartRate` int(10) unsigned DEFAULT NULL,
        `respRate` int(10) unsigned DEFAULT NULL,
        `temperatureF` float(6,3) unsigned DEFAULT NULL,
-       `bloodSampleID` int(10) unsigned zerofill DEFAULT NULL,
        `height` int(10) unsigned DEFAULT NULL,
        `weight` int(10) unsigned DEFAULT NULL,
        `calculatedBMI` int(10) unsigned DEFAULT NULL,
@@ -115,10 +115,11 @@ CREATE TABLE `USERS` (
        `modifyingUser` varchar(55),
        `lastModifiedDate` datetime,
        PRIMARY KEY (`vitalsID`),
+       UNIQUE KEY `encounterID_UNIQUE` (`encounterID`),
        UNIQUE KEY `vitalsID_UNIQUE` (`vitalsID`)
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
      
-     insert into raptor.USERS (firstName, lastName, userName, password, roles) values ('Bob', 'Bobson', 'admin', 'cef5729281f29438d09d2aedcacfd607d1cddcc9','System Administrator');
-     insert into raptor.USERS (firstName, lastName, userName, password, roles) values ('Jim', 'Jimerson', 'student', '2eb4ed42db03e48321ae25bab6b68370051921a0','Medical Student');
-	 insert into raptor.USERS (firstName, lastName, userName, password, roles) values ('Frank', 'Frankfurter', 'pharm', '6ccab84e7539afccc64d90e19d9d4abd72968c13','Pharmacist');
-	 insert into raptor.USERS (firstName, lastName, userName, password, roles) values ('Sample', 'McTest', 'research', '43532e0c9726857cc44f5852c1f561335db3dd69','Researcher');
+     insert into test.USERS (firstName, lastName, userName, password, roles) values ('bob', 'bobson', 'admin', 'cef5729281f29438d09d2aedcacfd607d1cddcc9','System Administrator');
+     insert into test.USERS (firstName, lastName, userName, password, roles) values ('jim', 'jimerson', 'student', '2eb4ed42db03e48321ae25bab6b68370051921a0','Medical Student');
+	 insert into test.USERS (firstName, lastName, userName, password, roles) values ('frank', 'frankfurter', 'pharm', '6ccab84e7539afccc64d90e19d9d4abd72968c13','Pharmacist');
+	 insert into test.USERS (firstName, lastName, userName, password, roles) values ('sample', 'mcTest', 'research', '43532e0c9726857cc44f5852c1f561335db3dd69','Researcher');

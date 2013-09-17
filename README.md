@@ -1,2 +1,4 @@
-CSC4996-4997-Winter2013-CITO
-============================
+HaitiEMR_From_Scratch
+=====================
+
+Haiti EMR We Application ( Team From Scratch )

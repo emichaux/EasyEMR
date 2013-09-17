@@ -92,11 +92,6 @@
 			<value>#{loginBean}</value>
 		</managed-property>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>computer</managed-bean-name>
-		<managed-bean-class>edu.wayne.cs.raptor.Computer</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 	<navigation-rule>
 	<from-view-id>/index.jsp</from-view-id>
 		<navigation-case>

@@ -1,17 +1,11 @@
 package edu.wayne.cs.raptor;
 
-import java.io.BufferedReader;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-
-import javax.faces.context.FacesContext;
-import javax.swing.JOptionPane;
-
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
+
+import javax.faces.context.FacesContext;
+import java.io.*;
+import java.util.List;
 
 
 /**  This bean handles the User login and authentication against the database
@@ -19,7 +13,8 @@ import org.hibernate.Session;
  * @author Ramez
  *
  */
-public class LoginBean {
+public class LoginBean{
+
 	
 	private User systemUser;
 	private String tempUserName;
@@ -86,7 +81,7 @@ public String authenticate() {
 		String u = this.systemUser.getUsername();
 		
 		@SuppressWarnings("unchecked")
-		List<User> dbUsername = userSession.createQuery( "from User where username='"+u+"'").list();
+		List<User> dbUsername = userSession.createQuery( "from User where username='"+u+"'").list(); //from User where username
 		userSession.getTransaction().commit(); 
 		userSession.close();
 		
@@ -157,7 +152,9 @@ public String authenticate() {
 		setAuthenticated(false);
 		setTempUserName("");
 		setTempPassword("");
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+        // HttpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
+
 		return "index";
 	}
 	

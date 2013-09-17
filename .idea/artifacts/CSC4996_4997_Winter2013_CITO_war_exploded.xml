@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="CSC4996-4997-Winter2013-CITO:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/CSC4996_4997_Winter2013_CITO_war_exploded.war</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="CSC4996-4997-Winter2013-CITO" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/libs/myfaces-api-1.2.7.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/libs/commons-codec-1.3.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/libs/antlr-3.1.2-jar-with-dependencies.jar" />
+          <element id="library" level="project" name="commons-logging-1.1.1" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/libs/junit-4.7.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="CSC4996-4997-Winter2013-CITO/web/Web" />
+    </root>
+  </artifact>
+</component>
