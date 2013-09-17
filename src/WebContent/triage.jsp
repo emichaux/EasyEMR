@@ -144,9 +144,10 @@
 
 
 
-
+                    <h:form>
 					Patient ID <h:inputText id="patientID" value="#{encounterService.searchPatientId }" /><h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton>
 					<h:outputLabel value = "#{encounterService.patient.patientID }"></h:outputLabel>
+                    </h:form>
 
 
 

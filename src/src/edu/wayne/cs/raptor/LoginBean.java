@@ -3,11 +3,14 @@ package edu.wayne.cs.raptor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import java.io.*;
+import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
-
-
 /**  This bean handles the User login and authentication against the database
  * 
  * @author Ramez
@@ -152,9 +155,10 @@ public String authenticate() {
 		setAuthenticated(false);
 		setTempUserName("");
 		setTempPassword("");
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-        // HttpSession = (HttpSession)facesContext.getExternalContext().getSession(false);
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
 
+        ((HttpSession)ec.getSession(false)).invalidate();
 		return "index";
 	}
 	

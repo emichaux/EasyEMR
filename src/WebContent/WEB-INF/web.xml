@@ -18,6 +18,10 @@
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>resources.application</param-value>
   </context-param>
+   <context-param>
+       <param-name>javax.faces.CONFIG_FILES</param-name>
+       <param-value>/WEB-INF/faces-config.xml</param-value>
+   </context-param>
   <context-param>
     <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
     <param-name>javax.faces.STATE_SAVING_METHOD</param-name>

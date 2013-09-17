@@ -1,8 +1,9 @@
 package edu.wayne.cs.raptor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-
-import javax.persistence.*;
 
 
 /** Defines a Patient entity in the system.  

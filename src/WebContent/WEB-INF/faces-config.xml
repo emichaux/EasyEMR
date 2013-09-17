@@ -104,6 +104,11 @@
 			<from-outcome>noexist</from-outcome>
 			<to-view-id>/index.jsp</to-view-id>
 		</navigation-case>
+        <navigation-case>
+            <from-action>#{loginBean.authenticate}</from-action>
+            <from-outcome>admin</from-outcome>
+            <to-view-id>/admin.jsp</to-view-id>
+        </navigation-case>
 	</navigation-rule>
  
 

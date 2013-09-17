@@ -54,6 +54,7 @@
 				</table>
 				</center>
 				<div class="center">
+                    <!--  -->
 					<h:commandButton id="submit" value="Login" onclick="alert('Welcome to easyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:130px;height:40px"></h:commandButton><BR><BR>
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
 					</div>
