@@ -47,9 +47,9 @@
 				<tr>
 				<b> Welcome to</b><img src="./img/easyEmr_LOGO.png" height="80" width="110"><br>Please Login Below <br> 
 				</tr>
-				<tr>
-					<td><h:inputText style="width:150px" id="username" value="#{loginBean.systemUser.username}" /></td>
-					<td><h:inputSecret style="width:150px" id="password" redisplay="false" value="#{loginBean.systemUser.password}" /></td>
+				<tr><br><br>
+					<td><center>Username</center><h:inputText style="width:150px" id="username" value="#{loginBean.systemUser.username}" /></td>
+					<td><center>Password</center><h:inputSecret style="width:150px" id="password" redisplay="false" value="#{loginBean.systemUser.password}" /></td>
 				</tr>
 				</table>
 				</center>
