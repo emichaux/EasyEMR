@@ -10,16 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28b7b714-8377-4c75-997c-7825a1fb1c87" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Mrgadgetz\IdeaProjects\EasyEMR\.idea\libraries\servlet_api.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EasyEMR.iml" afterPath="$PROJECT_DIR$/src/EasyEMR.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="85c671e6-a5b9-4b7d-b22c-646955aa5ddc" name="Failed commit: Default" comment="Merge branch 'JQuery' into Addition-of-JQuery-etc&#10;&#10;Conflicts:&#10;&#9;src/libs/databaseCreationScript.sql&#10;" />
     <ignored path="CSC4996-4997-Winter2013-CITO.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379873803944" ignored="false" />
+    <file path="/Dummy.txt" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379873898876" ignored="false" />
     <file path="/Patient.java" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379002610582" ignored="false" />
-    <file path="/web.xml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379811816246" ignored="false" />
+    <file path="/web.xml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379877293972" ignored="false" />
     <file path="$PROJECT_DIR$/src/libs/myfaces-api-2.1.12.jar!/javax/faces/FactoryFinder.class" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379027226114" ignored="false" />
     <file path="/databaseCreationScript.sql" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379764442050" ignored="false" />
     <file path="/hibernate.cfg.xml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379810699035" ignored="false" />
@@ -118,8 +117,11 @@
       <file leaf-file-name="research.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WebContent/research.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="20" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="22" column="20" selection-start="681" selection-end="681" vertical-scroll-proportion="-0.65384614">
+              <folding>
+                <marker date="1379817128447" expanded="true" signature="1406:1445" placeholder="{...}" />
+                <marker date="1379817128447" expanded="true" signature="1562:1601" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,44 +129,29 @@
       <file leaf-file-name="triage.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="92" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.0">
+            <state line="104" column="108" selection-start="3610" selection-end="3610" vertical-scroll-proportion="-13.923077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usersDisplay.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-0.65384614">
               <folding>
-                <marker date="1379816348658" expanded="true" signature="1314:1323" placeholder="{...}" />
-                <marker date="1379816348658" expanded="true" signature="2200:2210" placeholder="{...}" />
-                <marker date="1379816348658" expanded="true" signature="2394:2403" placeholder="{...}" />
-                <marker date="1379816348658" expanded="true" signature="2548:2559" placeholder="{...}" />
-                <marker date="1379816348658" expanded="true" signature="2736:2745" placeholder="{...}" />
-                <marker date="1379816348658" expanded="true" signature="2881:2892" placeholder="{...}" />
-                <marker date="1379816348658" expanded="true" signature="3066:3075" placeholder="{...}" />
+                <marker date="1379816348705" expanded="true" signature="680:689" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faces-config.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml">
+      <file leaf-file-name="databaseCreationScript.sql" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/libs/databaseCreationScript.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="19" selection-start="4317" selection-end="4317" vertical-scroll-proportion="0.46060607">
+            <state line="91" column="73" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.5962838">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml">
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="20" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-            <state />
-          </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
@@ -195,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/libs/databaseCreationScript.sql" />
         <option value="db-console:/9f39fa9/37f53db8-5c61-44d4-9623-7de5e40e6239/" />
         <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml" />
-        <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/WebContent/admin.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/classes/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/.gitignore" />
@@ -208,6 +194,7 @@
         <option value="$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/index.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/research.xhtml" />
+        <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -222,9 +209,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="769" />
-    <option name="width" value="769" />
-    <option name="height" value="900" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1554" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -365,6 +353,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="tomahawk20-1.1.14.jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EasyEMR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -714,8 +716,8 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="ToolWindowManager">
-    <frame x="769" y="0" width="769" height="900" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -728,20 +730,20 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285151" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2707775" sideWeight="0.7641634" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34966886" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3946252" sideWeight="0.19359331" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956153" sideWeight="0.7799443" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.53889674" sideWeight="0.82172704" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17827298" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25536194" sideWeight="0.83135706" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16864295" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3320158" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41633728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34966886" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -787,7 +789,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed html issues in the researcher.xhtml page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Making sure files are up to date." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -807,6 +809,7 @@
     <MESSAGE value="changes after .gitignore" />
     <MESSAGE value="Fixed some issues with the xhtml files." />
     <MESSAGE value="Fixed html issues in the researcher.xhtml page." />
+    <MESSAGE value="Making sure files are up to date." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -825,11 +828,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptorTest/UserInterfaceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="26" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="39" selection-start="24" selection-end="24" vertical-scroll-proportion="0.08429752" />
@@ -868,23 +866,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-6.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/index.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="37" selection-start="941" selection-end="941" vertical-scroll-proportion="-6.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/create.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="18" selection-start="634" selection-end="634" vertical-scroll-proportion="-9.807693">
           <folding />
         </state>
       </provider>
@@ -903,34 +887,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/research.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="92" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1379816348658" expanded="true" signature="1314:1323" placeholder="{...}" />
-            <marker date="1379816348658" expanded="true" signature="2200:2210" placeholder="{...}" />
-            <marker date="1379816348658" expanded="true" signature="2394:2403" placeholder="{...}" />
-            <marker date="1379816348658" expanded="true" signature="2548:2559" placeholder="{...}" />
-            <marker date="1379816348658" expanded="true" signature="2736:2745" placeholder="{...}" />
-            <marker date="1379816348658" expanded="true" signature="2881:2892" placeholder="{...}" />
-            <marker date="1379816348658" expanded="true" signature="3066:3075" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml">
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="20" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0">
+        <state line="74" column="33" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.7706612">
           <folding />
         </state>
       </provider>
@@ -941,6 +903,48 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/create.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="20" selection-start="758" selection-end="758" vertical-scroll-proportion="0.03373016">
+          <folding>
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml">
       <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
         <state />
@@ -949,7 +953,40 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="19" selection-start="4317" selection-end="4317" vertical-scroll-proportion="0.46060607">
+        <state line="80" column="19" selection-start="3726" selection-end="3726" vertical-scroll-proportion="0.2123412">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/research.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="20" selection-start="681" selection-end="681" vertical-scroll-proportion="-0.65384614">
+          <folding>
+            <marker date="1379817128447" expanded="true" signature="1406:1445" placeholder="{...}" />
+            <marker date="1379817128447" expanded="true" signature="1562:1601" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="108" selection-start="3610" selection-end="3610" vertical-scroll-proportion="-13.923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-0.65384614">
+          <folding>
+            <marker date="1379816348705" expanded="true" signature="680:689" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/databaseCreationScript.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="73" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.5962838">
           <folding />
         </state>
       </provider>

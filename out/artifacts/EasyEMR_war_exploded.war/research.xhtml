@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+	<link href="./css/bootstrap.css" rel="stylesheet" />  
+	<title>Easy EMR</title>
+</head>
+<body>
+<!-- Created by Lev, uploaded by Marek -->
+		<div id="navigation">
+			<div style="float: left">
+			&nbsp;<img src="img\logo_xl.png" height="60" width="180"  alt="EasyEmr Logo"/>&nbsp;&nbsp;
+			</div>
+			<div style="float: left">
+				<table>
+				<tbody>
+					<tr>
+						
+						<td><h3 style="color:red" align="left" >Hello, <i><h:outputLabel value="#{loginBean.systemUser.firstName }"/></i></h3></td>
+					</tr>
+				</tbody>
+				</table>
+				
+				
+			</div>
+
+			<div style="float: right">
+			<h:form>
+						<p><h:commandLink tabindex="-1" action="#{loginBean.logout}">Log out</h:commandLink></p>
+						<p><h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}">Change My Password</h:commandLink></p>
+
+				</h:form>
+			</div>
+			
+		</div>
+
+		<div id="content">
+
+			<div id="form">
+				<h:form>
+					<h2>Reports</h2>
+					<p>Export non-identifying information to CSV files</p>
+					<h:commandButton action="#{researchReportsBean.generateConditionReport}" value="Encounter Report" style="width:200px;height:70px;margin-top:30px"></h:commandButton>
+					<h:commandButton action="#{researchReportsBean.generateRxReport}" value="Rx Report" style="width:200px;height:70px;margin-top:30px"></h:commandButton>
+				</h:form>
+			</div>
+			<center>
+				<a href="HelpInformation.pdf">Need Help?</a>
+			</center>
+
+		</div>
+</body>
+</html>
