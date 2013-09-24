@@ -9,14 +9,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28b7b714-8377-4c75-997c-7825a1fb1c87" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" />
+    <list default="true" id="28b7b714-8377-4c75-997c-7825a1fb1c87" name="Default" comment="Triage page added. &#10;Titles for each page added.&#10;width of container on pharmTest page increased.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/UserService.java" afterPath="$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/create.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/create.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/patientSearch.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/patientSearch.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/pharm.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/pharm.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/pharmTest.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/pharmTest.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/searchPage.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/searchPage.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/triage.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/triage.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="85c671e6-a5b9-4b7d-b22c-646955aa5ddc" name="Failed commit: Default" comment="Merge branch 'JQuery' into Addition-of-JQuery-etc&#10;&#10;Conflicts:&#10;&#9;src/libs/databaseCreationScript.sql&#10;" />
     <ignored path="CSC4996-4997-Winter2013-CITO.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379873898876" ignored="false" />
+    <file path="/Dummy.txt" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380052405128" ignored="false" />
     <file path="/Patient.java" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379002610582" ignored="false" />
     <file path="/web.xml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379877293972" ignored="false" />
     <file path="$PROJECT_DIR$/src/libs/myfaces-api-2.1.12.jar!/javax/faces/FactoryFinder.class" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379027226114" ignored="false" />
@@ -37,14 +43,16 @@
     <file path="/fragment.java" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379763022336" ignored="false" />
     <file path="/admin.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379813889183" ignored="false" />
     <file path="/user_change_password.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816028083" ignored="false" />
-    <file path="/patientSearch.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816087358" ignored="false" />
-    <file path="/pharm.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816168220" ignored="false" />
-    <file path="/pharmTest.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816186328" ignored="false" />
+    <file path="/patientSearch.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380048242318" ignored="false" />
+    <file path="/pharm.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380048262023" ignored="false" />
+    <file path="/pharmTest.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380051352075" ignored="false" />
     <file path="/research.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816198360" ignored="false" />
     <file path="/searchPage.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816212153" ignored="false" />
-    <file path="/triage.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816237607" ignored="false" />
+    <file path="/triage.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380052518659" ignored="false" />
     <file path="/usersDisplay.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816257271" ignored="false" />
     <file path="/index.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816272196" ignored="false" />
+    <file path="/UserService.java" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380051055317" ignored="false" />
+    <file path="/create.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380052726357" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +75,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -104,7 +112,7 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -114,43 +122,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="research.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/WebContent/research.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="20" selection-start="681" selection-end="681" vertical-scroll-proportion="-0.65384614">
-              <folding>
-                <marker date="1379817128447" expanded="true" signature="1406:1445" placeholder="{...}" />
-                <marker date="1379817128447" expanded="true" signature="1562:1601" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="triage.xhtml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="triage.xhtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="108" selection-start="3610" selection-end="3610" vertical-scroll-proportion="-13.923077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="usersDisplay.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-0.65384614">
+            <state line="40" column="37" selection-start="1236" selection-end="1236" vertical-scroll-proportion="0.029565217">
               <folding>
-                <marker date="1379816348705" expanded="true" signature="680:689" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="1555:1564" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="2529:2539" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="2878:2887" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="3103:3114" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="3431:3440" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="3654:3665" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="3979:3988" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="6761:6771" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="6940:6950" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="7252:7262" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="7531:7541" placeholder="{...}" />
+                <marker date="1380052550204" expanded="true" signature="7834:7844" placeholder="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="databaseCreationScript.sql" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/libs/databaseCreationScript.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="73" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.5962838">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -179,22 +168,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/libs/databaseCreationScript.sql" />
-        <option value="db-console:/9f39fa9/37f53db8-5c61-44d4-9623-7de5e40e6239/" />
-        <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml" />
         <option value="$PROJECT_DIR$/src/WebContent/admin.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/classes/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/.gitignore" />
         <option value="$PROJECT_DIR$/src/WebContent/user_change_password.xhtml" />
-        <option value="$PROJECT_DIR$/src/WebContent/patientSearch.xhtml" />
-        <option value="$PROJECT_DIR$/src/WebContent/pharm.xhtml" />
-        <option value="$PROJECT_DIR$/src/WebContent/pharmTest.xhtml" />
-        <option value="$PROJECT_DIR$/src/WebContent/searchPage.xhtml" />
-        <option value="$PROJECT_DIR$/src/WebContent/triage.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/index.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/research.xhtml" />
         <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/WebContent/pharm.xhtml" />
+        <option value="$PROJECT_DIR$/src/WebContent/searchPage.xhtml" />
+        <option value="$PROJECT_DIR$/src/WebContent/patientSearch.xhtml" />
+        <option value="db-console:/9f39fa9/37f53db8-5c61-44d4-9623-7de5e40e6239/" />
+        <option value="$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/UserService.java" />
+        <option value="$PROJECT_DIR$/src/WebContent/pharmTest.xhtml" />
+        <option value="$PROJECT_DIR$/src/WebContent/triage.xhtml" />
+        <option value="$PROJECT_DIR$/src/WebContent/create.xhtml" />
       </list>
     </option>
   </component>
@@ -256,7 +245,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -299,11 +287,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="cs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,15 +305,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="cs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="raptor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -339,38 +327,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tomahawk20-1.1.14.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EasyEMR" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -719,16 +682,18 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3320158" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31947196" sideWeight="0.2729805" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46110326" sideWeight="0.7860027" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41633728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46045578" sideWeight="0.84321475" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3499327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23451911" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285151" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34679666" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2707775" sideWeight="0.7641634" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34966886" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3946252" sideWeight="0.19359331" order="2" side_tool="true" content_ui="tabs" />
@@ -736,15 +701,13 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956153" sideWeight="0.7799443" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25536194" sideWeight="0.83135706" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16864295" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3320158" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33512065" sideWeight="0.84321475" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3992095" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15678525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41633728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -789,7 +752,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Making sure files are up to date." />
+    <option name="LAST_COMMIT_MESSAGE" value="Triage page added. &#10;Titles for each page added.&#10;width of container on pharmTest page increased." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -810,6 +773,7 @@
     <MESSAGE value="Fixed some issues with the xhtml files." />
     <MESSAGE value="Fixed html issues in the researcher.xhtml page." />
     <MESSAGE value="Making sure files are up to date." />
+    <MESSAGE value="Triage page added. &#10;Titles for each page added.&#10;width of container on pharmTest page increased." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -828,166 +792,220 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/.settings/org.eclipse.jdt.core.prefs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="39" selection-start="24" selection-end="24" vertical-scroll-proportion="0.08429752" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/classes/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="49" selection-start="573" selection-end="591" vertical-scroll-proportion="0.10082645" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/patientSearch.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="10" selection-start="3624" selection-end="3624" vertical-scroll-proportion="-17.692308">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/pharm.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/libs/databaseCreationScript.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="92" selection-start="570" selection-end="570" vertical-scroll-proportion="-10.461538">
+        <state line="123" column="0" selection-start="4764" selection-end="4764" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/pharmTest.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/LoginBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-7.230769">
+        <state line="206" column="56" selection-start="5192" selection-end="5192" vertical-scroll-proportion="7.0833335">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/searchPage.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-9.807693">
+        <state line="17" column="13" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/index.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="37" selection-start="941" selection-end="941" vertical-scroll-proportion="-6.9615383">
+        <state line="307" column="8" selection-start="8225" selection-end="8225" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/admin.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="69" selection-start="414" selection-end="414" vertical-scroll-proportion="0.29360968">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/user_change_password.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-9.807693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="33" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.7706612">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/create.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="20" selection-start="758" selection-end="758" vertical-scroll-proportion="0.03373016">
+        <state line="110" column="75" selection-start="4540" selection-end="4540" vertical-scroll-proportion="-71.92308">
           <folding>
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379688251987" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327383" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327383" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327383" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327383" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327383" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327383" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml">
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/create.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="19" selection-start="3726" selection-end="3726" vertical-scroll-proportion="0.2123412">
-          <folding />
+        <state line="188" column="17" selection-start="7325" selection-end="7325" vertical-scroll-proportion="71.61539">
+          <folding>
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380052922422" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/index.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="37" selection-start="941" selection-end="941" vertical-scroll-proportion="-14.346154">
+          <folding>
+            <marker date="1379991327393" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327393" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379991327393" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/patientSearch.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1380049426491" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380049426491" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380049426491" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380049426491" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380049426491" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380049426491" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/pharm.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048262935" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/pharmTest.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="92" selection-start="1820" selection-end="1820" vertical-scroll-proportion="-34.653847">
+          <folding>
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380051660805" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/research.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="681" selection-end="681" vertical-scroll-proportion="-0.65384614">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1379817128447" expanded="true" signature="1406:1445" placeholder="{...}" />
-            <marker date="1379817128447" expanded="true" signature="1562:1601" placeholder="{...}" />
+            <marker date="1379817128447" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379817128447" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/searchPage.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1380048328799" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1380048328799" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/user_change_password.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1379816032931" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1379816032931" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1379816348705" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="108" selection-start="3610" selection-end="3610" vertical-scroll-proportion="-13.923077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/usersDisplay.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="92" selection-start="569" selection-end="569" vertical-scroll-proportion="-0.65384614">
+        <state line="40" column="37" selection-start="1236" selection-end="1236" vertical-scroll-proportion="0.029565217">
           <folding>
-            <marker date="1379816348705" expanded="true" signature="680:689" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="1555:1564" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="2529:2539" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="2878:2887" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="3103:3114" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="3431:3440" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="3654:3665" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="3979:3988" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="6761:6771" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="6940:6950" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="7252:7262" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="7531:7541" placeholder="{...}" />
+            <marker date="1380052550204" expanded="true" signature="7834:7844" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/libs/databaseCreationScript.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="73" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.5962838">
-          <folding />
         </state>
       </provider>
     </entry>

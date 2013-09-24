@@ -188,7 +188,9 @@ public class UserService implements IUserService {
        }
         else{
 
+           //can return an string I.E "noperms" and use that to display jsf error
            showErrorPane("Insufficient Permissions","Sorry, you do not have administrator access.");
+           //return "noperms";
 
        }
             return "admin";
@@ -304,7 +306,7 @@ public class UserService implements IUserService {
 			//JOptionPane.showMessageDialog(null, "Database error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
-		List<User> result = userSession.createQuery("from User where user.userID='" + _userID + "'").list();
+		List<User> result = userSession.createQuery("from User user where user.userID='" + _userID + "'").list();
 		
 		//is this commit really necessary since we are not inserting records?
 		try
