@@ -3,7 +3,9 @@ package edu.wayne.cs.raptor;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.swing.JOptionPane;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.swing.*;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
@@ -122,8 +124,9 @@ public class UserService implements IUserService {
 		this.login.getSystemUser().setPassword(encryptedPassword);
 
 		saveUser(this.login.getSystemUser());
-		
-		JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+
+        showErrorPane("Success!", "Record saved!");
+
 		return "user_change_password";
 		
 	} 
@@ -156,35 +159,42 @@ public class UserService implements IUserService {
 	/** Called on an Add User action */
 	public String createUser()
 	{
-		newUser.setCreatingUser(this.login.getSystemUser().getUsername());
-		newUser.setCreatedDate(calendar.getTime());
-		newUser.setModifyingUser(this.login.getSystemUser().getUsername());
-		newUser.setLastModifiedDate(calendar.getTime()); 
-		
-		//get the password right before the save...
-		encryptedPassword = newUser.getPassword();
-		//mmmm salty. 
-		encryptedPassword += "Raptor!";
-		
-		//close your eyes and click your heels once...
-		encryptedPassword = DigestUtils.shaHex(encryptedPassword);
-		//twice
-		encryptedPassword = DigestUtils.shaHex(encryptedPassword);
-		//thrice!
-		encryptedPassword = DigestUtils.shaHex(encryptedPassword);
-		
-		
-		//there's no place like home!  (in the database, Toto!)
-		newUser.setPassword(encryptedPassword);
-		
-		//do the same encryption when a user attempts to log in and check the hashes against each other. 
-		
-		saveUser(newUser);
-		newUser = new User();
-		
-		return "admin";
+       if(this.login.getSystemUser().getRoles().equalsIgnoreCase("system administrator") ){
+            newUser.setCreatingUser(this.login.getSystemUser().getUsername());
+            newUser.setCreatedDate(calendar.getTime());
+            newUser.setModifyingUser(this.login.getSystemUser().getUsername());
+            newUser.setLastModifiedDate(calendar.getTime());
+
+            //get the password right before the save...
+            encryptedPassword = newUser.getPassword();
+            //mmmm salty.
+            encryptedPassword += "Raptor!";
+
+            //close your eyes and click your heels once...
+            encryptedPassword = DigestUtils.shaHex(encryptedPassword);
+            //twice
+            encryptedPassword = DigestUtils.shaHex(encryptedPassword);
+            //thrice!
+            encryptedPassword = DigestUtils.shaHex(encryptedPassword);
+
+
+            //there's no place like home!  (in the database, Toto!)
+            newUser.setPassword(encryptedPassword);
+
+            //do the same encryption when a user attempts to log in and check the hashes against each other.
+
+            saveUser(newUser);
+            newUser = new User();
+       }
+        else{
+
+           showErrorPane("Insufficient Permissions","Sorry, you do not have administrator access.");
+
+       }
+            return "admin";
 		
 	}
+
 	
 	/** Called on an Update User action */
 	public String updateUser()
@@ -268,13 +278,13 @@ public class UserService implements IUserService {
 		}
 		catch(Exception ex)
 		{
-			JOptionPane.showMessageDialog(null, "Error in saving user. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            showErrorPane("Error", "Error in saving user.");
 			errorPreventedInsert = true;
 		}
 		
 		if(errorPreventedInsert == false)
 		{
-			JOptionPane.showMessageDialog(null, "User saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+            showErrorPane("Success!", "User saved!");
 		}
 		errorPreventedInsert = false;
 	}
@@ -388,7 +398,12 @@ public class UserService implements IUserService {
 	}
 
 
-
+    private static void showErrorPane(String title, String message) {
+        JOptionPane pane = new JOptionPane(message, JOptionPane.ERROR_MESSAGE);
+        JDialog dialog = pane.createDialog(title);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
 
 	
