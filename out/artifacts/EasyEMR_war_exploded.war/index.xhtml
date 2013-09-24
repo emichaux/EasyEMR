@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<link href="./css/bootstrap.css" rel="stylesheet" />  
+
+<title>Easy EMR</title>
+</head>
+
+<body>
+
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner"> 
+  		<div style="float: left">
+  			<img src="./img/easyEmr_LOGO.png" height="80" width="110"  alt="EasyEmr Logo"/>
+  		</div> 
+	    <div class="container">  			
+			<ul class="nav">
+			</ul>
+	    </div>  
+	  </div>  
+	</div> 
+	
+	<div style="float:right">
+
+	</div>
+<br /><br />
+<br /><br />
+<br /><br />
+<div class="container">
+		<div class="well form span6 center">
+			<div class="form">
+			
+				<h:form>
+
+				<center>
+				<table>
+				<tr>
+				<b> Welcome to</b><img src="./img/easyEmr_LOGO.png" height="80" width="110" /><br />Please Login Below <br />
+				</tr>
+				<tr>
+					<td><h:inputText style="width:150px" id="username" value="#{loginBean.systemUser.username}" /></td>
+					<td><h:inputSecret style="width:150px" id="password" redisplay="false" value="#{loginBean.systemUser.password}" /></td>
+				</tr>
+				</table>
+				</center>
+				<div class="center">
+					<h:commandButton id="submit" value="Login" onclick="alert('Welcome to easyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:130px;height:40px"></h:commandButton><br /><br />
+					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
+					</div>
+				</h:form>
+			</div>
+		</div>
+		</div>
+</body>
+</html>

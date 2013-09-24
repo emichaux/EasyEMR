@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+	<link href="./css/bootstrap.css" rel="stylesheet" />  
+	<title>Easy EMR</title>
+</head>
+
+<body>
+	<div class="navbar navbar-fixed-top center">
+	  		<div style="float: left">
+  			<p><img src="./img/easyEmr_LOGO.png" height="80" width="110"  alt="EasyEmr Logo"/></p>
+  			</div>
+	  <div class="navbar-inner"> 
+
+  			   <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
+  			
+  		
+        <div class="container-fluid">
+                 <h:form>
+						<h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></h:commandLink>
+						<h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></h:commandLink>
+				</h:form>
+				</div>
+			</div>			
+	    </div>  				
+
+<br /><br />
+<br /><br />
+<br /><br />
+
+
+
+			<h:form>
+			<div class="container-fluid">
+			<div class="span5 well form center">
+			<div class="form">
+					<h3>Search:</h3>
+					<table>
+									 <tr><td>First Name <h:inputText id="firstname" value="#{encounterService.searchPatientFirstName }" /><h:commandButton id="searchFirst" value="Search" action="#{encounterService.searchPatientsF }"></h:commandButton></td></tr>
+									<tr><td>Last Name <h:inputText id="lastname" value="#{encounterService.searchPatientLastName }" /><h:commandButton id="searchLast" value="Search" action="#{encounterService.searchPatients }"></h:commandButton></td></tr>
+									 <tr><td>Patient ID <h:inputText id="patientID" value="#{encounterService.searchPatientId }" /><h:commandButton id="search" value="Search" action="#{encounterService.searchPatient }"></h:commandButton></td></tr>
+									<tr><td>Card ID <h:inputText id="cardID" value="#{encounterService.searchPatientCardID }" /><h:commandButton id="searchCard" value="Search" action="#{encounterService.searchCardID }"></h:commandButton></td></tr>
+									
+				</table>
+				</div>
+				</div>
+				<br /><br /><br />
+				<br /><br /><br />
+				<div class="span6 well">
+				<h:commandButton action="#{encounterService.resetRecord }" style="width:150px;height:50px" value="RESET"/>
+				<h:dataTable value="#{encounterService.searchList}" var="encounter">
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="Encounter Id" />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{encounter.encounterID}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="Overall Impress." />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{encounter.overallImpression}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="Chief Complaint" />
+							</h:column>
+						</f:facet>
+						<h:outputText value="#{encounter.chiefComplaint}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:column>
+								<h:outputText value="Actions" />
+							</h:column>
+						</f:facet>
+						<h:panelGrid columns="2">
+							<h:commandLink value="Select"
+								action="#{encounterService.selectEncounter}">
+								<f:setPropertyActionListener
+									target="#{encounterService.encounter}" value="#{encounter}" />
+							</h:commandLink>
+						</h:panelGrid>
+					</h:column>
+				</h:dataTable>
+
+				<div class="span">
+					<h1>General Information</h1>
+				
+					<h3>Patient ID</h3>
+					<h:outputLabel value = "#{encounterService.patient.patientID }"></h:outputLabel>
+					<h3>First Name</h3>
+					<h:inputText value = "#{encounterService.patient.firstName }"></h:inputText>
+					<h3>Last Name</h3>
+					<h:inputText value = "#{encounterService.patient.lastName }"></h:inputText>
+					<h3>City/Town/Village of Residence</h3>
+					<h:inputText value = "#{encounterService.patient.residence }"></h:inputText>
+					<h3>Birth Date</h3>
+					<h:inputText value = "#{encounterService.patient.birthDate }"></h:inputText>
+					<h3>Gender</h3>
+					<h:selectOneMenu id ="gender" value="#{encounterService.patient.gender }">
+				   		<f:selectItem itemValue="Male" itemLabel="Male" />
+				   		<f:selectItem itemValue="Female" itemLabel="Female" />
+					</h:selectOneMenu>
+				</div>
+				</div>
+			</div>	
+		</h:form>
+</body>
+</html>

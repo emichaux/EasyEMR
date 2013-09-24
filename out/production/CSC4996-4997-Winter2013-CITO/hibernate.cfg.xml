@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+     <!-- jdbc:mysql://localhost:3306/raptor -->
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.connection.password">admin</property>
+  
+  <!-- JDBC connection pool (use the built-in) -->
+     <!--changed from 1 to 10 -->
+  <property name="connection.pool_size">1</property>
+  
+  <!-- SQL dialect -->
+  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+  
+  <!-- Enable Hibernate's automatic session context management -->
+  <property name="current_session_context_class">thread</property>
+  
+  <!--&lt;!&ndash; Disable the second-level cache  &ndash;&gt;-->
+  <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+  
+  <!-- Echo all executed SQL to stdout -->
+  <property name="show_sql">true</property>
+   <!-- changed from update to create drop -->
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  
+  <mapping class="edu.wayne.cs.raptor.User"/>
+  <mapping class="edu.wayne.cs.raptor.Patient"/>
+  <mapping class="edu.wayne.cs.raptor.Encounter"/>
+  <mapping class="edu.wayne.cs.raptor.Vitals"/>
+  <mapping class="edu.wayne.cs.raptor.PharmacyEncounter"/>
+ </session-factory>
+</hibernate-configuration>
