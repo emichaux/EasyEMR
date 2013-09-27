@@ -119,6 +119,7 @@ public String authenticate() {
 			{
 				setAuthenticated(true);
 				setSystemUser(dbUsername.get(0));
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username",dbUsername.get(0));
 				//JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
 				return handleRoleToPage(dbUsername.get(0));
 			}
