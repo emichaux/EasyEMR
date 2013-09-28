@@ -28,6 +28,9 @@ public class Patient {
 		
 		/** Patient's date of birth */
 		private String birthDate;
+
+    /** Patient's age */
+        private String age;
 		
 		/** Patient's gender */
 		private String gender;
@@ -113,6 +116,14 @@ public class Patient {
 		public void setBirthDate(String birthDate) {
 			this.birthDate = birthDate;
 		}
+        /** Return's patient's age */
+        public String getAge() {
+            return age;
+        }
+        /** Set's Patients age */
+        public void setAge(String age) {
+            this.age = age;
+        }
 
 		/** Returns the Patient's residence */
 		public String getResidence() {

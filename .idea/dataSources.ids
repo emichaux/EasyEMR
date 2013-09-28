@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source source="LOCAL" name="WebContent:WEB-INF:classes:hibernate.cfg.xml" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="37f53db8-5c61-44d4-9623-7de5e40e6239">
+  <data-source source="LOCAL" name="WebContent:WEB-INF:classes:hibernate.cfg.xml" product="MySQL" version="5.6.10" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.22 ( Revision: ${bzr.revision-id} )" uuid="1b4d57f0-b99b-4c79-8820-c7641bb4e435">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-    <jdbc-url>jdbc:mysql://localhost:3306/raptor</jdbc-url>
-    <user-name>mrgadgetz</user-name>
+    <jdbc-url>jdbc:mysql://localhost:3306/test</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfc7dfd3dfd9dfe5dfd8dfc5dfc9dfc2dfc3dfc4dfcbdfdedfc3dfc5dfc4df9adf99df9a</user-password>
     <libraries>
       <library>
         <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/antlr-2.7.7.jar!/</url>
