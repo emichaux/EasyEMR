@@ -6,6 +6,10 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
         version="2.1">
 
+    <lifecycle>
+        <phase-listener>edu.wayne.cs.raptor.AuthorizationListener</phase-listener>
+    </lifecycle>
+
     <managed-bean>
         <managed-bean-name>loginBean</managed-bean-name>
         <managed-bean-class>edu.wayne.cs.raptor.LoginBean</managed-bean-class>
@@ -106,9 +110,7 @@
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <lifecycle>
-        <phase-listener>edu.wayne.cs.raptor.AuthorizationListener</phase-listener>
-    </lifecycle>
+
 
 
 </faces-config>

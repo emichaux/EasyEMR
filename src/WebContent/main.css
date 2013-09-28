@@ -139,6 +139,13 @@ body {
 	text-decoration: none;
 }
 
+div.centerBox
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
 input.num1{width:145px;}
 input.detail{width:250px; height:150px}
 input.txt{width:220px}

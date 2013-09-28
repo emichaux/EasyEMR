@@ -6,9 +6,9 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <head>
-<link href="./css/bootstrap.css" rel="stylesheet" />  
+<link href="./css/bootstrap.css" rel="stylesheet" />
 
-<title>Easy EMR</title>
+    <title>Easy EMR</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 			    <!--inner welcome to easyemr box -->
 				<h:form>
 
-				<div class="center">
+				<center>
 				<table>
 				<tr>
                 <br/>
@@ -48,7 +48,7 @@
 					<td><div class="center">Password</div><h:inputSecret style="width:150px" id="password" redisplay="false" value="#{loginBean.systemUser.password}" /></td>
 				</tr>
 				</table>
-				</div>
+                </center>
 				<div class="center">
 					<h:commandButton id="submit" value="Login" onclick="alert('Welcome to easyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:130px;height:40px"></h:commandButton><br /><br />
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>

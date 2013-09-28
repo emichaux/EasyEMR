@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  @author Evan
- Check if session credentials are okay. If not, direct to login page.
+ Checks if session credentials are okay. If not, direct to login page.
  */
 public class AuthorizationListener implements PhaseListener {
 
