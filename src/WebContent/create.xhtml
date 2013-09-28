@@ -161,40 +161,6 @@
         </table>
     </div>
     <div class="form span6">
-        <h2>Vitals</h2>
-        <table>
-            <tr>
-                <td><strong>Blood Pressure (mmHg)</strong></td>
-                <td><h:inputText style="width:60px" id="bpTop" value="#{encounterService.vitals.systolicBP }">
-                </h:inputText>
-                    /
-                    <h:inputText style="width:60px" id="bpBottom" value="#{encounterService.vitals.diastolicBP }">
-                    </h:inputText>
-                    <br/></td>
-            </tr>
-
-            <tr>
-                <td><strong>Heart Rate (bpm)</strong></td>
-                <td><h:inputText style="width:60px" id="heartrate" value="#{encounterService.vitals.heartRate }"/><br/>
-                </td>
-            </tr>
-
-            <tr>
-                <td><strong>Temperature (F)</strong></td>
-                <td><h:inputText style="width:60px" id="temperature"
-                                 value="#{encounterService.vitals.temperatureF }"/><br/></td>
-            </tr>
-
-            <tr>
-                <td><strong>Respirations (BPM)</strong></td>
-                <td><h:inputText style="width:60px" id="respirations"
-                                 value="#{encounterService.vitals.respRate }"/><br/></td>
-            </tr>
-        </table>
-    </div>
-</div>
-<div class="row">
-    <div class="form span6">
         <h2>HPI</h2>
         <table>
             <tr>
@@ -216,7 +182,6 @@
                     </h:selectOneMenu> ago
                 </td>
             </tr>
-
             <tr>
                 <td><strong>Severity</strong></td>
                 <td><h:selectOneMenu style="width:50px" value="#{encounterService.encounter.severity }">
@@ -264,6 +229,41 @@
                 <td><strong>ROS</strong></td>
                 <td><h:inputTextarea value="#{encounterService.encounter.other }"/></td>
             </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <!-- move vitals here -->
+    <div class="form span6">
+        <h2>Vitals</h2>
+        <table>
+        <tr>
+            <td><strong>Blood Pressure (mmHg)</strong></td>
+            <td><h:inputText style="width:60px" id="bpTop" value="#{encounterService.vitals.systolicBP }">
+            </h:inputText>
+                /
+                <h:inputText style="width:60px" id="bpBottom" value="#{encounterService.vitals.diastolicBP }">
+                </h:inputText>
+                <br/></td>
+        </tr>
+
+        <tr>
+            <td><strong>Heart Rate (bpm)</strong></td>
+            <td><h:inputText style="width:60px" id="heartrate" value="#{encounterService.vitals.heartRate }"/><br/>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Temperature (F)</strong></td>
+            <td><h:inputText style="width:60px" id="temperature"
+                             value="#{encounterService.vitals.temperatureF }"/><br/></td>
+        </tr>
+
+        <tr>
+            <td><strong>Respirations (BPM)</strong></td>
+            <td><h:inputText style="width:60px" id="respirations"
+                             value="#{encounterService.vitals.respRate }"/><br/></td>
+        </tr>
         </table>
     </div>
     <div class="form span6">
@@ -337,7 +337,7 @@
                      action="#{encounterService.resetRecord }" immediate="true"/>
 
 
-    <h:commandButton id="startNew" style="width:120px;height:50px" value="Start New Encounter"
+    <h:commandButton id="startNew" style="width:125px;height:50px" value="Start New Encounter"
                      action="#{encounterService.startEncounter}"
                      rendered="#{encounterService.newEncounter}"></h:commandButton>
 </div>
