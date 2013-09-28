@@ -69,9 +69,16 @@
 <br/><br/>
 <br/><br/>
 <br/><br/>
-<div class="center"><h1>MEDICAL</h1></div>
-<h:form id="main">
 
+<div class="center"><h1>MEDICAL</h1></div>
+
+<h:form id="main">
+<div class="center">
+    <h:commandButton action="#{pageController.moveToPageTriage}"
+                     value="Triage"/>
+    <h:commandButton action="#{pageController.moveToPagePharmacy}"
+                     value="Pharmacy"/>
+</div>
 <br/>
 
 <div class="container well">

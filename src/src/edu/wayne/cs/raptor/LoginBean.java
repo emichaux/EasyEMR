@@ -1,17 +1,14 @@
 package edu.wayne.cs.raptor;
 
-import java.io.BufferedReader;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.hibernate.Session;
 
+import javax.faces.context.FacesContext;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-
-import javax.faces.context.FacesContext;
-import javax.swing.JOptionPane;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.hibernate.Session;
 
 
 /**  This bean handles the User login and authentication against the database
@@ -27,6 +24,7 @@ public class LoginBean {
 	private String loginResult;
 	private boolean authenticated;
 	private String encryptedPassword;
+    private String adminPerms;
 	
 	private int computerID;
 	
@@ -120,6 +118,7 @@ public String authenticate() {
 				setAuthenticated(true);
 				setSystemUser(dbUsername.get(0));
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username",dbUsername.get(0));
+                adminPermissions(dbUsername.get(0));
 				//JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
 				return handleRoleToPage(dbUsername.get(0));
 			}
@@ -142,7 +141,7 @@ public String authenticate() {
 		if (user.getRoles().equals(Role.ADMIN) )
 			return "admin";
 		if (user.getRoles().equals(Role.DOCTOR) )
-			return "create";
+			return "triage";
 		if (user.getRoles().equals(Role.PHARMACIST))
 			return "pharm";
 		return "research";
@@ -156,6 +155,7 @@ public String authenticate() {
 		setAuthenticated(false);
 		setTempUserName("");
 		setTempPassword("");
+        setAdminPerms("");
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "index";
 	}
@@ -203,6 +203,20 @@ public String authenticate() {
 			this.setComputerID(100);
 		}
 	}
+
+    public void adminPermissions(User user) {
+        if (!user.getRoles().equals(Role.ADMIN)){
+            setAdminPerms("Must be an Admin to do that");
+        }
+    }
+
+    public String getAdminPerms() {
+        return adminPerms;
+    }
+
+    public void setAdminPerms(String adminPerms) {
+        this.adminPerms = adminPerms;
+    }
 			
 		
 

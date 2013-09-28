@@ -72,8 +72,16 @@
 
 
 <h:form id="main">
+    <div class="center">
+            <h:commandButton action="#{pageController.moveToPageMedical}"
+                             value="Medical"/>
+            <h:commandButton action="#{pageController.moveToPagePharmacy}"
+                             value="Pharmacy"/>
+    </div>
     <div class="center"><h1>TRIAGE</h1></div>
+
     <div class="container well">
+
         <div class="span6">
             <div class="row">
                 <div class="form span6">
@@ -156,27 +164,32 @@
                             <td><strong>Blood Pressure (mmHg)</strong></td>
                             <td><h:inputText style="width:60px" id="bpTop"
                                              value="#{encounterService.vitals.systolicBP}"></h:inputText> /
-                            <h:inputText style="width:60px" id="bpBottom" value = "#{encounterService.vitals.diastolicBP}"></h:inputText>
-                            <br/></td>
+                                <h:inputText style="width:60px" id="bpBottom"
+                                             value="#{encounterService.vitals.diastolicBP}"></h:inputText>
+                                <br/></td>
                         </tr>
 
                         <tr>
                             <td><strong>Heart Rate (bpm)</strong></td>
-                            <td><h:inputText style="width:60px" id="heartrate" value="#{encounterService.vitals.heartRate }"><br/></h:inputText></td>
+                            <td><h:inputText style="width:60px" id="heartrate"
+                                             value="#{encounterService.vitals.heartRate }"><br/></h:inputText></td>
                         </tr>
                         <tr>
                             <td><strong>Temperature (F)</strong></td>
-                            <td><h:inputText style="width:60px" id="temperature" value="#{encounterService.vitals.temperatureF }"><br/></h:inputText></td>
+                            <td><h:inputText style="width:60px" id="temperature"
+                                             value="#{encounterService.vitals.temperatureF }"><br/></h:inputText></td>
                         </tr>
 
                         <tr>
                             <td><strong>Respiration (Breadths Per Minute)</strong></td>
-                            <td><h:inputText style="width:60px" id="respiration" value="#{encounterService.vitals.respRate }"><br/></h:inputText></td>
+                            <td><h:inputText style="width:60px" id="respiration"
+                                             value="#{encounterService.vitals.respRate }"><br/></h:inputText></td>
                         </tr>
                     </table>
 
                 </div>
-            </div> <!-- row div-->
+            </div>
+            <!-- row div-->
 
         </div>
     </div>
