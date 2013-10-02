@@ -63,10 +63,10 @@
        <!-- <div class="hide">-->
 
             <center>
-            <p:dataTable var="car" value="test1" >
+            <p:dataTable var="car" value="#{encounterService.patient.firstName}" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
                 <p:column headerText="Patient First Name" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.firstName}" />
+                    <h:outputText value="car" />
                 </p:column>
 
 
@@ -86,14 +86,6 @@
             </center>
 
         <!--</div>-->
-
-
-
-
-
-
-
-
         <div class="row">
                 <div class="form span6">
                     <h3>General Information<span class="label label-default"></span></h3>
@@ -171,7 +163,7 @@
                 <div class="form span6">
                     <table>
                     <tr>
-                        <h3>Chief Complaint<span class="label label-default"></span></h3>
+                        <h3>Vitals<span class="label label-default"></span></h3>
                     </tr>
                     <table>
                         <tr>
@@ -217,9 +209,9 @@
 
 
      <div class="center">
-                <h:commandButton action="#{pageController.moveToPageMedical}"
+                <p:commandButton action="#{pageController.moveToPageMedical}"
                                  value="Medical"/>
-                <h:commandButton action="#{pageController.moveToPagePharmacy}"
+                <p:commandButton action="#{pageController.moveToPagePharmacy}"
                                  value="Pharmacy"/>
         </div>
 
