@@ -247,7 +247,7 @@
             <tr>
                 <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save &amp; Start New Patient"
                                      onclick="alert('Patient Record Submitted');"
-                                     action="#{encounterService.saveOrUpdateEncounter}"
+                                     action="#{encounterService.updateEncounter}"
                                      rendered="#{not encounterService.newEncounter}"></p:commandButton>
                 </td>
             </tr>

@@ -172,9 +172,9 @@ public class EncounterService implements IEncounterService, Serializable {
 			
 			//get the patientID once its saved and use it for encounter
 			patient.setCardID(encounter.getCardID());
-
 			patientID = (Integer)userSession.save(patient);
 			encounter.setPatientID(patientID);
+            JOptionPane.showMessageDialog(null, patientID);
 			//Really? there's a vitalsID too? Really?
 			vitals.setVitalsID(encounter.getEncounterID());
 			//Yeah really, and now it's set to be the same as encounterID
