@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
 <head>
@@ -17,7 +18,15 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#datepicker").datepicker();
+            $("#main\\:datepicker").datepicker();
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#main\\:datepicker").mask("99/99/9999");
+            $("#main\\:hin").mask("99.9");
+
+
         });
     </script>
 
@@ -45,50 +54,51 @@
 
 <body>
 
-<div class="navbar navbar-fixed-top center">
-    <div style="float: left">
-        <p><img src="./img/easyEmr_LOGO.png" height="80" width="110" alt="EasyEmr Logo"/></p>
-    </div>
-    <div class="navbar-inner">
-
-        <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
-
-
-        <div class="container-fluid">
-            <h:form>
-                <h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5>
-                </h:commandLink>
-                <h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5
-                        style="color:gray">Change My Password</h5></h:commandLink>
-            </h:form>
-        </div>
-    </div>
-</div>
-
-
-<br/><br/>
-<br/><br/>
-<br/><br/>
+<div class="center"><h3>Triage<span class="label label-default"></span></h3> </div>
 
 
 <h:form id="main">
-    <div class="center"><h1>TRIAGE</h1></div>
     <div class="container well">
-        <div class="span6">
-            <div class="row">
+        <!--Table showing results from previous patients-->
+       <!-- <div class="hide">-->
+
+            <center>
+            <p:dataTable var="car" value="#{encounterService.patient.firstName}" >
+                <!--<p:column selectionMode="single" style="width:2%" />-->
+                <p:column headerText="Patient First Name" style="width:25%">
+                    <h:outputText value="#{encounterService.patient.firstName}" />
+                </p:column>
+
+
+                <p:column headerText="Patient Last Name" style="width:25%">
+                    <h:outputText value="#{encounterService.patient.lastName}" />
+                </p:column>
+
+
+                <p:column headerText="Patient Age" style="width:25%">
+                    <h:outputText value="#{encounterService.patient.age}" />
+                </p:column>
+                <!--<f:facet name="footer">
+                <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
+                                 update=":form:displaySingle" oncomplete="PF('singleCarDialog').show()"/>
+                </f:facet>-->
+            </p:dataTable>
+            </center>
+
+        <!--</div>-->
+        <div class="row">
                 <div class="form span6">
-                    <h2>General Information</h2>
+                    <h3>General Information<span class="label label-default"></span></h3>
                     <table>
                         <tr>
-                            <td><h5 style="color:red">* Card ID </h5></td>
+                            <td><h5 style="color:#149bdf">Card ID </h5></td>
                             <td><h:inputText id="visitID" style="width:50px"
                                              value="#{encounterService.encounter.cardID}"
-                                             title="Please type in the cardID, this is a required field."
-                                             required="true"></h:inputText></td>
+                                             title="Please type in the cardID"></h:inputText></td>
                             <h:message for="visitID" style="color:red"> </h:message>
                         </tr>
                         <tr>
-                            <td><strong>* First Name</strong></td>
+                            <td><strong style="color:#149bdf">* First Name</strong></td>
                             <td><h:inputText id="patientFirstName" style="width:130px"
                                              value="#{encounterService.patient.firstName }"
                                              title="Please type the patients First Name" required="true"></h:inputText>
@@ -96,7 +106,7 @@
                             <h:message for="patientFirstName" style="color:red"> </h:message>
                         </tr>
                         <tr>
-                            <td><strong>* Last Name</strong></td>
+                            <td><strong style="color:#149bdf">* Last Name</strong></td>
                             <td><h:inputText id="patientLastName" style="width:130px"
                                              value="#{encounterService.patient.lastName }"
                                              title="Please type the patients Last Name" required="true"></h:inputText>
@@ -122,7 +132,7 @@
                         <tr>
                             <td><strong>Birth Date</strong></td>
                             <td><h:inputText id="datepicker"
-                                             value="#{encounterService.patient.birthDate }"></h:inputText> (MM/DD/YY)
+                                             value="#{encounterService.patient.birthDate }"></h:inputText><em>(MM/DD/YYYY)</em>
                             </td>
 
                         </tr>
@@ -148,40 +158,86 @@
 
                     </table>
                 </div>
+
+
                 <div class="form span6">
-                    <h2>Vitals</h2>
+                    <table>
+                    <tr>
+                        <h3>Vitals<span class="label label-default"></span></h3>
+                    </tr>
                     <table>
                         <tr>
 
                             <td><strong>Blood Pressure (mmHg)</strong></td>
                             <td><h:inputText style="width:60px" id="bpTop"
                                              value="#{encounterService.vitals.systolicBP}"></h:inputText> /
-                            <h:inputText style="width:60px" id="bpBottom" value = "#{encounterService.vitals.diastolicBP}"></h:inputText>
-                            <br/></td>
+                                <h:inputText style="width:60px" id="bpBottom"
+                                             value="#{encounterService.vitals.diastolicBP}"></h:inputText>
+                                <br/></td>
                         </tr>
 
                         <tr>
                             <td><strong>Heart Rate (bpm)</strong></td>
-                            <td><h:inputText style="width:60px" id="heartrate" value="#{encounterService.vitals.heartRate }"><br/></h:inputText></td>
+                            <td><h:inputText style="width:60px" id="heartrate"
+                                             value="#{encounterService.vitals.heartRate }"><br/></h:inputText></td>
                         </tr>
                         <tr>
                             <td><strong>Temperature (F)</strong></td>
-                            <td><h:inputText style="width:60px" id="temperature" value="#{encounterService.vitals.temperatureF }"><br/></h:inputText></td>
+                            <td><h:inputText style="width:60px" id="temperature"
+                                             value="#{encounterService.vitals.temperatureF }"><br/></h:inputText></td>
                         </tr>
 
                         <tr>
                             <td><strong>Respiration (Breadths Per Minute)</strong></td>
-                            <td><h:inputText style="width:60px" id="respiration" value="#{encounterService.vitals.respRate }"><br/></h:inputText></td>
+                            <td><h:inputText style="width:60px" id="respiration"
+                                             value="#{encounterService.vitals.respRate }"><br/></h:inputText>
+                            </td>
                         </tr>
+
+                        <tr><td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save/ Update Patient" onclick="alert('Patient Record Submitted');"
+                                action="#{encounterService.saveOrUpdateEncounter}"
+                                ></p:commandButton></td>
+
+                            <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
+                                                 action="#{encounterService.resetRecord }" immediate="true"></p:commandButton></td></tr>
+
                     </table>
-
+                    </table>
                 </div>
-            </div> <!-- row div-->
 
+            </div>
+
+            <!-- row div-->
+    </div>
+
+
+     <div class="center">
+                <p:commandButton action="#{pageController.moveToPageMedical}"
+                                 value="Medical"/>
+                <p:commandButton action="#{pageController.moveToPagePharmacy}"
+                                 value="Pharmacy"/>
+        </div>
+
+</h:form>
+<div class="navbar navbar-fixed-bottom center">
+    <div style="float: left">
+        <p><img src="./img/easyEmr_LOGO.png" height="80" width="110" alt="EasyEmr Logo"/></p>
+    </div>
+    <div class="navbar-inner">
+
+        <h5 style="float:left">Hello, <h:outputLabel style="color:#149bdf" value="#{loginBean.systemUser.firstName }"/></h5>
+
+
+        <div class="container-fluid">
+            <h:form>
+                <h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5>
+                </h:commandLink>
+                <h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5
+                        style="color:gray">Change My Password</h5></h:commandLink>
+            </h:form>
         </div>
     </div>
-</h:form>
-
+</div>
 
 </body>
 </html>
