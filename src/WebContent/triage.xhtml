@@ -194,9 +194,12 @@
                             </td>
                         </tr>
 
-                        <tr><td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save &amp; Start New Patient" onclick="alert('Patient Record Submitted');"
+                        <tr><td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save/ Update Patient" onclick="alert('Patient Record Submitted');"
                                 action="#{encounterService.saveOrUpdateEncounter}"
-                                ></p:commandButton></td></tr>
+                                ></p:commandButton></td>
+
+                            <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
+                                                 action="#{encounterService.resetRecord }" immediate="true"></p:commandButton></td></tr>
 
                     </table>
                     </table>
@@ -216,7 +219,7 @@
         </div>
 
 </h:form>
-<div class="navbar navbar-static-bottom center">
+<div class="navbar navbar-fixed-bottom center">
     <div style="float: left">
         <p><img src="./img/easyEmr_LOGO.png" height="80" width="110" alt="EasyEmr Logo"/></p>
     </div>

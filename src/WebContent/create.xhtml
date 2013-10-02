@@ -250,20 +250,16 @@
                                      action="#{encounterService.updateEncounter}"
                                      rendered="#{not encounterService.newEncounter}"></p:commandButton>
                 </td>
-            </tr>
-            <tr>
-                <td><p:commandButton id="newPatient" style="width:120px;height:50px" value="Reset Form"
+
+                <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
                                      action="#{encounterService.resetRecord }" immediate="true"></p:commandButton>
 
                 </td>
-            </tr>
-            <tr>
-                <td><p:commandButton id="startNew" style="width:125px;height:50px" value="Start New Encounter"
+                <td><p:commandButton id="startNew" styleClass="ui-icon-search" value="Start New Encounter"
                                      action="#{encounterService.startEncounter}"
                                      rendered="#{encounterService.newEncounter}"></p:commandButton>
                 </td>
             </tr>
-
         </table>
     </div>
 

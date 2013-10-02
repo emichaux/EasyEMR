@@ -98,6 +98,7 @@ public class EncounterService implements IEncounterService, Serializable {
 			userSession.update(patient);
 			encounter.setCardID(this.patient.getCardID());// Added @RD
 			encounter.setPatientID(this.patient.getPatientID());
+            System.out.println(encounter.getPatientID());
 			vitals.setVitalsID(encounter.getEncounterID());
 			userSession.save(encounter);
 			vitals.setEncounterID(this.encounter.getEncounterID());
@@ -174,7 +175,6 @@ public class EncounterService implements IEncounterService, Serializable {
 			patient.setCardID(encounter.getCardID());
 			patientID = (Integer)userSession.save(patient);
 			encounter.setPatientID(patientID);
-            JOptionPane.showMessageDialog(null, patientID);
 			//Really? there's a vitalsID too? Really?
 			vitals.setVitalsID(encounter.getEncounterID());
 			//Yeah really, and now it's set to be the same as encounterID
@@ -467,7 +467,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		patient = new Patient();
 		encounter = new Encounter();
 		vitals = new Vitals();
-		return "patientSearch"; // This will determine which page is returned to following executing of the method ~ RD
+		return "triage"; // This will determine which page is returned to following executing of the method ~ RD
 	}
 	
 	/***********************************/
