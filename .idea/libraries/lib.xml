@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/libs/servlet-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/libs/junit-4.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/antlr-2.7.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

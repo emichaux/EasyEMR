@@ -61,20 +61,22 @@
     <div class="container well">
         <!--Table showing results from previous patients-->
        <!-- <div class="hide">-->
-        <h:form>
+
             <center>
             <p:dataTable var="car" value="test1" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
                 <p:column headerText="Patient First Name" style="width:25%">
-                    <h:outputText value="First" />
+                    <h:outputText value="#{encounterService.patient.firstName}" />
                 </p:column>
+
 
                 <p:column headerText="Patient Last Name" style="width:25%">
-                    <h:outputText value="Last" />
+                    <h:outputText value="#{encounterService.patient.lastName}" />
                 </p:column>
 
+
                 <p:column headerText="Patient Age" style="width:25%">
-                    <h:outputText value="100" />
+                    <h:outputText value="#{encounterService.patient.age}" />
                 </p:column>
                 <!--<f:facet name="footer">
                 <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
@@ -82,7 +84,7 @@
                 </f:facet>-->
             </p:dataTable>
             </center>
-        </h:form>
+
         <!--</div>-->
 
 
@@ -200,8 +202,9 @@
                             </td>
                         </tr>
 
-                        <tr><td><button type="button" class="btn btn-default">Save &amp; Start New Patient</button></td></tr>
-
+                        <tr><td><p:commandButton styleClass="ui-priority-primary" id="submit" value="Save &amp; Start New Patient" onclick="alert('Patient Record Submitted');"
+                                action="#{encounterService.saveOrUpdateEncounter}"
+                                rendered="#{not encounterService.newEncounter}"></p:commandButton></td></tr>
 
                     </table>
                     </table>

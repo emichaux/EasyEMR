@@ -7,7 +7,7 @@
           <element id="module-output" name="EasyEMR" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="weblib" />
+          <element id="library" level="project" name="projectlibs" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="EasyEMR/web/Web" />

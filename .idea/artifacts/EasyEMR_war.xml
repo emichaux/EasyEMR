@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="EasyEMR:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/EasyEMR_war</output-path>
+    <root id="archive" name="EasyEMR_war.war">
+      <element id="artifact" artifact-name="EasyEMR:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="projectlibs" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

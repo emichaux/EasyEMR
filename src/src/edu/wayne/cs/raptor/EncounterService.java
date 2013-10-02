@@ -213,7 +213,7 @@ public class EncounterService implements IEncounterService, Serializable {
 			encounter = new Encounter();
 			
 			//return "create" to go back to create.jsp after the create patient form is submitted
-			return "create";
+			return "triage";
 		}
 		errorPreventedInsert = false;
 		return null;
@@ -297,7 +297,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		this.newEncounter = newEncounter;
 	}
 
-	/**Method called when search button is clicked, takes you to 
+	/**Method called when search button is clicked, takes you to
 	 *  table with the list of prev. encounters for the patient, 
 	 *  select an Encounter, view its info. 
 	 *  Then start a new encounter 

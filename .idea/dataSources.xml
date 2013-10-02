@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3704160962">
-    <data-source source="LOCAL" name="WebContent:WEB-INF:classes:hibernate.cfg.xml" product="MySQL" version="5.6.10" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.22 ( Revision: ${bzr.revision-id} )" uuid="1b4d57f0-b99b-4c79-8820-c7641bb4e435">
+  <component name="DataSourceManagerImpl" format="xml" hash="942947875">
+    <data-source source="LOCAL" name="WebContent:WEB-INF:classes:hibernate.cfg.xml" product="MySQL" version="5.5.32-0ubuntu0.12.04.1" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.22 ( Revision: ${bzr.revision-id} )" uuid="fdf2ed44-da03-49d4-b31d-1d493e24c5ef">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/test</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/test</jdbc-url>
       <user-name>root</user-name>
-      <user-password>dfc7dfd3dfd9dfe5dfd8dfc5dfc9dfc2dfc3dfc4dfcbdfdedfc3dfc5dfc4df9adf99df9a</user-password>
+      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
       <libraries>
         <library>
           <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/antlr-2.7.7.jar!/</url>
@@ -40,19 +40,19 @@
           <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar!/</url>
         </library>
         <library>
-          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/javassist-3.15.0-GA.jar!/</url>
+          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/jboss-logging-3.1.0.GA.jar!/</url>
         </library>
         <library>
-          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/jboss-logging-3.1.0.GA.jar!/</url>
+          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/javassist-3.15.0-GA.jar!/</url>
         </library>
         <library>
           <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/jboss-transaction-api_1.1_spec-1.0.0.Final.jar!/</url>
         </library>
         <library>
-          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/jstl-1.1.2.jar!/</url>
+          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/myfaces-bundle-2.1.11.jar!/</url>
         </library>
         <library>
-          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/myfaces-bundle-2.1.11.jar!/</url>
+          <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/jstl-1.1.2.jar!/</url>
         </library>
         <library>
           <url>jar://$PROJECT_DIR$/src/WebContent/WEB-INF/lib/mysql-connector-java-5.1.22-bin.jar!/</url>
