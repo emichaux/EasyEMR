@@ -35,7 +35,7 @@
 <br /><br />
 				
 <div class= "container">	
-		<div class= "well span6 center">
+		<div class= "well span7 center">
 		<h:form>
 			<h1><font color="red">
 			<h:outputText value="#{pharmacyEncounterService.encounterIDText }"></h:outputText></font></h1>
@@ -44,8 +44,8 @@
 			<h:message for="firstName" style="color:red"> </h:message>
 			<h:message for="lastName" style="color:red"> </h:message>
 			
-			<center><h4 style="">Create RX Record</h4></center><br />
-			<center>
+			<div class="center"><h4 style="">Create RX Record</h4></div><br />
+			<div class="center">
 			<table>
 			
 			<tr>
@@ -107,7 +107,7 @@
 				
 				
 			</table>
-			</center>
+			</div>
 			<br />
 			
 		<h:commandButton id="submit"   value="Submit" action="#{pharmacyEncounterService.dataToDatabase }"></h:commandButton>
@@ -115,9 +115,9 @@
 		</div>		
 	</div>
 
-	<center>
+	<div class="center">
 	<a href="HelpInformation.pdf">Need Help?</a>
-	</center>
+	</div>
 	
 </body>
 </html>
