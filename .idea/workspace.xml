@@ -9,26 +9,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28b7b714-8377-4c75-997c-7825a1fb1c87" name="Default" comment="Triage page added. &#10;Titles for each page added.&#10;width of container on pharmTest page increased.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/EasyEMR_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/weblib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/projectlibs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EasyEMR.iml" afterPath="$PROJECT_DIR$/src/EasyEMR.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/EasyEMR_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/EasyEMR_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/EncounterService.java" afterPath="$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/EncounterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml" afterPath="$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/WEB-INF/classes/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/WebContent/WEB-INF/classes/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="28b7b714-8377-4c75-997c-7825a1fb1c87" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebContent/triage.xhtml" afterPath="$PROJECT_DIR$/src/WebContent/triage.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="85c671e6-a5b9-4b7d-b22c-646955aa5ddc" name="Failed commit: Default" comment="Merge branch 'JQuery' into Addition-of-JQuery-etc&#10;&#10;Conflicts:&#10;&#9;src/libs/databaseCreationScript.sql&#10;" />
     <ignored path="CSC4996-4997-Winter2013-CITO.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380681737625" ignored="false" />
+    <file path="/Dummy.txt" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380714137442" ignored="false" />
     <file path="/Patient.java" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379002610582" ignored="false" />
     <file path="/web.xml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379877293972" ignored="false" />
     <file path="$PROJECT_DIR$/src/libs/myfaces-api-2.1.12.jar!/javax/faces/FactoryFinder.class" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379027226114" ignored="false" />
@@ -54,7 +42,7 @@
     <file path="/pharmTest.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380051352075" ignored="false" />
     <file path="/research.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816198360" ignored="false" />
     <file path="/searchPage.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816212153" ignored="false" />
-    <file path="/triage.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380690218408" ignored="false" />
+    <file path="/triage.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380724089213" ignored="false" />
     <file path="/usersDisplay.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816257271" ignored="false" />
     <file path="/index.xhtml" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1379816272196" ignored="false" />
     <file path="/UserService.java" changelist="28b7b714-8377-4c75-997c-7825a1fb1c87" time="1380051055317" ignored="false" />
@@ -129,35 +117,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="triage.xhtml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="triage.xhtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="7" selection-start="1756" selection-end="1756" vertical-scroll-proportion="-4.0384617">
+            <state line="194" column="15" selection-start="8401" selection-end="8401" vertical-scroll-proportion="0.5424837">
               <folding>
-                <marker date="1380691775000" expanded="true" signature="1970:1979" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="2159:2168" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="2341:2350" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="3158:3168" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="3419:3428" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="3666:3677" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="3994:4003" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="4239:4250" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="4564:4573" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="7491:7501" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="7674:7684" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="8033:8043" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="8357:8367" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="8705:8715" placeholder="{...}" />
-                <marker date="1380691775000" expanded="true" signature="10009:10022" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="1970:1979" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="2159:2168" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="2341:2350" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="3158:3168" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="3419:3428" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="3666:3677" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="3994:4003" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="4239:4250" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="4564:4573" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="7491:7501" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="7674:7684" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="8033:8043" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="8357:8367" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="8705:8715" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="8970:8984" placeholder="{...}" />
+                <marker date="1380724096000" expanded="true" signature="10004:10017" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EncounterService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EncounterService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/EncounterService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="294" column="26" selection-start="8108" selection-end="8108" vertical-scroll-proportion="0.9339207">
+            <state line="325" column="58" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -166,7 +155,7 @@
       <file leaf-file-name="pharm.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WebContent/pharm.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="100" selection-start="7315" selection-end="7315" vertical-scroll-proportion="-0.625">
+            <state line="172" column="100" selection-start="7315" selection-end="7315" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1380647731000" expanded="true" signature="684:693" placeholder="{...}" />
                 <marker date="1380647731000" expanded="true" signature="1992:2001" placeholder="{...}" />
@@ -222,8 +211,8 @@
         <option value="$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml" />
         <option value="$PROJECT_DIR$/src/WebContent/admin.xhtml" />
         <option value="db-console:/f8e8471/fdf2ed44-da03-49d4-b31d-1d493e24c5ef/" />
-        <option value="$PROJECT_DIR$/src/WebContent/triage.xhtml" />
         <option value="$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/EncounterService.java" />
+        <option value="$PROJECT_DIR$/src/WebContent/triage.xhtml" />
       </list>
     </option>
   </component>
@@ -391,8 +380,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,12 +398,12 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -433,121 +422,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Mrgadgetz\IdeaProjects\EasyEMR\src\WebContent\WEB-INF\classes" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/WebContent/create.xhtml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/WebContent/index.xhtml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/WebContent/triage.xhtml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/LoginBean.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
   </component>
   <component name="RunManager" selected="JBoss Server.JBoss 7.2.0.Final-redhat-8">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -576,19 +450,6 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -615,6 +476,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -660,12 +534,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
       <deployment />
       <server-settings />
@@ -675,6 +543,12 @@
       <predefined_log_file id="Tomcat Host Manager" enabled="false" />
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="JBoss 7.2.0.Final-redhat-8" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 6.1">
@@ -861,18 +735,22 @@
       <created>1380073254148</created>
       <updated>1380073254148</updated>
     </task>
+    <task id="LOCAL-00001" summary="added submit action to triage page.  works.  added code to display user info in column on triage page but doesn't display.">
+      <created>1380692344126</created>
+      <updated>1380692344126</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35673353" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31947196" sideWeight="0.2729805" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.074074075" sideWeight="0.6990679" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.074074075" sideWeight="0.70039946" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3499327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -889,10 +767,11 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956153" sideWeight="0.7799443" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756326" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1973064" sideWeight="0.6990679" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30093208" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1973064" sideWeight="0.70039946" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29960054" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35673353" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41544607" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -941,7 +820,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Triage page added. &#10;Titles for each page added.&#10;width of container on pharmTest page increased." />
+    <option name="LAST_COMMIT_MESSAGE" value="added submit action to triage page.  works.  added code to display user info in column on triage page but doesn't display." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -963,6 +842,7 @@
     <MESSAGE value="Fixed html issues in the researcher.xhtml page." />
     <MESSAGE value="Making sure files are up to date." />
     <MESSAGE value="Triage page added. &#10;Titles for each page added.&#10;width of container on pharmTest page increased." />
+    <MESSAGE value="added submit action to triage page.  works.  added code to display user info in column on triage page but doesn't display." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -981,22 +861,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/faces-config.xml">
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="27" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
+        <state line="7" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
       </provider>
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
         <state />
@@ -1004,18 +873,16 @@
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/libs/databaseCreationScript.sql">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="103" column="59" selection-start="3543" selection-end="4824" vertical-scroll-proportion="0.46625766" />
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="jar:///usr/local/java/jdk1.7.0_40/src.zip!/java/awt/GraphicsEnvironment.java">
@@ -1046,25 +913,14 @@
     <entry file="file://$PROJECT_DIR$/src/WebContent/admin.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="115" column="27" selection-start="4896" selection-end="4896" vertical-scroll-proportion="-10.291667">
-          <folding>
-            <marker date="1380650950000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380650950000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380650950000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380650950000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380650950000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380650950000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/index.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="26" selection-start="1550" selection-end="1550" vertical-scroll-proportion="-18.166666">
-          <folding>
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1078,63 +934,20 @@
     <entry file="file://$PROJECT_DIR$/src/WebContent/create.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="335" column="86" selection-start="14245" selection-end="14249" vertical-scroll-proportion="-2.5192308">
-          <folding>
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380687016000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/patientSearch.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1380073234000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380073234000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380073234000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380073234000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380073234000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1380073234000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://db-console:/f8e8471/fdf2ed44-da03-49d4-b31d-1d493e24c5ef/">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="29" selection-start="0" selection-end="29" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="29" selection-start="0" selection-end="29" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/LoginBean.java">
@@ -1146,7 +959,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WebContent/pharm.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="100" selection-start="7315" selection-end="7315" vertical-scroll-proportion="-0.625">
+        <state line="172" column="100" selection-start="7315" selection-end="7315" vertical-scroll-proportion="0.0">
           <folding>
             <marker date="1380647731000" expanded="true" signature="684:693" placeholder="{...}" />
             <marker date="1380647731000" expanded="true" signature="1992:2001" placeholder="{...}" />
@@ -1163,33 +976,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/EncounterService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="7" selection-start="1756" selection-end="1756" vertical-scroll-proportion="-4.0384617">
-          <folding>
-            <marker date="1380691775000" expanded="true" signature="1970:1979" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="2159:2168" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="2341:2350" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="3158:3168" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="3419:3428" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="3666:3677" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="3994:4003" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="4239:4250" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="4564:4573" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="7491:7501" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="7674:7684" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="8033:8043" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="8357:8367" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="8705:8715" placeholder="{...}" />
-            <marker date="1380691775000" expanded="true" signature="10009:10022" placeholder="{...}" />
-          </folding>
+        <state line="325" column="58" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/edu/wayne/cs/raptor/EncounterService.java">
+    <entry file="file://$PROJECT_DIR$/src/WebContent/img/easyEmr_LOGO.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WebContent/triage.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="294" column="26" selection-start="8108" selection-end="8108" vertical-scroll-proportion="0.9339207">
-          <folding />
+        <state line="194" column="15" selection-start="8401" selection-end="8401" vertical-scroll-proportion="0.5424837">
+          <folding>
+            <marker date="1380724096000" expanded="true" signature="1970:1979" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="2159:2168" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="2341:2350" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="3158:3168" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="3419:3428" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="3666:3677" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="3994:4003" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="4239:4250" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="4564:4573" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="7491:7501" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="7674:7684" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="8033:8043" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="8357:8367" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="8705:8715" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="8970:8984" placeholder="{...}" />
+            <marker date="1380724096000" expanded="true" signature="10004:10017" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
