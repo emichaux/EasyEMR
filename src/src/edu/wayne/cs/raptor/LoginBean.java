@@ -3,7 +3,9 @@ package edu.wayne.cs.raptor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -74,7 +76,7 @@ public class LoginBean {
 	}
 
 
-	/** Authenticate user */
+      /** Authenticate user */
 public String authenticate() {
 	
 		
@@ -119,7 +121,7 @@ public String authenticate() {
 				setSystemUser(dbUsername.get(0));
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username",dbUsername.get(0));
                 adminPermissions(dbUsername.get(0));
-				//JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
 				return handleRoleToPage(dbUsername.get(0));
 			}
 			//  If password incorrect
@@ -217,7 +219,9 @@ public String authenticate() {
     public void setAdminPerms(String adminPerms) {
         this.adminPerms = adminPerms;
     }
-			
+
+
+
 		
 
 	
