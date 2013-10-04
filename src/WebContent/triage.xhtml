@@ -63,7 +63,7 @@
        <!-- <div class="hide">-->
 
             <center>
-            <p:dataTable var="car" value="#{encounterService.patient.firstName}" >
+            <p:dataTable var="car" value="#{encounterService.searchList}" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
                 <p:column headerText="Patient First Name" style="width:25%">
                     <h:outputText value="#{encounterService.patient.firstName}" />
@@ -99,9 +99,23 @@
                         </tr>
                         <tr>
                             <td><strong style="color:#149bdf">* First Name</strong></td>
-                            <td><h:inputText id="patientFirstName" style="width:130px"
+                            <td>
+
+
+
+
+
+                                <p:inputText id="firstname" value="#{encounterService.patient.firstName}">
+                                    <p:ajax event="keyup" update="out"
+                                            listener="#{encounterService.searchPatientsF}"/>
+                                </p:inputText>
+
+                                <h:outputText id="out" value="#{encounterService.patient.firstName}" />
+
+
+                                <!--<h:inputText id="patientFirstName" style="width:130px"
                                              value="#{encounterService.patient.firstName }"
-                                             title="Please type the patients First Name" required="true"></h:inputText>
+                                             title="Please type the patients First Name" required="true"></h:inputText>-->
                             </td>
                             <h:message for="patientFirstName" style="color:red"> </h:message>
                         </tr>
