@@ -3,230 +3,240 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
+<h:head>
     <link href="./css/bootstrap.css" rel="stylesheet"/>
     <title>Easy EMR</title>
-</head>
+</h:head>
 
-<body>
+<h:body>
+    <p:layout fullPage="true">
 
-<div class="navbar navbar-fixed-top center">
-    <div style="float: left">
-        <p><img src="./img/easyEmr_LOGO.png" height="80" width="110" alt="EasyEmr Logo"/></p>
-    </div>
-    <div class="navbar-inner">
+        <p:layoutUnit position="center">
 
-        <h5 style="float:left">Hello, <h:outputLabel style="color:red" value="#{loginBean.systemUser.firstName }"/></h5>
+            <div class="container well">
 
+                <div class="center"><h3>Pharmacy</h3></div>
 
-        <div class="container-fluid">
-            <h:form>
-                <h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5>
-                </h:commandLink>
-                <h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5
-                        style="color:gray">Change My Password</h5></h:commandLink>
-            </h:form>
-        </div>
-    </div>
-</div>
+                <h:form>
+                    <h4>Search:</h4><br/>
+                    Card ID <h:inputText id="cardID" style="width:85px" value="#{encounterService.searchPatientCardID }"/>
+                    <h:commandButton id="searchCard" value="Search" action="#{encounterService.searchCardID2 }">
+                    </h:commandButton>
+                </h:form>
 
-<br/><br/>
-<br/><br/>
-<br/><br/>
+                <p:dataTable id="dataTable" var="patient" value="#{encounterService.patientList}" paginator="true" rows="10">
 
-<div class="container">
-    <div class="center">
-        <h:form>
-            <h:commandButton action="#{pageController.moveToPageTriage}"
-                             value="Triage"/>
-            <h:commandButton action="#{pageController.moveToPageMedical}"
-                             value="Medical"/>
-        </h:form>
-    </div>
-    <div class="center"><h1>PHARMACY PAGE</h1></div>
-    <div class="well span7 center">
-        <h:form>
-            <h1><font color="red">
-                <h:outputText value="#{pharmacyEncounterService.encounterIDText }"></h:outputText></font></h1>
-            <h5><font color="red"><h:outputText value="#{pharmacyEncounterService.recordIDInstruction }"></h:outputText>
-            </font></h5>
-            <h:message for="firstName" style="color:red"> </h:message>
-            <h:message for="lastName" style="color:red"> </h:message>
+                    <f:facet name="header">
+                        Patient Search
+                    </f:facet>
 
-            <center><h4 style="">Create RX Record</h4></center>
-            <br/>
-
-        </h:form>
-        <center>
-            <h:form>
-                <h4>Search:</h4><br/>
-                Card ID <h:inputText id="cardID" style="width:85px" value="#{encounterService.searchPatientCardID }"/>
-                <h:commandButton id="searchCard" value="Search" action="#{encounterService.searchCardID2 }">
-                </h:commandButton>
-            </h:form>
-            <h:form>
-                <h:dataTable value="#{encounterService.patientList}" var="patient"
-                             styleClass="order-table"
-                             headerClass="order-table-header"
-                             rowClasses="order-table-odd-row,order-table-even-row">
-                    <h:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Patient ID"/>
                         </f:facet>
                         <h:outputText value="#{patient.patientID }"/>
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="First Name"/>
                         </f:facet>
                         <h:outputText value="#{patient.firstName}"/>
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Last Name"/>
                         </f:facet>
                         <h:outputText value="#{patient.lastName}"/>
-                    </h:column>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:column>
                                 <h:outputText value="Actions"/>
                             </h:column>
                         </f:facet>
                         <h:panelGrid columns="2">
-                            <h:commandLink value="Select" action="#{encounterService.selectPatient2}">
+                            <p:commandLink value="Select" action="#{encounterService.selectPatient2}">
                                 <f:setPropertyActionListener target="#{encounterService.patient}" value="#{patient}"/>
-                            </h:commandLink>
+                            </p:commandLink>
 
                         </h:panelGrid>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-            <h:form><h:dataTable value="#{encounterService.searchList}" var="encounter"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
-                <h:column>
+                    </p:column>
+
+                </p:dataTable>
+                <p:blockUI block="dataTable" trigger="dataTable">
+                    LOADING<br />
+                    <p:graphicImage value="/images/ajax-loader.gif"/>
+                </p:blockUI>
+
+                <br></br>
+                <p:dataTable id="dataTable2" var="encounter" value="#{encounterService.searchList}" paginator="true" rows="10">
+
                     <f:facet name="header">
-                        <h:column>
-                            <h:outputText value="Encounter Id"/>
-                        </h:column>
+                        Patient Encounter
                     </f:facet>
-                    <h:outputText value="#{encounter.encounterID}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Encounter ID"/>
+                        </f:facet>
+                        <h:outputText value="#{encounter.encounterID}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
                             <h:outputText value="Chief Complaint"/>
-                        </h:column>
-                    </f:facet>
-                    <h:outputText value="#{encounter.chiefComplaint}"/>
-                </h:column>
+                        </f:facet>
+                        <h:outputText value="#{encounter.chiefComplaint}"/>
+                    </p:column>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:column>
-                            <h:outputText value="Actions"/>
-                        </h:column>
-                    </f:facet>
-                    <h:panelGrid columns="2">
-                        <h:commandLink value="Select"
-                                       action="#{encounterService.selectEncounter2}">
-                            <f:setPropertyActionListener
-                                    target="#{encounterService.encounter}" value="#{encounter}"/>
-                        </h:commandLink>
-                    </h:panelGrid>
-                </h:column>
-            </h:dataTable>
-            </h:form>
-            <h:form>
-                <table>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:column>
+                                <h:outputText value="Actions"/>
+                            </h:column>
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <p:commandLink value="Select" action="#{encounterService.selectPatient2}">
+                                <f:setPropertyActionListener target="#{encounterService.encounter}" value="#{encounter}"/>
+                            </p:commandLink>
+                        </h:panelGrid>
+                    </p:column>
 
-                    <tr>
-                        <td><h5>First Name</h5></td>
-                        <td><h5>Last Name</h5></td>
-                    </tr>
+                </p:dataTable>
+                <p:blockUI block="dataTable" trigger="dataTable">
+                    LOADING<br />
+                    <p:graphicImage value="/images/ajax-loader.gif"/>
+                </p:blockUI>
 
-                    <tr>
-                        <td><h:inputText style="width:160px" id="firstName"
-                                         value="#{pharmacyEncounterService.firstName }" required="true"/></td>
-                        <td><h:inputText style="width:160px" id="lastName" value="#{pharmacyEncounterService.lastName }"
-                                         required="true"/></td>
-                    </tr>
+                <center>
+                <h:form>
+                    <table>
 
+                        <tr>
+                            <td><h5>First Name</h5></td>
+                            <td><h5>Last Name</h5></td>
+                        </tr>
 
-                    <tr>
-                        <td><h5>Problem List</h5></td>
-                        <td><h5>Prescription</h5></td>
-                        <td><h5>Medication Given</h5></td>
-                    </tr>
-
-                    <tr>
-                        <td><h:outputLabel value="#{encounterService.encounter.condition1}"></h:outputLabel></td>
-                        <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed1}"></h:outputLabel>
-                        </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven1"
-                                         value="#{pharmacyEncounterService.medDispensed1 }"/></td>
-
-                    </tr>
-
-                    <tr>
-                        <td><h:outputLabel value="#{encounterService.encounter.condition2}"></h:outputLabel></td>
-                        <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed2}"></h:outputLabel>
-                        </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven2"
-                                         value="#{pharmacyEncounterService.medDispensed2 }"/></td>
-
-                    </tr>
-
-                    <tr>
-                        <td><h:outputLabel value="#{encounterService.encounter.condition3}"></h:outputLabel></td>
-                        <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed3}"></h:outputLabel>
-                        </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven3"
-                                         value="#{pharmacyEncounterService.medDispensed3 }"/></td>
-
-                    </tr>
+                        <tr>
+                            <td><h:inputText style="width:160px" id="firstName"
+                                             value="#{pharmacyEncounterService.firstName }" required="true"/></td>
+                            <td><h:inputText style="width:160px" id="lastName" value="#{pharmacyEncounterService.lastName }"
+                                             required="true"/></td>
+                        </tr>
 
 
-                    <tr>
-                        <td><h:outputLabel value="#{encounterService.encounter.condition4}"></h:outputLabel></td>
-                        <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed4}"></h:outputLabel>
-                        </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven4"
-                                         value="#{pharmacyEncounterService.medDispensed4 }"/></td>
+                        <tr>
+                            <td><h5>Problem List</h5></td>
+                            <td><h5>Prescription</h5></td>
+                            <td><h5>Medication Given</h5></td>
+                        </tr>
 
-                    </tr>
+                        <tr>
+                            <td><h:outputLabel value="#{encounterService.encounter.condition1}"></h:outputLabel></td>
+                            <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed1}"></h:outputLabel>
+                            </td>
+                            <td><h:inputText style="width:160px" id="prescriptionGiven1"
+                                             value="#{pharmacyEncounterService.medDispensed1 }"/></td>
 
-                    <tr>
-                        <td><h:outputLabel value="#{encounterService.encounter.condition5}"></h:outputLabel></td>
-                        <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed5}"></h:outputLabel>
-                        </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven5"
-                                         value="#{pharmacyEncounterService.medDispensed5 }"/></td>
-                    </tr>
+                        </tr>
+
+                        <tr>
+                            <td><h:outputLabel value="#{encounterService.encounter.condition2}"></h:outputLabel></td>
+                            <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed2}"></h:outputLabel>
+                            </td>
+                            <td><h:inputText style="width:160px" id="prescriptionGiven2"
+                                             value="#{pharmacyEncounterService.medDispensed2 }"/></td>
+
+                        </tr>
+
+                        <tr>
+                            <td><h:outputLabel value="#{encounterService.encounter.condition3}"></h:outputLabel></td>
+                            <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed3}"></h:outputLabel>
+                            </td>
+                            <td><h:inputText style="width:160px" id="prescriptionGiven3"
+                                             value="#{pharmacyEncounterService.medDispensed3 }"/></td>
+
+                        </tr>
 
 
-                </table>
+                        <tr>
+                            <td><h:outputLabel value="#{encounterService.encounter.condition4}"></h:outputLabel></td>
+                            <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed4}"></h:outputLabel>
+                            </td>
+                            <td><h:inputText style="width:160px" id="prescriptionGiven4"
+                                             value="#{pharmacyEncounterService.medDispensed4 }"/></td>
 
-                <br/>
+                        </tr>
 
-                <h:commandButton id="submit" value="Submit"
-                                 action="#{pharmacyEncounterService.dataToDatabase }"></h:commandButton>
-            </h:form>
-        </center>
-    </div>
-</div>
+                        <tr>
+                            <td><h:outputLabel value="#{encounterService.encounter.condition5}"></h:outputLabel></td>
+                            <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed5}"></h:outputLabel>
+                            </td>
+                            <td><h:inputText style="width:160px" id="prescriptionGiven5"
+                                             value="#{pharmacyEncounterService.medDispensed5 }"/></td>
+                        </tr>
 
-<center>
 
-    <a href="HelpInformation.pdf">Need Help?</a>
-</center>
+                    </table>
 
-</body>
+                    <br/>
+
+                    <h:commandButton id="submit" value="Submit"
+                                     action="#{pharmacyEncounterService.dataToDatabase }"></h:commandButton>
+                </h:form>
+                </center>
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </p:layoutUnit>
+
+        <p:layoutUnit position="south" size="150" header="Navigation Bar" collapsible="true">
+
+            <div class="center">
+                <p:commandButton action="#{pageController.moveToPageMedical}" value="Medical"/>
+                <p:commandButton action="#{pageController.moveToPageTriage}" value="Triage"/>
+
+                <div style="float: left">
+                    <h:form>
+                        <h:panelGrid columns="4" cellpadding="2">
+                            <p><img src="./img/easyEmr_LOGO.png" height="80" width="110" alt="EasyEmr Logo"/></p>
+                            <h:outputLabel value="Hello," style="font-weight:bold"/>
+                            <h:outputText style="color:#149bdf" value="#{loginBean.systemUser.firstName }"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+
+                <div style="float: right">
+                    <h:form>
+                        <p:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5></p:commandLink>
+                        <p:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5 style="color:gray">Change My Password</h5></p:commandLink>
+                    </h:form>
+                </div>
+
+            </div>
+
+        </p:layoutUnit>
+
+    </p:layout>
+
+</h:body>
+
 </html>
+
+
+
+
