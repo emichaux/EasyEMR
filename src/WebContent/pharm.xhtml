@@ -17,9 +17,6 @@
         <p:layoutUnit position="center">
 
             <div class="container well">
-
-                <div class="center"><h3>Pharmacy</h3></div>
-
                 <h:form>
                     <h4>Search:</h4><br/>
                     Card ID <h:inputText id="cardID" style="width:85px" value="#{encounterService.searchPatientCardID }"/>
@@ -57,7 +54,7 @@
                     <p:column>
                         <f:facet name="header">
                             <h:column>
-                                <h:outputText value="Actions"/>
+                                <h:outputText value="Action"/>
                             </h:column>
                         </f:facet>
                         <h:panelGrid columns="2">
@@ -98,7 +95,7 @@
                     <p:column>
                         <f:facet name="header">
                             <h:column>
-                                <h:outputText value="Actions"/>
+                                <h:outputText value="Action"/>
                             </h:column>
                         </f:facet>
                         <h:panelGrid columns="2">
@@ -193,23 +190,15 @@
                 </center>
 
             </div>
-
-
-
-
-
-
-
-
-
         </p:layoutUnit>
 
+        <!-- Begin Navigation bar, use position to place on north south east west of the page -->
         <p:layoutUnit position="south" size="150" header="Navigation Bar" collapsible="true">
 
             <div class="center">
-                <p:commandButton action="#{pageController.moveToPageMedical}" value="Medical"/>
                 <p:commandButton action="#{pageController.moveToPageTriage}" value="Triage"/>
-
+                <p:commandButton action="#{pageController.moveToPageMedical}" value="Medical"/>
+                <p:commandButton action="#{pageController.moveToPagePharmacy}" value="Pharmacy" style="color:blue"/>
                 <div style="float: left">
                     <h:form>
                         <h:panelGrid columns="4" cellpadding="2">

@@ -150,6 +150,10 @@ public class UserService implements IUserService {
 		if(this.login.getSystemUser().getRoles().equals(Role.PHARMACIST)){
 			return "pharm";
 		}
+
+        if(this.login.getSystemUser().getRoles().equals(Role.NURSE)){
+            return "triage";
+        }
 		
 		return "research";
 

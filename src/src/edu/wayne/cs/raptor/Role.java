@@ -13,7 +13,9 @@ public class Role {
 	
 	public static final String ADMIN = "System Administrator";
 	
-	public static final String DOCTOR = "Medical Student"; 
+	public static final String DOCTOR = "Medical Doctor";
+
+    public static final String NURSE = "Medical Student";
 	
 	public static final String PHARMACIST = "Pharmacist";
 	

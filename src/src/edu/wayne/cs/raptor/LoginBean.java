@@ -3,9 +3,7 @@ package edu.wayne.cs.raptor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -152,9 +150,11 @@ public String authenticate() {
 		if (user.getRoles().equals(Role.ADMIN) )
 			return "admin";
 		if (user.getRoles().equals(Role.DOCTOR) )
-			return "triage";
+			return "create";
 		if (user.getRoles().equals(Role.PHARMACIST))
 			return "pharm";
+        if (user.getRoles().equals(Role.NURSE))
+            return "triage";
 		return "research";
 	}
 	
