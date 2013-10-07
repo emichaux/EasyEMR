@@ -59,24 +59,20 @@
        <!-- <div class="hide">-->
 
             <center>
-            <p:dataTable var="car" value="#{encounterService.searchList}" rendered="false" >
+            <p:dataTable var="PatientSearchTable" value="#{encounterService.patientResult}" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
-                <p:column headerText="Patient First Name" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.firstName}" />
+                <p:column headerText="Patient's First Name" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.firstName}" />
                 </p:column>
 
 
-                <p:column headerText="Patient Last Name" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.lastName}" />
+                <p:column headerText="Patient's Last Name" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.lastNameResult}" />
                 </p:column>
 
 
-                <p:column headerText="Patient Age" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.age}" />
-                </p:column>
-
-                <p:column headerText="action" style="width: 25%">
-                    <h:outputText style="color:red" value="select"/>
+                <p:column headerText="Patient's Age" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.ageResult}" />
                 </p:column>
                 <!--<f:facet name="footer">
                 <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
@@ -113,9 +109,9 @@
                                 <h:outputText id="out" value="#{encounterService.patient.firstName}" />
 
 
-                                <!--<p:inputText id="patientFirstName" style="width:130px"-->
-                                             <!--value="#{encounterService.patient.firstName }"-->
-                                             <!--title="Please type the patients First Name" required="true"></p:inputText>-->
+                                <!--<h:inputText id="patientFirstName" style="width:130px"
+                                             value="#{encounterService.patient.firstName }"
+                                             title="Please type the patients First Name" required="true"></h:inputText>-->
                             </td>
                             <h:message for="firstname" style="color:red"> </h:message>
                         </tr>
@@ -129,7 +125,7 @@
                         </tr>
                         <tr>
                             <td><strong>Location</strong></td>
-                            <td><h:selectOneMenu id="location" value="#{encounterService.patient.residence }">
+                            <td><p:selectOneMenu id="location" value="#{encounterService.patient.residence }">
                                 <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                                 <f:selectItem itemValue="Port-au-Prince" itemLabel="Port-au-Prince"/>
                                 <f:selectItem itemValue="Borel" itemLabel="Borel"/>
@@ -139,14 +135,14 @@
                                 <f:selectItem itemValue="Leogane" itemLabel="Leogane"/>
                                 <f:selectItem itemValue="Miragoane" itemLabel="Miragoane"/>
 
-                            </h:selectOneMenu></td>
+                            </p:selectOneMenu></td>
                         </tr>
 
 
                         <tr>
                             <td><strong>Birth Date</strong></td>
                             <td><p:inputText id="datepicker"
-                                             value="#{encounterService.patient.birthDate }"></p:inputText><em> (MM/DD/YYYY)</em>
+                                             value="#{encounterService.patient.birthDate }"></p:inputText><em>(MM/DD/YYYY)</em>
                             </td>
 
                         </tr>
@@ -157,11 +153,11 @@
                         </tr>
                         <tr>
                             <td><strong>Gender</strong></td>
-                            <td><h:selectOneMenu id="gender" value="#{encounterService.patient.gender }">
+                            <td><p:selectOneMenu id="gender" value="#{encounterService.patient.gender }">
                                 <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                                 <f:selectItem itemValue="Male" itemLabel="Male"/>
                                 <f:selectItem itemValue="Female" itemLabel="Female"/>
-                            </h:selectOneMenu></td>
+                            </p:selectOneMenu></td>
                         </tr>
 
                         <tr>
