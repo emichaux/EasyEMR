@@ -125,9 +125,10 @@
                         </tr>
                         <tr>
                             <td><strong>Location</strong></td>
-                            <td><p:selectOneMenu id="location" value="#{encounterService.patient.residence }">
+                            <td><h:selectOneMenu id="location" value="#{encounterService.patient.residence }">
                                 <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                                 <f:selectItem itemValue="Port-au-Prince" itemLabel="Port-au-Prince"/>
+                                <f:selectItem itemValue="Port-au-Prince: Soleil" itemLabel="Port-au-Prince: Soleil"/>
                                 <f:selectItem itemValue="Borel" itemLabel="Borel"/>
                                 <f:selectItem itemValue="Morne de l' Hopital" itemLabel="Morne de l' Hopital"/>
                                 <f:selectItem itemValue="Opac" itemLabel="Opac"/>
@@ -135,7 +136,7 @@
                                 <f:selectItem itemValue="Leogane" itemLabel="Leogane"/>
                                 <f:selectItem itemValue="Miragoane" itemLabel="Miragoane"/>
 
-                            </p:selectOneMenu></td>
+                            </h:selectOneMenu></td>
                         </tr>
 
 
@@ -153,11 +154,21 @@
                         </tr>
                         <tr>
                             <td><strong>Gender</strong></td>
-                            <td><p:selectOneMenu id="gender" value="#{encounterService.patient.gender }">
+                            <td><h:selectOneMenu id="gender" value="#{encounterService.patient.gender }">
                                 <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                                 <f:selectItem itemValue="Male" itemLabel="Male"/>
                                 <f:selectItem itemValue="Female" itemLabel="Female"/>
-                            </p:selectOneMenu></td>
+                            </h:selectOneMenu></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Pregnant Status</strong></td>
+                            <td><p:selectBooleanCheckbox id="isPregers" itemLabel="Yes/No?"></p:selectBooleanCheckbox></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Pregnancy Length</strong></td>
+                            <td><p:inputText  value="52"></p:inputText> weeks</td>
                         </tr>
 
                         <tr>
@@ -236,12 +247,8 @@
                 </div>
 
             </div>
-
             <!-- row div-->
     </div>
-
-
-
 </h:form>
 <!-- Begin Navigation bar, use position to place on north south east west of the page -->
 <div class="navbar navbar-fixed-bottom center">

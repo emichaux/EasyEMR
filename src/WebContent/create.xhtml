@@ -56,9 +56,9 @@
         <table>
             <tr>
                 <td><h5 style="color:#149bdf">Card ID </h5></td>
-                <td><h:inputText id="visitID" style="width:50px"
+                <td><p:inputText id="visitID" style="width:50px"
                                  value="#{encounterService.encounter.cardID}"
-                                 title="Please type in the cardID"></h:inputText></td>
+                                 title="Please type in the cardID"></p:inputText></td>
                 <h:message for="visitID" style="color:red"> </h:message>
             </tr>
             <tr>
@@ -71,9 +71,9 @@
             </tr>
             <tr>
                 <td><strong style="color:#149bdf">* Last Name</strong></td>
-                <td><h:inputText id="patientLastName" style="width:130px"
+                <td><p:inputText id="patientLastName" style="width:130px"
                                  value="#{encounterService.patient.lastName }"
-                                 title="Please type the patients Last Name" required="true"></h:inputText>
+                                 title="Please type the patients Last Name" required="true"></p:inputText>
                 </td>
                 <h:message for="patientLastName" style="color:red"> </h:message>
             </tr>
@@ -96,14 +96,14 @@
 
             <tr>
                 <td><strong>Birth Date</strong></td>
-                <td><h:inputText id="datepicker"
-                                 value="#{encounterService.patient.birthDate }"></h:inputText><em>(MM/DD/YYYY)</em>
+                <td><p:inputText id="datepicker"
+                                 value="#{encounterService.patient.birthDate }"></p:inputText><em>(MM/DD/YYYY)</em>
                 </td>
 
             </tr>
             <tr>
                 <td><strong>Age</strong></td>
-                <td><h:inputText id="age" value ="#{encounterService.patient.age}"></h:inputText></td>
+                <td><p:inputText id="age" value ="#{encounterService.patient.age}"></p:inputText></td>
             </tr>
             <tr>
                 <td><strong>Gender</strong></td>
@@ -113,15 +113,24 @@
                     <f:selectItem itemValue="Female" itemLabel="Female"/>
                 </h:selectOneMenu></td>
             </tr>
+            <tr>
+                <td><strong>Pregnant Status</strong></td>
+                <td><p:selectBooleanCheckbox id="isPregers" itemLabel="Yes/No?"></p:selectBooleanCheckbox></td>
+            </tr>
+
+            <tr>
+                <td><strong>Pregnancy Length</strong></td>
+                <td><p:inputText  value="52"></p:inputText> weeks</td>
+            </tr>
 
             <tr>
                 <td><strong>Height</strong></td>
-                <td><h:inputText id="hin" value="#{encounterService.vitals.height }"></h:inputText> in</td>
+                <td><p:inputText id="hin" value="#{encounterService.vitals.height }"></p:inputText> in</td>
             </tr>
 
             <tr>
                 <td><strong>Weight</strong></td>
-                <td><h:inputText id="wlbs" value="#{encounterService.vitals.weight }"></h:inputText> lbs
+                <td><p:inputText id="wlbs" value="#{encounterService.vitals.weight }"></p:inputText> lbs
                 </td>
             </tr>
 
@@ -138,10 +147,10 @@
                 <tr>
 
                     <td><strong>Blood Pressure (mmHg)</strong></td>
-                    <td><h:inputText style="width:60px" id="bpTop"
-                                     value="#{encounterService.vitals.systolicBP}"></h:inputText> /
-                        <h:inputText style="width:60px" id="bpBottom"
-                                     value="#{encounterService.vitals.diastolicBP}"></h:inputText>
+                    <td><p:inputText style="width:60px" id="bpTop"
+                                     value="#{encounterService.vitals.systolicBP}"></p:inputText> /
+                        <p:inputText style="width:60px" id="bpBottom"
+                                     value="#{encounterService.vitals.diastolicBP}"></p:inputText>
                         </td>
                 </tr>
 
@@ -152,19 +161,19 @@
 
                 <tr>
                     <td><strong>Heart Rate (bpm)</strong></td>
-                    <td><h:inputText style="width:60px" id="heartrate"
-                                     value="#{encounterService.vitals.heartRate }"></h:inputText></td>
+                    <td><p:inputText style="width:60px" id="heartrate"
+                                     value="#{encounterService.vitals.heartRate }"></p:inputText></td>
                 </tr>
                 <tr>
                     <td><strong>Temperature (F)</strong></td>
-                    <td><h:inputText style="width:60px" id="temperature"
-                                     value="#{encounterService.vitals.temperatureF }"></h:inputText></td>
+                    <td><p:inputText style="width:60px" id="temperature"
+                                     value="#{encounterService.vitals.temperatureF }"></p:inputText></td>
                 </tr>
 
                 <tr>
                     <td><strong>Respiration (Breadths Per Minute)</strong></td>
-                    <td><h:inputText style="width:60px" id="respiration"
-                                     value="#{encounterService.vitals.respRate }"></h:inputText>
+                    <td><p:inputText style="width:60px" id="respiration"
+                                     value="#{encounterService.vitals.respRate }"></p:inputText>
                     </td>
                 </tr>
                     <tr>
@@ -271,16 +280,6 @@
         <h3>Complaints / Treatment<span class="label label-default"></span></h3>
         <table>
             <tr>
-                <strong style="text-align:center">Physical Examination</strong><br/>
-                <p:inputTextarea style="width:300px" id="physicalExamination"
-                                 value="#{encounterService.encounter.overallImpression }"/><br/>
-            </tr>
-            <tr>
-                <strong style="text-align:center">Assessment</strong><br/>
-                <p:inputTextarea style="width:300px" id="assessment"
-                                 value="#{encounterService.encounter.assessment }"/><br/>
-            </tr>
-            <tr>
                 <td><strong>Problem List</strong></td>
                 <td><strong>Prescription / Treatment</strong></td>
             </tr>
@@ -329,9 +328,23 @@
                                  value="#{encounterService.encounter.medicationPrescribed5 }"></p:inputText>
                 </td>
             </tr>
+            </table>
+        <table>
+            <tr>
+                <strong style="text-align:center">Physical Examination</strong><br/>
+                <p:inputTextarea style="width:300px" id="physicalExamination"
+                                 value="#{encounterService.encounter.overallImpression }"/><br/>
+            </tr>
+            <tr>
+                <strong style="text-align:center">Assessment</strong><br/>
+                <p:inputTextarea style="width:300px" id="assessment"
+                                 value="#{encounterService.encounter.assessment }"/><br/>
+            </tr>
+            <tr>
             <strong>Family/Social History</strong><br/>
             <p:inputTextarea style="width:300px" id="socialHistory"
                              value="#{encounterService.patient.socialHistory }"/>
+            </tr>
         </table>
     </div>
 </div>
