@@ -1,9 +1,14 @@
 package edu.wayne.cs.raptor;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 /**
  * User: Evan
  * Date: 10/6/13
  */
+@ManagedBean
+@ViewScoped
 public class PatientSearchTable {
     private String firstName;
     private String ageResult;

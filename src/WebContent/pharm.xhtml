@@ -57,12 +57,12 @@
                         <h:outputText value="Action"/>
                     </h:column>
                 </f:facet>
-                <h:panelGrid columns="2">
+                <p:panelGrid columns="2">
                     <p:commandLink value="Select" action="#{encounterService.selectPatient2}">
                         <f:setPropertyActionListener target="#{encounterService.patient}" value="#{patient}"/>
                     </p:commandLink>
 
-                </h:panelGrid>
+                </p:panelGrid>
             </p:column>
 
         </p:dataTable>
@@ -121,9 +121,9 @@
                     </tr>
 
                     <tr>
-                        <td><h:inputText style="width:160px" id="firstName"
+                        <td><p:inputText style="width:160px" id="firstName"
                                          value="#{pharmacyEncounterService.firstName }" required="true"/></td>
-                        <td><h:inputText style="width:160px" id="lastName" value="#{pharmacyEncounterService.lastName }"
+                        <td><p:inputText style="width:160px" id="lastName" value="#{pharmacyEncounterService.lastName }"
                                          required="true"/></td>
                     </tr>
 
@@ -138,7 +138,7 @@
                         <td><h:outputLabel value="#{encounterService.encounter.condition1}"></h:outputLabel></td>
                         <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed1}"></h:outputLabel>
                         </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven1"
+                        <td><p:inputText style="width:160px" id="prescriptionGiven1"
                                          value="#{pharmacyEncounterService.medDispensed1 }"/></td>
 
                     </tr>
@@ -147,7 +147,7 @@
                         <td><h:outputLabel value="#{encounterService.encounter.condition2}"></h:outputLabel></td>
                         <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed2}"></h:outputLabel>
                         </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven2"
+                        <td><p:inputText style="width:160px" id="prescriptionGiven2"
                                          value="#{pharmacyEncounterService.medDispensed2 }"/></td>
 
                     </tr>
@@ -156,7 +156,7 @@
                         <td><h:outputLabel value="#{encounterService.encounter.condition3}"></h:outputLabel></td>
                         <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed3}"></h:outputLabel>
                         </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven3"
+                        <td><p:inputText style="width:160px" id="prescriptionGiven3"
                                          value="#{pharmacyEncounterService.medDispensed3 }"/></td>
 
                     </tr>
@@ -166,7 +166,7 @@
                         <td><h:outputLabel value="#{encounterService.encounter.condition4}"></h:outputLabel></td>
                         <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed4}"></h:outputLabel>
                         </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven4"
+                        <td><p:inputText style="width:160px" id="prescriptionGiven4"
                                          value="#{pharmacyEncounterService.medDispensed4 }"/></td>
 
                     </tr>
@@ -175,7 +175,7 @@
                         <td><h:outputLabel value="#{encounterService.encounter.condition5}"></h:outputLabel></td>
                         <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed5}"></h:outputLabel>
                         </td>
-                        <td><h:inputText style="width:160px" id="prescriptionGiven5"
+                        <td><p:inputText style="width:160px" id="prescriptionGiven5"
                                          value="#{pharmacyEncounterService.medDispensed5 }"/></td>
                     </tr>
 
@@ -184,8 +184,8 @@
 
                 <br/>
 
-                <h:commandButton id="submit" value="Submit"
-                                 action="#{pharmacyEncounterService.dataToDatabase }"></h:commandButton>
+                <p:commandButton id="submit" value="Submit"
+                                 action="#{pharmacyEncounterService.dataToDatabase }"></p:commandButton>
             </h:form>
         </center>
 

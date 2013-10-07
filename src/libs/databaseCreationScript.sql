@@ -69,6 +69,8 @@ use test;
        `birthDate` varchar(55),
    	   `age` varchar(5),
        `gender` varchar(15),
+       `isPregers`  bit(1) DEFAULT 0,
+       `pregweeks` int(2) unsigned DEFAULT NULL,
        `keywords` varchar(55),
        `residence` varchar(55),
        `socialHistory` varchar(255),

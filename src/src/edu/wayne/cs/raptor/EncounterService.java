@@ -1,14 +1,11 @@
 package edu.wayne.cs.raptor;
 
+import org.hibernate.Session;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import edu.wayne.cs.raptor.PatientSearchTable;
-
-import javax.swing.JOptionPane;
-
-import org.hibernate.Session;
 
 /**
  * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for 
@@ -217,7 +214,7 @@ public class EncounterService implements IEncounterService, Serializable {
 			vitals = new Vitals();
 			encounter = new Encounter();
 			
-			//return "create" to go back to create.jsp after the create patient form is submitted
+			//return "triage" to go back to create.jsp after the create patient form is submitted
 			return "triage";
 		}
 		errorPreventedInsert = false;
@@ -347,7 +344,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		this.searchPatientLastName = "";
 		this.searchPatientCardID ="";
 
-		
+
 		return "patientSearch";
 	}
 	
@@ -370,7 +367,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		this.searchPatientCardID ="";
 
 		
-		return "patientSearch";
+		return "create";
 	}
 	
 	
@@ -613,7 +610,7 @@ public class EncounterService implements IEncounterService, Serializable {
 
 	@Override
 	public Encounter getEncounterByPatient(int patientId) {
-		
+
 		return null;
 	}
 

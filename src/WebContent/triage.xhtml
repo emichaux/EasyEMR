@@ -94,26 +94,15 @@
                             <h:message for="visitID" style="color:red"> </h:message>
                         </tr>
                         <tr>
-                            <td><strong style="color:#149bdf">* First Name</strong></td>
-                            <td>
+                            <td><h:outputText style="color:#149bdf" value="* First Name"/></td>
+                            <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}">
+                                <p:ajax event="keyup" update="out"
+                                        listener="#{encounterService.searchPatientsF}"/>
+                            </p:inputText></td>
 
-
-
-
-
-                                <p:inputText id="firstname" value="#{encounterService.patient.firstName}">
-                                    <p:ajax event="keyup" update="out"
-                                            listener="#{encounterService.searchPatientsF}"/>
-                                </p:inputText>
-
-                                <h:outputText id="out" value="#{encounterService.patient.firstName}" />
-
-
-                                <!--<h:inputText id="patientFirstName" style="width:130px"
-                                             value="#{encounterService.patient.firstName }"
-                                             title="Please type the patients First Name" required="true"></h:inputText>-->
+                            <td><h:outputText id="out" value="#{encounterService.searchPatientFirstName}"/>
                             </td>
-                            <h:message for="firstname" style="color:red"> </h:message>
+                            <!--<h:message for="firstname" style="color:red"> </h:message>-->
                         </tr>
                         <tr>
                             <td><strong style="color:#149bdf">* Last Name</strong></td>
