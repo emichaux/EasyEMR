@@ -1,7 +1,6 @@
 package edu.wayne.cs.raptor;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Evan
  * Date: 10/6/13
  */

@@ -63,20 +63,20 @@
        <!-- <div class="hide">-->
 
             <center>
-            <p:dataTable var="car" value="#{encounterService.searchList}" >
+            <p:dataTable var="PatientSearchTable" value="#{encounterService.patientResult}" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
-                <p:column headerText="Patient First Name" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.firstName}" />
+                <p:column headerText="Patient's First Name" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.firstName}" />
                 </p:column>
 
 
-                <p:column headerText="Patient Last Name" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.lastName}" />
+                <p:column headerText="Patient's Last Name" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.lastNameResult}" />
                 </p:column>
 
 
-                <p:column headerText="Patient Age" style="width:25%">
-                    <h:outputText value="#{encounterService.patient.age}" />
+                <p:column headerText="Patient's Age" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.ageResult}" />
                 </p:column>
                 <!--<f:facet name="footer">
                 <p:commandButton id="viewButton" value="View" icon="ui-icon-search"

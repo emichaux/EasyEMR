@@ -761,12 +761,6 @@ public class EncounterService implements IEncounterService, Serializable {
 	}
 
 
-
-    private void nothing(){
-        String nothing = "";
-    }
-
-
     private void populatePatientList(List<PatientSearchTable> list){
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
