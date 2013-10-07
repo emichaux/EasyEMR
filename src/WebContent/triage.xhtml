@@ -57,37 +57,26 @@
 <div class="center"><h3>Triage<span class="label label-default"></span></h3> </div>
 
 
-
-
-<p:inputText id="test" value="#{encounterService.patient.firstName}">
-    <p:ajax event="keyup" update="testupdate"
-            />
-</p:inputText>
-
-<h:outputText id="testupdate" value="#{encounterService.patient.firstName}" />
-
-
-
 <h:form id="main">
     <div class="container well">
         <!--Table showing results from previous patients-->
        <!-- <div class="hide">-->
 
             <center>
-            <p:dataTable var="PatientSearchTable" value="#{encounterService.patientResult}" >
+            <p:dataTable var="car" value="#{encounterService.searchList}" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
-                <p:column headerText="Patient's First Name" style="width:25%">
-                    <h:outputText value="#{PatientSearchTable.firstName}" />
+                <p:column headerText="Patient First Name" style="width:25%">
+                    <h:outputText value="#{encounterService.patient.firstName}" />
                 </p:column>
 
 
-                <p:column headerText="Patient's Last Name" style="width:25%">
-                    <h:outputText value="#{PatientSearchTable.lastNameResult}" />
+                <p:column headerText="Patient Last Name" style="width:25%">
+                    <h:outputText value="#{encounterService.patient.lastName}" />
                 </p:column>
 
 
-                <p:column headerText="Patient's Date of Birth" style="width:25%">
-                    <h:outputText value="#{PatientSearchTable.ageResult}" />
+                <p:column headerText="Patient Age" style="width:25%">
+                    <h:outputText value="#{encounterService.patient.age}" />
                 </p:column>
                 <!--<f:facet name="footer">
                 <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
@@ -95,8 +84,6 @@
                 </f:facet>-->
             </p:dataTable>
             </center>
-
-
 
         <!--</div>-->
         <div class="row">
@@ -134,13 +121,9 @@
                         </tr>
                         <tr>
                             <td><strong style="color:#149bdf">* Last Name</strong></td>
-
-                            <td> <p:inputText id="lastname" value="#{encounterService.patient.lastName}">
-                                <p:ajax event="keyup" update="out"
-                                        listener="#{encounterService.nothing}"/>
-                            </p:inputText>
-
-
+                            <td><h:inputText id="patientLastName" style="width:130px"
+                                             value="#{encounterService.patient.lastName }"
+                                             title="Please type the patients Last Name" required="true"></h:inputText>
                             </td>
                             <h:message for="patientLastName" style="color:red"> </h:message>
                         </tr>
