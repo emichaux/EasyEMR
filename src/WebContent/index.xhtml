@@ -51,7 +51,7 @@
                  </h:panelGrid>
                 </center>
 				<div class="center">
-					<br /><p:commandButton id="submit" value="Login" onclick="alert('Welcome to EasyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:90px;height:30px"></p:commandButton><br /><br />
+					<br /><p:commandButton id="submit" value="Login" action="#{loginBean.authenticate }" style="width:90px;height:30px"></p:commandButton><br /><br />
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
 					</div>
 				</h:form>

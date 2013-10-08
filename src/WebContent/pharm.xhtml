@@ -131,14 +131,14 @@
                     <tr>
                         <td><h5>Problem List</h5></td>
                         <td><h5>Prescription</h5></td>
-                        <td><h5>Medication Given</h5></td>
+                        <td><h5><h:outputLabel value="Medication Given"  for="prescriptionGiven1"></h:outputLabel></h5></td>
                     </tr>
 
                     <tr>
                         <td><h:outputLabel value="#{encounterService.encounter.condition1}"></h:outputLabel></td>
                         <td><h:outputLabel value="#{encounterService.encounter.medicationPrescribed1}"></h:outputLabel>
                         </td>
-                        <td><p:inputText style="width:160px" id="prescriptionGiven1"
+                        <td><p:autoComplete id="prescriptionGiven1" completeMethod="#{autoCompleteDrugsBean.complete}"
                                          value="#{pharmacyEncounterService.medDispensed1 }"/></td>
 
                     </tr>

@@ -55,23 +55,23 @@
 <body>
 <h:form id="main">
     <div class="container well">
-            <center>
-                <p:panel id="out">
-            <p:dataTable var="patient" value="#{encounterService.patientList}" >
-                <p:column ><f:facet name="header">Patient's First Name</f:facet>
-                    <h:outputText value="#{patient.firstName}" />
-                </p:column>
-                <p:column>
-                    <f:facet name="header">Patient's Last Name</f:facet>
-                    <h:outputText value="#{patient.lastName}" />
-                </p:column>
+            <!--<center>-->
+                <!--<p:panel id="out">-->
+            <!--<p:dataTable var="patient" value="{encounterService.patientList}" >-->
+                <!--<p:column ><f:facet name="header">Patient's First Name</f:facet>-->
+                    <!--<h:outputText value="{patient.firstName}" />-->
+                <!--</p:column>-->
+                <!--<p:column>-->
+                    <!--<f:facet name="header">Patient's Last Name</f:facet>-->
+                    <!--<h:outputText value="{patient.lastName}" />-->
+                <!--</p:column>-->
 
-                 <p:column><f:facet name="header">Patient's Age</f:facet>
-                     <h:outputText value="#{patient.age}" />
-                </p:column>
-            </p:dataTable>
-                </p:panel>
-            </center>
+                 <!--<p:column><f:facet name="header">Patient's Age</f:facet>-->
+                     <!--<h:outputText value="{patient.age}" />-->
+                <!--</p:column>-->
+            <!--</p:dataTable>-->
+                <!--</p:panel>-->
+            <!--</center>-->
 
         <!--</div>-->
         <div class="row">
@@ -86,12 +86,9 @@
                             <h:message for="visitID" style="color:red"> </h:message>
                         </tr>
                         <tr>
-                            <td><h:outputText style="color:#149bdf" value="* First Name"/></td>
-                            <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}">
-                            </p:inputText></td>
-                            <p:commandButton actionListener="#{encounterService.searchPatientsF}" value="Find Patient"/>
-
-                            <h:message for="firstname" style="color:red"> </h:message>
+                            <td><h5 style="color:#149bdf">"* First Name" </h5></td>
+                            <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"></p:inputText></td>
+                            <h:message for="firstname" style="color: red" ></h:message>
                         </tr>
                         <tr>
                             <td><strong style="color:#149bdf">* Last Name</strong></td>
@@ -164,7 +161,7 @@
 
 
                 <div class="form span6">
-                    <table>
+                    <!--<table>-->
                     <tr>
                         <h3>Vitals<span class="label label-default"></span></h3>
                     </tr>
@@ -214,12 +211,12 @@
 
                         <tr><td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save/ Update Patient" onclick="alert('Patient Record Submitted');"
                                 action="#{encounterService.saveOrUpdateEncounter}"
-                                ></p:commandButton></td>
-
+                                ></p:commandButton></td> </tr>
+                        <tr>
                             <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
                                                  action="#{encounterService.resetRecord }" immediate="true"></p:commandButton></td></tr>
 
-                    </table>
+                    <!--</table>-->
                     </table>
                 </div>
 
@@ -227,10 +224,12 @@
             <!-- row div-->
     </div>
 </h:form>
+
+
 <!-- Begin Navigation bar, use position to place on north south east west of the page -->
 <div class="navbar navbar-fixed-bottom center">
     <div style="float: left">
-        <p><img src="./img/easyEmr_LOGO.png" height="80" width="110" alt="EasyEmr Logo"/>
+        <p><img src="./img/EasyEMR%20Logo.png" height="80" width="110" alt="EasyEmr Logo"/>
             <h5 style="float:left">Hello, <h:outputLabel style="color:#149bdf" value="#{loginBean.systemUser.firstName }"/></h5></p>
     </div>
     <div class="navbar-inner">
