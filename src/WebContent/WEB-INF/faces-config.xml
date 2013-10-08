@@ -38,7 +38,7 @@
         <managed-bean-scope>none</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <description>for coverting between metric and US customary units, and calculating BMI</description>
+        <description>for converting between metric and US customary units, and calculating BMI</description>
         <managed-bean-name>unitConverter</managed-bean-name>
         <managed-bean-class>edu.wayne.cs.raptor.UnitConverter</managed-bean-class>
         <managed-bean-scope>application</managed-bean-scope>

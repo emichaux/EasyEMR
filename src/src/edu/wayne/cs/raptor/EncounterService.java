@@ -1,13 +1,11 @@
 package edu.wayne.cs.raptor;
 
+import org.hibernate.Session;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-
-import org.hibernate.Session;
 
 /**
  * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for 
@@ -43,7 +41,8 @@ public class EncounterService implements IEncounterService, Serializable {
 	private String searchPatientCardID;
 	private List<Encounter> searchList;
 	private List<Patient> patientList;
-	private boolean newEncounter;
+    private List<PatientSearchTable> PatientResult;
+    private boolean newEncounter;
 	
 	public EncounterService() {
 		patient = new Patient();
@@ -53,7 +52,10 @@ public class EncounterService implements IEncounterService, Serializable {
 		searchList = new ArrayList<Encounter>();
 		patientList = new ArrayList<Patient>();
 		newEncounter = false;
-	}
+        PatientResult = new ArrayList<PatientSearchTable>();
+
+        populatePatientList(PatientResult);
+    }
 	
 	public String saveOrUpdateEncounter()
 	{
@@ -212,7 +214,7 @@ public class EncounterService implements IEncounterService, Serializable {
 			vitals = new Vitals();
 			encounter = new Encounter();
 			
-			//return "create" to go back to create.jsp after the create patient form is submitted
+			//return "triage" to go back to create.jsp after the create patient form is submitted
 			return "triage";
 		}
 		errorPreventedInsert = false;
@@ -342,7 +344,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		this.searchPatientLastName = "";
 		this.searchPatientCardID ="";
 
-		
+
 		return "patientSearch";
 	}
 	
@@ -365,7 +367,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		this.searchPatientCardID ="";
 
 		
-		return "patientSearch";
+		return "create";
 	}
 	
 	
@@ -608,7 +610,7 @@ public class EncounterService implements IEncounterService, Serializable {
 
 	@Override
 	public Encounter getEncounterByPatient(int patientId) {
-		
+
 		return null;
 	}
 
@@ -636,7 +638,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession = HibernateUtil.getSessionFactory().openSession();
 		userSession.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patients where patientID='" + patientID + "'").list();
+		List<Patient> result = userSession.createQuery("from Patient where patientID='" + patientID + "'").list();
 		userSession.getTransaction().commit();
 		userSession.close();
 		if(!result.isEmpty())
@@ -756,4 +758,53 @@ public class EncounterService implements IEncounterService, Serializable {
 	}
 
 
+    private void populatePatientList(List<PatientSearchTable> list){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + "moo" + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+       int size =  result.size();
+        for(int i = 0 ; i < size ; i++)
+            list.add(new PatientSearchTable(getListResultLastName(i,"moo"),getListResultFirstName(i,"moo"),getListResultAge(i,"moo")));
+    }
+
+    private String getListResultLastName(int index, String lastName){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getLastName().toString();
+        return null;
+    }
+    private String getListResultFirstName(int index, String lastName){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getFirstName().toString();
+        return null;
+    }
+    private String getListResultAge(int index, String lastName){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getBirthDate().toString();
+        return null;
+    }
+
+    public List<PatientSearchTable> getPatientResult() {
+        return PatientResult;
+    }
 }

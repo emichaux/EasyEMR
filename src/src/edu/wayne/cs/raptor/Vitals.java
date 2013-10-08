@@ -52,6 +52,9 @@ public class Vitals {
 	
 	/** Patient's blood sample number */
 	private int bloodSampleID;
+
+    /** Patient's blood saturation */
+    private float bloodSaturation;
 	
 	/** Patient's measured height */
 	private int height;
@@ -181,6 +184,14 @@ public class Vitals {
 	public void setBloodSampleID(int bloodDrawID) {
 		this.bloodSampleID = bloodDrawID;
 	}
+    /** get the patient's blood saturation percentage */
+    public float getBloodSaturation() {
+        return bloodSaturation;
+    }
+    /** set the Patient's blood saturation percentage */
+    public void setBloodSaturation(float bloodSaturation) {
+        this.bloodSaturation = bloodSaturation;
+    }
 	
 	/** Returns the patient's measured height */
 	public int getHeight() {
