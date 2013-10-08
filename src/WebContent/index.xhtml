@@ -6,11 +6,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
+<head>
 <link href="./css/bootstrap.css" rel="stylesheet" />
 
     <title>Easy EMR</title>
-</h:head>
+</head>
 
 <body>
 
@@ -37,7 +37,6 @@
             <p:growl id="msg" />
             <div class="form">
 			    <!--inner welcome to easyemr box -->
-                <!--Priyesh-->
                 <h:form id="form">
 
                 <center>
@@ -53,7 +52,6 @@
                 </center>
 				<div class="center">
 					<br /><p:commandButton id="submit" value="Login" onclick="alert('Welcome to EasyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:90px;height:30px"></p:commandButton><br /><br />
-					<p:commandButton id="submit" value="Login"  action="#{loginBean.authenticate }" style="width:130px;height:40px"></p:commandButton><br /><br />
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
 					</div>
 				</h:form>
@@ -62,3 +60,4 @@
 		</div>
 </body>
 </html>
+<!-- <th>Password: </th><td><p:password style="height:20px;width:140px" id="password" value="#{loginBean.systemUser.password}" /></td> -->
