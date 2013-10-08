@@ -17,7 +17,7 @@
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
   		<div style="float: left">
-  			<img src="./img/easyEmr_LOGO.png" height="80" width="110"  alt="EasyEmr Logo"/>
+  			<img src="./img/EasyEMR Logo.png" height="150" width="110"  alt="EasyEmr Logo"/>
   		</div>
 	    <div class="container">
 			<ul class="nav">
@@ -37,22 +37,22 @@
             <p:growl id="msg" />
             <div class="form">
 			    <!--inner welcome to easyemr box -->
-				<h:form>
+                <!--Priyesh-->
+                <h:form id="form">
 
-				<center>
-				<table>
+                <center>
+                <h:panelGrid columns="3">
 				<tr>
-                <br/>
-				<b> Welcome to</b><img src="./img/easyEmr_LOGO.png" height="80" width="110" /><br />Please Login Below <br />
+				<b> Welcome to</b><img src="./img/EasyEMR Logo.png" height="80" width="110" /><br /><br />Please Login Below <br />
 				</tr> <br></br>
-				<tr>
-					<td><div class="center">Username</div><p:inputText style="width:150px" id="username" value="#{loginBean.systemUser.username}" /></td>
-					<td><div class="center">Password</div><p:password style="width:150px" id="password" value="#{loginBean.systemUser.password}" /></td>
-				</tr>
-				</table>
+
+                    <h:outputLabel for="username" value="Username: " /><p:inputText style="width:140px" id="username" value="#{loginBean.systemUser.username}" />
+                    <h:outputLabel for="password" value="Password: " /><p:password style="width:140px" id="password" value="#{loginBean.systemUser.password}" />
+
+                 </h:panelGrid>
                 </center>
 				<div class="center">
-					<p:commandButton id="submit" value="Login" onclick="alert('Welcome to EasyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:130px;height:40px"></p:commandButton><br /><br />
+					<br /><p:commandButton id="submit" value="Login" onclick="alert('Welcome to EasyEMR, please be sure to follow all HIPPA regulations.');" action="#{loginBean.authenticate }" style="width:90px;height:30px"></p:commandButton><br /><br />
 					<h:outputText value="#{loginBean.loginResult}"></h:outputText>
 					</div>
 				</h:form>
