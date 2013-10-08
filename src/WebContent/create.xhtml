@@ -63,11 +63,11 @@
             <tr>
                 <td><h:outputText style="color:#149bdf" value="* First Name"/></td>
                     <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}">
-                        <p:ajax event="keyup" update="out"
-                                listener="#{encounterService.searchPatientsF}"/>
+                        <p:ajax event="keyup" update="out"/>
                     </p:inputText></td>
 
                     <td><h:outputText id="out" value="#{encounterService.searchPatientFirstName}"/>
+                        <p:commandButton action="#{encounterService.searchPatientsF}" value="Find Patient"/>
                 </td>
                 <!--<h:message for="firstname" style="color:red"> </h:message>-->
             </tr>
@@ -114,10 +114,10 @@
                     <f:selectItem itemValue="Female" itemLabel="Female"/>
                 </h:selectOneMenu></td>
             </tr>
-            <tr>
-                <td><strong>Pregnancy Status</strong></td>
-                <td><p:selectBooleanCheckbox id="isPregers" itemLabel="Yes/No?" value="#{encounterService.patient.pregers}"></p:selectBooleanCheckbox></td>
-            </tr>
+            <!--<tr>-->
+                <!--<td><strong>Pregnancy Status</strong></td>-->
+                <!--<td><p:selectBooleanCheckbox id="isPregers" itemLabel="Yes/No?" value="#{encounterService.patient.pregers}"></p:selectBooleanCheckbox></td>-->
+            <!--</tr>-->
 
             <tr>
                 <td><strong>Pregnancy Length</strong></td>
