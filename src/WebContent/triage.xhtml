@@ -55,23 +55,30 @@
 <body>
 <h:form id="main">
     <div class="container well">
-            <!--<center>-->
-                <!--<p:panel id="out">-->
-            <!--<p:dataTable var="patient" value="{encounterService.patientList}" >-->
-                <!--<p:column ><f:facet name="header">Patient's First Name</f:facet>-->
-                    <!--<h:outputText value="{patient.firstName}" />-->
-                <!--</p:column>-->
-                <!--<p:column>-->
-                    <!--<f:facet name="header">Patient's Last Name</f:facet>-->
-                    <!--<h:outputText value="{patient.lastName}" />-->
-                <!--</p:column>-->
+        <center>
 
-                 <!--<p:column><f:facet name="header">Patient's Age</f:facet>-->
-                     <!--<h:outputText value="{patient.age}" />-->
-                <!--</p:column>-->
-            <!--</p:dataTable>-->
-                <!--</p:panel>-->
-            <!--</center>-->
+
+            <p:dataTable var="PatientSearchTable" value="#{encounterService.patientResult}" id="datatableid" >
+                <!--<p:column selectionMode="single" style="width:2%" />-->
+                <p:column headerText="Patient's First Name" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.firstName}" />
+                </p:column>
+
+
+                <p:column headerText="Patient's Last Name" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.lastNameResult}" />
+                </p:column>
+
+
+                <p:column headerText="Patient's Age" style="width:25%">
+                    <h:outputText value="#{PatientSearchTable.ageResult}" />
+                </p:column>
+                <!--<f:facet name="footer">
+                <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
+                                 update=":form:displaySingle" oncomplete="PF('singleCarDialog').show()"/>
+                </f:facet>-->
+            </p:dataTable>
+        </center>
 
         <!--</div>-->
         <div class="row">
@@ -93,7 +100,7 @@
                         <tr>
                             <td><strong style="color:#149bdf">* Last Name</strong></td>
                             <td><p:inputText id="patientLastName" value="#{encounterService.patient.lastName }"
-                                             title="Please type the patients Last Name" required="false"></p:inputText>
+                                             title="Please type the patients Last Name" required="false"> <p:ajax event="keyup" update=":main:datatableid"                                                                                                                 /></p:inputText>
                             </td>
                             <h:message for="patientLastName" style="color:red"> </h:message>
                         </tr>
@@ -222,34 +229,54 @@
 
             </div>
             <!-- row div-->
+
     </div>
 </h:form>
 
 
 <!-- Begin Navigation bar, use position to place on north south east west of the page -->
 <div class="navbar navbar-fixed-bottom center">
-    <div style="float: left">
-        <p><img src="./img/EasyEMR%20Logo.png" height="80" width="110" alt="EasyEmr Logo"/>
-            <h5 style="float:left">Hello, <h:outputLabel style="color:#149bdf" value="#{loginBean.systemUser.firstName }"/></h5></p>
-    </div>
     <div class="navbar-inner">
-        <div class="center">
-            <h:form>
-                <p:commandButton action="#{pageController.moveToPageTriage}" value="Triage"  style="color:blue"/>
-                <p:commandButton action="#{pageController.moveToPageMedical}" value="Medical"/>
-                <p:commandButton action="#{pageController.moveToPagePharmacy}" value="Pharmacy"/>
-            </h:form>
-        </div>
-        <div class="container-fluid">
-            <h:form>
-                <h:commandLink tabindex="-1" action="#{loginBean.logout}"><h5 style="color:red">Log Out</h5>
-                </h:commandLink>
-                <h:commandLink tabindex="-2" action="#{userService.switchToUpdateInfo}"><h5
-                        style="color:gray">Change My Password</h5></h:commandLink>
-            </h:form>
-        </div>
-    </div>
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">Easy EMR</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#"><i class="icon-home icon-white"></i>Triage</a></li>
+                    <li><a href="create.xhtml">Medical</a></li>
+                    <li><a href="pharm.xhtml">Pharmacy</a></li>
+
+                </ul>
+                <h:form class="navbar pull-right" action="">
+                    <!--<input type="text" class="search-query span2" placeholder="Search"/>-->
+                    <h:commandLink value="Log Out" tabindex="-2" action="#{loginBean.logout}"></h:commandLink>
+                </h:form>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </div><!-- /.navbar-inner -->
+
+
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
