@@ -60,23 +60,24 @@
 
             <p:dataTable var="PatientSearchTable" value="#{encounterService.patientResult}" id="datatableid" >
                 <!--<p:column selectionMode="single" style="width:2%" />-->
-                <p:column headerText="Patient's First Name" style="width:25%">
+                <p:column headerText="First Name" style="width:18%">
                     <h:outputText value="#{PatientSearchTable.firstName}" />
                 </p:column>
 
 
-                <p:column headerText="Patient's Last Name" style="width:25%">
+                <p:column headerText="Last Name" style="width:18%">
                     <h:outputText value="#{PatientSearchTable.lastNameResult}" />
                 </p:column>
 
 
-                <p:column headerText="Patient's Age" style="width:25%">
+                <p:column headerText="Date of Birth" style="width:18%">
                     <h:outputText value="#{PatientSearchTable.ageResult}" />
                 </p:column>
-                <!--<f:facet name="footer">
-                <p:commandButton id="viewButton" value="View" icon="ui-icon-search"
-                                 update=":form:displaySingle" oncomplete="PF('singleCarDialog').show()"/>
-                </f:facet>-->
+                <p:column style="width:4%">
+                    <p:commandButton id="selectButton" value="Select" title="View">
+                    </p:commandButton>
+                    <!--update=":form:display" oncomplete="PF('carDialog').show()"-->
+                </p:column>
             </p:dataTable>
         </center>
 
@@ -93,14 +94,14 @@
                             <h:message for="visitID" style="color:red"> </h:message>
                         </tr>
                         <tr>
-                            <td><h5 style="color:#149bdf">"* First Name" </h5></td>
+                            <td><h5 style="color:#149bdf">First Name</h5></td>
                             <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"></p:inputText></td>
                             <h:message for="firstname" style="color: red" ></h:message>
                         </tr>
                         <tr>
-                            <td><strong style="color:#149bdf">* Last Name</strong></td>
+                            <td><strong style="color:#149bdf">Last Name</strong></td>
                             <td><p:inputText id="patientLastName" value="#{encounterService.patient.lastName }"
-                                             title="Please type the patients Last Name" required="false"> <p:ajax event="keyup" update=":main:datatableid"                                                                                                                 /></p:inputText>
+                                             title="Please type the patients Last Name" required="false"> <p:ajax event="keyup" update=":main:datatableid"  listener="#{encounterService.datatableupdate}"                                                                                                                 /></p:inputText>
                             </td>
                             <h:message for="patientLastName" style="color:red"> </h:message>
                         </tr>
@@ -221,7 +222,7 @@
                                 ></p:commandButton></td> </tr>
                         <tr>
                             <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
-                                                 action="#{encounterService.resetRecord }" immediate="true"></p:commandButton></td></tr>
+                                                 action="#{encounterService.resetRecord }" update="main" process="@this"></p:commandButton></td></tr>
 
                     <!--</table>-->
                     </table>

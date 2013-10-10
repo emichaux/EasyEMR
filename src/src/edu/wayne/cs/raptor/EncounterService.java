@@ -192,6 +192,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		catch(Exception ex)
 		{
 			//JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println(ex);
 			errorPreventedInsert = true;
 		}	
 		
@@ -758,16 +759,22 @@ public class EncounterService implements IEncounterService, Serializable {
 	}
 
 
+    public void datatableupdate(){
+        populatePatientList(PatientResult);
+    }
+
     private void populatePatientList(List<PatientSearchTable> list){
+        String patientlastnamesearch = patient.getLastName();
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + "moo" + "'").list();
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + patientlastnamesearch + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
        int size =  result.size();
+        list.clear();
         for(int i = 0 ; i < size ; i++)
-            list.add(new PatientSearchTable(getListResultLastName(i,"moo"),getListResultFirstName(i,"moo"),getListResultAge(i,"moo")));
+            list.add(new PatientSearchTable(getListResultLastName(i,patientlastnamesearch),getListResultFirstName(i,patientlastnamesearch),getListResultAge(i,patientlastnamesearch)));
     }
 
     private String getListResultLastName(int index, String lastName){
