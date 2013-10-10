@@ -13,11 +13,51 @@ public class PatientSearchTable {
     private String firstName;
     private String ageResult;
     private String lastNameResult;
+    private String genderResult;
+    private String heightResult;
+    private String ageIntResult;
+    private String locationResult;
 
-    public PatientSearchTable(String firstName, String lastNameResult, String ageResult) {
+    public PatientSearchTable(String firstName,  String lastNameResult, String ageResult, String locationResult,  String genderResult, String heightResult, String ageIntResult) {
         this.firstName = firstName;
-        this.lastNameResult = lastNameResult;
         this.ageResult = ageResult;
+        this.lastNameResult = lastNameResult;
+        this.genderResult = genderResult;
+        this.heightResult = heightResult;
+        this.ageIntResult = ageIntResult;
+        this.locationResult = locationResult;
+    }
+
+    public String getLocationResult() {
+        return locationResult;
+    }
+
+    public void setLocationResult(String locationResult) {
+        this.locationResult = locationResult;
+    }
+
+    public String getGenderResult() {
+        return genderResult;
+    }
+
+    public void setGenderResult(String genderResult) {
+        this.genderResult = genderResult;
+    }
+
+    public String getHeightResult() {
+        return heightResult;
+    }
+
+    public void setHeightResult(String heightResult) {
+        this.heightResult = heightResult;
+    }
+
+    public String getAgeIntResult() {
+        return ageIntResult;
+    }
+
+    public void setAgeIntResult(String ageIntResult) {
+        this.ageIntResult = ageIntResult;
     }
 
     public String getfirstName() {

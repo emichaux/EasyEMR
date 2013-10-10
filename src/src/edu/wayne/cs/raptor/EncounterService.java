@@ -43,8 +43,10 @@ public class EncounterService implements IEncounterService, Serializable {
 	private List<Patient> patientList;
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
-	
-	public EncounterService() {
+    private PatientSearchTable selectedPatientRow;
+
+
+    public EncounterService() {
 		patient = new Patient();
 		encounter = new Encounter();
 		vitals = new Vitals();
@@ -774,7 +776,7 @@ public class EncounterService implements IEncounterService, Serializable {
        int size =  result.size();
         list.clear();
         for(int i = 0 ; i < size ; i++)
-            list.add(new PatientSearchTable(getListResultLastName(i,patientlastnamesearch),getListResultFirstName(i,patientlastnamesearch),getListResultAge(i,patientlastnamesearch)));
+            list.add(new PatientSearchTable(getListResultFirstName(i,patientlastnamesearch),getListResultLastName(i,patientlastnamesearch),getListResultAge(i,patientlastnamesearch),getListResultLocation(i,patientlastnamesearch),getListResultGender(i,patientlastnamesearch),"0","0"));
     }
 
     private String getListResultLastName(int index, String lastName){
@@ -788,30 +790,105 @@ public class EncounterService implements IEncounterService, Serializable {
             return result.get(index).getLastName().toString();
         return null;
     }
-    private String getListResultFirstName(int index, String lastName){
+    private String getListResultFirstName(int index, String firstName){
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
         if (!result.isEmpty() )
             return result.get(index).getFirstName().toString();
         return null;
     }
-    private String getListResultAge(int index, String lastName){
+    private String getListResultAge(int index, String ageVal){
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + ageVal + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
         if (!result.isEmpty() )
             return result.get(index).getBirthDate().toString();
         return null;
     }
+    private String getListResultLocation(int index, String locationValue){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + locationValue + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getResidence().toString();
+        return null;
+    }
+    private String getListResultAgeValue(int index, String ageValue){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + ageValue + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getAge().toString();
+        return null;
+    }
+
+    private String getListResultHeight(int index, String heightValue){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + heightValue + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getHeight().toString();
+        return null;
+    }
+    private String getListResultWeight(int index, String weightValue){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + weightValue + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getWeight().toString();
+        return null;
+    }
+
+    private String getListResultGender(int index, String genderValue){
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + genderValue + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty() )
+            return result.get(index).getGender().toString();
+        return null;
+    }
 
     public List<PatientSearchTable> getPatientResult() {
         return PatientResult;
+    }
+
+    public void fillFieldsFromDatabase(){
+        patient.setFirstName(selectedPatientRow.getfirstName());
+        patient.setLastName(selectedPatientRow.getlastNameResult());
+        patient.setBirthDate(selectedPatientRow.getageResult());
+        patient.setResidence(selectedPatientRow.getLocationResult());
+        patient.setGender(selectedPatientRow.getGenderResult());
+        patient.setAge(selectedPatientRow.getAgeIntResult());
+
+    }
+
+      public PatientSearchTable getSelectedRow(){
+              return selectedPatientRow;
+      }
+
+    public void setSelectedPatientRow(PatientSearchTable selectedPatientRow) {
+        this.selectedPatientRow = selectedPatientRow;
     }
 }

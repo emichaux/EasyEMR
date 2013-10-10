@@ -73,8 +73,8 @@
                 <p:column headerText="Date of Birth" style="width:18%">
                     <h:outputText value="#{PatientSearchTable.ageResult}" />
                 </p:column>
-                <p:column style="width:4%">
-                    <p:commandButton id="selectButton" value="Select" title="View">
+                <p:column style="width:4%" headerText="Display">
+                    <p:commandButton oncomplete="javascript:location.reload()" id="selectButton" value="Select" title="View" action="#{encounterService.fillFieldsFromDatabase}" > <f:setPropertyActionListener value="#{PatientSearchTable}" target="#{encounterService.selectedPatientRow}" />
                     </p:commandButton>
                     <!--update=":form:display" oncomplete="PF('carDialog').show()"-->
                 </p:column>
