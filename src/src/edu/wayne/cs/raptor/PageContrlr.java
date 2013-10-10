@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class PageController implements Serializable {
+public class PageContrlr implements Serializable {
 
     public String moveToPagePharmacy() {
         return "pharm";
