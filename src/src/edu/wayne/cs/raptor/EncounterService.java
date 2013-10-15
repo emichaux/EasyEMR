@@ -68,8 +68,8 @@ public class EncounterService implements IEncounterService, Serializable {
 	
 	public String saveOrUpdateEncounter()
 	{
-		if(patient.getCardID()!= null)
-			return updateEncounter();
+		//if(patient.getCardID()!= null)
+			//return updateEncounter();
 		return saveNewEncounter();
 		
 	}
