@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>620</x>
+      <y>70</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>User
+--
+ID 
+first_name
+last_name
+email
+password
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>510</x>
+      <y>450</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Encounter
+--
+EncounterID
+PatientID
+cardID
+...
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>510</x>
+      <y>240</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Vitals
+--
+VitalsID 
+EncounterID
+...
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>130</x>
+      <y>450</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Pharmacy/Prescription
+--
+patientID
+cardID
+first_name
+last_name
+...
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>950</x>
+      <y>100</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Roles
+--
+RoleID
+role name
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>800</x>
+      <y>100</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=1
+</panel_attributes>
+    <additional_attributes>30;30;150;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>260</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*
+</panel_attributes>
+    <additional_attributes>30;30;240;240</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>610</x>
+      <y>310</y>
+      <w>50</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+m2=*
+</panel_attributes>
+    <additional_attributes>30;140;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>330</x>
+      <y>220</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+</panel_attributes>
+    <additional_attributes>30;30;180;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>310</x>
+      <y>480</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>30;30;200;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>150</x>
+      <y>160</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Patient
+--
+PatientID
+cardID
+first_name
+last_name
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

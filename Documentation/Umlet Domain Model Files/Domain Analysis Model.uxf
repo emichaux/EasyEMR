@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>30</x>
+      <y>100</y>
+      <w>550</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Server&gt;&gt;
+JBoss Application Server
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>60</x>
+      <y>170</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>server page: login
+--
+&lt;&lt;server page&gt;&gt; authenticate
+&lt;&lt;jsp&gt;&gt; triage
+&lt;&lt;jsp&gt;&gt; pharmacy
+&lt;&lt;jsp&gt;&gt; ...
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>300</x>
+      <y>300</y>
+      <w>260</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>server page: triage
+--
+&lt;&lt;server page&gt;&gt; retrieve encounter
+&lt;&lt;server page&gt;&gt; edit encounter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>50</x>
+      <y>420</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>resource: database
+--
+&lt;&lt;database&gt;&gt; username
+&lt;&lt;database&gt;&gt; password
+&lt;&lt;database&gt;&gt; encounter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>50</x>
+      <y>240</y>
+      <w>60</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;180;40;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>230</x>
+      <y>350</y>
+      <w>90</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;80;70;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>240</x>
+      <y>200</y>
+      <w>80</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60;110;30;30</additional_attributes>
+  </element>
+</diagram>
