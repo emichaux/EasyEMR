@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.faces.event.ActionEvent;
+
 /**
  * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for 
  * patient, vitals, encounter, and pharmacy encounters.  like a boss. 
@@ -44,6 +46,11 @@ public class EncounterService implements IEncounterService, Serializable {
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
     private PatientSearchTable selectedPatientRow;
+
+//    For selecting search option on pharm page
+    private Integer number;
+
+
 
 
     public EncounterService() {
@@ -394,28 +401,80 @@ public class EncounterService implements IEncounterService, Serializable {
 
 		
 		return "patientSearch";
-	}	
-	public String searchCardID2()
-	{
-		String tempCardID ="";
-		if(!this.searchPatientCardID.isEmpty())
-		{
-			tempCardID = this.searchPatientCardID;
-		}
-		
-		if(tempCardID != "")
-		{
-			this.patientList = getAllPatientsByCardID(tempCardID);
-		}
-		
-		this.searchPatientId = "";
-		this.searchPatientFirstName = "";
-		this.searchPatientLastName = "";
-		this.searchPatientCardID ="";
-
-		
-		return "pharm";
 	}
+
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+// search option handeler for pharm page
+    public  String searchChoice()
+    {
+        switch (number)
+        {
+            case 1:
+            {
+                String tempCardID ="";
+                if(!this.searchPatientCardID.isEmpty())
+                {
+                    tempCardID = this.searchPatientCardID;
+                }
+
+                if(tempCardID != "")
+                {
+                    this.patientList = getAllPatientsByCardID(tempCardID);
+                }
+
+                this.searchPatientId = "";
+                this.searchPatientFirstName = "";
+                this.searchPatientLastName = "";
+                this.searchPatientCardID ="";
+            }
+            case 2:
+            {
+                String tempFName ="";
+                if(!this.searchPatientFirstName.isEmpty())
+                {
+                    tempFName = this.searchPatientFirstName;
+                }
+
+                if(tempFName != "")
+                {
+                    this.patientList = getAllPatientsByFName(tempFName);
+                }
+
+                this.searchPatientId = "";
+                this.searchPatientFirstName = "";
+                this.searchPatientLastName = "";
+                this.searchPatientCardID ="";
+            }
+            case 3:
+            {
+                String tempLName ="";
+                if(!this.searchPatientLastName.isEmpty())
+                {
+                    tempLName = this.searchPatientLastName;
+                }
+
+                if(tempLName != "")
+                {
+                    this.patientList = getAllPatientsByName(tempLName);
+                }
+
+                this.searchPatientId = "";
+                this.searchPatientFirstName = "";
+                this.searchPatientLastName = "";
+                this.searchPatientCardID ="";
+            }
+        }
+        return "pharm";
+    }
+
 	/** Select an encounter from the list of Encounters retrieved by searching for the patient  */
 	public String selectEncounter(){
 		
@@ -448,7 +507,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession = HibernateUtil.getSessionFactory().openSession();
 		userSession.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Vitals> result = userSession.createQuery("from Vitals where encounterID = '" +encounterID2+ "' ").list();
+		List<Vitals> result = userSession.createQuery("from Vitals where encounterID = " +encounterID2+ "' ").list();
 		
 		userSession.getTransaction().commit();
 		userSession.close();
@@ -496,7 +555,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession.beginTransaction();
 		
 		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where patientID='" + patientId + "'").list();
+		List<Patient> result = userSession.createQuery("from Patient where patientID=" + patientId + "'").list();
 		userSession.getTransaction().commit();
 		userSession.close();
 		
@@ -603,7 +662,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession = HibernateUtil.getSessionFactory().openSession();
 		userSession.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Encounter> result = userSession.createQuery("from Encounter where encounterID='" + encounterId + "'").list();
+		List<Encounter> result = userSession.createQuery("from Encounter where encounterID=" + encounterId + "'").list();
 		userSession.getTransaction().commit();
 		userSession.close();
 		if (!result.isEmpty() )
@@ -628,7 +687,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession = HibernateUtil.getSessionFactory().openSession();
 		userSession.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Encounter> result = userSession.createQuery("from Encounter where patientID='" + patientID + "'").list();
+		List<Encounter> result = userSession.createQuery("from Encounter where patientID=" + patientID + "'").list();
 		userSession.getTransaction().commit();
 		userSession.close();
 		if (!result.isEmpty() )
@@ -641,7 +700,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		userSession = HibernateUtil.getSessionFactory().openSession();
 		userSession.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where patientID='" + patientID + "'").list();
+		List<Patient> result = userSession.createQuery("from Patient where patientID=" + patientID + "'").list();
 		userSession.getTransaction().commit();
 		userSession.close();
 		if(!result.isEmpty())
@@ -663,7 +722,7 @@ public class EncounterService implements IEncounterService, Serializable {
 		if(!tempPatient.isEmpty())
 		{
 			tempPatientId = tempPatient.get(0).getPatientID();
-			result = userSession.createQuery("from Encounter where patientID='" + tempPatientId + "'").list();
+			result = userSession.createQuery("from Encounter where patientID=" + tempPatientId + "'").list();
 			
 		}
 		
