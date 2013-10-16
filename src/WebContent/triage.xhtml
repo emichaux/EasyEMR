@@ -47,6 +47,12 @@
             $("#tabs").tabs();
         });
     </script>
+    <script type="text/javascript">
+        function reloadPage()
+        {
+            window.location = 'triage.xhtml';
+        }
+    </script>
 
 
     <title>Easy EMR</title>
@@ -74,7 +80,7 @@
                     <h:outputText value="#{PatientSearchTable.ageResult}"/>
                 </p:column>
                 <p:column style="width:4%" headerText="Display">
-                    <p:commandButton oncomplete="javascript:location.reload()" id="selectButton" value="Select" title="View" action="#{encounterService.fillFieldsFromDatabase}" > <f:setPropertyActionListener value="#{PatientSearchTable}" target="#{encounterService.selectedPatientRow}" />
+                    <p:commandButton oncomplete="javascript:reloadPage()" id="selectButton" value="Select" title="View" action="#{encounterService.fillFieldsFromDatabase}" > <f:setPropertyActionListener value="#{PatientSearchTable}" target="#{encounterService.selectedPatientRow}" />
                     </p:commandButton>
                     <!--update=":form:display" oncomplete="PF('carDialog').show()"-->
                 </p:column>
@@ -95,8 +101,15 @@
                     </tr>
                     <tr>
                         <td><h5 style="color:#149bdf">First Name</h5></td>
-                        <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"></p:inputText>
+
+                        <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"
+                                         title="Please type the patients First Name" required="false"> <p:ajax
+                                event="keyup" update=":main:datatableid"
+                                listener="#{encounterService.datatableupdate}"/></p:inputText>
                         </td>
+
+
+
                         <h:message for="firstname" style="color: red"></h:message>
                     </tr>
                     <tr>
@@ -171,15 +184,18 @@
             </div>
 
 
+
+
+
+
+
+
             <div class="form span6">
                 <!--<table>-->
-                <tr>
-                    <h3>Vitals<span class="label label-default"></span></h3>
-                </tr>
+                <h3>Vitals<span class="label label-default"></span></h3>
                 <table>
                     <tr>
-
-                        <td><strong>Blood Pressure (mmHg)</strong></td>
+                        <td><h5>Blood Pressure (mmHg)</h5></td>
                         <td><p:inputText style="width:60px" id="bpTop"
                                          value="#{encounterService.vitals.systolicBP}"></p:inputText> /
                             <p:inputText style="width:60px" id="bpBottom"
