@@ -25,7 +25,16 @@ public class LoginBean {
     private boolean authenticated;
     private String encryptedPassword;
     private String adminPerms;
+    private String userRole;
     private int computerID;
+
+    public String getUserRolef() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
 
     public LoginBean() throws IOException {
         systemUser = new User();
@@ -117,6 +126,7 @@ public class LoginBean {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", dbUsername.get(0));
                 adminPermissions(dbUsername.get(0));
                 //JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
+
                 return handleRoleToPage(dbUsername.get(0));
             }
             //  If password incorrect
@@ -145,7 +155,7 @@ public class LoginBean {
      * Handles the default page the user is taken to upon login
      */
     public String handleRoleToPage(User user) {
-
+         setUserRole(user.getRoles());
         if (user.getRoles().equals(Role.ADMIN))
             return "admin";
         if (user.getRoles().equals(Role.DOCTOR))
@@ -220,6 +230,7 @@ public class LoginBean {
             setAdminPerms("Must be an Admin to do that");
         }
     }
+
 
     public String getAdminPerms() {
         return adminPerms;
