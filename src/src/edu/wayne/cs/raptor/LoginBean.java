@@ -3,6 +3,7 @@ package edu.wayne.cs.raptor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -126,7 +127,6 @@ public class LoginBean {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", dbUsername.get(0));
                 adminPermissions(dbUsername.get(0));
                 //JOptionPane.showMessageDialog(null, "To keep maximum HIPAA compliance in reports, please enter PII only in fields where explicitly required", "HIPAA and PII", JOptionPane.INFORMATION_MESSAGE);
-
                 return handleRoleToPage(dbUsername.get(0));
             }
             //  If password incorrect
@@ -155,7 +155,7 @@ public class LoginBean {
      * Handles the default page the user is taken to upon login
      */
     public String handleRoleToPage(User user) {
-         setUserRole(user.getRoles());
+
         if (user.getRoles().equals(Role.ADMIN))
             return "admin";
         if (user.getRoles().equals(Role.DOCTOR))

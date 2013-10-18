@@ -159,6 +159,8 @@ public class EncounterService implements IEncounterService, Serializable {
 		vitals.setCreatedDate(calendar.getTime());
 		vitals.setModifyingUser(login.getSystemUser().getUsername());
 		vitals.setLastModifiedDate(calendar.getTime());
+        // may fix encounterid problem in vitals
+        //vitals.setEncounterID(encounter.getEncounterID());
 		
 		encounter.setCreatingUser(login.getSystemUser().getUsername());
 		encounter.setCreatedDate(calendar.getTime());
@@ -786,7 +788,6 @@ public class EncounterService implements IEncounterService, Serializable {
 				}
 			}
 		}
-		
 		if(changedTempPatientID == true){
 			tempPatientID = tempPatientID + 1;
 		}
@@ -934,13 +935,15 @@ public class EncounterService implements IEncounterService, Serializable {
         return PatientResult;
     }
 
-    public void fillFieldsFromDatabase(){
+    public String fillFieldsFromDatabase(){
         patient.setFirstName(selectedPatientRow.getfirstName());
         patient.setLastName(selectedPatientRow.getlastNameResult());
         patient.setBirthDate(selectedPatientRow.getageResult());
         patient.setResidence(selectedPatientRow.getLocationResult());
         patient.setGender(selectedPatientRow.getGenderResult());
         patient.setAge(selectedPatientRow.getAgeIntResult());
+
+        return "faces-redirect=true";
 
     }
 
