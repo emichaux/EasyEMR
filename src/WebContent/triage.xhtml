@@ -105,8 +105,11 @@
                         <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"
                                          title="Please type the patients First Name" required="false"> <p:ajax
                                 event="keyup" update=":main:datatableid"
-                                listener="#{encounterService.datatableupdate}"/></p:inputText>
-                        </td>
+                                listener="#{encounterService.datatableupdate}"/></p:inputText> </td> <td><p:commandButton styleClass="ui-icon-search" id="history" value="Show History"
+
+                                                                                                                    action="#{encounterService.saveOrUpdateEncounter}"
+                                ></p:commandButton>  </td>
+
 
 
 
@@ -117,8 +120,8 @@
                         <td><p:inputText id="patientLastName" value="#{encounterService.patient.lastName }"
                                          title="Please type the patients Last Name" required="false"> <p:ajax
                                 event="keyup" update=":main:datatableid"
-                                listener="#{encounterService.datatableupdate}"/></p:inputText>
-                        </td>
+                                listener="#{encounterService.datatableupdate}"/></p:inputText></td>
+
                         <h:message for="patientLastName" style="color:red"> </h:message>
                     </tr>
                     <tr>
@@ -178,10 +181,17 @@
                 </table>
             </div>
 
+
+
+
+
+
+
+
             <div class="form span6">
-                <!--<table>-->
-                <h3>Vitals</h3>
+
                 <table>
+
                     <tr>
                         <td><h5>Blood Pressure (mmHg)</h5></td>
                         <td><p:inputText style="width:60px" id="bpTop"
@@ -226,12 +236,12 @@
                     <br/>
 
                     <tr>
-                        <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save/ Update Patient"
+                        <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save/ Update"
                                              onclick="alert('Patient Record Submitted');"
                                              action="#{encounterService.saveOrUpdateEncounter}"
                                 ></p:commandButton></td>
-                    </tr>
-                    <tr>
+
+
                         <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
                                              action="#{encounterService.resetRecord }" update="main"
                                              process="@this"></p:commandButton></td>

@@ -39,10 +39,17 @@
 			    <!--inner welcome to easyemr box -->
                 <h:form id="form">
 
+
+
                 <center>
                 <h:panelGrid columns="3">
 				<tr>
-				<b> Welcome to</b><img src="./img/EasyEMR Logo.png" height="80" width="110" /><br /><br />Please Login Below <br />
+				<b> Welcome to</b><img src="./img/EasyEMR Logo.png" height="80" width="110" />
+
+                    <div class="alert alert-dismissable">Please follow all HIPPA guidelines.</div>
+
+                   Please Login Below
+
 				</tr> <br></br>
 
                     <h:outputLabel for="username" value="Username: " /><p:inputText style="width:140px" id="username" value="#{loginBean.systemUser.username}" />
