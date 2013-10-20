@@ -3,7 +3,6 @@ package edu.wayne.cs.raptor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -239,10 +238,6 @@ public class LoginBean {
     public void setAdminPerms(String adminPerms) {
         this.adminPerms = adminPerms;
     }
-
-
-
-		
 
 	
 	/* Run an insert of admin user into the DB or use a method to create admin beforehand
