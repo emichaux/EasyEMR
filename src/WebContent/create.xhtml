@@ -49,7 +49,7 @@
 <body>
 <h:form id="main">
 
-<div class="container well">
+<div class="container wellmed">
 <div class="row">
 <div class="form span4 left">
     <div class="left">
@@ -57,7 +57,7 @@
     </div>
     <table cellspacing="1">
         <tr>
-            <td><h:outputLabel style="color:red" value="ID: *"/>
+            <td><h:outputLabel style="color:red" value="Id: *"/>
                 <p:inputText id="visitID" style="width:100px" value="#{encounterService.encounter.cardID}"/>
             </td>
         </tr>
@@ -264,7 +264,7 @@
         <table>
             <tr>
                 <td><strong>Problem List</strong></td>
-                    <td><strong>Prescription / Treatment</strong></td>
+                <td><strong>Prescription / Treatment</strong></td>
             </tr>
 
             <tr>
@@ -319,18 +319,18 @@
         <table>
             <tr>
                 <td><strong style="text-align:center">Physical Examination</strong>
-                <p:inputTextarea style="width:300px" id="physicalExamination"
-                                 value="#{encounterService.encounter.overallImpression }"/></td>
+                    <p:inputTextarea style="width:300px" id="physicalExamination"
+                                     value="#{encounterService.encounter.overallImpression }"/></td>
             </tr>
             <tr>
                 <td><strong style="text-align:center">Assessment</strong>
-                <p:inputTextarea style="width:300px" id="assessment"
-                                 value="#{encounterService.encounter.assessment }"/></td>
+                    <p:inputTextarea style="width:300px" id="assessment"
+                                     value="#{encounterService.encounter.assessment }"/></td>
             </tr>
             <tr>
                 <td><strong>Family/Social History</strong>
-                <p:inputTextarea style="width:300px" id="socialHistory"
-                                 value="#{encounterService.patient.socialHistory }"/></td>
+                    <p:inputTextarea style="width:300px" id="socialHistory"
+                                     value="#{encounterService.patient.socialHistory }"/></td>
             </tr>
 
 
@@ -338,24 +338,26 @@
     </div>
 </div>
 </div>
-<table>
-<tr>
-    <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Submit/Update"
-                         onclick="alert('Patient Record Submitted');"
-                         action="#{encounterService.updateEncounter}"
-                         rendered="#{not encounterService.newEncounter}"></p:commandButton>
-    </td>
+<center>
+    <table>
+        <tr>
+            <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Submit/Update"
+                                 onclick="alert('Patient Record Submitted');"
+                                 action="#{encounterService.updateEncounter}"
+                                 rendered="#{not encounterService.newEncounter}"></p:commandButton>
+            </td>
 
-    <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
-                         action="#{encounterService.resetRecord }" immediate="true"></p:commandButton>
+            <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
+                                 action="#{encounterService.resetRecord }" immediate="true"></p:commandButton>
 
-    </td>
-    <td><p:commandButton id="startNew" styleClass="ui-icon-search" value="Start New Encounter"
-                         action="#{encounterService.startEncounter}"
-                         rendered="#{encounterService.newEncounter}"></p:commandButton>
-    </td>
-</tr>
-</table>
+            </td>
+            <td><p:commandButton id="startNew" styleClass="ui-icon-search" value="Start New Encounter"
+                                 action="#{encounterService.startEncounter}"
+                                 rendered="#{encounterService.newEncounter}"></p:commandButton>
+            </td>
+        </tr>
+    </table>
+</center>
 
 </h:form>
 
