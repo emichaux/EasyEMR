@@ -330,8 +330,8 @@ a:focus {
 
 .span4-is-padded {
     width: 300px;
-    padding-right:20px;
-    background: #ccc;
+    padding-right: 20px;
+    background: #F5F5F5;
 }
 
 .span3 {

@@ -17,6 +17,8 @@ public class Patient {
     /**
      * A unique Patient identification number
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int patientID;
     /**
      * Card ID to create a better use case for a given patient
@@ -25,6 +27,7 @@ public class Patient {
     /**
      * Patient's first name
      */
+
     private String firstName;
     /**
      * Patient's last name

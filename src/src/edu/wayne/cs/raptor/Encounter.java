@@ -1,5 +1,7 @@
 package edu.wayne.cs.raptor;
 
+import org.hibernate.internal.jaxb.mapping.orm.JaxbPrimaryKeyJoinColumn;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -15,6 +17,8 @@ import javax.persistence.*;
 public class Encounter {
 	
 	/** A unique Encounter identification number */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int encounterID;
 	
 	/** The id of the patient for whom the encounter is in progress */
@@ -22,7 +26,7 @@ public class Encounter {
 	
 	/** Card ID to create a better use case for a given patient */
 	private String cardID;
-	
+
 	//figure out how to deal with images using jsp
 	//private Bitmap personPhoto
 	

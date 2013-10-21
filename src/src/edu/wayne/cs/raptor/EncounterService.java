@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
-
 /**
  * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for 
  * patient, vitals, encounter, and pharmacy encounters.  like a boss. 
@@ -27,7 +25,7 @@ public class EncounterService implements IEncounterService, Serializable {
 	private Calendar calendar;
 	
 	private int computerID;
-	
+
 	private Patient patient;
 	private int patientID;
 	private String cardID;
@@ -109,7 +107,6 @@ public class EncounterService implements IEncounterService, Serializable {
 			userSession.update(patient);
 			encounter.setCardID(this.patient.getCardID());// Added @RD
 			encounter.setPatientID(this.patient.getPatientID());
-            System.out.println(encounter.getPatientID());
 			vitals.setVitalsID(encounter.getEncounterID());
 			userSession.save(encounter);
 			vitals.setEncounterID(this.encounter.getEncounterID());
@@ -183,20 +180,20 @@ public class EncounterService implements IEncounterService, Serializable {
 		
 		try
 		{
-			
-			//get the patientID once its saved and use it for encounter
+            //get the patientID once its saved and use it for encounter
 			patient.setCardID(encounter.getCardID());
 			patientID = (Integer)userSession.save(patient);
 			encounter.setPatientID(patientID);
 			//Really? there's a vitalsID too? Really?
-			vitals.setVitalsID(encounter.getEncounterID());
+
 			//Yeah really, and now it's set to be the same as encounterID
-			
+
 
 			//get the encounterID once it is saved and use it in vitals
 			userSession.save(encounter);
+            vitals.setVitalsID(encounter.getEncounterID());
 			vitals.setEncounterID(this.encounter.getEncounterID());
-			
+
 			userSession.save(vitals);
 		}
 		
@@ -211,6 +208,8 @@ public class EncounterService implements IEncounterService, Serializable {
 		{
 			userSession.getTransaction().commit();
 			userSession.close();
+            //System.out.println("Encounter ID is " + getEncounter().getEncounterID());
+            //System.out.println("vitals ID is " + getVitals().getVitalsID());
 		}
 		catch(Exception ex)
 		{
@@ -225,8 +224,8 @@ public class EncounterService implements IEncounterService, Serializable {
 			patient = new Patient();
 			vitals = new Vitals();
 			encounter = new Encounter();
-			
-			//return "triage" to go back to create.jsp after the create patient form is submitted
+            System.out.println("encounterID is " + encounter.getEncounterID());
+			//return "triage" to go back to triage.jsp after the create patient form is submitted
 			return "triage";
 		}
 		errorPreventedInsert = false;
