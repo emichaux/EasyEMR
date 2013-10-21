@@ -53,31 +53,25 @@
 <div class="row">
 <div class="form span4 left">
     <div class="center">
-        <h3>General Information</h3>
+        <h5>General Information</h5>
     </div>
     <table cellspacing="1">
         <tr>
-            <td><h:outputLabel style="color:red" value="Card Id: *"/>
-                <p:inputText id="visitID" style="width:100px" value="#{encounterService.encounter.cardID}"/>
+            <td><h:outputText style="padding-right: 30px" value="First: *"/>
+                <p:inputText id="firstname" style="width:200px" value="#{encounterService.patient.firstName}"/>
             </td>
         </tr>
 
         <tr>
-            <td><h:outputText style="color: red; padding-right: 30px" value="First: *"/>
-                <p:inputText id="firstname" style="width:100px" value="#{encounterService.patient.firstName}"/>
-            </td>
-        </tr>
-
-        <tr>
-            <td><h:outputLabel style="color:red" value="Last: *"/>
-                <p:inputText id="lastname" style="width:100px" value="#{encounterService.patient.lastName }"/>
+            <td><h:outputLabel value="Last: *"/>
+                <p:inputText id="lastname" style="width:200px" value="#{encounterService.patient.lastName }"/>
             </td>
         </tr>
 
         <tr>
             <td>
                 <h:outputLabel value="Location"/>
-                <h:selectOneMenu id="location" style="width:100px"
+                <h:selectOneMenu id="location" style="width:200px"
                                  value="#{encounterService.patient.residence }">
                     <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                     <f:selectItem itemValue="Port-au-Prince" itemLabel="Port-au-Prince"/>
@@ -95,17 +89,17 @@
 
         <tr>
             <td><h:outputLabel value="Birth Date"/>
-                <p:inputText style="width:100px" id="datepicker"
+                <p:inputText style="width:200px" id="datepicker"
                              value="#{encounterService.patient.birthDate }"/></td>
 
         </tr>
         <tr>
             <td><h:outputLabel value="Age"/>
-                <p:inputText id="age" style="width:100px" value="#{encounterService.patient.age}"/></td>
+                <p:inputText id="age" style="width:200px" value="#{encounterService.patient.age}"/></td>
         </tr>
         <tr>
             <td><h:outputLabel value="Gender"/>
-                <h:selectOneMenu id="gender" style="width:100px" value="#{encounterService.patient.gender }">
+                <h:selectOneMenu id="gender" style="width:200px" value="#{encounterService.patient.gender }">
                     <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                     <f:selectItem itemValue="Male" itemLabel="Male"/>
                     <f:selectItem itemValue="Female" itemLabel="Female"/>
@@ -114,17 +108,17 @@
         </tr>
         <tr>
             <td><h:outputLabel value="Pregnancy (weeks)"/>
-                <p:inputText style="width:100px" value="52"></p:inputText></td>
+                <p:inputText style="width:200px" value="52"></p:inputText></td>
         </tr>
 
         <tr>
             <td><h:outputLabel value="Height"/>
-                <p:inputText id="hin" style="width:100px" value="#{encounterService.vitals.height }"/></td>
+                <p:inputText id="hin" style="width:200px" value="#{encounterService.vitals.height }"/></td>
         </tr>
 
         <tr>
             <td><h:outputLabel vale="weight"/>
-                <p:inputText id="wlbs" style="width:100px" value="#{encounterService.vitals.weight }"/></td>
+                <p:inputText id="wlbs" style="width:200px" value="#{encounterService.vitals.weight }"/></td>
         </tr>
 
     </table>
@@ -132,54 +126,56 @@
 
 <div class="form span4 left">
     <div class="center">
-        <h3>Vitals</h3>
+        <h5>Vitals</h5>
     </div>
     <table cellspacing="4">
 
 
         <tr>
             <td><p:outputLabel for="heartrate" value="Heart Rate"/></td>
-            <td><p:inputText id="heartrate" style="width:100px"
+            <td><p:inputText id="heartrate" style="width:200px"
                              value="#{encounterService.vitals.heartRate }"/></td>
 
         </tr>
 
         <tr>
-            <td><h:outputLabel value="BP (mmHg)"/></td>
+            <td><h:outputLabel value="BP Systolic"/></td>
 
-            <td><p:inputText style="width:65px" id="bpTop"
-                             value="#{encounterService.vitals.systolicBP}"/>
-
-                <p:inputText style="width:65px" id="bpBottom"
+            <td><p:inputText style="width:200px" id="bpTop"
+                             value="#{encounterService.vitals.systolicBP}"/></td>
+        </tr>
+        <tr>
+            <td><h:outputLabel value="BP Dystolic"/></td>
+               <td><p:inputText style="width:200px" id="bpBottom"
                              value="#{encounterService.vitals.diastolicBP}"/></td>
 
         </tr>
 
         <tr>
             <td><h:outputLabel value="Blood Sat%"/></td>
-            <td><p:inputText style="width:100px" id="bsat"
+            <td><p:inputText style="width:200px" id="bsat"
                              value="#{encounterService.vitals.bloodSaturation}"/></td>
         </tr>
 
         <tr>
             <td><h:outputLabel value="Heart Rate bpm"/></td>
-            <td><p:inputText style="width:100px" id="heartrate"
+            <td><p:inputText style="width:200px" id="heartrate"
                              value="#{encounterService.vitals.heartRate }"/></td>
         </tr>
         <tr>
-            <td><h:outputLabel value="Temperature (F)"/></td>
-            <td><p:inputText style="width:100px" id="temperature"
+            <td><h:outputLabel value="Temp (F)"/></td>
+            <td><p:inputText style="width:200px" id="temperature"
                              value="#{encounterService.vitals.temperatureF }"/></td>
         </tr>
 
         <tr>
-            <td><h:outputLabel value="Respiration (BPM"/></td>
-            <td><p:inputText style="width:100px" id="respiration"
+            <td><h:outputLabel value="Respiration (BPM)"/></td>
+            <td><p:inputText style="width:200px" id="respiration"
                              value="#{encounterService.vitals.respRate }"/></td>
         </tr>
         <tr>
             <td><h:outputLabel value="Chief Complaint"/></td>
-            <td><p:inputTextarea style="width:150px" id="primaryComplaint"
+            <td><p:inputTextarea style="width:200px" id="primaryComplaint"
                                  value="#{encounterService.encounter.chiefComplaint }"/></td>
         </tr>
     </table>
@@ -187,7 +183,7 @@
 
 <div class="form span4 left">
     <div class="center">
-        <h3>HPI</h3>
+        <h5>HPI</h5>
     </div>
     <table cellspacing="1">
 
@@ -245,10 +241,6 @@
             <td><h:outputLabel value="Other"/>
                 <p:inputText value="#{encounterService.encounter.other }"/></td>
         </tr>
-        <!--<tr>-->
-        <!--<td><h:outputLabel value="ROS"/>-->
-        <!--<p:inputTextarea value="#{encounterService.encounter.other }"/></td>-->
-        <!--</tr>-->
 
     </table>
 </div>
@@ -257,25 +249,25 @@
 
 <div class="row">
     <div class="center">
-        <h3>Complaints / Treatment</h3>
+        <h5>Complaints / Treatment</h5>
     </div>
     <div class="span4 left">
         <table>
             <tr>
                 <td><strong style="text-align:center">Physical Examination</strong>
-                    <p:inputTextarea style="width:200px" id="physicalExamination"
+                    <p:inputTextarea style="width:220px" id="physicalExamination"
                                      value="#{encounterService.encounter.overallImpression }"/></td>
 
                 <td><strong style="text-align:center">Assessment</strong>
-                    <p:inputTextarea style="width:200px" id="assessment"
+                    <p:inputTextarea style="width:220px" id="assessment"
                                      value="#{encounterService.encounter.assessment }"/></td>
 
                 <td><strong>Family/Social History</strong>
-                    <p:inputTextarea style="width:200px" id="socialHistory"
+                    <p:inputTextarea style="width:220px" id="socialHistory"
                                      value="#{encounterService.patient.socialHistory }"/></td>
 
                 <td><h:outputLabel value="ROS"/>
-                    <p:inputTextarea style="width: 200px" value="#{encounterService.encounter.other }"/></td>
+                    <p:inputTextarea style="width: 220px" value="#{encounterService.encounter.other }"/></td>
             </tr>
 
 
@@ -294,45 +286,45 @@
 
             <tr>
                 <td><strong>Problem List</strong></td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:125px"
                                  value="#{encounterService.encounter.condition1 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:125px"
                                  value="#{encounterService.encounter.condition2 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:125px"
                                  value="#{encounterService.encounter.condition3 }"></p:inputText>
                 </td>
 
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:125px"
                                  value="#{encounterService.encounter.condition4 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:125px"
                                  value="#{encounterService.encounter.condition5 }"></p:inputText>
                 </td>
             </tr>
 
             <tr>
                 <td><strong>Prescription/Treatment</strong></td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:120px"
                                  value="#{encounterService.encounter.medicationPrescribed1 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:120px"
                                  value="#{encounterService.encounter.medicationPrescribed2 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:120px"
                                  value="#{encounterService.encounter.medicationPrescribed3 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:120px"
                                  value="#{encounterService.encounter.medicationPrescribed4 }"></p:inputText>
                 </td>
-                <td><p:inputText style="width:150px"
+                <td><p:inputText style="width:120px"
                                  value="#{encounterService.encounter.medicationPrescribed5 }"></p:inputText>
                 </td>
             </tr>
             <tr>
                 <td><h:outputLabel value="Narrative"/></td>
-                <td><p:inputText style="width: 150px" value="Broke a bone"/></td>
+                <td><p:inputText style="width: 120px" value="Broke a bone"/></td>
             </tr>
         </table>
     </div>

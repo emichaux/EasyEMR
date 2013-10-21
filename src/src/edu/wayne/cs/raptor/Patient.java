@@ -27,7 +27,6 @@ public class Patient {
     /**
      * Patient's first name
      */
-
     private String firstName;
     /**
      * Patient's last name
