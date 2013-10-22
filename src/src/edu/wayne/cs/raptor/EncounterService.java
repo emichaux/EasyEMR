@@ -47,8 +47,15 @@ public class EncounterService implements IEncounterService, Serializable {
 
 //    For selecting search option on pharm page
     private Integer number;
+    private Patient selectedPatient;
 
+    public Patient getSelectedPatient(){
+        return selectedPatient;
+    }
 
+    public void setSelectedPatient(Patient selectedPatient){
+        this.selectedPatient = selectedPatient;
+    }
 
 
     public EncounterService() {
