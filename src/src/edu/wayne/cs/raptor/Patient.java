@@ -2,6 +2,7 @@ package edu.wayne.cs.raptor;
 
 import java.util.Date;
 
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.*;
 
 
@@ -63,6 +64,12 @@ public class Patient {
      */
     private String socialHistory;
 
+
+    private String height;
+
+
+    private String weight;
+
     /** Identifying image of the patient*/
     //private Bitmap personPhoto;
 
@@ -101,10 +108,6 @@ public class Patient {
     public void setWeight(String weight) {
         this.weight = weight;
     }
-
-    private String height;
-    private String weight;
-
 
     /** TODO:  photos of conditions **/
 

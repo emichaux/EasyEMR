@@ -119,8 +119,7 @@ CREATE TABLE `USERS` (
        `modifyingUser` varchar(55),
        `lastModifiedDate` datetime,
        PRIMARY KEY (`vitalsID`),
-       UNIQUE KEY `vitalsID_UNIQUE` (`vitalsID`),
-       UNIQUE KEY `encounterID_UNIQUE` (`encounterID`)
+       UNIQUE KEY `vitalsID_UNIQUE` (`vitalsID`)
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
      
      insert into test.USERS (firstName, lastName, userName, password, roles) values ('Bob', 'Bobson', 'admin', 'cef5729281f29438d09d2aedcacfd607d1cddcc9','System Administrator');
