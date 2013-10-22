@@ -10,13 +10,20 @@
     <title>Easy EMR</title>
     <link href="./css/bootstrap.css" rel="stylesheet"/>
 
+    <script type="text/javascript">
+        function reloadPage()
+        {
+            window.location = 'pharm.xhtml';
+        }
+    </script>
+
 </h:head>
 
 <h:body>
 <h:form id="main">
 <div class="container well">
 
-    <h:panelGrid styleClass="center" columns="5" style="margin-bottom:10px" cellpadding="3">
+    <h:panelGrid styleClass="center" style="margin-bottom:10px" cellpadding="3" columns="5">
         <h:outputText value="Search By: " />
         <p:selectOneButton value="#{encounterService.number}">
             <f:selectItem itemLabel="Card ID" itemValue="1" />
@@ -27,114 +34,85 @@
         <p:inputText  style="margin-top:10px" id="CardID" value="#{encounterService.searchPatientCardID}"/>
         <!--<p:inputText id="FName" value="#{encounterService.searchPatientFirstName}"/>-->
         <!--<p:inputText id="LName" value="#{encounterService.searchPatientLastName}"/>-->
-        <p:commandButton id="searchCard" value="Search" action="#{encounterService.searchChoice}" ajax="false"/>
+        <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoice}"/>
     </h:panelGrid>
 
-    <p:dataTable id="dataTable" var="patient" value="#{encounterService.patientList}" paginator="true" rows="5" editable="true">
+    <p:overlayPanel id="overlaySearch" style="width:800px;" for="searchButton" hideEffect="fade" dynamic="true" onHide="javascript:reloadPage()">
 
-        <f:facet name="header">Search Results</f:facet>
+        <p:dataTable id="patientSearch" var="searchPatient" value="#{encounterService.patientList}" paginator="true" rows="5">
 
-        <p:column headerText="Card ID">
-                <p:cellEditor>
-                    <f:facet name="output"><h:outputText value="#{patient.cardID}"/></f:facet>
-                    <f:facet name="input"><p:inputText value="#{patient.cardID}" style="width:100%"/></f:facet>
-                </p:cellEditor>
+            <f:facet name="header">Search Results</f:facet>
+
+            <p:column headerText="Card ID">
+                <h:outputText value="#{searchPatient.cardID}"/>
             </p:column>
 
             <p:column headerText="First Name">
-                <p:cellEditor>
-                    <f:facet name="output"><h:outputText value="#{patient.firstName}"/></f:facet>
-                    <f:facet name="input"><h:inputText value="#{patient.firstName}" style="width:100%"/></f:facet>
-                </p:cellEditor>
+                <h:outputText value="#{searchPatient.firstName}"/>
             </p:column>
 
             <p:column headerText="Last Name">
-                <p:cellEditor>
-                    <f:facet name="output"><h:outputText value="#{patient.lastName}"/></f:facet>
-                    <f:facet name="input"><p:inputText value="#{patient.lastName}" style="width:100%"/></f:facet>
-                </p:cellEditor>
+                <h:outputText value="#{searchPatient.lastName}"/>
             </p:column>
 
             <p:column headerText="Age">
-                <p:cellEditor>
-                    <f:facet name="output"><h:outputText value="#{patient.age}"/></f:facet>
-                    <f:facet name="input"><p:inputText value="#{patient.age}" style="width:100%"/></f:facet>
-                </p:cellEditor>
+                <h:outputText value="#{searchPatient.age}"/>
             </p:column>
-
 
             <p:column headerText="Residence">
-                <p:cellEditor>
-                    <f:facet name="output"><h:outputText value="#{patient.residence}" /></f:facet>
-                    <f:facet name="input" style="width:100%">
-                        <p:selectOneMenu value="#{patient.residence}">
-                            <f:selectItem itemValue="Select" itemLabel="- Select -"/>
-                            <f:selectItem itemValue="Port-au-Prince" itemLabel="Port-au-Prince"/>
-                            <f:selectItem itemValue="Port-au-Prince: Soleil" itemLabel="Port-au-Prince: Soleil"/>
-                            <f:selectItem itemValue="Borel" itemLabel="Borel"/>
-                            <f:selectItem itemValue="Morne de l' Hopital" itemLabel="Morne de l' Hopital"/>
-                            <f:selectItem itemValue="Opac" itemLabel="Opac"/>
-                            <f:selectItem itemValue="Jacmel" itemLabel="Jacmel"/>
-                            <f:selectItem itemValue="Leogane" itemLabel="Leogane"/>
-                            <f:selectItem itemValue="Miragoane" itemLabel="Miragoane"/>
-                        </p:selectOneMenu>
-                    </f:facet>
-                </p:cellEditor>
+                <h:outputText value="#{searchPatient.residence}"/>
             </p:column>
 
-            <p:column>
-                <f:facet name="header">
-                    <h:column><h:outputText value="Select Patient"/></h:column>
-                </f:facet>
-                <p:commandLink value="Select" />
-            </p:column>
+            <p:column headerText="Select Patient">
 
-            <p:column headerText="Edit"><p:rowEditor/></p:column>
-
-        </p:dataTable>
+                <p:commandButton id="patientSlection" oncomplete="javascript:reloadPage()" value="Select" title="View">
+                    <f:setPropertyActionListener value="#{searchPatient}" target="#{encounterService.selectedPatient}" />
+                </p:commandButton>
 
 
-    <p:panel styleClass="center" header="Pateint Selection">
-
-        <p:dataTable>
-
-            <p:column headerText="First Name">
-                <f:facet name="output"><h:outputText value="NYI"/></f:facet>
-            </p:column>
-
-            <p:column headerText="Last Name">
-                <f:facet name="output"><h:outputText value="NYI"/></f:facet>
-            </p:column>
-
-            <p:column headerText="Age">
-                <f:facet name="output"><h:outputText value="NYI"/></f:facet>
-            </p:column>
-
-            <p:column headerText="Height">
-                <f:facet name="output"><h:outputText value="NYI"/></f:facet>
-            </p:column>
-
-            <p:column headerText="Pregnancy Status">
-                <f:facet name="output"><h:outputText value="NYI"/></f:facet>
             </p:column>
 
         </p:dataTable>
 
-              <h:panelGrid styleClass="center" style="margin-top:10px" columns="4">
+        <center><p:commandButton id="closeSearch" value="Close" oncomplete="javascript:reloadPage()"/></center>
+
+    </p:overlayPanel>
+
+    <!--<p:dataTable>-->
+
+        <!--<p:column headerText="First Name">-->
+            <!--<h:outputText value="#{encounterService.selectedPatient.firstName}"/>-->
+        <!--</p:column>-->
+
+
+    <!--</p:dataTable>-->
+
+    <p:panel id="selectedPatient" styleClass="center" header="Patient Selection">
+
+        <h:panelGrid styleClass="center" cellpadding="5" columns="6" rows="2">
+
+            <h:outputText value="First Name"/>
+            <h:outputText style="margin-left:30px" value="Last Name"/>
+            <h:outputText style="margin-left:30px" value="Age"/>
+            <h:outputText style="margin-left:30px" value="Height"/>
+            <h:outputText style="margin-left:30px" value="Weight"/>
+            <h:outputText style="margin-left:30px" value="Pregnancy Status"/>
+
+            <h:outputText value="#{encounterService.selectedPatient.firstName}"/>
+            <h:outputText value="#{encounterService.selectedPatient.lastName}"/>
+            <h:outputText value="#{encounterService.selectedPatient.age}"/>
+            <h:outputText value="#{encounterService.vitals.height}"/>
+            <h:outputText value="#{encounterService.vitals.weight}"/>
+            <h:outputText value="#{encounterService.selectedPatient.pregers}"/>
+
+
+        </h:panelGrid>
+
+
+              <h:panelGrid styleClass="left" style="margin-top:10px" columns="4">
 
                   <h:panelGrid styleClass="left" columns="1" rows="6">
                       <h:outputText value="Problem List"/>
-                      <p:inputText value="#{encounterService.encounter.condition1}"/>
-                      <p:inputText style="margin-top:-10px" value="NYI}"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-
-
-                  </h:panelGrid>
-
-                  <h:panelGrid styleClass="right" style="margin-left:30px" columns="1" rows="6">
-                      <h:outputText value="Medication Given"/>
                       <p:inputText value="NYI"/>
                       <p:inputText style="margin-top:-10px" value="NYI"/>
                       <p:inputText style="margin-top:-10px" value="NYI"/>
@@ -143,40 +121,57 @@
 
                   </h:panelGrid>
 
-
-
-                  <h:panelGrid styleClass="right" style="margin-top:-10px" columns="1" rows="6">
-                      <h:outputText value="Same Medication?"/>
-                      <p:selectOneMenu style="width:150px">
-                          <f:selectItem itemLabel="Yes" itemValue="1"/>
-                          <f:selectItem itemLabel="No" itemValue="2"/>
-                      </p:selectOneMenu>
-                      <p:selectOneMenu style="width:150px">
-                          <f:selectItem itemLabel="Yes" itemValue="1"/>
-                          <f:selectItem itemLabel="No" itemValue="2"/>
-                      </p:selectOneMenu>
-                      <p:selectOneMenu style="width:150px">
-                          <f:selectItem itemLabel="Yes" itemValue="1"/>
-                          <f:selectItem itemLabel="No" itemValue="2"/>
-                      </p:selectOneMenu>
-                      <p:selectOneMenu style="width:150px">
-                          <f:selectItem itemLabel="Yes" itemValue="1"/>
-                          <f:selectItem itemLabel="No" itemValue="2"/>
-                      </p:selectOneMenu>
-                      <p:selectOneMenu style="width:150px">
-                          <f:selectItem itemLabel="Yes" itemValue="1"/>
-                          <f:selectItem itemLabel="No" itemValue="2"/>
-                      </p:selectOneMenu>
+                  <h:panelGrid styleClass="center" style="margin-left:30px" columns="1" rows="6">
+                      <h:outputText value="Medication Given"/>
+                      <p:inputText style="margin-top:-10px" value="NYI"/>
+                      <p:inputText style="margin-top:-10px" value="NYI"/>
+                      <p:inputText style="margin-top:-10px" value="NYI"/>
+                      <p:inputText style="margin-top:-10px" value="NYI"/>
+                      <p:inputText style="margin-top:-10px" value="NYI"/>
 
                   </h:panelGrid>
 
+                  <h:panelGrid styleClass="right" style="margin-top:-15px" columns="1" rows="1">
+                      <h:outputText value="Same medication?"/>
 
+                      <h:panelGrid styleClass="right" cellpadding="6" columns="4" rows="5">
+                          <h:outputText value="Yes" />
+                          <p:selectBooleanCheckbox value="" />
+                          <h:outputText value="No" />
+                          <p:selectBooleanCheckbox value="" />
 
+                          <h:outputText value="Yes" />
+                          <p:selectBooleanCheckbox value="" />
+                          <h:outputText value="No" />
+                          <p:selectBooleanCheckbox value="" />
+
+                          <h:outputText value="Yes" />
+                          <p:selectBooleanCheckbox value="" />
+                          <h:outputText value="No" />
+                          <p:selectBooleanCheckbox value="" />
+
+                          <h:outputText value="Yes" />
+                          <p:selectBooleanCheckbox value="" />
+                          <h:outputText value="No" />
+                          <p:selectBooleanCheckbox value="" />
+
+                          <h:outputText value="Yes" />
+                          <p:selectBooleanCheckbox value="" />
+                          <h:outputText value="No" />
+                          <p:selectBooleanCheckbox value="" />
+
+                      </h:panelGrid>
+
+                  </h:panelGrid>
 
               </h:panelGrid>
 
+        <h:panelGrid styleClass="center" style="margin-bottom:10px" cellpadding="5" columns="2">
 
+            <p:commandButton id="submit" value="Submit" oncomplete="javascript:reloadPage()"/>
+            <p:commandButton id="reset" value="Reset Forum" oncomplete="javascript:reloadPage()"/>
 
+        </h:panelGrid>
 
     </p:panel>
 
