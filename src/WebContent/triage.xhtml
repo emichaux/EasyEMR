@@ -52,6 +52,20 @@
         {
             window.location = 'triage.xhtml';
         }
+
+
+
+        function birthdateToAge (value) {
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            var str = value.substr(6);
+
+            document.getElementById('main:age').value = yyyy-str;
+
+
+        };
+
+
     </script>
 
 
@@ -143,9 +157,9 @@
 
                     <tr>
                         <td><strong>Birth Date</strong></td>
-                        <td><p:inputText id="datepicker"
-                                         value="#{encounterService.patient.birthDate }"></p:inputText><em>(MM/DD/YYYY)</em>
-                        </td>
+                        <td><p:inputText onchange="birthdateToAge(this.value)" id="datepicker"
+                                         value="#{encounterService.patient.birthDate }"></p:inputText></td><td><em>(MM/DD/YYYY)</em></td>
+
 
                     </tr>
                     <tr>
@@ -178,12 +192,6 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td><strong> BMI </strong></td>
-                        <td></td><p:outputLabel id="bmi" value="#{encounterService.bmi}"/>
-                        <td><p:commandButton action="#{encounterService.calculateBMI}">
-                            <p:ajax execute="@form" render="@form :main:bmi"/></p:commandButton></td>
-                    </tr>
 
                 </table>
             </div>

@@ -163,7 +163,7 @@ public class LoginBean {
             return "pharm";
         if (user.getRoles().equals(Role.NURSE))
             return "triage";
-        return "research";
+        return "triage";
     }
 
     /**
