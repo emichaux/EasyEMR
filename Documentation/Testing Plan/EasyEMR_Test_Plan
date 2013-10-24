@@ -22,7 +22,7 @@ User information should reflect changes.
 Test 2
 ------
 Admin user should login with admin credentials
-Admin userk should be redirectetd to admin page.
+Admin user should be redirectetd to admin page.
 Admin user should enter in user information for new user account
 Admin user should submit user account to be saved
 Admin user should go back and list all users
