@@ -53,19 +53,19 @@
             window.location = 'triage.xhtml';
         }
 
-
-
         function birthdateToAge (value) {
             var today = new Date();
             var yyyy = today.getFullYear();
             var str = value.substr(6);
-
             document.getElementById('main:age').value = yyyy-str;
-
-
         };
-
-
+        function showHidePreg (value) {
+            if(value=="Male"){
+                document.getElementById('pregRow').style.display='none';
+            }else if(value=="Female"){
+                document.getElementById('pregRow').style.display="table-row"
+            }
+        };
     </script>
 
 
@@ -169,27 +169,27 @@
                     </tr>
                     <tr>
                         <td><strong>Gender</strong></td>
-                        <td><h:selectOneMenu id="gender" value="#{encounterService.patient.gender }">
+                        <td><h:selectOneMenu id="gender" value="#{encounterService.patient.gender }" onchange="showHidePreg(this.value)">
                             <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                             <f:selectItem itemValue="Male" itemLabel="Male"/>
                             <f:selectItem itemValue="Female" itemLabel="Female"/>
                         </h:selectOneMenu></td>
                     </tr>
 
-                    <tr>
-                    <td><strong>Pregnancy Length</strong></td>
-                    <td><p:inputText  value="52"></p:inputText> weeks</td>
+                    <tr id="pregRow">
+                    <td><strong>Pregnancy Duration</strong></td>
+                    <td><p:inputText  value="52"></p:inputText></td><td> <em>Weeks</em></td>
                     </tr>
 
                     <tr>
                         <td><strong>Height</strong></td>
-                        <td><p:inputText id="hin" value="#{encounterService.vitals.height }"></p:inputText> in</td>
+                        <td><p:inputText id="hin" value="#{encounterService.vitals.height }"></p:inputText></td> <td> <em>Inches</em></td>
                     </tr>
 
                     <tr>
                         <td><strong>Weight</strong></td>
-                        <td><p:inputText id="wlbs" value="#{encounterService.vitals.weight }"></p:inputText> lbs
-                        </td>
+                        <td><p:inputText id="wlbs" value="#{encounterService.vitals.weight }"></p:inputText></td> <td> <em>Lbs</em></td>
+
                     </tr>
 
 
