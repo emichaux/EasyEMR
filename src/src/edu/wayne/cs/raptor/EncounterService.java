@@ -31,7 +31,6 @@ public class EncounterService implements IEncounterService, Serializable {
     private int patientID;
     private String cardID;
     private Encounter encounter;
-   private  int bmi;
     private Vitals vitals;
     private boolean errorPreventedInsert = false;
     private String searchPatientId;
@@ -212,13 +211,6 @@ public class EncounterService implements IEncounterService, Serializable {
 
     }
 
-    public int getBmi() {
-        return bmi;
-    }
-
-    public void setBmi(int bmi) {
-        this.bmi = bmi;
-    }
 
 
 
@@ -934,15 +926,4 @@ public class EncounterService implements IEncounterService, Serializable {
         this.selectedPatientRow = selectedPatientRow;
     }
 
-    // Calculation stuff
-    public void calculateBMI() {
-        int measuredHeight = Integer.parseInt(patient.getHeight());
-        int measuredWeight = Integer.parseInt(patient.getWeight());
-        //TODO: evaluate all these type conversions.
-
-        float bmi = (float) (measuredWeight / (Math.pow(measuredHeight, 2))) * 703.06957964f;
-
-        setBmi((int) bmi);
-
-    }
 }

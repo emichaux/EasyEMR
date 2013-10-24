@@ -177,6 +177,14 @@
                         <td><p:inputText id="wlbs" value="#{encounterService.vitals.weight }"></p:inputText> lbs
                         </td>
                     </tr>
+
+                    <tr>
+                        <td><strong> BMI </strong></td>
+                        <td></td><p:outputLabel id="bmi" value="#{encounterService.bmi}"/>
+                        <td><p:commandButton action="#{encounterService.calculateBMI}">
+                            <p:ajax execute="@form" render="@form :main:bmi"/></p:commandButton></td>
+                    </tr>
+
                 </table>
             </div>
 
