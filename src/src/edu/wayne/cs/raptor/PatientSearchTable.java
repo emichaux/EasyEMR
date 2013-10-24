@@ -17,8 +17,9 @@ public class PatientSearchTable {
     private String heightResult;
     private String ageIntResult;
     private String locationResult;
+    private String pregDurResult;
 
-    public PatientSearchTable(String firstName,  String lastNameResult, String ageResult, String locationResult,  String genderResult, String heightResult, String ageIntResult) {
+    public PatientSearchTable(String firstName,  String lastNameResult, String ageResult, String locationResult,  String genderResult, String heightResult, String ageIntResult, String pregDurResult) {
         this.firstName = firstName;
         this.ageResult = ageResult;
         this.lastNameResult = lastNameResult;
@@ -26,6 +27,14 @@ public class PatientSearchTable {
         this.heightResult = heightResult;
         this.ageIntResult = ageIntResult;
         this.locationResult = locationResult;
+    }
+
+    public String getPregDurResult() {
+        return pregDurResult;
+    }
+
+    public void setPregDurResult(String pregDurResult) {
+        this.pregDurResult = pregDurResult;
     }
 
     public String getLocationResult() {

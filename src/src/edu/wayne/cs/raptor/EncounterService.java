@@ -803,7 +803,7 @@ public class EncounterService implements IEncounterService, Serializable {
         int size = result.size();
         list.clear();
         for (int i = 0; i < size; i++)
-            list.add(new PatientSearchTable(getListResultFirstName(i, patientlastnamesearch, patientfirstnamesearch), getListResultLastName(i, patientlastnamesearch, patientfirstnamesearch), getListResultAge(i, patientlastnamesearch, patientfirstnamesearch), getListResultLocation(i, patientlastnamesearch, patientfirstnamesearch), getListResultGender(i, patientlastnamesearch, patientfirstnamesearch), "0", "0"));
+            list.add(new PatientSearchTable(getListResultFirstName(i, patientlastnamesearch, patientfirstnamesearch), getListResultLastName(i, patientlastnamesearch, patientfirstnamesearch), getListResultAge(i, patientlastnamesearch, patientfirstnamesearch), getListResultLocation(i, patientlastnamesearch, patientfirstnamesearch), getListResultGender(i, patientlastnamesearch, patientfirstnamesearch),getListResultPregDur(i, patientlastnamesearch, patientfirstnamesearch), "0", "0"));
     }
 
     private String getListResultLastName(int index, String lastName, String firstName) {
@@ -902,6 +902,18 @@ public class EncounterService implements IEncounterService, Serializable {
         return null;
     }
 
+    private String getListResultPregDur(int index, String genderValue, String firstName) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + genderValue + "' and firstName='" + firstName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result.get(index).getGender().toString();
+        return null;
+    }
+
     public List<PatientSearchTable> getPatientResult() {
         return PatientResult;
     }
@@ -913,6 +925,7 @@ public class EncounterService implements IEncounterService, Serializable {
         patient.setResidence(selectedPatientRow.getLocationResult());
         patient.setGender(selectedPatientRow.getGenderResult());
         patient.setAge(selectedPatientRow.getAgeIntResult());
+        patient.setPregnancyDuration(selectedPatientRow.getPregDurResult());
 
         return "faces-redirect=true";
 

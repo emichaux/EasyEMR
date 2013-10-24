@@ -70,6 +70,21 @@ public class Patient {
 
     private String weight;
 
+    private String pregnancyDuration;
+
+
+
+
+    public String getPregnancyDuration() {
+        return pregnancyDuration;
+    }
+
+    public void setPregnancyDuration(String pregnancyDuration) {
+        this.pregnancyDuration = pregnancyDuration;
+    }
+
+
+
     /** Identifying image of the patient*/
     //private Bitmap personPhoto;
 

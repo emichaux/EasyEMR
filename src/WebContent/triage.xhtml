@@ -54,11 +54,10 @@
         }
 
         function birthdateToAge (value) {
-            var today = new Date();
-            var yyyy = today.getFullYear();
-            var str = value.substr(6);
-            document.getElementById('main:age').value = yyyy-str;
+            var birthday = +new Date(value);
+            document.getElementById('main:age').value = ~~((Date.now() - birthday) / (31557600000));
         };
+
         function showHidePreg (value) {
             if(value=="Male"){
                 document.getElementById('pregRow').style.display='none';
