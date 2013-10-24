@@ -154,7 +154,7 @@ public class UnitConverter {
      * @return - int calculated BMI
      */
     public int calculateBMI(int measuredHeight, int measuredWeight, String unitSystem) {
-        ;
+
         //TODO: evaluate all these type conversions.
         if (unitSystem == "US") {
             bmi = (float) (measuredWeight / (Math.pow(measuredHeight, 2))) * 703.06957964f;
@@ -166,14 +166,6 @@ public class UnitConverter {
         return (int) bmi;
     }
 
-    public int calculateUSBMI() {
-
-        String unitSystem = "US";
-        //TODO: evaluate all these type conversions.
-        bmi = (float) (this.weightUS / (Math.pow(this.heightUS, 2))) * 703.06957964f;
-
-        return (int) bmi;
-    }
 
     public Patient getPatient() {
         return patient;

@@ -2,415 +2,387 @@ package edu.wayne.cs.raptor;
 
 import org.hibernate.Session;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 /**
- * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for 
- * patient, vitals, encounter, and pharmacy encounters.  like a boss. 
- * @author Jackson Turner, Ramez Habib, Ryan Doubleday
+ * This unadulterated, no-holds-barred titan of a class takes care of saving and retrieval for
+ * patient, vitals, encounter, and pharmacy encounters.  like a boss.
  *
+ * @author Jackson Turner, Ramez Habib, Ryan Doubleday
  */
 
 
 //TODO: catch errors on insert (at least for duplicate primary keys) and report to msg box
+@ManagedBean (name="EncounterService")
+@SessionScoped
 public class EncounterService implements IEncounterService, Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private Session userSession;
-	private LoginBean login;
-	private Calendar calendar;
-	
-	private int computerID;
 
-	private Patient patient;
-	private int patientID;
-	private String cardID;
-	private Encounter encounter;
-	private Vitals vitals;
-	
-	private boolean errorPreventedInsert = false;
-	
-	
-	private String searchPatientId;
-	private String searchPatientLastName;
-	private String searchPatientFirstName;
-	private String searchPatientCardID;
-	private List<Encounter> searchList;
-	private List<Patient> patientList;
+    private static final long serialVersionUID = 1L;
+    private Session userSession;
+    private LoginBean login;
+    private Calendar calendar;
+    private int computerID;
+    private Patient patient;
+    private int patientID;
+    private String cardID;
+    private Encounter encounter;
+   private  int bmi;
+    private Vitals vitals;
+    private boolean errorPreventedInsert = false;
+    private String searchPatientId;
+    private String searchPatientLastName;
+    private String searchPatientFirstName;
+    private String searchPatientCardID;
+    private List<Encounter> searchList;
+    private List<Patient> patientList;
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
     private PatientSearchTable selectedPatientRow;
-
-//    For selecting search option on pharm page
+    //    For selecting search option on pharm page
     private Integer number;
     private Patient selectedPatient;
 
-    public Patient getSelectedPatient(){
-        return selectedPatient;
-    }
-
-    public void setSelectedPatient(Patient selectedPatient){
-        this.selectedPatient = selectedPatient;
-    }
-
-
     public EncounterService() {
-		patient = new Patient();
-		encounter = new Encounter();
-		vitals = new Vitals();
-		calendar = Calendar.getInstance();
-		searchList = new ArrayList<Encounter>();
-		patientList = new ArrayList<Patient>();
-		newEncounter = false;
+        patient = new Patient();
+        encounter = new Encounter();
+        vitals = new Vitals();
+        calendar = Calendar.getInstance();
+        searchList = new ArrayList<Encounter>();
+        patientList = new ArrayList<Patient>();
+        newEncounter = false;
         PatientResult = new ArrayList<PatientSearchTable>();
 
         populatePatientList(PatientResult);
     }
-	
-	public String saveOrUpdateEncounter()
-	{
-		//if(patient.getCardID()!= null)
-			//return updateEncounter();
-		return saveNewEncounter();
-		
-	}
-	
-	public String updateEncounter()
-	{
-		//housekeeping
-		patient.setModifyingUser(login.getSystemUser().getUsername());
-		patient.setLastModifiedDate(calendar.getTime());
-		
-		vitals.setCreatingUser(login.getSystemUser().getUsername());
-		vitals.setCreatedDate(calendar.getTime());
-		vitals.setModifyingUser(login.getSystemUser().getUsername());
-		vitals.setLastModifiedDate(calendar.getTime());
-		
-		encounter.setCreatingUser(login.getSystemUser().getUsername());
-		encounter.setCreatedDate(calendar.getTime());
-		encounter.setModifyingUser(login.getSystemUser().getUsername());
-		encounter.setLastModifiedDate(calendar.getTime());
-		  
 
-		
-		try
-		{
-			userSession = HibernateUtil.getSessionFactory().openSession();
-			userSession.beginTransaction();
-		}
-		catch(Exception ex)
-		{
-			//JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			errorPreventedInsert = true;
-		}
-		
-		try
-		{
-			//TODO:there is a bug after a failed insert (dupe blood sample) where the user id remains and leads to an attempted update of the patient which does not yet exist in db --> leads to timeout.  
-			userSession.update(patient);
-			encounter.setCardID(this.patient.getCardID());// Added @RD
-			encounter.setPatientID(this.patient.getPatientID());
-			vitals.setVitalsID(encounter.getEncounterID());
-			userSession.save(encounter);
-			vitals.setEncounterID(this.encounter.getEncounterID());
-			userSession.save(vitals);
-		}
-		catch(Exception ex)
-		{
-			//JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			errorPreventedInsert = true;
-		}	
-		
-		try
-		{
-			userSession.getTransaction().commit();
-			userSession.close();
-		}
-		catch(Exception ex)
-		{
-			//JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			errorPreventedInsert = true;
-		}
-		
-		if(errorPreventedInsert == false)
-		{
-			//JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+    public Patient getSelectedPatient() {
+        return selectedPatient;
+    }
 
-			patient = new Patient();
-			vitals = new Vitals();
-			encounter = new Encounter();
-			
-			//return "create" to go back to create.jsp after the create patient form is submitted
-			return "create";
-		}
-		errorPreventedInsert = false;
-		return null;
-	}
-	
-	public String saveNewEncounter()
-	{
-		//housekeeping
-		patient.setCreatingUser(login.getSystemUser().getUsername());
-		patient.setCreatedDate(calendar.getTime());
-		patient.setModifyingUser(login.getSystemUser().getUsername());
-		patient.setLastModifiedDate(calendar.getTime());
-		
-		vitals.setCreatingUser(login.getSystemUser().getUsername());
-		vitals.setCreatedDate(calendar.getTime());
-		vitals.setModifyingUser(login.getSystemUser().getUsername());
-		vitals.setLastModifiedDate(calendar.getTime());
+    public void setSelectedPatient(Patient selectedPatient) {
+        this.selectedPatient = selectedPatient;
+    }
+
+    public String saveOrUpdateEncounter() {
+        //if(patient.getCardID()!= null)
+        //return updateEncounter();
+        return saveNewEncounter();
+
+    }
+
+    public String updateEncounter() {
+        //housekeeping
+        patient.setModifyingUser(login.getSystemUser().getUsername());
+        patient.setLastModifiedDate(calendar.getTime());
+
+        vitals.setCreatingUser(login.getSystemUser().getUsername());
+        vitals.setCreatedDate(calendar.getTime());
+        vitals.setModifyingUser(login.getSystemUser().getUsername());
+        vitals.setLastModifiedDate(calendar.getTime());
+
+        encounter.setCreatingUser(login.getSystemUser().getUsername());
+        encounter.setCreatedDate(calendar.getTime());
+        encounter.setModifyingUser(login.getSystemUser().getUsername());
+        encounter.setLastModifiedDate(calendar.getTime());
+
+
+        try {
+            userSession = HibernateUtil.getSessionFactory().openSession();
+            userSession.beginTransaction();
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            errorPreventedInsert = true;
+        }
+
+        try {
+            //TODO:there is a bug after a failed insert (dupe blood sample) where the user id remains and leads to an attempted update of the patient which does not yet exist in db --> leads to timeout.
+            userSession.update(patient);
+            encounter.setCardID(this.patient.getCardID());// Added @RD
+            encounter.setPatientID(this.patient.getPatientID());
+            vitals.setVitalsID(encounter.getEncounterID());
+            userSession.save(encounter);
+            vitals.setEncounterID(this.encounter.getEncounterID());
+            userSession.save(vitals);
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            errorPreventedInsert = true;
+        }
+
+        try {
+            userSession.getTransaction().commit();
+            userSession.close();
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            errorPreventedInsert = true;
+        }
+
+        if (errorPreventedInsert == false) {
+            //JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+
+            patient = new Patient();
+            vitals = new Vitals();
+            encounter = new Encounter();
+
+            //return "create" to go back to create.jsp after the create patient form is submitted
+            return "create";
+        }
+        errorPreventedInsert = false;
+        return null;
+    }
+
+    public String saveNewEncounter() {
+        //housekeeping
+        patient.setCreatingUser(login.getSystemUser().getUsername());
+        patient.setCreatedDate(calendar.getTime());
+        patient.setModifyingUser(login.getSystemUser().getUsername());
+        patient.setLastModifiedDate(calendar.getTime());
+
+        vitals.setCreatingUser(login.getSystemUser().getUsername());
+        vitals.setCreatedDate(calendar.getTime());
+        vitals.setModifyingUser(login.getSystemUser().getUsername());
+        vitals.setLastModifiedDate(calendar.getTime());
         // may fix encounterid problem in vitals
         //vitals.setEncounterID(encounter.getEncounterID());
-		
-		encounter.setCreatingUser(login.getSystemUser().getUsername());
-		encounter.setCreatedDate(calendar.getTime());
-		encounter.setModifyingUser(login.getSystemUser().getUsername());
-		encounter.setLastModifiedDate(calendar.getTime());
-		//end housekeeping
-		
-		//determinePatientID();
-		
-		try
-		{
-			userSession = HibernateUtil.getSessionFactory().openSession();
-			userSession.beginTransaction();
-		}
-		catch(Exception ex)
-		{
-			//JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			errorPreventedInsert = true;
-		}
-		
-		try
-		{
+
+        encounter.setCreatingUser(login.getSystemUser().getUsername());
+        encounter.setCreatedDate(calendar.getTime());
+        encounter.setModifyingUser(login.getSystemUser().getUsername());
+        encounter.setLastModifiedDate(calendar.getTime());
+        //end housekeeping
+
+        //determinePatientID();
+
+        try {
+            userSession = HibernateUtil.getSessionFactory().openSession();
+            userSession.beginTransaction();
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Error in opening session or transaction. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            errorPreventedInsert = true;
+        }
+
+        try {
             //get the patientID once its saved and use it for encounter
-			patient.setCardID(encounter.getCardID());
-			patientID = (Integer)userSession.save(patient);
-			encounter.setPatientID(patientID);
-			//Really? there's a vitalsID too? Really?
+            patient.setCardID(encounter.getCardID());
+            patientID = (Integer) userSession.save(patient);
+            encounter.setPatientID(patientID);
+            //Really? there's a vitalsID too? Really?
 
-			//Yeah really, and now it's set to be the same as encounterID
+            //Yeah really, and now it's set to be the same as encounterID
 
 
-			//get the encounterID once it is saved and use it in vitals
-			userSession.save(encounter);
+            //get the encounterID once it is saved and use it in vitals
+            userSession.save(encounter);
             vitals.setVitalsID(encounter.getEncounterID());
-			vitals.setEncounterID(this.encounter.getEncounterID());
+            vitals.setEncounterID(this.encounter.getEncounterID());
 
-			userSession.save(vitals);
-		}
-		
-		catch(Exception ex)
-		{
-			//JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            userSession.save(vitals);
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Error in saving record. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println(ex);
-			errorPreventedInsert = true;
-		}	
-		
-		try
-		{
-			userSession.getTransaction().commit();
-			userSession.close();
+            errorPreventedInsert = true;
+        }
+
+        try {
+            userSession.getTransaction().commit();
+            userSession.close();
             //System.out.println("Encounter ID is " + getEncounter().getEncounterID());
             //System.out.println("vitals ID is " + getVitals().getVitalsID());
-		}
-		catch(Exception ex)
-		{
-			//JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			errorPreventedInsert = true;
-		}
-		
-		if(errorPreventedInsert == false)
-		{
-			//JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Error in committing transaction or closing session. " + ex.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            errorPreventedInsert = true;
+        }
 
-			patient = new Patient();
-			vitals = new Vitals();
-			encounter = new Encounter();
+        if (errorPreventedInsert == false) {
+            //JOptionPane.showMessageDialog(null, "Record saved!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+
+            patient = new Patient();
+            vitals = new Vitals();
+            encounter = new Encounter();
             System.out.println("encounterID is " + encounter.getEncounterID());
-			//return "triage" to go back to triage.jsp after the create patient form is submitted
-			return "triage";
-		}
-		errorPreventedInsert = false;
-		return null;
-		
-	}
+            //return "triage" to go back to triage.jsp after the create patient form is submitted
+            return "triage";
+        }
+        errorPreventedInsert = false;
+        return null;
 
-	
-	public Patient getPatient() {
-		return patient;
-	}
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-	
-	public void setEncounter(Encounter encounter)
-	{
-		this.encounter = encounter;
-	}
-	public Encounter getEncounter()
-	{
-		return encounter;
-	}
-	
-	public Vitals getVitals() {
-		return vitals;
-	}
-	public void setVitals(Vitals vitals) {
-		this.vitals = vitals;
-	}
-	
-	public void setLogin(LoginBean login) {
-		this.login = login;
-	}
-	public LoginBean getLogin()
-	{
-		return login;
-	}
-		
-	public String getSearchPatientId() {
-		return searchPatientId;
-	}
-	public void setSearchPatientId(String searchPatientId) {
-		this.searchPatientId = searchPatientId;
-	}
+    }
 
-	public String getSearchPatientLastName() {
-		return searchPatientLastName;
-	}
+    public int getBmi() {
+        return bmi;
+    }
 
-	public void setSearchPatientLastName(String searchPatientLastName) {
-		this.searchPatientLastName = searchPatientLastName;
-	}
-
-	public String getSearchPatientFirstName() {
-		return searchPatientFirstName;
-	}
-
-	public void setSearchPatientFirstName(String searchPatientFirstName) {
-		this.searchPatientFirstName = searchPatientFirstName;
-	}
-
-	public List<Encounter> getSearchList() {
-		return searchList;
-	}
-	public void setSearchList(List<Encounter> searchList) {
-		this.searchList = searchList;
-	}
-
-	public List<Patient> getPatientList() {
-		return patientList;
-	}
-
-	public void setPatientList(List<Patient> patientList) {
-		this.patientList = patientList;
-	}
-
-	public boolean isNewEncounter() {
-		return newEncounter;
-	}
-	public void setNewEncounter(boolean newEncounter) {
-		this.newEncounter = newEncounter;
-	}
-
-	/**Method called when search button is clicked, takes you to
-	 *  table with the list of prev. encounters for the patient, 
-	 *  select an Encounter, view its info. 
-	 *  Then start a new encounter 
-	 *
-	 */
-	public String searchPatient(){
-		
-		int tempPId =0;
-		if(!this.searchPatientId.isEmpty())
-		{
-			tempPId = Integer.parseInt(this.searchPatientId);
-			this.patient = getPatient(tempPId);
-		}
-		if(tempPId >0 )
-			this.searchList = getAllEncounters(tempPId);
-		
-		this.searchPatientId = "";
-		this.searchPatientFirstName = "";
-		this.searchPatientLastName = "";
-		this.searchPatientCardID ="";
+    public void setBmi(int bmi) {
+        this.bmi = bmi;
+    }
 
 
-		
-		return "searchPage";
-	}
-	
-	public String searchPatients()
-	{
-		String tempLastName = "";
-		if(!this.searchPatientLastName.isEmpty())
-		{
-			tempLastName = this.searchPatientLastName;
-		}
-		
-		if(tempLastName != "")
-		{
-			this.patientList = getAllPatientsByName(tempLastName);
-		}
-		
-		this.searchPatientId = "";
-		this.searchPatientFirstName = "";
-		this.searchPatientLastName = "";
-		this.searchPatientCardID ="";
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Encounter getEncounter() {
+        return encounter;
+    }
+
+    public void setEncounter(Encounter encounter) {
+        this.encounter = encounter;
+    }
+
+    public Vitals getVitals() {
+        return vitals;
+    }
+
+    public void setVitals(Vitals vitals) {
+        this.vitals = vitals;
+    }
+
+    public LoginBean getLogin() {
+        return login;
+    }
+
+    public void setLogin(LoginBean login) {
+        this.login = login;
+    }
+
+    public String getSearchPatientId() {
+        return searchPatientId;
+    }
+
+    public void setSearchPatientId(String searchPatientId) {
+        this.searchPatientId = searchPatientId;
+    }
+
+    public String getSearchPatientLastName() {
+        return searchPatientLastName;
+    }
+
+    public void setSearchPatientLastName(String searchPatientLastName) {
+        this.searchPatientLastName = searchPatientLastName;
+    }
+
+    public String getSearchPatientFirstName() {
+        return searchPatientFirstName;
+    }
+
+    public void setSearchPatientFirstName(String searchPatientFirstName) {
+        this.searchPatientFirstName = searchPatientFirstName;
+    }
+
+    public List<Encounter> getSearchList() {
+        return searchList;
+    }
+
+    public void setSearchList(List<Encounter> searchList) {
+        this.searchList = searchList;
+    }
+
+    public List<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public void setPatientList(List<Patient> patientList) {
+        this.patientList = patientList;
+    }
+
+    public boolean isNewEncounter() {
+        return newEncounter;
+    }
+
+    public void setNewEncounter(boolean newEncounter) {
+        this.newEncounter = newEncounter;
+    }
+
+    /**
+     * Method called when search button is clicked, takes you to
+     * table with the list of prev. encounters for the patient,
+     * select an Encounter, view its info.
+     * Then start a new encounter
+     */
+    public String searchPatient() {
+
+        int tempPId = 0;
+        if (!this.searchPatientId.isEmpty()) {
+            tempPId = Integer.parseInt(this.searchPatientId);
+            this.patient = getPatient(tempPId);
+        }
+        if (tempPId > 0)
+            this.searchList = getAllEncounters(tempPId);
+
+        this.searchPatientId = "";
+        this.searchPatientFirstName = "";
+        this.searchPatientLastName = "";
+        this.searchPatientCardID = "";
 
 
-		return "patientSearch";
-	}
-	
-	public String searchPatientsF()
-	{
-		String tempFirstName ="";
-		if(!this.searchPatientFirstName.isEmpty())
-		{
-			tempFirstName = this.searchPatientFirstName;
-		}
-		
-		if(tempFirstName != "")
-		{
-			this.patientList = getAllPatientsByFName(tempFirstName);
-		}
-		
-		this.searchPatientId = "";
-		this.searchPatientFirstName = "";
-		this.searchPatientLastName = "";
-		this.searchPatientCardID ="";
+        return "searchPage";
+    }
 
-		
-		return "create";
-	}
-	
-	
-	public String searchCardID()
-	{
-		String tempCardID ="";
-		if(!this.searchPatientCardID.isEmpty())
-		{
-			tempCardID = this.searchPatientCardID;
-		}
-		
-		if(tempCardID != "")
-		{
-			this.patientList = getAllPatientsByCardID(tempCardID);
-		}
-		
-		this.searchPatientId = "";
-		this.searchPatientFirstName = "";
-		this.searchPatientLastName = "";
-		this.searchPatientCardID ="";
+    public String searchPatients() {
+        String tempLastName = "";
+        if (!this.searchPatientLastName.isEmpty()) {
+            tempLastName = this.searchPatientLastName;
+        }
 
-		
-		return "patientSearch";
-	}
+        if (tempLastName != "") {
+            this.patientList = getAllPatientsByName(tempLastName);
+        }
 
+        this.searchPatientId = "";
+        this.searchPatientFirstName = "";
+        this.searchPatientLastName = "";
+        this.searchPatientCardID = "";
+
+
+        return "patientSearch";
+    }
+
+    public String searchPatientsF() {
+        String tempFirstName = "";
+        if (!this.searchPatientFirstName.isEmpty()) {
+            tempFirstName = this.searchPatientFirstName;
+        }
+
+        if (tempFirstName != "") {
+            this.patientList = getAllPatientsByFName(tempFirstName);
+        }
+
+        this.searchPatientId = "";
+        this.searchPatientFirstName = "";
+        this.searchPatientLastName = "";
+        this.searchPatientCardID = "";
+
+
+        return "create";
+    }
+
+    public String searchCardID() {
+        String tempCardID = "";
+        if (!this.searchPatientCardID.isEmpty()) {
+            tempCardID = this.searchPatientCardID;
+        }
+
+        if (tempCardID != "") {
+            this.patientList = getAllPatientsByCardID(tempCardID);
+        }
+
+        this.searchPatientId = "";
+        this.searchPatientFirstName = "";
+        this.searchPatientLastName = "";
+        this.searchPatientCardID = "";
+
+
+        return "patientSearch";
+    }
 
     public Integer getNumber() {
         return number;
@@ -420,418 +392,414 @@ public class EncounterService implements IEncounterService, Serializable {
         this.number = number;
     }
 
-// search option handeler for pharm page
-    public  String searchChoice()
-    {
-        switch (number)
-        {
-            case 1:
-            {
-                String tempCardID ="";
-                if(!this.searchPatientCardID.isEmpty())
-                {
+    // search option handeler for pharm page
+    public String searchChoice() {
+        switch (number) {
+            case 1: {
+                String tempCardID = "";
+                if (!this.searchPatientCardID.isEmpty()) {
                     tempCardID = this.searchPatientCardID;
                 }
 
-                if(tempCardID != "")
-                {
+                if (tempCardID != "") {
                     this.patientList = getAllPatientsByCardID(tempCardID);
                 }
 
                 this.searchPatientId = "";
                 this.searchPatientFirstName = "";
                 this.searchPatientLastName = "";
-                this.searchPatientCardID ="";
+                this.searchPatientCardID = "";
             }
-            case 2:
-            {
-                String tempFName ="";
-                if(!this.searchPatientFirstName.isEmpty())
-                {
+            case 2: {
+                String tempFName = "";
+                if (!this.searchPatientFirstName.isEmpty()) {
                     tempFName = this.searchPatientFirstName;
                 }
 
-                if(tempFName != "")
-                {
+                if (tempFName != "") {
                     this.patientList = getAllPatientsByFName(tempFName);
                 }
 
                 this.searchPatientId = "";
                 this.searchPatientFirstName = "";
                 this.searchPatientLastName = "";
-                this.searchPatientCardID ="";
+                this.searchPatientCardID = "";
             }
-            case 3:
-            {
-                String tempLName ="";
-                if(!this.searchPatientLastName.isEmpty())
-                {
+            case 3: {
+                String tempLName = "";
+                if (!this.searchPatientLastName.isEmpty()) {
                     tempLName = this.searchPatientLastName;
                 }
 
-                if(tempLName != "")
-                {
+                if (tempLName != "") {
                     this.patientList = getAllPatientsByName(tempLName);
                 }
 
                 this.searchPatientId = "";
                 this.searchPatientFirstName = "";
                 this.searchPatientLastName = "";
-                this.searchPatientCardID ="";
+                this.searchPatientCardID = "";
             }
         }
         return "pharm";
     }
 
-	/** Select an encounter from the list of Encounters retrieved by searching for the patient  */
-	public String selectEncounter(){
-		
-		// Populate the fields of vitals that belong to that encounter 
-		vitals = getVitalsByEncounter(encounter.getEncounterID());
-		setNewEncounter(true);
-		return "create";
-	}
-	public String selectEncounter2(){
-		
-		// Populate the fields of vitals that belong to that encounter 
-		vitals = getVitalsByEncounter(encounter.getEncounterID());
-		setNewEncounter(true);
-		return "pharm";
-	}
-	public String selectPatient(){
-		
-		//populate fields of patient...or something. 
-		this.searchList = getAllEncounters(patient.getPatientID());
-		return "searchPage";
-	}
-	public String selectPatient2(){
-		
-		//populate fields of patient...or something. 
-		this.searchList = getAllEncounters(patient.getPatientID());
-		return "pharm";
-	}
-	
-	private Vitals getVitalsByEncounter(int encounterID2) {
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Vitals> result = userSession.createQuery("from Vitals where encounterID = " +encounterID2+ "' ").list();
-		
-		userSession.getTransaction().commit();
-		userSession.close();
-		if(!result.isEmpty())
-			return result.get(0);
-		return null;
-	}
+    /**
+     * Select an encounter from the list of Encounters retrieved by searching for the patient
+     */
+    public String selectEncounter() {
 
-	/** Start a new Encounter after searching for a patient and viewing an encounter for them */
-	public String startEncounter(){
-		vitals = new Vitals();
-		encounter = new Encounter();
-		setNewEncounter(false);
-		return "create"; // This will determine which page is returned to following executing of the method ~ RD
+        // Populate the fields of vitals that belong to that encounter
+        vitals = getVitalsByEncounter(encounter.getEncounterID());
+        setNewEncounter(true);
+        return "create";
+    }
 
-		
-	}
-	
-	public String resetRecord(){
-		setNewEncounter(false);
-		patient = new Patient();
-		encounter = new Encounter();
-		vitals = new Vitals();
-		return "triage"; // This will determine which page is returned to following executing of the method ~ RD
-	}
-	
-	/***********************************/
-	/****** Patient Operations ********/
-    /*********************************/
+    public String selectEncounter2() {
 
-	@Override
-	public void savePatient(Patient patient) {
-		// TODO Auto-generated method stub
-		
-	}
+        // Populate the fields of vitals that belong to that encounter
+        vitals = getVitalsByEncounter(encounter.getEncounterID());
+        setNewEncounter(true);
+        return "pharm";
+    }
 
-	/**TODO: when searching for patient, Need to decide if we also populate the form with latest encounter or 
-	 *       get a list of all previous encounters and display that , then once an encounter is 
-	 *       clicked populate a form ( just output ) 
-	 * */ 
-	@Override
-	public Patient getPatient(int patientId) {
-	
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where patientID=" + patientId + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		
+    public String selectPatient() {
 
-		if (!result.isEmpty() )
-			return result.get(0);
-		return null;
-	}
+        //populate fields of patient...or something.
+        this.searchList = getAllEncounters(patient.getPatientID());
+        return "searchPage";
+    }
 
-	@Override
-	/** this method might not be needed since it only returns the first patient out of a set 
-	 *  of patients that exist in the system with the same last name
-	 *  @see getAllPatientsByName(String)
-	 * */
-	public Patient getPatientByLastName(String lastName) {
-		
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		if (!result.isEmpty() )
-			return result.get(0);
-		return null;
-	}
+    public String selectPatient2() {
 
-	/**
-	 * TODO: When searching for a patient , only one patient is displayed if found
-	 *       do we want to search for all patients with specific last name for example
-	 *       or specific residence 
-	 */
-	@Override
-	public List<Patient> getAllPatients() {
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient ").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		
-		if (!result.isEmpty() )
-			return result;
-		return null;
-	}
-	
-	@Override
-	public List<Patient> getAllPatientsByName(String lastName){
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		if (!result.isEmpty() )
-			return result;
-		return null;
-		
-	}
-	
-	public List<Patient> getAllPatientsByFName(String firstName)
-	{
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where firstName='" + firstName + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		
-		if(!result.isEmpty())
-			return result;
-		return null;
-	}
-	
-	public List<Patient> getAllPatientsByCardID(String cardID)
-	{
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where cardID='" + cardID + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		
-		if(!result.isEmpty())
-			return result;
-		return null;
-	}
-	
-	
-	/***********************************/
-	/****** Encounter Operations ******/
-    /*********************************/
-	
-	
-	@Override
-	public void saveEncounter(Encounter encounter) {
-		// TODO Auto-generated method stub
-		
-	} 
+        //populate fields of patient...or something.
+        this.searchList = getAllEncounters(patient.getPatientID());
+        return "pharm";
+    }
 
-	@Override
-	public Encounter getEncounter(int encounterId) {
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Encounter> result = userSession.createQuery("from Encounter where encounterID=" + encounterId + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		if (!result.isEmpty() )
-			return result.get(0);
-		return null;
-	}
+    private Vitals getVitalsByEncounter(int encounterID2) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Vitals> result = userSession.createQuery("from Vitals where encounterID = " + encounterID2 + "' ").list();
 
-	@Override
-	public Encounter getEncounterByPatient(int patientId) {
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result.get(0);
+        return null;
+    }
 
-		return null;
-	}
+    /**
+     * Start a new Encounter after searching for a patient and viewing an encounter for them
+     */
+    public String startEncounter() {
+        vitals = new Vitals();
+        encounter = new Encounter();
+        setNewEncounter(false);
+        return "create"; // This will determine which page is returned to following executing of the method ~ RD
 
-	@Override
-	public Encounter getEncounterByPatientName(String patientName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public List<Encounter> getAllEncounters(int patientId) {
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Encounter> result = userSession.createQuery("from Encounter where patientID=" + patientID + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		if (!result.isEmpty() )
-			return result;
-		return null;
-	}
-	
-	public List<Patient> getAllPatients(int patientID)
-	{
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Patient> result = userSession.createQuery("from Patient where patientID=" + patientID + "'").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		if(!result.isEmpty())
-			return result;
-		return null; //LOLWUT. 
-	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Encounter> getAllEncountersByName(String patientName) {
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		
-		List<Patient> tempPatient = userSession.createQuery("from Patient where lastName='" + patientName + "'").list();
-		int tempPatientId;
-		List<Encounter> result = null;
-		
-		// Check if patient exists in the system first, thus list is not empty
-		if(!tempPatient.isEmpty())
-		{
-			tempPatientId = tempPatient.get(0).getPatientID();
-			result = userSession.createQuery("from Encounter where patientID=" + tempPatientId + "'").list();
-			
-		}
-		
-		userSession.getTransaction().commit();
-		userSession.close();
-		if (!result.isEmpty() )
-			return result;
-		return null;
-	}
-	
-	//PatientID stuff
-	public void determinePatientID(){
-		int computerIDInitialValue = 0;
-		int computerIDMaxValue = 1;
-		
-		userSession = HibernateUtil.getSessionFactory().openSession();
-		userSession.beginTransaction();
-		@SuppressWarnings("unchecked")
-		List<Patient> patientList = userSession.createQuery("from Patient ").list();
-		userSession.getTransaction().commit();
-		userSession.close();
-		
-		setComputerID(this.login.getComputerID());
-		
-		computerIDInitialValue = computerID;
-		computerIDMaxValue = 100000;
-		
-		
-		ArrayList<Integer> patientIDList = new ArrayList<Integer>();
-		if(patientList.size() > 0){
-			for(int i = 0; i < patientList.size(); i++) {
-				patientIDList.add(patientList.get(i).getPatientID());
-			}
-			
-			patient.setPatientID(beginningPatientID(patientIDList, computerIDInitialValue, computerIDMaxValue));
-			
-			//This code starts from highest encounterID in the DB table
-			//Replacing this with code to choose next encounterID based on what's in DB and computerID
-			/*for(int i = 0; i < pharmacyEncounterList.size(); i++) {
+    }
+
+    public String resetRecord() {
+        setNewEncounter(false);
+        patient = new Patient();
+        encounter = new Encounter();
+        vitals = new Vitals();
+        return "triage"; // This will determine which page is returned to following executing of the method ~ RD
+    }
+
+    /***********************************/
+    /****** Patient Operations ********/
+
+    /**
+     * *****************************
+     */
+
+    @Override
+    public void savePatient(Patient patient) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * TODO: when searching for patient, Need to decide if we also populate the form with latest encounter or
+     * get a list of all previous encounters and display that , then once an encounter is
+     * clicked populate a form ( just output )
+     */
+    @Override
+    public Patient getPatient(int patientId) {
+
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where patientID=" + patientId + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+
+
+        if (!result.isEmpty())
+            return result.get(0);
+        return null;
+    }
+
+    @Override
+    /** this method might not be needed since it only returns the first patient out of a set
+     *  of patients that exist in the system with the same last name
+     *  @see getAllPatientsByName(String)
+     * */
+    public Patient getPatientByLastName(String lastName) {
+
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result.get(0);
+        return null;
+    }
+
+    /**
+     * TODO: When searching for a patient , only one patient is displayed if found
+     * do we want to search for all patients with specific last name for example
+     * or specific residence
+     */
+    @Override
+    public List<Patient> getAllPatients() {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient ").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+
+        if (!result.isEmpty())
+            return result;
+        return null;
+    }
+
+    @Override
+    public List<Patient> getAllPatientsByName(String lastName) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result;
+        return null;
+
+    }
+
+    public List<Patient> getAllPatientsByFName(String firstName) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where firstName='" + firstName + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+
+        if (!result.isEmpty())
+            return result;
+        return null;
+    }
+
+    public List<Patient> getAllPatientsByCardID(String cardID) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where cardID='" + cardID + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+
+        if (!result.isEmpty())
+            return result;
+        return null;
+    }
+
+
+    /***********************************/
+    /****** Encounter Operations ******/
+
+    /**
+     * *****************************
+     */
+
+
+    @Override
+    public void saveEncounter(Encounter encounter) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public Encounter getEncounter(int encounterId) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Encounter> result = userSession.createQuery("from Encounter where encounterID=" + encounterId + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result.get(0);
+        return null;
+    }
+
+    @Override
+    public Encounter getEncounterByPatient(int patientId) {
+
+        return null;
+    }
+
+    @Override
+    public Encounter getEncounterByPatientName(String patientName) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Encounter> getAllEncounters(int patientId) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Encounter> result = userSession.createQuery("from Encounter where patientID=" + patientID + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result;
+        return null;
+    }
+
+    public List<Patient> getAllPatients(int patientID) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where patientID=" + patientID + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result;
+        return null; //LOLWUT.
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Encounter> getAllEncountersByName(String patientName) {
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+
+        List<Patient> tempPatient = userSession.createQuery("from Patient where lastName='" + patientName + "'").list();
+        int tempPatientId;
+        List<Encounter> result = null;
+
+        // Check if patient exists in the system first, thus list is not empty
+        if (!tempPatient.isEmpty()) {
+            tempPatientId = tempPatient.get(0).getPatientID();
+            result = userSession.createQuery("from Encounter where patientID=" + tempPatientId + "'").list();
+
+        }
+
+        userSession.getTransaction().commit();
+        userSession.close();
+        if (!result.isEmpty())
+            return result;
+        return null;
+    }
+
+    //PatientID stuff
+    public void determinePatientID() {
+        int computerIDInitialValue = 0;
+        int computerIDMaxValue = 1;
+
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> patientList = userSession.createQuery("from Patient ").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+
+        setComputerID(this.login.getComputerID());
+
+        computerIDInitialValue = computerID;
+        computerIDMaxValue = 100000;
+
+
+        ArrayList<Integer> patientIDList = new ArrayList<Integer>();
+        if (patientList.size() > 0) {
+            for (int i = 0; i < patientList.size(); i++) {
+                patientIDList.add(patientList.get(i).getPatientID());
+            }
+
+            patient.setPatientID(beginningPatientID(patientIDList, computerIDInitialValue, computerIDMaxValue));
+
+            //This code starts from highest encounterID in the DB table
+            //Replacing this with code to choose next encounterID based on what's in DB and computerID
+            /*for(int i = 0; i < pharmacyEncounterList.size(); i++) {
 				encounterIDList.add(pharmacyEncounterList.get(i).getEncounterID());
 			}
 		
 			encounterID = Collections.max(encounterIDList) + 1;*/
-		}
-		else
-			patient.setPatientID(computerIDInitialValue);
-	}
-	
-	public int beginningPatientID(ArrayList<Integer> patientIDList, int computerIDInitialValue,
-			int computerIDMaxValue){
-		
-		boolean changedTempPatientID = false;
-		int tempPatientID = computerIDInitialValue;
-		
-		// TODO: stop for loop if values go beyond computerIDMaxValue
-		for(int i = 0; i < patientIDList.size(); i++){
-			if((patientIDList.get(i) >= tempPatientID) && (patientIDList.get(i) < computerIDMaxValue)){
-				tempPatientID = patientIDList.get(i);
-				if(changedTempPatientID == false){
-					changedTempPatientID = true;
-				}
-			}
-		}
-		if(changedTempPatientID == true){
-			tempPatientID = tempPatientID + 1;
-		}
-		
-		return tempPatientID;
-	}
+        } else
+            patient.setPatientID(computerIDInitialValue);
+    }
 
-	public int getComputerID() {
-		return computerID;
-	}
+    public int beginningPatientID(ArrayList<Integer> patientIDList, int computerIDInitialValue,
+                                  int computerIDMaxValue) {
 
-	public void setComputerID(int computerID) {
-		this.computerID = computerID;
-	}
+        boolean changedTempPatientID = false;
+        int tempPatientID = computerIDInitialValue;
 
-	public String getCardID() {
-		return cardID;
-	}
+        // TODO: stop for loop if values go beyond computerIDMaxValue
+        for (int i = 0; i < patientIDList.size(); i++) {
+            if ((patientIDList.get(i) >= tempPatientID) && (patientIDList.get(i) < computerIDMaxValue)) {
+                tempPatientID = patientIDList.get(i);
+                if (changedTempPatientID == false) {
+                    changedTempPatientID = true;
+                }
+            }
+        }
+        if (changedTempPatientID == true) {
+            tempPatientID = tempPatientID + 1;
+        }
 
-	public void setCardID(String cardID) {
-		this.cardID = cardID;
-	}
+        return tempPatientID;
+    }
 
+    public int getComputerID() {
+        return computerID;
+    }
 
-	public String getSearchPatientCardID() {
-		return searchPatientCardID;
-	}
+    public void setComputerID(int computerID) {
+        this.computerID = computerID;
+    }
 
-	public void setSearchPatientCardID(String searchPatientCardID) {
-		this.searchPatientCardID = searchPatientCardID;
-	}
+    public String getCardID() {
+        return cardID;
+    }
 
+    public void setCardID(String cardID) {
+        this.cardID = cardID;
+    }
 
-    public void datatableupdate(){
+    public String getSearchPatientCardID() {
+        return searchPatientCardID;
+    }
+
+    public void setSearchPatientCardID(String searchPatientCardID) {
+        this.searchPatientCardID = searchPatientCardID;
+    }
+
+    public void datatableupdate() {
         populatePatientList(PatientResult);
     }
 
-    private void populatePatientList(List<PatientSearchTable> list){
+    private void populatePatientList(List<PatientSearchTable> list) {
         String patientlastnamesearch = patient.getLastName();
         String patientfirstnamesearch = patient.getFirstName();
         userSession = HibernateUtil.getSessionFactory().openSession();
@@ -840,99 +808,104 @@ public class EncounterService implements IEncounterService, Serializable {
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + patientlastnamesearch + "' and firstName='" + patientfirstnamesearch + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-       int size =  result.size();
+        int size = result.size();
         list.clear();
-        for(int i = 0 ; i < size ; i++)
-            list.add(new PatientSearchTable(getListResultFirstName(i,patientlastnamesearch, patientfirstnamesearch),getListResultLastName(i,patientlastnamesearch, patientfirstnamesearch),getListResultAge(i,patientlastnamesearch, patientfirstnamesearch),getListResultLocation(i,patientlastnamesearch, patientfirstnamesearch),getListResultGender(i,patientlastnamesearch, patientfirstnamesearch),"0","0"));
+        for (int i = 0; i < size; i++)
+            list.add(new PatientSearchTable(getListResultFirstName(i, patientlastnamesearch, patientfirstnamesearch), getListResultLastName(i, patientlastnamesearch, patientfirstnamesearch), getListResultAge(i, patientlastnamesearch, patientfirstnamesearch), getListResultLocation(i, patientlastnamesearch, patientfirstnamesearch), getListResultGender(i, patientlastnamesearch, patientfirstnamesearch), "0", "0"));
     }
 
-    private String getListResultLastName(int index, String lastName, String firstName){
+    private String getListResultLastName(int index, String lastName, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + lastName + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getLastName().toString();
         return null;
     }
-    private String getListResultFirstName(int index, String firstName, String Name ){
+
+    private String getListResultFirstName(int index, String firstName, String Name) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + firstName + "' and firstName='" + Name + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getFirstName().toString();
         return null;
     }
-    private String getListResultAge(int index, String ageVal,  String firstName){
+
+    private String getListResultAge(int index, String ageVal, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + ageVal + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getBirthDate().toString();
         return null;
     }
-    private String getListResultLocation(int index, String locationValue,  String firstName){
+
+    private String getListResultLocation(int index, String locationValue, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + locationValue  + "' and firstName='" + firstName + "'").list();
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + locationValue + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getResidence().toString();
         return null;
     }
-    private String getListResultAgeValue(int index, String ageValue,  String firstName){
+
+    private String getListResultAgeValue(int index, String ageValue, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + ageValue  + "' and firstName='" + firstName + "'").list();
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + ageValue + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getAge().toString();
         return null;
     }
 
-    private String getListResultHeight(int index, String heightValue,  String firstName){
+    private String getListResultHeight(int index, String heightValue, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + heightValue + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getHeight().toString();
         return null;
     }
-    private String getListResultWeight(int index, String weightValue,  String firstName){
+
+    private String getListResultWeight(int index, String weightValue, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + weightValue + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getWeight().toString();
         return null;
     }
 
-    private String getListResultGender(int index, String genderValue,  String firstName){
+    private String getListResultGender(int index, String genderValue, String firstName) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
         List<Patient> result = userSession.createQuery("from Patient where lastName='" + genderValue + "' and firstName='" + firstName + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
-        if (!result.isEmpty() )
+        if (!result.isEmpty())
             return result.get(index).getGender().toString();
         return null;
     }
@@ -941,7 +914,7 @@ public class EncounterService implements IEncounterService, Serializable {
         return PatientResult;
     }
 
-    public String fillFieldsFromDatabase(){
+    public String fillFieldsFromDatabase() {
         patient.setFirstName(selectedPatientRow.getfirstName());
         patient.setLastName(selectedPatientRow.getlastNameResult());
         patient.setBirthDate(selectedPatientRow.getageResult());
@@ -953,11 +926,23 @@ public class EncounterService implements IEncounterService, Serializable {
 
     }
 
-      public PatientSearchTable getSelectedRow(){
-              return selectedPatientRow;
-      }
+    public PatientSearchTable getSelectedRow() {
+        return selectedPatientRow;
+    }
 
     public void setSelectedPatientRow(PatientSearchTable selectedPatientRow) {
         this.selectedPatientRow = selectedPatientRow;
+    }
+
+    // Calculation stuff
+    public void calculateBMI() {
+        int measuredHeight = Integer.parseInt(patient.getHeight());
+        int measuredWeight = Integer.parseInt(patient.getWeight());
+        //TODO: evaluate all these type conversions.
+
+        float bmi = (float) (measuredWeight / (Math.pow(measuredHeight, 2))) * 703.06957964f;
+
+        setBmi((int) bmi);
+
     }
 }
