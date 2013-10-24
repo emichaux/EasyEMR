@@ -1,26 +1,30 @@
-Test Plan for EasyEMR Application 
+                                Test Plan for EasyEMR Application 
+
 
                  |--- Admin Page ---|
 
-Test 1 
+Admin Test 1 
 ------
+
 Admin user should login as admin and be redirected to admin page.
-Admin user should click list all users button.  
-User should then select a user and modify every field of the user:
+Admin user should click button to list all users.  
+Admin user should then select a user and modify each of the following user fields:
+    
     First name
     Last  name
     user name
     password
     role
-    password
+    
 
 Admin user should then save user information.
 Admin user should then go back and click list users.
 Admin user should click on the same name.
 User information should reflect changes.
 
-Test 2
+Admin Test 2
 ------
+
 Admin user should login with admin credentials
 Admin user should be redirectetd to admin page.
 Admin user should enter in user information for new user account
@@ -30,7 +34,7 @@ New user should be listed.
 
                  |--- Triage Page ---|
 
-Test 1
+Triage Test 1
 ------
 
 Nurse/Student should login with credentials
@@ -39,17 +43,36 @@ User should enter in first and last name of patient
 If name shows in patient history user should select the patient to fill the data. 
 User should fill in additional patient information and click submit.
 
-Test 2
+Triage Test 2
 ------
+
 User should enter in all fields except required fields and hit submit.
 if application functions properly patient information should not have be submitted to database
 
-Test 2
+Triage Test 3
 ------
+
 Data validation - User should enter wrong data fields in the input box and click submit.
 
                  |--- Medical Page ---|
+                 
+Medical Test 1
+--------------
+
+Medical Test 2
+--------------
+
+Medical Test 2
+--------------
 
                  |--- Pharmacy Page ---|
+Pharmacy Test 1
+---------------
+
+Pharmacy Test 1
+---------------
+
+Pharmacy Test 1
+---------------
 
 
