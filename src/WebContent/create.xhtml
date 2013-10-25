@@ -7,14 +7,17 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <link href="./css/bootstrap.css" rel="stylesheet"/>
     <title>Easy EMR</title>
     <link href="./css/bootstrap.css" rel="stylesheet"/>
+    <link href="./css/bootstrap-responsive.css" rel="stylesheet"/>
     <link rel="stylesheet" href="./css/jquery-ui-1.10.2.custom.css"/>
     <script src="./js/jquery-1.9.1.js" type="text/javascript"></script>
     <script src="./js/jquery-ui-1.10.2.custom.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/resources/demos/style.css"/>
-
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
 
     <script src="./js/jquery.maskedinput.js" type="text/javascript"></script>
 
@@ -40,16 +43,35 @@
         jQuery(function ($) {
             $("#main\\:datepicker").mask("99/99/9999");
             $("#main\\:hin").mask("99.9");
-
-
         });
     </script>
 
+    <script type="text/javascript">
+        function reloadPage() {
+            window.location = 'triage.xhtml';
+        }
 
-    <title>Easy EMR</title>
+        function birthdateToAge(value) {
+            var birthday = +new Date(value);
+            document.getElementById('main:age').value = ~~((Date.now() - birthday) / (31557600000));
+        }
+
+
+        function showHidePreg(value) {
+            if (value == "Male") {
+                document.getElementById('pregRow').style.display = 'none';
+            } else if (value == "Female") {
+                document.getElementById('pregRow').style.display = "table-row"
+            }
+        }
+
+    </script>
+
+
 </h:head>
 
-<h:body>
+<body>
+
 <h:form id="main">
 
 <div class="container well">
@@ -94,12 +116,13 @@
                 <td><h:outputLabel value="Birth Date"/>
                     <p:inputText style="width:200px" id="datepicker"
                                  value="#{encounterService.patient.birthDate }"/></td>
-
             </tr>
+
             <tr>
                 <td><h:outputLabel value="Age"/>
                     <p:inputText id="age" style="width:200px" value="#{encounterService.patient.age}"/></td>
             </tr>
+
             <tr>
                 <td><h:outputLabel value="Gender"/>
                     <h:selectOneMenu id="gender" style="width:200px" value="#{encounterService.patient.gender }">
@@ -109,20 +132,21 @@
                     </h:selectOneMenu>
                 </td>
             </tr>
+
             <tr>
                 <td><h:outputLabel value="Pregnancy (weeks)"/>
                     <p:inputText style="width:200px" value="52"></p:inputText></td>
             </tr>
 
             <tr>
+                <td><h:outputLabel value="Wight"/>
+                    <p:inputText id="wlbs" style="width:200px" value="#{encounterService.vitals.weight }"/></td>
+            </tr>
+            <tr>
                 <td><h:outputLabel value="Height"/>
                     <p:inputText id="hin" style="width:200px" value="#{encounterService.vitals.height }"/></td>
             </tr>
 
-            <tr>
-                <td><h:outputLabel  vale="weight"/>
-                    <p:inputText id="wlbs" style="width:200px" value="#{encounterService.vitals.weight }"/></td>
-            </tr>
 
         </table>
     </div>
@@ -131,19 +155,11 @@
         <div class="center">
             <h5>Vitals</h5>
         </div>
+
         <table cellspacing="4">
-
-
-            <tr>
-                <td><p:outputLabel for="heartrate" value="Heart Rate"/></td>
-                <td><p:inputText id="heartrate" style="width:200px"
-                                 value="#{encounterService.vitals.heartRate }"/></td>
-
-            </tr>
 
             <tr>
                 <td><h:outputLabel value="BP Systolic"/></td>
-
                 <td><p:inputText style="width:200px" id="bpTop"
                                  value="#{encounterService.vitals.systolicBP}"/></td>
             </tr>
@@ -249,12 +265,12 @@
     </div>
 </div>
 
-
 <div class="row">
-    <div class="center">
-        <h5>Complaints / Treatment</h5>
-    </div>
     <div class="span4 left">
+        <div class="center">
+            <h5>Complaints Treatment</h5>
+        </div>
+
         <table>
             <tr>
                 <td><strong style="text-align:center">Physical Examination</strong>
@@ -265,7 +281,7 @@
                     <p:inputTextarea style="width:220px" id="assessment"
                                      value="#{encounterService.encounter.assessment }"/></td>
 
-                <td><strong>Family/Social History</strong>
+                <td><strong>Family Social History</strong>
                     <p:inputTextarea style="width:220px" id="socialHistory"
                                      value="#{encounterService.patient.socialHistory }"/></td>
 
@@ -273,20 +289,12 @@
                     <p:inputTextarea style="width: 220px" value="#{encounterService.encounter.other }"/></td>
             </tr>
 
-
         </table>
     </div>
 </div>
 <div class="row">
     <div class="form span4-is-padded left">
-
-
         <table>
-            <tr>
-
-
-            </tr>
-
             <tr>
                 <td><strong>Problem List</strong></td>
                 <td><p:inputText style="width:125px"
@@ -306,7 +314,13 @@
                                  value="#{encounterService.encounter.condition5 }"></p:inputText>
                 </td>
             </tr>
+        </table>
+    </div>
+</div>
 
+<div class="row">
+    <div class="form span4-is-padded left">
+        <table>
             <tr>
                 <td><strong>Prescription/Treatment</strong></td>
                 <td><p:inputText style="width:120px"
@@ -331,34 +345,39 @@
             </tr>
         </table>
     </div>
+</div>
+
+<div class="row">
+    <div class="form span4">
+
+        <table>
+            <tr>
+                <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Submit/Update"
+                                     onclick="alert('Patient Record Submitted');"
+                                     action="#{encounterService.updateEncounter}"
+                                     rendered="#{not encounterService.newEncounter}"></p:commandButton>
+                </td>
+
+                <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
+                                     action="#{encounterService.resetRecord }" immediate="true"></p:commandButton>
+
+                </td>
+                <td><p:commandButton id="startNew" styleClass="ui-icon-search" value="Start New Encounter"
+                                     action="#{encounterService.startEncounter}"
+                                     rendered="#{encounterService.newEncounter}"></p:commandButton>
+                </td>
+            </tr>
+
+        </table>
+    </div>
 
 </div>
-<center>
-    <table>
-        <tr>
-            <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Submit/Update"
-                                 onclick="alert('Patient Record Submitted');"
-                                 action="#{encounterService.updateEncounter}"
-                                 rendered="#{not encounterService.newEncounter}"></p:commandButton>
-            </td>
-
-            <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
-                                 action="#{encounterService.resetRecord }" immediate="true"></p:commandButton>
-
-            </td>
-            <td><p:commandButton id="startNew" styleClass="ui-icon-search" value="Start New Encounter"
-                                 action="#{encounterService.startEncounter}"
-                                 rendered="#{encounterService.newEncounter}"></p:commandButton>
-            </td>
-        </tr>
-    </table>
-</center>
 </div>
 
 </h:form>
 
 <!-- Begin Navigation bar-->
-<div class="navbar navbar-fixed-top center">
+<div class="navbar navbar-bottom center">
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -368,10 +387,10 @@
             </a>
             <a class="brand" href="#">Easy EMR</a>
 
-            <div class="nav-collapse">
+            <div class="nav-collapse center">
                 <ul class="nav">
-                    <li><a href="create.xhtml">Triage</a></li>
-                    <li class="active"><a href="#"><i class="icon-home icon-white"></i>Medical</a></li>
+                    <li class="active"><a href="#"><i class="icon-home icon-white"></i>Triage</a></li>
+                    <li><a href="create.xhtml">Medical</a></li>
                     <li><a href="pharm.xhtml">Pharmacy</a></li>
 
                 </ul>
@@ -379,11 +398,16 @@
                     <!--<input type="text" class="search-query span2" placeholder="Search"/>-->
                     <h:commandLink value="Log Out" tabindex="-2" action="#{loginBean.logout}"></h:commandLink>
                 </h:form>
-            </div> <!-- /.nav-collapse -->
-        </div> <!-- /.container -->
-    </div> <!-- /.navbar-inner -->
+            </div>
+            <!-- /.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.navbar-inner -->
 </div>
-</h:body>
+
+
+</body>
 </html>
 
 
