@@ -10,3 +10,4 @@ out/
 tmp/
 local.properties
 target/
+workspace.xml
