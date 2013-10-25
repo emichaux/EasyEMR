@@ -118,10 +118,8 @@
                         <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"
                                          title="Please type the patients First Name" required="false"> <p:ajax
                                 event="keyup" update=":main:datatableid"
-                                listener="#{encounterService.datatableupdate}"/></p:inputText> </td> <td><p:commandButton styleClass="ui-icon-search" id="history" value="Show History"
-
-                                                                                                                    action="#{encounterService.saveOrUpdateEncounter}"
-                                ></p:commandButton>  </td>
+                                listener="#{encounterService.datatableupdate}"/></p:inputText> </td> <td>
+                        <p:commandButton styleClass="ui-icon-search" id="history" value="Show History" action="#{encounterService.saveOrUpdateEncounter}"></p:commandButton>  </td>
 
 
 
