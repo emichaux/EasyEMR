@@ -42,7 +42,7 @@ public class EncounterService implements IEncounterService, Serializable {
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
     private PatientSearchTable selectedPatientRow;
-    //    For selecting search option on pharm page
+    //    For selecting search option on pharm, and create pages
     private Integer number;
     private Patient selectedPatient;
 
@@ -384,8 +384,31 @@ public class EncounterService implements IEncounterService, Serializable {
         this.number = number;
     }
 
-    // search option handeler for pharm page
-    public String searchChoice() {
+    /**
+     *
+     *search option handler for pharm page
+     *
+     */
+    public String searchChoicePharm() {
+        searchChoice();
+        return "pharm";
+    }
+    /**
+     *
+     * search option handler for create page
+     *
+     */
+    public String searchChoiceCreate() {
+        searchChoice();
+        return "create";
+    }
+
+    /**
+     * search option handler.
+     * Handles search by cardid first name and last name
+     */
+
+    public void searchChoice() {
         switch (number) {
             case 1: {
                 String tempCardID = "";
@@ -433,7 +456,6 @@ public class EncounterService implements IEncounterService, Serializable {
                 this.searchPatientCardID = "";
             }
         }
-        return "pharm";
     }
 
     /**

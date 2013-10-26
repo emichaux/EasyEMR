@@ -34,7 +34,7 @@
         <p:inputText  style="margin-top:10px" id="CardID" value="#{encounterService.searchPatientCardID}"/>
         <!--<p:inputText id="FName" value="#{encounterService.searchPatientFirstName}"/>-->
         <!--<p:inputText id="LName" value="#{encounterService.searchPatientLastName}"/>-->
-        <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoice}"/>
+        <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoicePharm}"/>
     </h:panelGrid>
 
     <p:overlayPanel id="overlaySearch" style="width:800px;" for="searchButton" hideEffect="fade" dynamic="true" onHide="javascript:reloadPage()">
