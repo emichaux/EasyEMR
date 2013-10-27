@@ -1,7 +1,6 @@
 package edu.wayne.cs.raptor;
 
 import org.hibernate.Session;
-import org.primefaces.context.RequestContext;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -43,15 +42,13 @@ public class EncounterService implements IEncounterService, Serializable {
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
     private PatientSearchTable selectedPatientRow;
-    //    For selecting search option on pharm, and create pages
-    private Integer number;
+    private Integer searchSelection;
     private Patient selectedPatient;
-    private Boolean historyAvailable;
-    //render inputtext for patient search
-    private boolean renderCarID     = true;
-    private boolean renderFirstName = false;
-    private boolean renderLastName  = false;
-
+    private Integer newMedOne;
+    private Integer newMedTwo;
+    private Integer newMedThree;
+    private Integer newMedFour;
+    private Integer newMedFive;
 
     public EncounterService() {
         patient = new Patient();
@@ -64,15 +61,6 @@ public class EncounterService implements IEncounterService, Serializable {
         PatientResult = new ArrayList<PatientSearchTable>();
 
         populatePatientList(PatientResult);
-    }
-
-
-    public Boolean getHistoryAvailable() {
-        return historyAvailable;
-    }
-
-    public void setHistoryAvailable(Boolean historyAvailable) {
-        this.historyAvailable = historyAvailable;
     }
 
     public Patient getSelectedPatient() {
@@ -227,30 +215,6 @@ public class EncounterService implements IEncounterService, Serializable {
 
     }
 
-    public boolean isRenderCarID() {
-        return renderCarID;
-    }
-
-    public void setRenderCarID(boolean renderCarID) {
-        this.renderCarID = renderCarID;
-    }
-
-    public boolean isRenderFirstName() {
-        return renderFirstName;
-    }
-
-    public void setRenderFirstName(boolean renderFirstName) {
-        this.renderFirstName = renderFirstName;
-    }
-
-    public boolean isRenderLastName() {
-        return renderLastName;
-    }
-
-    public void setRenderLastName(boolean renderLastName) {
-        this.renderLastName = renderLastName;
-    }
-
     public Patient getPatient() {
         return patient;
     }
@@ -329,6 +293,54 @@ public class EncounterService implements IEncounterService, Serializable {
 
     public void setNewEncounter(boolean newEncounter) {
         this.newEncounter = newEncounter;
+    }
+
+    public Integer getSearchSelection() {
+        return searchSelection;
+    }
+
+    public void setSearchSelection(Integer searchSelection) {
+        this.searchSelection = searchSelection;
+    }
+
+    public Integer getNewMedOne() {
+        return newMedOne;
+    }
+
+    public void setNewMedOne(Integer newMedOne) {
+        this.newMedOne = newMedOne;
+    }
+
+    public Integer getNewMedTwo() {
+        return newMedTwo;
+    }
+
+    public void setNewMedTwo(Integer newMedTwo) {
+        this.newMedTwo = newMedTwo;
+    }
+
+    public Integer getNewMedThree() {
+        return newMedThree;
+    }
+
+    public void setNewMedThree(Integer newMedThree) {
+        this.newMedThree = newMedThree;
+    }
+
+    public Integer getNewMedFour() {
+        return newMedFour;
+    }
+
+    public void setNewMedFour(Integer newMedFour) {
+        this.newMedFour = newMedFour;
+    }
+
+    public Integer getNewMedFive() {
+        return newMedFive;
+    }
+
+    public void setNewMedFive(Integer newMedFive) {
+        this.newMedFive = newMedFive;
     }
 
     /**
@@ -413,62 +425,10 @@ public class EncounterService implements IEncounterService, Serializable {
         return "patientSearch";
     }
 
-    public Integer getNumber() {
-        return number;
-    }
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public String setRender() {
-        switch (number) {
-            case 1:
-                setRenderCarID(true);
-                setRenderFirstName(false);
-                setRenderLastName(false);
-                return "faces-redirect=true";
-            case 2:
-                setRenderCarID(false);
-                setRenderFirstName(true);
-                setRenderLastName(false);
-                return "faces-redirect=true";
-            case 3:
-                setRenderCarID(false);
-                setRenderFirstName(false);
-                setRenderLastName(true);
-                return "faces-redirect=true";
-
-        }
-        return "create";
-    }
-
-    /**
-     *
-     *search option handler for pharm page
-     *
-     */
-    public String searchChoicePharm() {
-        searchChoice();
-        return "pharm";
-    }
-    /**
-     *
-     * search option handler for create page
-     *
-     */
-    public String searchChoiceCreate() {
-        searchChoice();
-        return "create";
-    }
-
-    /**
-     * search option handler.
-     * Handles search by cardid first name and last name
-     */
-
-    public void searchChoice() {
-        switch (number) {
+    // search option handeler for pharm page
+    public String searchChoice() {
+        switch (searchSelection) {
             case 1: {
                 String tempCardID = "";
                 if (!this.searchPatientCardID.isEmpty()) {
@@ -483,7 +443,6 @@ public class EncounterService implements IEncounterService, Serializable {
                 this.searchPatientFirstName = "";
                 this.searchPatientLastName = "";
                 this.searchPatientCardID = "";
-                break;
             }
             case 2: {
                 String tempFName = "";
@@ -499,7 +458,6 @@ public class EncounterService implements IEncounterService, Serializable {
                 this.searchPatientFirstName = "";
                 this.searchPatientLastName = "";
                 this.searchPatientCardID = "";
-                break;
             }
             case 3: {
                 String tempLName = "";
@@ -515,9 +473,9 @@ public class EncounterService implements IEncounterService, Serializable {
                 this.searchPatientFirstName = "";
                 this.searchPatientLastName = "";
                 this.searchPatientCardID = "";
-                break;
             }
         }
+        return "pharm";
     }
 
     /**
@@ -580,8 +538,6 @@ public class EncounterService implements IEncounterService, Serializable {
 
     public String resetRecord() {
         setNewEncounter(false);
-        setHistoryAvailable(false);
-        PatientResult = new ArrayList<PatientSearchTable>();
         patient = new Patient();
         encounter = new Encounter();
         vitals = new Vitals();
@@ -877,31 +833,9 @@ public class EncounterService implements IEncounterService, Serializable {
         populatePatientList(PatientResult);
     }
 
-
-    public void checkTableSize(){
-        String patientlastnamesearch = patient.getLastName();
-        String patientfirstnamesearch = patient.getFirstName();
-        userSession = HibernateUtil.getSessionFactory().openSession();
-        userSession.beginTransaction();
-        @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + patientlastnamesearch + "' and firstName='" + patientfirstnamesearch + "'").list();
-        userSession.getTransaction().commit();
-        userSession.close();
-        if(result.size() > 0){
-              setHistoryAvailable(true);
-            historyAvailable = true;
-        }
-        else{
-            setHistoryAvailable(false);
-            historyAvailable = false;
-        }
-        RequestContext.getCurrentInstance().update("panel1");
-    }
-
     private void populatePatientList(List<PatientSearchTable> list) {
         String patientlastnamesearch = patient.getLastName();
         String patientfirstnamesearch = patient.getFirstName();
-        String patientcardidsearch = patient.getCardID();
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
@@ -911,7 +845,7 @@ public class EncounterService implements IEncounterService, Serializable {
         int size = result.size();
         list.clear();
         for (int i = 0; i < size; i++)
-            list.add(new PatientSearchTable(getListResultFirstName(i, patientlastnamesearch, patientfirstnamesearch), getListResultLastName(i, patientlastnamesearch, patientfirstnamesearch), getListResultAge(i, patientlastnamesearch, patientfirstnamesearch), getListResultLocation(i, patientlastnamesearch, patientfirstnamesearch), getListResultGender(i, patientlastnamesearch, patientfirstnamesearch),getListResultPregDur(i, patientlastnamesearch, patientfirstnamesearch), "0", "0", getListResultCardID(i, patientcardidsearch)));
+            list.add(new PatientSearchTable(getListResultFirstName(i, patientlastnamesearch, patientfirstnamesearch), getListResultLastName(i, patientlastnamesearch, patientfirstnamesearch), getListResultAge(i, patientlastnamesearch, patientfirstnamesearch), getListResultLocation(i, patientlastnamesearch, patientfirstnamesearch), getListResultGender(i, patientlastnamesearch, patientfirstnamesearch),getListResultPregDur(i, patientlastnamesearch, patientfirstnamesearch), "0", "0"));
     }
 
     private String getListResultLastName(int index, String lastName, String firstName) {
@@ -926,11 +860,11 @@ public class EncounterService implements IEncounterService, Serializable {
         return null;
     }
 
-    private String getListResultFirstName(int index, String firstName, String LastName) {
+    private String getListResultFirstName(int index, String firstName, String Name) {
         userSession = HibernateUtil.getSessionFactory().openSession();
         userSession.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where lastName='" + firstName + "' and firstName='" + LastName + "'").list();
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + firstName + "' and firstName='" + Name + "'").list();
         userSession.getTransaction().commit();
         userSession.close();
         if (!result.isEmpty())
@@ -947,18 +881,6 @@ public class EncounterService implements IEncounterService, Serializable {
         userSession.close();
         if (!result.isEmpty())
             return result.get(index).getBirthDate().toString();
-        return null;
-    }
-
-    private String getListResultCardID(int index, String cardID) {
-        userSession = HibernateUtil.getSessionFactory().openSession();
-        userSession.beginTransaction();
-        @SuppressWarnings("unchecked")
-        List<Patient> result = userSession.createQuery("from Patient where cardID='" + cardID + "'").list();
-        userSession.getTransaction().commit();
-        userSession.close();
-        if (!result.isEmpty())
-            return result.get(index).getCardID().toString();
         return null;
     }
 
@@ -1046,7 +968,6 @@ public class EncounterService implements IEncounterService, Serializable {
         patient.setGender(selectedPatientRow.getGenderResult());
         patient.setAge(selectedPatientRow.getAgeIntResult());
         patient.setPregnancyDuration(selectedPatientRow.getPregDurResult());
-        patient.setCardID(selectedPatientRow.getCardID());
 
         return "faces-redirect=true";
 
