@@ -167,6 +167,10 @@ table {
     width: 70%;
 }
 
+TABLE.panelGridClass {
+    width: 100px;
+}
+
 span4.is-padded {
     width: 280px;
     padding-left: 40px;

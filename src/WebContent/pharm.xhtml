@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/resources/demos/style.css"/>
     <link rel="stylesheet" href="./css/jquery-ui-1.10.2.custom.css"/>
 
+
     <script type="text/javascript">
         function reloadPage()
         {
@@ -124,64 +125,81 @@
 
         </p:dataTable>
 
-        <h:panelGrid styleClass="center" style="margin-top:20px;margin-left:125px" columns="2">
+
+
+        <h:panelGrid columns="2">
+
             <h:panelGrid columns="3" rows="6">
 
-                <h:outputText style="margin-right:600px" value="Problem List"/>
-                <h:outputText style="margin-left:-900px" value="Medication Given"/>
-                <h:outputText style="margin-left:-500px" value="Same Medication?"/>
+                <h:outputText style="width:140px" value="Problem List"/>
+                <h:outputText style="width:140px" value="Medication Given"/>
+                <h:outputText style="width:140px" value="Same Medication?"/>
 
-                <p:inputText style="margin-right:600px" value="Problem 1"/>
-                <p:inputText style="margin-left:-900px" value="Med 1"/>
-                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedOne}">
+                <p:inputText style="width:140px" value="Problem 1"/>
+                <p:inputText style="width:140px;margin-left:20px" value="Med 1"/>
+                <p:selectOneButton style="width:125px;margin-top:-10px" value="#{encounterService.newMedOne}">
                     <f:selectItem itemLabel="Yes" itemValue="1"/>
                     <f:selectItem itemLabel="No " itemValue="2"/>
                     <f:ajax render="@form" />
                 </p:selectOneButton>
 
-                <p:inputText style="margin-right:600px" value="Problem 2"/>
-                <p:inputText style="margin-left:-900px" value="Med 2"/>
-                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedTwo}">
+                <p:inputText style="width:140px" value="Problem 1"/>
+                <p:inputText style="width:140px;margin-left:20px" value="Med 1"/>
+                <p:selectOneButton style="width:125px;margin-top:-10px" value="#{encounterService.newMedTwo}">
                     <f:selectItem itemLabel="Yes" itemValue="1"/>
                     <f:selectItem itemLabel="No " itemValue="2"/>
                     <f:ajax render="@form" />
                 </p:selectOneButton>
 
-                <p:inputText style="margin-right:600px" value="Problem 3"/>
-                <p:inputText style="margin-left:-900px" value="Med 3"/>
-                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedThree}">
+                <p:inputText style="width:140px" value="Problem 1"/>
+                <p:inputText style="width:140px;margin-left:20px" value="Med 1"/>
+                <p:selectOneButton style="width:125px;margin-top:-10px" value="#{encounterService.newMedThree}">
                     <f:selectItem itemLabel="Yes" itemValue="1"/>
                     <f:selectItem itemLabel="No " itemValue="2"/>
                     <f:ajax render="@form" />
                 </p:selectOneButton>
 
-                <p:inputText style="margin-right:600px" value="Problem 4"/>
-                <p:inputText style="margin-left:-900px" value="Med 4"/>
-                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedFour}">
+                <p:inputText style="width:140px" value="Problem 1"/>
+                <p:inputText style="width:140px;margin-left:20px" value="Med 1"/>
+                <p:selectOneButton style="width:125px;margin-top:-10px" value="#{encounterService.newMedFour}">
                     <f:selectItem itemLabel="Yes" itemValue="1"/>
                     <f:selectItem itemLabel="No " itemValue="2"/>
                     <f:ajax render="@form" />
                 </p:selectOneButton>
 
-                <p:inputText style="margin-right:600px" value="Problem 5"/>
-                <p:inputText style="margin-left:-900px" value="Med 5"/>
-                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedFive}">
+                <p:inputText style="width:140px" value="Problem 1"/>
+                <p:inputText style="width:140px;margin-left:20px" value="Med 1"/>
+                <p:selectOneButton style="width:125px;margin-top:-10px" value="#{encounterService.newMedFive}">
                     <f:selectItem itemLabel="Yes" itemValue="1"/>
                     <f:selectItem itemLabel="No " itemValue="2"/>
                     <f:ajax render="@form" />
                 </p:selectOneButton>
+
+
             </h:panelGrid>
 
-            <h:panelGrid style="margin-left:-165px;margin-top:-110px" columns="1" rows="6">
-                <h:outputText style="margin-left:45px;margin-top:-5px;position:fixed" value="New Medication"/>
-                <p:inputText style="margin-top:15px;position:fixed" value="newmed1" rendered="#{encounterService.newMedOne == 2}"/>
-                <p:inputText style="margin-top:55px;position:fixed" value="newmed2" rendered="#{encounterService.newMedTwo == 2}"/>
-                <p:inputText style="margin-top:95px;position:fixed" value="newmed3" rendered="#{encounterService.newMedThree == 2}"/>
-                <p:inputText style="margin-top:135px;position:fixed" value="newmed4" rendered="#{encounterService.newMedFour == 2}"/>
-                <p:inputText style="margin-top:175px;position:fixed" value="newmed5" rendered="#{encounterService.newMedFive == 2}"/>
+
+            <h:panelGrid>
+                <h:outputText style="width:140px;position: fixed;margin-top:-110px" value="New Medication"/>
+                <p:inputText style="width:140px;position:fixed;margin-top:-95px" value="newmed1" rendered="#{encounterService.newMedOne == 2}"/>
+                <p:inputText style="width:140px;position: fixed;margin-top:-55px" value="newmed2" rendered="#{encounterService.newMedTwo == 2}"/>
+                <p:inputText style="width:140px;position: fixed;margin-top:-15px" value="newmed3" rendered="#{encounterService.newMedThree == 2}"/>
+                <p:inputText style="width:140px;position: fixed;margin-top:25px" value="newmed4" rendered="#{encounterService.newMedFour == 2}"/>
+                <p:inputText style="width:140px;position: fixed;margin-top:65px" value="newmed5" rendered="#{encounterService.newMedFive == 2}"/>
+
+
+
             </h:panelGrid>
+
+
+
+
 
         </h:panelGrid>
+
+
+
+
 
         <h:panelGrid styleClass="center" style="margin-bottom:10px" cellpadding="5" columns="2">
 
