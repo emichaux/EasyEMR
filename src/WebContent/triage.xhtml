@@ -24,14 +24,13 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#main\\:datepicker").datepicker();
+            $("#main\\:datepicker").datepicker({changeMonth: true, changeYear: true, yearRange: "-100:+0"});
         });
     </script>
     <script type="text/javascript">
         jQuery(function ($) {
             $("#main\\:datepicker").mask("99/99/9999");
             $("#main\\:hin").mask("99.9");
-
 
         });
     </script>
@@ -123,11 +122,15 @@
 
                         <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"
                                          title="Please type the patients First Name" required="false"> <p:ajax
-                                event="keyup" update=":main:datatableid"
-                                listener="#{encounterService.datatableupdate}"/></p:inputText> </td>
-                        <td style="display: none">
-                        <p:commandButton styleClass="ui-icon-search" id="history" value="Show History" action="#{encounterService.saveOrUpdateEncounter}"></p:commandButton>
-                        </td>
+                                event="keyup" update="historypanel"
+                                listener="#{encounterService.checkTableSize}"/></p:inputText> </td>
+
+                   <td>
+                        <p:outputPanel id="historypanel"  process="panel1">
+                                <p:commandButton rendered="#{encounterService.historyAvailable}"  update=":main:datatableid" styleClass="ui-icon-search" id="history" value="History" action="#{encounterService.datatableupdate}"></p:commandButton>
+
+                        </p:outputPanel>
+                    </td>
 
 
 
@@ -138,10 +141,12 @@
                         <td><strong style="color:#149bdf">Last Name</strong></td>
                         <td><p:inputText id="patientLastName" value="#{encounterService.patient.lastName }"
                                          title="Please type the patients Last Name" required="false"> <p:ajax
-                                event="keyup" update=":main:datatableid"
-                                listener="#{encounterService.datatableupdate}"/></p:inputText></td>
+                                event="keyup" update="historypanel"
+                                listener="#{encounterService.checkTableSize}"/></p:inputText></td>
 
                         <h:message for="patientLastName" style="color:red"> </h:message>
+
+
                     </tr>
                     <tr>
                         <td><strong>Location</strong></td>
@@ -181,7 +186,7 @@
                     </tr>
 
                     <tr id="pregRow" style="display: none">
-                    <td><strong>Pregnancy Duration</strong></td>
+                    <td><strong>Gestation Period</strong></td>
                     <td><p:inputText  value="0"></p:inputText></td><td> <em>Weeks</em></td>
                     </tr>
 
@@ -262,8 +267,9 @@
 
 
                         <td><p:commandButton id="newPatient" styleClass="ui-icon-search" value="Reset Form"
-                                             action="#{encounterService.resetRecord }" update="main"
-                                             process="@this"></p:commandButton></td>
+                                             actionListener="#{encounterService.resetRecord }" immediate="true" ajax="false">
+                            <p:resetInput target="main" />
+                                             </p:commandButton></td>
                     </tr>
 
 

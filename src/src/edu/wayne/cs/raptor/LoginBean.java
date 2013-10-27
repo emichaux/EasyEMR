@@ -154,7 +154,7 @@ public class LoginBean {
      * Handles the default page the user is taken to upon login
      */
     public String handleRoleToPage(User user) {
-
+        setUserRole(user.getRoles());
         if (user.getRoles().equals(Role.ADMIN))
             return "admin";
         if (user.getRoles().equals(Role.DOCTOR))
