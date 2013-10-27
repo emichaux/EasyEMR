@@ -73,6 +73,8 @@
     </script>
 
 
+
+
     <title>Easy EMR</title>
 </h:head>
 
@@ -98,7 +100,8 @@
                     <h:outputText value="#{PatientSearchTable.ageResult}"/>
                 </p:column>
                 <p:column style="width:4%" headerText="Display">
-                    <p:commandButton oncomplete="javascript:reloadPage()" id="selectButton" value="Select" title="View" action="#{encounterService.fillFieldsFromDatabase}" > <f:setPropertyActionListener value="#{PatientSearchTable}" target="#{encounterService.selectedPatientRow}" />
+                    <p:commandButton oncomplete="javascript:reloadPage()" id="selectButton" value="Select" title="View" action="#{encounterService.fillFieldsFromDatabase}" >
+                        <f:setPropertyActionListener value="#{PatientSearchTable}" target="#{encounterService.selectedPatientRow}" />
                     </p:commandButton>
                     <!--update=":form:display" oncomplete="PF('carDialog').show()"-->
                 </p:column>
@@ -113,7 +116,7 @@
                    <!-- <tr>
                         <td><h5 style="color:#149bdf">Card ID </h5></td>
                         <td><p:inputText id="visitID" style="width:50px"
-                                         value="#{encounterService.encounter.cardID}"
+                                         value="\#{encounterService.encounter.cardID}"
                                          ></p:inputText></td>
                         <h:message for="visitID" style="color:red"> </h:message>
                     </tr>-->
@@ -167,7 +170,7 @@
 
                     <tr>
                         <td><strong>Birth Date</strong></td>
-                        <td><p:inputMask mask="99/99/9999" onchange="birthdateToAge(this.value)" id="datepicker"
+                        <td><p:inputMask mask="99/99/9999" onchange="birthdateTo(this.value)" id="datepicker"
                                          value="#{encounterService.patient.birthDate }"></p:inputMask></td><td><em>(MM/DD/YYYY)</em></td>
 
 
@@ -187,7 +190,7 @@
 
                     <tr id="pregRow" style="display: none">
                     <td><strong>Gestation Period</strong></td>
-                    <td><p:inputText  value="0"></p:inputText></td><td> <em>Weeks</em></td>
+                    <td><p:inputText  value="#{encounterService.patient.pregnancyDuration}"></p:inputText></td><td> <em>Weeks</em></td>
                     </tr>
 
                     <tr>

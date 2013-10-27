@@ -51,17 +51,17 @@
             window.location = 'triage.xhtml';
         }
 
-        function birthdateToAge(value) {
+        function birthdateToAge (value) {
             var birthday = +new Date(value);
             document.getElementById('main:age').value = ~~((Date.now() - birthday) / (31557600000));
         }
 
 
-        function showHidePreg(value) {
-            if (value == "Male") {
-                document.getElementById('pregRow').style.display = 'none';
-            } else if (value == "Female") {
-                document.getElementById('pregRow').style.display = "table-row"
+        function showHidePreg (value) {
+            if(value=="Male"){
+                document.getElementById('pregRow').style.display='none';
+            }else if(value=="Female"){
+                document.getElementById('pregRow').style.display="table-row"
             }
         }
 
@@ -83,24 +83,21 @@
 
 <h:panelGrid styleClass="center" style="margin-bottom:10px" cellpadding="3" columns="5">
     <h:outputText value="Search By: "/>
-    <p:selectOneButton value="#{encounterService.number}">
+    <p:selectOneButton value="#{encounterService.searchSelection}">
         <f:selectItem itemLabel="Card ID" itemValue="1" action="#{encounterService.setRender}"/>
         <f:selectItem itemLabel="First Name" itemValue="2" action="#{encounterService.setRender}"/>
         <f:selectItem itemLabel="Last Name" itemValue="3" action="#{encounterService.setRender}"/>
     </p:selectOneButton>
 
-    <p:inputText style="margin-top:10px" id="CardID" value="#{encounterService.searchPatientCardID}" rendered="#{encounterService.renderCarID}"/>
-    <p:inputText id="FName" value="#{encounterService.searchPatientFirstName}" rendered="#{encounterService.renderFirstName}"/>
-    <p:inputText id="LName" value="#{encounterService.searchPatientLastName}" rendered="#{encounterService.renderLastName}"/>
-    <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoiceCreate}">
-
-    </p:commandButton>
+    <p:inputText style="margin-top:10px" id="CardID" value="#{encounterService.searchPatientCardID}"/>
+    <!--<p:inputText id="FName" value="#{encounterService.searchPatientFirstName}"/>-->
+    <!--<p:inputText id="LName" value="#{encounterService.searchPatientLastName}"/>-->
+    <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoiceCreate}"/>
 </h:panelGrid>
 
 <!-- Overlay window for selecting searched patient -->
 <p:overlayPanel id="overlaySearch" style="width:800px;" for="searchButton" hideEffect="fade" dynamic="true"
                 onHide="javascript:reloadPage()">
-
     <p:dataTable id="patientSearch" var="searchPatient" value="#{encounterService.patientList}" paginator="true"
                  rows="5">
         <f:facet name="header">Search Results</f:facet>
@@ -124,11 +121,8 @@
                 <f:setPropertyActionListener value="#{searchPatient}" target="#{encounterService.selectedPatient}"/>
             </p:commandButton>
         </p:column>
-
     </p:dataTable>
-
     <center><p:commandButton id="closeSearch" value="Close" oncomplete="javascript:reloadPage()"/></center>
-
 </p:overlayPanel>
 
 <div class="row">
@@ -169,9 +163,9 @@
 
 
             <tr>
-                <td><h:outputLabel value="Birth Date"/>
-                    <p:inputText style="width:200px" id="datepicker"
-                                 value="#{encounterService.patient.birthDate }"/></td>
+                <td><h:outputLabel value="Birth Date" />
+                    <p:inputMask  mask="99/99/9999" style="width:200px" id="datepicker"
+                                 value="#{encounterService.patient.birthDate }" onchange="birthdateToAge(this.value)"></p:inputMask></td>
             </tr>
 
             <tr>
@@ -181,7 +175,7 @@
 
             <tr>
                 <td><h:outputLabel value="Gender"/>
-                    <h:selectOneMenu id="gender" style="width:200px" value="#{encounterService.patient.gender }">
+                    <h:selectOneMenu id="gender" style="width:200px" value="#{encounterService.patient.gender }" onchange="showHidePreg(this.value)">
                         <f:selectItem itemValue="Select" itemLabel="- Select -"/>
                         <f:selectItem itemValue="Male" itemLabel="Male"/>
                         <f:selectItem itemValue="Female" itemLabel="Female"/>
@@ -189,14 +183,14 @@
                 </td>
             </tr>
 
-            <tr id="pregRow">
+            <tr id="pregRow" style="display: none">
                 <td><h:outputLabel value="Pregnancy Duraction"/>
                     <p:inputText style="width:200px"
                                  value="#{encounterService.patient.pregnancyDuration}"></p:inputText></td>
             </tr>
 
             <tr>
-                <td><h:outputLabel value="Wight"/>
+                <td><h:outputLabel value="Weight"/>
                     <p:inputText id="wlbs" style="width:200px" value="#{encounterService.vitals.weight }"/></td>
             </tr>
             <tr>
