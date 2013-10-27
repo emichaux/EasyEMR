@@ -42,9 +42,13 @@ public class EncounterService implements IEncounterService, Serializable {
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
     private PatientSearchTable selectedPatientRow;
-    //    For selecting search option on pharm page
-    private Integer number;
+    private Integer searchSelection;
     private Patient selectedPatient;
+    private Integer newMedOne;
+    private Integer newMedTwo;
+    private Integer newMedThree;
+    private Integer newMedFour;
+    private Integer newMedFive;
 
     public EncounterService() {
         patient = new Patient();
@@ -211,9 +215,6 @@ public class EncounterService implements IEncounterService, Serializable {
 
     }
 
-
-
-
     public Patient getPatient() {
         return patient;
     }
@@ -292,6 +293,54 @@ public class EncounterService implements IEncounterService, Serializable {
 
     public void setNewEncounter(boolean newEncounter) {
         this.newEncounter = newEncounter;
+    }
+
+    public Integer getSearchSelection() {
+        return searchSelection;
+    }
+
+    public void setSearchSelection(Integer searchSelection) {
+        this.searchSelection = searchSelection;
+    }
+
+    public Integer getNewMedOne() {
+        return newMedOne;
+    }
+
+    public void setNewMedOne(Integer newMedOne) {
+        this.newMedOne = newMedOne;
+    }
+
+    public Integer getNewMedTwo() {
+        return newMedTwo;
+    }
+
+    public void setNewMedTwo(Integer newMedTwo) {
+        this.newMedTwo = newMedTwo;
+    }
+
+    public Integer getNewMedThree() {
+        return newMedThree;
+    }
+
+    public void setNewMedThree(Integer newMedThree) {
+        this.newMedThree = newMedThree;
+    }
+
+    public Integer getNewMedFour() {
+        return newMedFour;
+    }
+
+    public void setNewMedFour(Integer newMedFour) {
+        this.newMedFour = newMedFour;
+    }
+
+    public Integer getNewMedFive() {
+        return newMedFive;
+    }
+
+    public void setNewMedFive(Integer newMedFive) {
+        this.newMedFive = newMedFive;
     }
 
     /**
@@ -376,17 +425,10 @@ public class EncounterService implements IEncounterService, Serializable {
         return "patientSearch";
     }
 
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
 
     // search option handeler for pharm page
     public String searchChoice() {
-        switch (number) {
+        switch (searchSelection) {
             case 1: {
                 String tempCardID = "";
                 if (!this.searchPatientCardID.isEmpty()) {

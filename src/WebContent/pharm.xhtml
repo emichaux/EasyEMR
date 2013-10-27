@@ -9,6 +9,9 @@
 <h:head>
     <title>Easy EMR</title>
     <link href="./css/bootstrap.css" rel="stylesheet"/>
+    <link href="./css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/resources/demos/style.css"/>
+    <link rel="stylesheet" href="./css/jquery-ui-1.10.2.custom.css"/>
 
     <script type="text/javascript">
         function reloadPage()
@@ -23,18 +26,25 @@
 <h:form id="main">
 <div class="container well">
 
-    <h:panelGrid styleClass="center" style="margin-bottom:10px" cellpadding="3" columns="5">
-        <h:outputText value="Search By: " />
-        <p:selectOneButton value="#{encounterService.number}">
-            <f:selectItem itemLabel="Card ID" itemValue="1" />
-            <f:selectItem itemLabel="First Name" itemValue="2" />
-            <f:selectItem itemLabel="Last Name" itemValue="3" />
-        </p:selectOneButton>
+    <h:panelGrid styleClass="center" columns="2">
 
-        <p:inputText  style="margin-top:10px" id="CardID" value="#{encounterService.searchPatientCardID}"/>
-        <!--<p:inputText id="FName" value="#{encounterService.searchPatientFirstName}"/>-->
-        <!--<p:inputText id="LName" value="#{encounterService.searchPatientLastName}"/>-->
-        <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoice}"/>
+        <h:panelGrid styleClass="center" cellpadding="3" columns="2">
+            <h:outputText value="Search By: "/>
+            <p:selectOneButton value="#{encounterService.searchSelection}">
+                <f:selectItem itemLabel="Card ID" itemValue="1"/>
+                <f:selectItem itemLabel="First Name" itemValue="2"/>
+                <f:selectItem itemLabel="Last Name" itemValue="3"/>
+                <f:ajax render="@form" />
+            </p:selectOneButton>
+        </h:panelGrid>
+
+        <h:panelGrid styleClass="center" cellpadding="3" columns="4">
+            <p:inputText id="CardID" style="margin-top:10px" rendered="#{encounterService.searchSelection == 1}" value="#{encounterService.searchPatientCardID}"/>
+            <p:inputText id="FName" style="margin-top:10px" rendered="#{encounterService.searchSelection == 2}" value="#{encounterService.searchPatientFirstName}"/>
+            <p:inputText id="LName" style="margin-top:10px" rendered="#{encounterService.searchSelection == 3}" value="#{encounterService.searchPatientLastName}"/>
+            <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchChoice}"/>
+        </h:panelGrid>
+
     </h:panelGrid>
 
     <p:overlayPanel id="overlaySearch" style="width:800px;" for="searchButton" hideEffect="fade" dynamic="true" onHide="javascript:reloadPage()">
@@ -78,93 +88,99 @@
 
     </p:overlayPanel>
 
-    <!--<p:dataTable>-->
-
-        <!--<p:column headerText="First Name">-->
-            <!--<h:outputText value="#{encounterService.selectedPatient.firstName}"/>-->
-        <!--</p:column>-->
-
-
-    <!--</p:dataTable>-->
 
     <p:panel id="selectedPatient" styleClass="center" header="Patient Selection">
 
-        <h:panelGrid styleClass="center" cellpadding="5" columns="6" rows="2">
+        <p:dataTable var="selection"  value="#{encounterService.selectedPatient}" >
 
-            <h:outputText value="First Name"/>
-            <h:outputText style="margin-left:30px" value="Last Name"/>
-            <h:outputText style="margin-left:30px" value="Age"/>
-            <h:outputText style="margin-left:30px" value="Height"/>
-            <h:outputText style="margin-left:30px" value="Weight"/>
-            <h:outputText style="margin-left:30px" value="Pregnancy Status"/>
+            <p:column headerText="First Name">
+                <h:outputText value="#{selection.firstName}"/>
+            </p:column>
 
-            <h:outputText value="#{encounterService.selectedPatient.firstName}"/>
-            <h:outputText value="#{encounterService.selectedPatient.lastName}"/>
-            <h:outputText value="#{encounterService.selectedPatient.age}"/>
-            <h:outputText value="#{encounterService.vitals.height}"/>
-            <h:outputText value="#{encounterService.vitals.weight}"/>
-            <h:outputText value="#{encounterService.selectedPatient.pregers}"/>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{selection.lastName}"/>
+            </p:column>
 
+            <p:column headerText="Age">
+                <h:outputText value="#{selection.age}"/>
+            </p:column>
+
+            <p:column headerText="Height">
+                <h:outputText value="#{selection.height}"/>
+            </p:column>
+
+            <p:column headerText="Weight">
+                <h:outputText value="#{selection.weight}"/>
+            </p:column>
+
+            <p:column headerText="BMI">
+                <h:outputText value="#{encounterService.vitals.calculatedBMI}"/>
+            </p:column>
+
+            <p:column headerText="Pregnancy Status">
+                <h:outputText value="#{selection.pregers}"/>
+            </p:column>
+
+        </p:dataTable>
+
+        <h:panelGrid styleClass="center" style="margin-top:20px;margin-left:125px" columns="2">
+            <h:panelGrid columns="3" rows="6">
+
+                <h:outputText style="margin-right:600px" value="Problem List"/>
+                <h:outputText style="margin-left:-900px" value="Medication Given"/>
+                <h:outputText style="margin-left:-500px" value="Same Medication?"/>
+
+                <p:inputText style="margin-right:600px" value="Problem 1"/>
+                <p:inputText style="margin-left:-900px" value="Med 1"/>
+                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedOne}">
+                    <f:selectItem itemLabel="Yes" itemValue="1"/>
+                    <f:selectItem itemLabel="No " itemValue="2"/>
+                    <f:ajax render="@form" />
+                </p:selectOneButton>
+
+                <p:inputText style="margin-right:600px" value="Problem 2"/>
+                <p:inputText style="margin-left:-900px" value="Med 2"/>
+                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedTwo}">
+                    <f:selectItem itemLabel="Yes" itemValue="1"/>
+                    <f:selectItem itemLabel="No " itemValue="2"/>
+                    <f:ajax render="@form" />
+                </p:selectOneButton>
+
+                <p:inputText style="margin-right:600px" value="Problem 3"/>
+                <p:inputText style="margin-left:-900px" value="Med 3"/>
+                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedThree}">
+                    <f:selectItem itemLabel="Yes" itemValue="1"/>
+                    <f:selectItem itemLabel="No " itemValue="2"/>
+                    <f:ajax render="@form" />
+                </p:selectOneButton>
+
+                <p:inputText style="margin-right:600px" value="Problem 4"/>
+                <p:inputText style="margin-left:-900px" value="Med 4"/>
+                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedFour}">
+                    <f:selectItem itemLabel="Yes" itemValue="1"/>
+                    <f:selectItem itemLabel="No " itemValue="2"/>
+                    <f:ajax render="@form" />
+                </p:selectOneButton>
+
+                <p:inputText style="margin-right:600px" value="Problem 5"/>
+                <p:inputText style="margin-left:-900px" value="Med 5"/>
+                <p:selectOneButton style="margin-left:-500px;margin-top:-10px" value="#{encounterService.newMedFive}">
+                    <f:selectItem itemLabel="Yes" itemValue="1"/>
+                    <f:selectItem itemLabel="No " itemValue="2"/>
+                    <f:ajax render="@form" />
+                </p:selectOneButton>
+            </h:panelGrid>
+
+            <h:panelGrid style="margin-left:-165px;margin-top:-110px" columns="1" rows="6">
+                <h:outputText style="margin-left:45px;margin-top:-5px;position:fixed" value="New Medication"/>
+                <p:inputText style="margin-top:15px;position:fixed" value="newmed1" rendered="#{encounterService.newMedOne == 2}"/>
+                <p:inputText style="margin-top:55px;position:fixed" value="newmed2" rendered="#{encounterService.newMedTwo == 2}"/>
+                <p:inputText style="margin-top:95px;position:fixed" value="newmed3" rendered="#{encounterService.newMedThree == 2}"/>
+                <p:inputText style="margin-top:135px;position:fixed" value="newmed4" rendered="#{encounterService.newMedFour == 2}"/>
+                <p:inputText style="margin-top:175px;position:fixed" value="newmed5" rendered="#{encounterService.newMedFive == 2}"/>
+            </h:panelGrid>
 
         </h:panelGrid>
-
-
-              <h:panelGrid styleClass="left" style="margin-top:10px" columns="4">
-
-                  <h:panelGrid styleClass="left" columns="1" rows="6">
-                      <h:outputText value="Problem List"/>
-                      <p:inputText value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-
-                  </h:panelGrid>
-
-                  <h:panelGrid styleClass="center" style="margin-left:30px" columns="1" rows="6">
-                      <h:outputText value="Medication Given"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-                      <p:inputText style="margin-top:-10px" value="NYI"/>
-
-                  </h:panelGrid>
-
-                  <h:panelGrid styleClass="right" style="margin-top:-15px" columns="1" rows="1">
-                      <h:outputText value="Same medication?"/>
-
-                      <h:panelGrid styleClass="right" cellpadding="6" columns="4" rows="5">
-                          <h:outputText value="Yes" />
-                          <p:selectBooleanCheckbox value="" />
-                          <h:outputText value="No" />
-                          <p:selectBooleanCheckbox value="" />
-
-                          <h:outputText value="Yes" />
-                          <p:selectBooleanCheckbox value="" />
-                          <h:outputText value="No" />
-                          <p:selectBooleanCheckbox value="" />
-
-                          <h:outputText value="Yes" />
-                          <p:selectBooleanCheckbox value="" />
-                          <h:outputText value="No" />
-                          <p:selectBooleanCheckbox value="" />
-
-                          <h:outputText value="Yes" />
-                          <p:selectBooleanCheckbox value="" />
-                          <h:outputText value="No" />
-                          <p:selectBooleanCheckbox value="" />
-
-                          <h:outputText value="Yes" />
-                          <p:selectBooleanCheckbox value="" />
-                          <h:outputText value="No" />
-                          <p:selectBooleanCheckbox value="" />
-
-                      </h:panelGrid>
-
-                  </h:panelGrid>
-
-              </h:panelGrid>
 
         <h:panelGrid styleClass="center" style="margin-bottom:10px" cellpadding="5" columns="2">
 
@@ -174,9 +190,6 @@
         </h:panelGrid>
 
     </p:panel>
-
-
-
 
 </div>
 </h:form>
