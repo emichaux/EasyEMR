@@ -1,6 +1,7 @@
 package edu.wayne.cs.raptor;
 
 import org.hibernate.Session;
+import org.primefaces.context.RequestContext;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -45,6 +46,8 @@ public class EncounterService implements IEncounterService, Serializable {
     //    For selecting search option on pharm, and create pages
     private Integer number;
     private Patient selectedPatient;
+    private Boolean historyAvailable;
+
 
     public EncounterService() {
         patient = new Patient();
@@ -57,6 +60,15 @@ public class EncounterService implements IEncounterService, Serializable {
         PatientResult = new ArrayList<PatientSearchTable>();
 
         populatePatientList(PatientResult);
+    }
+
+
+    public Boolean getHistoryAvailable() {
+        return historyAvailable;
+    }
+
+    public void setHistoryAvailable(Boolean historyAvailable) {
+        this.historyAvailable = historyAvailable;
     }
 
     public Patient getSelectedPatient() {
@@ -518,6 +530,8 @@ public class EncounterService implements IEncounterService, Serializable {
 
     public String resetRecord() {
         setNewEncounter(false);
+        setHistoryAvailable(false);
+        PatientResult = new ArrayList<PatientSearchTable>();
         patient = new Patient();
         encounter = new Encounter();
         vitals = new Vitals();
@@ -811,6 +825,27 @@ public class EncounterService implements IEncounterService, Serializable {
 
     public void datatableupdate() {
         populatePatientList(PatientResult);
+    }
+
+
+    public void checkTableSize(){
+        String patientlastnamesearch = patient.getLastName();
+        String patientfirstnamesearch = patient.getFirstName();
+        userSession = HibernateUtil.getSessionFactory().openSession();
+        userSession.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Patient> result = userSession.createQuery("from Patient where lastName='" + patientlastnamesearch + "' and firstName='" + patientfirstnamesearch + "'").list();
+        userSession.getTransaction().commit();
+        userSession.close();
+        if(result.size() > 0){
+              setHistoryAvailable(true);
+            historyAvailable = true;
+        }
+        else{
+            setHistoryAvailable(false);
+            historyAvailable = false;
+        }
+        RequestContext.getCurrentInstance().update("panel1");
     }
 
     private void populatePatientList(List<PatientSearchTable> list) {
