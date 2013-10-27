@@ -10,6 +10,8 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class PatientSearchTable {
+
+    private String cardID;
     private String firstName;
     private String ageResult;
     private String lastNameResult;
@@ -19,7 +21,8 @@ public class PatientSearchTable {
     private String locationResult;
     private String pregDurResult;
 
-    public PatientSearchTable(String firstName,  String lastNameResult, String ageResult, String locationResult,  String genderResult, String heightResult, String ageIntResult, String pregDurResult) {
+    public PatientSearchTable(String firstName,  String lastNameResult, String ageResult, String locationResult,  String genderResult, String heightResult, String ageIntResult, String pregDurResult, String cardID) {
+        this.cardID = cardID;
         this.firstName = firstName;
         this.ageResult = ageResult;
         this.lastNameResult = lastNameResult;
@@ -28,6 +31,15 @@ public class PatientSearchTable {
         this.ageIntResult = ageIntResult;
         this.locationResult = locationResult;
     }
+
+    public String getCardID() {
+        return cardID;
+    }
+
+    public void setCardID(String cardID) {
+        this.cardID = cardID;
+    }
+
 
     public String getPregDurResult() {
         return pregDurResult;
