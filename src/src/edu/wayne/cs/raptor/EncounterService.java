@@ -437,7 +437,7 @@ public class EncounterService implements IEncounterService, Serializable {
 
 
     // search option handeler for pharm page
-    public String searchChoice() {
+    public void searchChoice() {
         switch (searchSelection) {
             case 1: {
                 String tempCardID = "";
@@ -485,7 +485,16 @@ public class EncounterService implements IEncounterService, Serializable {
                 this.searchPatientCardID = "";
             }
         }
+    }
+
+    public String searchPharm(){
+     searchChoice();
         return "pharm";
+    }
+
+    public String searchMed(){
+        searchChoice();
+        return "create";
     }
 
     /**
