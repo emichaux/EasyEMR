@@ -3,8 +3,11 @@
 
                  |--- Admin Page ---|
 
+
+
 Admin Test 1 
 ------
+
 
 Admin user should login as admin and be redirected to admin page.
 Admin user should click button to list all users.  
@@ -22,8 +25,10 @@ Admin user should then go back and click list users.
 Admin user should click on the same name.
 User information should reflect changes.
 
+
 Admin Test 2
 ------
+
 
 Admin user should login with admin credentials
 Admin user should be redirected to admin page.
@@ -32,10 +37,15 @@ Admin user should submit user account to be saved
 Admin user should go back and list all users
 New user should be listed.
 
+
+
                  |--- Triage Page ---|
+
+
 
 Triage Test 1
 ------
+
 
 Nurse/Student should login with credentials
 User should be redirected to triage page.
@@ -43,34 +53,95 @@ User should enter in first and last name of patient
 If name shows in patient history user should select the patient to fill the data. 
 User should fill in additional patient information and click submit.
 
+
 Triage Test 2
 ------
+
 
 User should enter in all fields except required fields and hit submit.
 if application functions properly patient information should not have be submitted to database
 
+
 Triage Test 3
 ------
 
+
 Data validation - User should enter wrong data fields in the input box and click submit.
+
+
 
                  |--- Medical Page ---|
                  
+
+
+When Patient ID is searched, only one user should be displayed in the table (consider filling information automatically for patient ID search).
+
+when patient first name and last name is searched, there are several possible outcomes.  Each are listed below:
+
+   1) If multiple patients exist in the database when first or last name is searched, all matching patients will be displayed
+   
+   2) If only one patient matching the search criteria exist in the database one patient will be displayed.
+    
+    
 Medical Test 1
 --------------
 
-Medical Test 2
---------------
+
+User should type in the following information in the search fields separtely and click the search button:
+    
+    1) Patient ID
+    
+    2) First Name
+    
+    3) Last Name
+
+
 
 Medical Test 2
 --------------
+
+
+Medical Test 2
+--------------
+
 
                  |--- Pharmacy Page ---|
-Pharmacy Test 1
----------------
+                 
+
+                 
+Upon logging in, all prescribed selection boxes should be defaulted to yes.
+
+If the user selects no, a input box to type in prescribed medication should render.
+
+As the user types in medication a list of medications beginning with input text should display.
+
+
 
 Pharmacy Test 1
 ---------------
+
+
+User should type in the following information in the search fields separtely and click the search button:
+    
+    1) Patient ID
+    
+    2) First Name
+    
+    3) Last Name
+
+
+Once a patient is displayed int eh search display table, user should select patient.  Previous information on patient regarding problem list and medication given should be displayed.  
+User should select a patient that has been given the medication that was prescribed.  All selection boxes should have "yes" selected.
+User should select a patient that has been not been given the medication that was prescribed.  All selection boxes should have "no" selected.
+User should select a patient that has a mix of medication that is same as prescribed and different than prescribed.  Selection boxes should have "yes" / "no" corresponding to patient data.
+
+User should submit information each time.  Data in database should reflect changes in each session.
+
+
+
+Pharmacy Test 1
+---------------
+
 
 Pharmacy Test 1
 ---------------
