@@ -5,9 +5,9 @@ EasyEMR Medical Records System
 <h3> How to Setup and Install </h3>
 
 <h5><ul>
-    <li> Fork Project from within your IDE.  Intellij Idea is the preferred IDE.  Get it <a href="http://www.jetbrains.com/idea/download/index.html">here.</a></li>
-    <li>Install Jboss Application Server from here and setup run configurations.  See this <a href="http://www.jetbrains.com/idea/training/demos/JBoss_server.html">link</a> on how to do so.</li> 
-    <li>Install Mysql Community Edition.  Download information can be found <a href="http://www.mysql.com/products/community/" >here.</a></li> 
+        <li>Install Mysql Community Edition.  Download information can be found <a href="http://www.mysql.com/products/community/" >here.</a></li>
+        <li>Install Jboss Application Server from here and setup run configurations.  See this <a href="http://www.jetbrains.com/idea/training/demos/JBoss_server.html">link</a> for more information.</li> 
+        <li> Fork Project from within your IDE.  Intellij Idea is the preferred IDE.  Get it <a href="http://www.jetbrains.com/idea/download/index.html">here.</a></li>
 </ul></h5>
 
 <h3> TODOs </h3>
