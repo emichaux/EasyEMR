@@ -41,7 +41,7 @@ public class PharmacyEncounter implements Serializable {
     protected boolean equalPrescribed5;
     @Column(name="creatingUser")
 	protected String creatingUser;
-    @Column(name="creatingUser")
+    @Column(name="createdDate")
 	private Date createdDate;
 
 	public PharmacyEncounter() {
