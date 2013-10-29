@@ -1,9 +1,8 @@
 package edu.wayne.cs.raptor;
 
-import org.hibernate.internal.jaxb.mapping.orm.JaxbPrimaryKeyJoinColumn;
-
-import java.util.Date;
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 
 /** Defines an Encounter. An encounter should track all the interactions between the patient
@@ -14,42 +13,59 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ENCOUNTERS")
-public class Encounter {
+public class Encounter implements Serializable {
 	
 	/** A unique Encounter identification number */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="encounterID")
 	private int encounterID;
-	
+
 	/** The id of the patient for whom the encounter is in progress */
-	private int patientID;
-	
+    @Column (name = "patientID")
+    private int patientID;
+
 	/** Card ID to create a better use case for a given patient */
-	private String cardID;
+    @Column (name = "cardID")
+    private String cardID;
 
 	//figure out how to deal with images using jsp
 	//private Bitmap personPhoto
 	
 	/** The stated chief complaint for an encounter */
-	private String chiefComplaint;
+    @Column (name = "chiefComplaint")
+    private String chiefComplaint;
 	
 	/** Attributes related to the HPI Section, created by Tom Hickman **/
-	private int onsetNumber;
+    @Column (name = "onsetNumber")
+    private int onsetNumber;
+    @Column (name = "onsetUnit")
 	private String onsetUnit;
+    @Column (name = "severity")
 	private int severity;
+    @Column (name = "radiation")
 	private String radiation;
+    @Column (name = "quality")
 	private String quality;
+    @Column (name = "provokes")
 	private String provokes;
+    @Column (name = "timeOfDay")
 	private String timeOfDay;
+    @Column (name = "other")
 	private String other;	
 	/** End HPI **/
 	
 	/** Medications Prescribed **/
+    @Column (name = "medicationPrescribed1")
 	private String medicationPrescribed1;
-	private String medicationPrescribed2;
-	private String medicationPrescribed3;
-	private String medicationPrescribed4;
-	private String medicationPrescribed5;
+    @Column (name = "medicationPrescribed2")
+    private String medicationPrescribed2;
+    @Column (name = "medicationPrescribed3")
+    private String medicationPrescribed3;
+    @Column (name = "medicationPrescribed4")
+    private String medicationPrescribed4;
+    @Column (name = "medicationPrescribed5")
+    private String medicationPrescribed5;
 	
 	
 	/** A chronic/other illnesses discovered in the encounter 
@@ -57,37 +73,49 @@ public class Encounter {
 	 *  Method to access/edit if desired. if it's resolved should not be displayed during future encounters 
 	 *  (but not removed from previously recorded encounters)
 	 */
+    @Column (name = "condition1")
 	private String condition1;
-	private String condition2;
-	private String condition3;
-	private String condition4;
-	private String condition5;
+    @Column (name = "condition2")
+    private String condition2;
+    @Column (name = "condition3")
+    private String condition3;
+    @Column (name = "condition4")
+    private String condition4;
+    @Column (name = "condition5")
+    private String condition5;
 	
 	/** Results of physical examination */
-	private String overallImpression;
+    @Column (name = "overallImpression")
+    private String overallImpression;
 	
 	/** Keywords for this encounter */
-	private String keywords;
+    @Column (name = "keywords")
+    private String keywords;
 	
 	/** Any medical procedures the Patient has undergone in the past or the current encounter */
-	private String medicalProcedures;
-	
+    @Column (name = "medicalProcedures")
+    private String medicalProcedures;
+    @Column (name = "assessment")
 	private String assessment;
 
 	/** 
 	 * metadata
 	 */
 	/** User that created this user */
-	private String creatingUser;
+    @Column (name = "creatingUser")
+    private String creatingUser;
 	
 	/** Date this user was first created */
-	private Date createdDate;
+    @Column (name = "createdDate")
+    private Date createdDate;
 	
 	/** User to last modify or update this user */
-	private String modifyingUser;
+    @Column (name = "modifyingUser")
+    private String modifyingUser;
 	
 	/** Date last modification of this user took place, creation counts as a modification */
-	private Date lastModifiedDate;
+    @Column (name = "lastModifiedDate")
+    private Date lastModifiedDate;
 
 	
 	
@@ -96,7 +124,7 @@ public class Encounter {
 	}
 
 	/** Returns the encounter ID number */
-	@Id
+
 	public int getEncounterID() {
 		return encounterID;
 	}
@@ -113,7 +141,7 @@ public class Encounter {
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
 	}
-	
+
 	/** Returns the chief complaint in the encounter*/
 	public String getChiefComplaint() {
 		return chiefComplaint;

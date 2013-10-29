@@ -1,5 +1,6 @@
 package edu.wayne.cs.raptor;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import org.hibernate.Session;
  *
  */
 
-public class UserService implements IUserService {
+public class UserService implements IUserService, Serializable {
 
 	
 	private User newUser;

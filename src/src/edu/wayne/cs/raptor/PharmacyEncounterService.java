@@ -1,15 +1,15 @@
 package edu.wayne.cs.raptor;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-//import java.util.Collections;
-import java.util.List;
-
-import javax.swing.JOptionPane;
-
 import org.hibernate.Session;
 
-public class PharmacyEncounterService {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+//import java.util.Collections;
+
+public class PharmacyEncounterService implements Serializable {
 	
 	//private int userID;
 	private int computerID;

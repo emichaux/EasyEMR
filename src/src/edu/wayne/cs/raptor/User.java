@@ -1,10 +1,10 @@
 package edu.wayne.cs.raptor;
 
-import java.util.Date;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Defines a User entity in the system.
@@ -15,41 +15,53 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table( name = "USERS")
-public class User {
+public class User implements Serializable {
 
 	/** A unique user identification number */
-	private int userID;
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    private int userID;
 
 	/** User's (legal) first name */
-	private String firstName;
+    @Column(name = "firstName")
+    private String firstName;
 	
 	/** User's (legal) last name */
-	private String lastName;
+    @Column(name = "lastName")
+    private String lastName;
 	
 	/** Username for log in porpoises */
-	private String username;
+    @Column(name = "username")
+    private String username;
 
 	/** Password phrase */
-	private String password;
+    @Column(name = "password")
+    private String password;
 	
 	/** Roles this user performs.  I.e. pharmacist, researcher, etc.  */
-	private String roles;
+    @Column(name = "roles")
+    private String roles;
 	
 	
 	/** 
 	 * metadata
 	 */
 	/** User that created this user */
-	private String creatingUser;
+    @Column(name = "creatingUser")
+    private String creatingUser;
 
 	/** Date this user was first created */
-	private Date createdDate;
+    @Column(name = "createdDate")
+    private Date createdDate;
 	
 	/** User to last modify or update this user */
-	private String modifyingUser;
+    @Column(name = "modifyingUser")
+    private String modifyingUser;
 	
 	/** Date last modification of this user took place, creation counts as a modification */
-	private Date lastModifiedDate;
+    @Column(name = "lastModifiedDate")
+    private Date lastModifiedDate;
 	
 	
 	/** Default empty constructor */
@@ -63,9 +75,6 @@ public class User {
 		this.username = username;
 	}
 
-	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
 	public int getUserID() {
 		return userID;
 	}

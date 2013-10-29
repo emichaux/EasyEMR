@@ -1,9 +1,8 @@
 package edu.wayne.cs.raptor;
 
-import java.util.Date;
-
-import javax.faces.bean.ManagedProperty;
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -13,77 +12,77 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "PATIENTS")
-public class Patient {
+public class Patient implements Serializable {
 
     /**
      * A unique Patient identification number
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="patientID")
     private int patientID;
     /**
      * Card ID to create a better use case for a given patient
      */
+
+    @Column(name="cardID")
     private String cardID;
     /**
      * Patient's first name
      */
+    @Column(name="firstName")
     private String firstName;
     /**
      * Patient's last name
      */
+    @Column(name="lastName")
     private String lastName;
     /**
      * Patient's date of birth
      */
+    @Column(name="birthDate")
     private String birthDate;
     /**
      * Patient's age
      */
+    @Column(name="age")
     private String age;
     /**
      * Patient's gender
      */
+    @Column(name="gender")
     private String gender;
     /**
      * Patient's pregers status
      */
+    @Column(name="pregers")
     private boolean isPregers;
     /**
      * A set of unique keywords collected from the Patient's relevant medical information/history
      */
     //TODO: figure out how to map collection of strings to SQL column through hibernate.
+    @Column(name="keywords")
     private String keywords;
     /**
      * Patient's residence
      */
+    @Column(name="residence")
     private String residence;
     /**
      * The Patient's social/family history. this information shouldn't change much from an encounter
      * to another.
      */
+    @Column(name="socialHistory")
     private String socialHistory;
 
-
+    @Column(name="height")
     private String height;
 
-
+    @Column(name="weight")
     private String weight;
 
+    @Column(name="pregnancyDuration")
     private String pregnancyDuration;
-
-
-
-
-    public String getPregnancyDuration() {
-        return pregnancyDuration;
-    }
-
-    public void setPregnancyDuration(String pregnancyDuration) {
-        this.pregnancyDuration = pregnancyDuration;
-    }
-
-
 
     /** Identifying image of the patient*/
     //private Bitmap personPhoto;
@@ -94,19 +93,31 @@ public class Patient {
     /**
      * User that created this user
      */
+    @Column(name="creatingUser")
     private String creatingUser;
     /**
      * Date this user was first created
      */
+    @Column(name="createdDate")
     private Date createdDate;
     /**
      * User to last modify or update this user
      */
+    @Column(name="modifyingUser")
     private String modifyingUser;
     /**
      * Date last modification of this user took place, creation counts as a modification
      */
+    @Column(name="lastModifiedDate")
     private Date lastModifiedDate;
+
+    public String getPregnancyDuration() {
+        return pregnancyDuration;
+    }
+
+    public void setPregnancyDuration(String pregnancyDuration) {
+        this.pregnancyDuration = pregnancyDuration;
+    }
 
     public String getHeight() {
         return height;
@@ -136,7 +147,6 @@ public class Patient {
     /**
      * Returns the Patient's ID
      */
-    @Id
     public int getPatientID() {
         return patientID;
     }

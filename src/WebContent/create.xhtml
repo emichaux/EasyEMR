@@ -21,6 +21,13 @@
 
     <script src="./js/jquery.maskedinput.js" type="text/javascript"></script>
 
+
+    <script type="text/javascript">
+        $(function () {
+            $("#main\\:datepicker").datepicker({changeMonth: true, changeYear: true, yearRange: "-100:+0"});
+        });
+    </script>
+
     <script type="text/javascript">
         $(function () {
             $("#main\\:datepicker").datepicker();
@@ -95,8 +102,7 @@
     </h:panelGrid>
 
     <h:panelGrid styleClass="center" cellpadding="3" columns="2">
-        <p:inputText id="ph" style="margin-top:10px" rendered="#{encounterService.searchSelection == null}"/>
-        <p:inputText id="CardID" style="margin-top:10px" rendered="#{encounterService.searchSelection == 1}" value="#{encounterService.searchPatientCardID}"/>
+        <p:inputText id="CardID" style="width: 200px" rendered="#{encounterService.searchSelection == 1}" value="#{encounterService.searchPatientCardID}"/>
         <p:inputText id="FName" style="margin-top:10px" rendered="#{encounterService.searchSelection == 2}" value="#{encounterService.searchPatientFirstName}"/>
         <p:inputText id="LName" style="margin-top:10px" rendered="#{encounterService.searchSelection == 3}" value="#{encounterService.searchPatientLastName}"/>
         <p:commandButton id="searchButton" value="Search" action="#{encounterService.searchMed}"/>
@@ -200,11 +206,11 @@
 
             <tr>
                 <td><h:outputLabel value="Weight"/>
-                    <p:inputText id="wlbs" style="width:200px" value="#{encounterService.vitals.weight }"/></td>
+                    <p:inputText id="wlbs" style="width:200px" value="#{encounterService.patient.weight }"/></td>
             </tr>
             <tr>
                 <td><h:outputLabel value="Height"/>
-                    <p:inputText id="hin" style="width:200px" value="#{encounterService.vitals.height }"/></td>
+                    <p:inputText id="hin" style="width:200px" value="#{encounterService.patient.height }"/></td>
             </tr>
 
 

@@ -11,3 +11,4 @@ tmp/
 local.properties
 target/
 workspace.xml
+hibernate.cfg.xml

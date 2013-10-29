@@ -1,8 +1,8 @@
 package edu.wayne.cs.raptor;
 
-import java.util.Date;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 
 
@@ -13,76 +13,97 @@ import javax.persistence.*;
  */
 @Entity
 @Table (name = "VITALS")
-public class Vitals {
+public class Vitals implements Serializable {
 	
 	/* Should have a constraint on values ? */
 	//TODO: figure out if we can even get doubles back from the front end.
 	//scott mentioned everything comes through as strings because tomcat.  
 	
 	/** unique identifier of a set of vitals for the specific encounter */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="vitalsID")
 	private int vitalsID;
 	
 	/** a set of vitals is identified by its encounter id number */
+    @Column(name="encounterID")
 	private int encounterID;
 	
 	/** Card ID to create a better use case for a given patient */
-	private String cardID;
+    @Column(name="cardID")
+    private String cardID;
 	
 	/** Patient's systolic blood pressure */
-	private int systolicBP;
+    @Column(name="systolicBP")
+    private int systolicBP;
 	
 	/** Patient's diastolic blood pressure */
-	private int diastolicBP;
+    @Column(name="diastolicBP")
+    private int diastolicBP;
 	
 	/** Patient's heart rate as BeatsPerMinute*/
-	private int heartRate;
+    @Column(name="heartRate")
+    private int heartRate;
 	
 	/** Patient's respiratory rate */
-	private int respRate;
+    @Column(name="respRate")
+    private int respRate;
 	
 	/** Patient's temperature in fahrenheit */
-	private double temperatureF;
+    @Column(name="temperatureF")
+    private double temperatureF;
 	
 	/** Patient's pulse oximetry in percentage */
-	private int oximetry;
+    @Column(name="oximetry")
+    private int oximetry;
 	
 	/** Patient had blood drawn */
-	private boolean malaria;
-	private boolean dengue;
+    @Column(name="malaria")
+    private boolean malaria;
+    @Column(name="dengue")
+    private boolean dengue;
 	
 	/** Patient's blood sample number */
-	private int bloodSampleID;
+    @Column(name="bloodSampleID")
+    private int bloodSampleID;
 
     /** Patient's blood saturation */
+    @Column(name="bloodSaturation")
     private float bloodSaturation;
 	
 	/** Patient's measured height */
-	private int height;
+    @Column(name="height")
+    private int height;
 	
 	/** Patient's measured weight */
-	private int weight;
+    @Column(name="weight")
+    private int weight;
 	
 	/** Patient's measured patientBMI */
-	private int calculatedBMI;
+    @Column(name="calculatedBMI")
+    private int calculatedBMI;
 	
 	/** User that created this Vitals document */
-	private String creatingUser;
+    @Column(name="createdUser")
+    private String creatingUser;
 	
 	/** Date this vitals document was created */
 	private Date createdDate;
 	
 	/** The user that last modified this vitals doc */
-	private String modifyingUser;
+    @Column(name="modifyingUser")
+    private String modifyingUser;
 	
 	/** The date of the last modification to this vitals document */
-	private Date lastModifiedDate;
+    @Column(name="lastModifiedDate")
+    private Date lastModifiedDate;
 	
 	/** Default empty constructor */
 	public Vitals(){	
 		//assignment operator seems to work just fine (i asked jUnit, he said so)
 	}
 	
-	@Id
+
 	public int getVitalsID() {
 		return vitalsID;
 	}

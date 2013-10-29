@@ -1,11 +1,12 @@
 package edu.wayne.cs.raptor;
 
+import org.hibernate.Session;
+
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import org.hibernate.Session;
-
-public class PatientService implements IPatientService {
+public class PatientService implements IPatientService, Serializable {
 
 	private LoginBean login;
 	private Patient patient;

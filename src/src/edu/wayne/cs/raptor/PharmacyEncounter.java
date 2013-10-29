@@ -1,32 +1,47 @@
 package edu.wayne.cs.raptor;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "PHARMACY")
 
-public class PharmacyEncounter {
+public class PharmacyEncounter implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="encounterID")
 	protected int encounterID;
-	protected String cardID;
-	protected String firstName;
-	protected String lastName;
-	protected String medDispensed1;
-	protected String medDispensed2;
-	protected String medDispensed3;
-	protected String medDispensed4;
-	protected String medDispensed5;
-	protected boolean equalPrescribed1;
-	protected boolean equalPrescribed2;
-	protected boolean equalPrescribed3;
-	protected boolean equalPrescribed4;
-	protected boolean equalPrescribed5;
-
+    @Column(name="cardID")
+    protected String cardID;
+    @Column(name="firstName")
+    protected String firstName;
+    @Column(name="lastName")
+    protected String lastName;
+    @Column(name="medDispensed1")
+    protected String medDispensed1;
+    @Column(name="medDispensed2")
+    protected String medDispensed2;
+    @Column(name="medDispensed3")
+    protected String medDispensed3;
+    @Column(name="medDispensed4")
+    protected String medDispensed4;
+    @Column(name="medDispensed5")
+    protected String medDispensed5;
+    @Column(name="equalPrescribed1")
+    protected boolean equalPrescribed1;
+    @Column(name="equalPrescribed2")
+    protected boolean equalPrescribed2;
+    @Column(name="equalPrescribed3")
+    protected boolean equalPrescribed3;
+    @Column(name="equalPrescribed4")
+    protected boolean equalPrescribed4;
+    @Column(name="equalPrescribed5")
+    protected boolean equalPrescribed5;
+    @Column(name="creatingUser")
 	protected String creatingUser;
-
+    @Column(name="creatingUser")
 	private Date createdDate;
 
 	public PharmacyEncounter() {
@@ -52,7 +67,7 @@ public class PharmacyEncounter {
 		setEqualPrescribed5(equalPrescribed5);
 	}
 
-	@Id
+
 	public int getEncounterID() {
 		return encounterID;
 	}

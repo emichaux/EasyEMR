@@ -40,7 +40,6 @@
         </h:panelGrid>
 
         <h:panelGrid styleClass="center" cellpadding="3" columns="2">
-            <p:inputText id="ph" style="margin-top:10px" rendered="#{encounterService.searchSelection == null}"/>
             <p:inputText id="CardID" style="margin-top:10px" rendered="#{encounterService.searchSelection == 1}" value="#{encounterService.searchPatientCardID}"/>
             <p:inputText id="FName" style="margin-top:10px" rendered="#{encounterService.searchSelection == 2}" value="#{encounterService.searchPatientFirstName}"/>
             <p:inputText id="LName" style="margin-top:10px" rendered="#{encounterService.searchSelection == 3}" value="#{encounterService.searchPatientLastName}"/>

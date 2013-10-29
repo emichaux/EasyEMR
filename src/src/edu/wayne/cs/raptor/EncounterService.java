@@ -43,13 +43,13 @@ public class EncounterService implements IEncounterService, Serializable {
     private List<PatientSearchTable> PatientResult;
     private boolean newEncounter;
     private PatientSearchTable selectedPatientRow;
-    private Integer searchSelection;
+    private int searchSelection = 1;
     private Patient selectedPatient;
-    private Integer newMedOne;
-    private Integer newMedTwo;
-    private Integer newMedThree;
-    private Integer newMedFour;
-    private Integer newMedFive;
+    private int newMedOne;
+    private int newMedTwo;
+    private int newMedThree;
+    private int newMedFour;
+    private int newMedFive;
     private Boolean historyAvailable;
 
     public EncounterService() {
@@ -191,7 +191,7 @@ public class EncounterService implements IEncounterService, Serializable {
             //get the encounterID once it is saved and use it in vitals
             userSession.save(encounter);
             vitals.setVitalsID(encounter.getEncounterID());
-            vitals.setEncounterID(this.encounter.getEncounterID());
+            vitals.setEncounterID(encounter.getEncounterID());
 
             userSession.save(vitals);
         } catch (Exception ex) {
@@ -305,51 +305,51 @@ public class EncounterService implements IEncounterService, Serializable {
         this.newEncounter = newEncounter;
     }
 
-    public Integer getSearchSelection() {
+    public int getSearchSelection() {
         return searchSelection;
     }
 
-    public void setSearchSelection(Integer searchSelection) {
+    public void setSearchSelection(int searchSelection) {
         this.searchSelection = searchSelection;
     }
 
-    public Integer getNewMedOne() {
+    public int getNewMedOne() {
         return newMedOne;
     }
 
-    public void setNewMedOne(Integer newMedOne) {
+    public void setNewMedOne(int newMedOne) {
         this.newMedOne = newMedOne;
     }
 
-    public Integer getNewMedTwo() {
+    public int getNewMedTwo() {
         return newMedTwo;
     }
 
-    public void setNewMedTwo(Integer newMedTwo) {
+    public void setNewMedTwo(int newMedTwo) {
         this.newMedTwo = newMedTwo;
     }
 
-    public Integer getNewMedThree() {
+    public int getNewMedThree() {
         return newMedThree;
     }
 
-    public void setNewMedThree(Integer newMedThree) {
+    public void setNewMedThree(int newMedThree) {
         this.newMedThree = newMedThree;
     }
 
-    public Integer getNewMedFour() {
+    public int getNewMedFour() {
         return newMedFour;
     }
 
-    public void setNewMedFour(Integer newMedFour) {
+    public void setNewMedFour(int newMedFour) {
         this.newMedFour = newMedFour;
     }
 
-    public Integer getNewMedFive() {
+    public int getNewMedFive() {
         return newMedFive;
     }
 
-    public void setNewMedFive(Integer newMedFive) {
+    public void setNewMedFive(int newMedFive) {
         this.newMedFive = newMedFive;
     }
 
