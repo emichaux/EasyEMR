@@ -105,7 +105,7 @@ public class LoginBean {
 
 
         // Check if username exists
-        if (this.systemUser.getUsername().equals(this.getTempUserName())) {
+        if (this.systemUser.getUsername().toLowerCase().equals(this.getTempUserName().toLowerCase())) {
             //If the username exists , check if the password is correct
             //first recreate the expected hash value
             encryptedPassword = systemUser.getPassword();
