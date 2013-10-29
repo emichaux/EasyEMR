@@ -156,3 +156,19 @@ a:link {color:#F75D59;}      /* unvisited link */
 a:visited {color:#F75D59;}  /* visited link */
 a:hover {color:#F75D59;}  /* mouse over link */
 a:active {color:#F75D59;}  /* selected link */
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    border: 1px solid #ccc;
+}
+
+#center {
+    width: 70%;
+}
+
+span4.is-padded {
+    width: 280px;
+    padding-left: 40px;
+    background: #CCC;
+}
