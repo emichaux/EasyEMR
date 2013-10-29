@@ -103,7 +103,7 @@ CREATE TABLE `USERS` (
  
  CREATE TABLE `VITALS` (
        `vitalsID` int(9) unsigned zerofill NOT NULL AUTO_INCREMENT,
-       `encounterID` int(9) unsigned DEFAULT NOT NULL,
+       `encounterID` int(9) unsigned NOT NULL,
        `systolicBP` int(10) unsigned DEFAULT NULL,
        `diastolicBP` int(10) unsigned DEFAULT NULL,
        `heartRate` int(10) unsigned DEFAULT NULL,
