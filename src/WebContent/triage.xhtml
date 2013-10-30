@@ -124,7 +124,7 @@
                         <td><h5 style="color:#149bdf">First Name</h5></td>
 
                         <td><p:inputText id="firstname" value="#{encounterService.patient.firstName}"
-                                         title="Please type the patients First Name" required="false"> <p:ajax
+                                         title="Please type the patients First Name" required="true" label="Firstname"> <p:ajax
                                 event="keyup" update="historypanel"
                                 listener="#{encounterService.checkTableSize}"/></p:inputText> </td>
 
@@ -143,7 +143,7 @@
                     <tr>
                         <td><strong style="color:#149bdf">Last Name</strong></td>
                         <td><p:inputText id="patientLastName" value="#{encounterService.patient.lastName }"
-                                         title="Please type the patients Last Name" required="false"> <p:ajax
+                                         title="Please type the patients Last Name" required="true" label="Lastname"> <p:ajax
                                 event="keyup" update="historypanel"
                                 listener="#{encounterService.checkTableSize}"/></p:inputText></td>
 
@@ -177,7 +177,7 @@
                     </tr>
                     <tr>
                         <td><strong>Age</strong></td>
-                        <td><p:inputText id="age" type="number"
+                        <td><p:inputText id="age" type="number" required="true" label="age"
                                          value="#{encounterService.patient.age}"></p:inputText></td>
                     </tr>
                     <tr>
@@ -263,9 +263,9 @@
                     <br/>
 
                     <tr>
-                        <td><p:commandButton styleClass="ui-icon-search" id="submit" value="Save/ Update"
+                        <td><p:commandButton styleClass="ui-icon-search" update="@form" id="submit" value="Next Patient"
                                              onclick="alert('Patient Record Submitted');"
-                                             action="#{encounterService.saveOrUpdateEncounter}"
+                                             actionListener="#{encounterService.saveOrUpdateEncounter}"
                                 ></p:commandButton></td>
 
 
